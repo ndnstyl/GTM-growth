@@ -2,7 +2,6 @@
 
 import { Timer } from "lucide-react";
 import { Panel } from "./Panel";
-import { realNow } from "@/lib/demo/clock";
 import { useMounted } from "@/lib/motion";
 import { RoutinesFeed, Job } from "@/lib/feeds";
 
@@ -10,17 +9,6 @@ type Status = "FIRED" | "NEXT" | "QUEUED" | "ON" | "LOOP" | "FAIL" | "STALE";
 type RoutineRow = { time: string; name: string; status: Status; mins: number; title?: string };
 
 // How old this snapshot may be before a red badge is downgraded to STALE.
-// The scan runs every 15 min (the refresh job), so anything past ~20
-// min is a file nobody refreshed, not a live reading.
-const SNAPSHOT_STALE_MIN = 20;
-
-function ageMinutes(builtAt?: string): number | null {
-  if (!builtAt) return null;
-  const t = Date.parse(builtAt);
-  if (Number.isNaN(t)) return null;
-  return (Date.now() - t) / 60000;
-}
-
 // An always-on job is healthy when SOMETHING is answering on its port, whether
 // or not the scheduler is the one holding the process. 2026-08-24: the nightly job read
 // FAIL for weeks while port 11434 was listening the whole time, because
@@ -39,13 +27,10 @@ function serviceUp(job: Job, feed: RoutinesFeed): boolean | null {
 const clock12 = (h: string, m: string) => `${(parseInt(h) % 12) || 12}:${m} ${parseInt(h) >= 12 ? "PM" : "AM"}`;
 
 function deriveRows(feed: RoutinesFeed, mounted: boolean): RoutineRow[] {
-  // The prerender has no demo clock; until mount use the demo day's late evening (what the shifted clock reads), so
+  // The prerender has no demo clock; until mount use the demo day's morning (where the shifted clock starts), so
   // the first paint and hydration agree and no row changes after mount.
-  const now = new Date(realNow());
-  const nowM = mounted ? now.getHours() * 60 + now.getMinutes() : 23 * 60 + 30;
-  // A red badge off an old file is a claim about the past. Say so instead of
-  // asserting it about now.
-  const stale = false; // demo snapshot: never aged out
+  const now = new Date();
+  const nowM = mounted ? now.getHours() * 60 + now.getMinutes() : 9 * 60;
   const rows: RoutineRow[] = [];
 
   for (const j of feed.jobs) {
@@ -67,7 +52,7 @@ function deriveRows(feed: RoutinesFeed, mounted: boolean): RoutineRow[] {
       } else {
         // No pid and no port to check. Cannot prove up, cannot prove down , 
         // never silently green.
-        rows.push({ time: "", name, status: stale ? "STALE" : "FAIL", mins: -1, title: "Cannot tell whether it is running" });
+        rows.push({ time: "", name, status: "FAIL", mins: -1, title: "Cannot tell whether it is running" });
       }
       continue;
     }
@@ -75,7 +60,7 @@ function deriveRows(feed: RoutinesFeed, mounted: boolean): RoutineRow[] {
       rows.push({
         time: "",
         name,
-        status: stale ? "STALE" : "FAIL",
+        status: "FAIL",
         mins: -1,
         title: `Last run failed (exit code ${j.last_exit})`,
       });

@@ -1,12 +1,12 @@
 {
  "brands": [
   {
-   "id": "nb-main",
-   "label": "Northbeam Home"
+   "id": "lh-main",
+   "label": "Larkspur Home"
   },
   {
-   "id": "nb-pro",
-   "label": "Northbeam Pro"
+   "id": "lh-pro",
+   "label": "Larkspur Pro"
   }
  ]
 }

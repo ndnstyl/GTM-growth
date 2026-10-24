@@ -47,7 +47,7 @@
   {
    "id": "cut-01",
    "title": "Why a free estimate is worth the hour",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "research",
    "progress": 29,
    "updated": "2026-10-24"
@@ -55,7 +55,7 @@
   {
    "id": "cut-02",
    "title": "A roof you stop thinking about",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "animate",
    "progress": 51,
    "updated": "2026-10-23"
@@ -63,7 +63,7 @@
   {
    "id": "cut-03",
    "title": "Three questions before you sign",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "finish",
    "progress": 89,
    "updated": "2026-10-22"
@@ -71,7 +71,7 @@
   {
    "id": "cut-04",
    "title": "The crew lead explains day one",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "transcribe",
    "progress": 45,
    "updated": "2026-10-21"
@@ -79,7 +79,7 @@
   {
    "id": "cut-05",
    "title": "What a monthly payment really looks like",
-   "brand": "nb-pro",
+   "brand": "lh-pro",
    "stage": "screen",
    "progress": 37,
    "updated": "2026-10-20"
@@ -87,7 +87,7 @@
   {
    "id": "cut-06",
    "title": "Windows you can hear the difference in",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "done",
    "progress": 100,
    "updated": "2026-10-24"
@@ -95,7 +95,7 @@
   {
    "id": "cut-07",
    "title": "Storm season checklist",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "edit",
    "progress": 89,
    "updated": "2026-10-23"
@@ -103,7 +103,7 @@
   {
    "id": "cut-08",
    "title": "Neighbors who picked us",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "sound",
    "progress": 45,
    "updated": "2026-10-22"
@@ -111,7 +111,7 @@
   {
    "id": "cut-09",
    "title": "Gutters: the cheapest fix that saves the most",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "research",
    "progress": 20,
    "updated": "2026-10-21"
@@ -119,7 +119,7 @@
   {
    "id": "cut-10",
    "title": "How we price a siding job",
-   "brand": "nb-pro",
+   "brand": "lh-pro",
    "stage": "animate",
    "progress": 17,
    "updated": "2026-10-20"
@@ -127,7 +127,7 @@
   {
    "id": "cut-11",
    "title": "Same house, one week later",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "finish",
    "progress": 21,
    "updated": "2026-10-24"
@@ -135,7 +135,7 @@
   {
    "id": "cut-12",
    "title": "What the warranty actually covers",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "stage": "transcribe",
    "progress": 9,
    "updated": "2026-10-23"

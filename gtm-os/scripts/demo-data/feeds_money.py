@@ -1,4 +1,4 @@
-"""Money chain feeds: efficiency target ("golden rule") feeds, the Digital Marketing board's dm_* feeds,
+"""Money chain feeds: efficiency target ("marketing efficiency") feeds, the Digital Marketing board's dm_* feeds,
 and the spine monthly feeds.
 
 Definitions used everywhere (one place, so every surface agrees):
@@ -28,7 +28,7 @@ CANCEL_WINDOW_DAYS = 40
 
 
 def working_weight(d: date) -> float:
-    """Golden-formula working day: weekdays count 1, Saturday and Sunday count half."""
+    """Working-day working day: weekdays count 1, Saturday and Sunday count half."""
     return 1.0 if d.weekday() < 5 else 0.5
 
 
@@ -41,7 +41,7 @@ def batch_id(w: World) -> str:
 
 
 def asof_str(w: World) -> str:
-    return ts_iso(w.end, 6, 25)
+    return ts_iso(w.end + timedelta(days=1), 6, 25)
 
 
 def month_end(d: date) -> date:
@@ -86,7 +86,7 @@ class Money:
 
 
 # --------------------------------------------------------------------------------------
-# efficiency target feeds ("golden rule")
+# efficiency target feeds ("marketing efficiency")
 # --------------------------------------------------------------------------------------
 
 
@@ -140,8 +140,8 @@ def write_golden(fw: FeedWriter, w: World, mo: Money, wp: World, mp: Money) -> d
                 iss, net_iss, demo = int(sel(agg["iss"])), int(sel(agg["net_iss"])), int(sel(agg["demo"]))
                 close_c, pre_c, can_c, cred_c, net_c = (int(sel(agg[k])) for k in ("close", "prenet", "cancel", "credit", "net"))
                 cst = int(sel(cost))
-                nsli = int(round(net_c / net_iss)) if net_iss else None
-                nsli_pp = int(round((net_c + pre_c) / net_iss)) if net_iss else None
+                net_basis = int(round(net_c / net_iss)) if net_iss else None
+                net_pp = int(round((net_c + pre_c) / net_iss)) if net_iss else None
                 pct = round(100.0 * cst / (net_c + pre_c), 2) if (net_c + pre_c) > 0 else None
                 tier, dec = _tier(pct)
                 if not settled:
@@ -150,13 +150,13 @@ def write_golden(fw: FeedWriter, w: World, mo: Money, wp: World, mp: Money) -> d
                 row = {
                     "period": p, "office": office, "universe": u, "iss": iss, "net_iss": net_iss, "demo": demo,
                     "close_n": int(sel(agg["close_n"])), "close_cents": close_c, "prenet_cents": pre_c, "cancel_cents": can_c,
-                    "credit_decl_cents": cred_c, "net_cents": net_c, "nsli_cents": nsli, "nsli_plus_prenet_cents": nsli_pp,
+                    "credit_decl_cents": cred_c, "net_cents": net_c, "net_only_cents": net_basis, "net_plus_pending_cents": net_pp,
                     "marketing_cost_pct": pct, "target_pct": TARGET_PCT,
                     "settle_status": "SETTLED" if settled else "MONTH_TO_DATE",
                     "cost_status": "complete" if settled else f"in progress: every cost keyed through {asof}",
-                    "trust_flag": "deterministic" if settled else "provisional", "bonus_tier": tier,
-                    "bonus_tier_decidable": dec,
-                    "ceiling_at_target_cents": int(round(nsli_pp * TARGET_PCT / 100)) if nsli_pp else None,
+                    "trust_flag": "deterministic" if settled else "provisional", "target_band": tier,
+                    "band_decidable": dec,
+                    "headroom_at_target_cents": int(round(net_pp * TARGET_PCT / 100)) if net_pp else None,
                     "cost_per_issued_cents": int(round(cst / net_iss)) if net_iss else None,
                     "no_rep_appts": int(sel(agg["no_rep_appts"])), "no_rep_sales": int(sel(agg["no_rep_sales"])),
                     "sales_without_job": 0, "zero_amount_sales": 0,
@@ -167,12 +167,12 @@ def write_golden(fw: FeedWriter, w: World, mo: Money, wp: World, mp: Money) -> d
                 if u == "rep_assigned":
                     monthly_doc[(p, office)] = row
     cols = {k: [r[k] for r in monthly_rows] for k in monthly_rows[0]}
-    fw.write("golden_rule__monthly", table(cols, [
+    fw.write("efficiency__monthly", table(cols, [
         ("period", S), ("office", S), ("universe", S), ("iss", I64), ("net_iss", I64), ("demo", I64), ("close_n", I64),
         ("close_cents", I64), ("prenet_cents", I64), ("cancel_cents", I64), ("credit_decl_cents", I64), ("net_cents", I64),
-        ("nsli_cents", I64), ("nsli_plus_prenet_cents", I64), ("marketing_cost_pct", F64), ("target_pct", F64),
-        ("settle_status", S), ("cost_status", S), ("trust_flag", S), ("bonus_tier", S), ("bonus_tier_decidable", I64),
-        ("ceiling_at_target_cents", I64), ("cost_per_issued_cents", I64), ("no_rep_appts", I64), ("no_rep_sales", I64),
+        ("net_only_cents", I64), ("net_plus_pending_cents", I64), ("marketing_cost_pct", F64), ("target_pct", F64),
+        ("settle_status", S), ("cost_status", S), ("trust_flag", S), ("target_band", S), ("band_decidable", I64),
+        ("headroom_at_target_cents", I64), ("cost_per_issued_cents", I64), ("no_rep_appts", I64), ("no_rep_sales", I64),
         ("sales_without_job", I64), ("zero_amount_sales", I64), ("dup_sale_appts", I64), ("as_of", S), ("confidence", S),
         ("export_batch_id", S)]))
 
@@ -181,7 +181,8 @@ def write_golden(fw: FeedWriter, w: World, mo: Money, wp: World, mp: Money) -> d
     D = wp.D
     dstr = [d.isoformat() for d in wp.days]
     for u in ("rep_assigned", "all_appts"):
-        a = _universe(mp, u)
+        off = (wp.start - w.start).days
+        a = {k: v[off:] for k, v in _universe(mo, u).items()}  # the full world sliced, so daily rows tie to the monthly rows
         for office, mi in [("COMPANY", None)] + [(m.id, i) for i, m in enumerate(MARKETS)]:
             get = (lambda arr: arr.sum(axis=1)) if mi is None else (lambda arr, mi=mi: arr[:, mi])
             rows["period"].extend(dstr)
@@ -196,7 +197,7 @@ def write_golden(fw: FeedWriter, w: World, mo: Money, wp: World, mp: Money) -> d
             rows["as_of"].extend([asof] * D)
             rows["confidence"].extend(["deterministic"] * D)
             rows["export_batch_id"].extend([batch] * D)
-    fw.write("golden_rule__daily", table(rows, [
+    fw.write("efficiency__daily", table(rows, [
         ("period", S), ("date", S), ("office", S), ("universe", S), ("iss", I64), ("net_iss", I64), ("demo", I64), ("close_n", I64),
         ("close_cents", I64), ("prenet_cents", I64), ("cancel_cents", I64), ("credit_decl_cents", I64), ("net_cents", I64),
         ("target_pct", F64), ("as_of", S), ("confidence", S), ("export_batch_id", S)]))
@@ -231,7 +232,7 @@ def write_golden(fw: FeedWriter, w: World, mo: Money, wp: World, mp: Money) -> d
                 rows["run_at"].append(run_at)
                 rows["as_of"].append(asof)
                 rows["export_batch_id"].append(batch)
-    fw.write("golden_rule__tieout", table(rows, [
+    fw.write("efficiency__tieout", table(rows, [
         ("period", S), ("grain", S), ("office", S), ("column", S), ("report_value", F64), ("rebuild_value", F64), ("diff", F64),
         ("tolerance", F64), ("result", S), ("residual_id", S), ("run_at", S), ("as_of", S), ("export_batch_id", S)]))
     return {"months": uniq, "monthly": monthly_doc}
@@ -249,8 +250,8 @@ def write_dm_spend(fw: FeedWriter, w: World) -> None:
     D = w.D
     asof = asof_str(w)
     batch = batch_id(w)
-    cols = {k: [] for k in ["spend_date", "platform", "account_id", "campaign_id", "market", "lp_source_code", "lp_subsource_id",
-                            "lp_subsource_descr", "row_type", "amount_cents", "media_cents", "fee_cents", "non_media_cents",
+    cols = {k: [] for k in ["spend_date", "platform", "account_id", "campaign_id", "market", "crm_source_code", "crm_subsource_id",
+                            "crm_subsource_descr", "row_type", "amount_cents", "media_cents", "fee_cents", "non_media_cents",
                             "confidence", "attribution_basis", "impressions", "clicks", "conversions", "bucket", "operator",
                             "display_name", "as_of", "export_batch_id"]}
     dstr = [d.isoformat() for d in w.days]
@@ -272,9 +273,9 @@ def write_dm_spend(fw: FeedWriter, w: World) -> None:
         cols["account_id"].extend([account] * k)
         cols["campaign_id"].extend([campaign] * k)
         cols["market"].extend([market] * k)
-        cols["lp_source_code"].extend([src or sub[2]] * k)
-        cols["lp_subsource_id"].extend([subid or sub[0]] * k)
-        cols["lp_subsource_descr"].extend([subdesc or sub[1]] * k)
+        cols["crm_source_code"].extend([src or sub[2]] * k)
+        cols["crm_subsource_id"].extend([subid or sub[0]] * k)
+        cols["crm_subsource_descr"].extend([subdesc or sub[1]] * k)
         cols["row_type"].extend([rt] * k)
         cols["amount_cents"].extend(amt[keep].tolist())
         cols["media_cents"].extend(amt[keep].tolist() if rt == "media" else [0] * k)
@@ -318,8 +319,8 @@ def write_dm_spend(fw: FeedWriter, w: World) -> None:
          "Marketing labor, ruled constant 40000 a month", ["ruled"] * D, basis="ruled_constant", src="OVERHEAD", subid="LABOR",
          subdesc="Marketing labor, ruled constant", bucket="labor", operator=IN_HOUSE)
     fw.write("dm_spend_daily", table(cols, [
-        ("spend_date", S), ("platform", S), ("account_id", S), ("campaign_id", S), ("market", S), ("lp_source_code", S),
-        ("lp_subsource_id", S), ("lp_subsource_descr", S), ("row_type", S), ("amount_cents", I64), ("media_cents", I64),
+        ("spend_date", S), ("platform", S), ("account_id", S), ("campaign_id", S), ("market", S), ("crm_source_code", S),
+        ("crm_subsource_id", S), ("crm_subsource_descr", S), ("row_type", S), ("amount_cents", I64), ("media_cents", I64),
         ("fee_cents", I64), ("non_media_cents", I64), ("confidence", S), ("attribution_basis", S), ("impressions", I64),
         ("clicks", I64), ("conversions", F64), ("bucket", S), ("operator", S), ("display_name", S), ("as_of", S),
         ("export_batch_id", S)]))
@@ -380,7 +381,7 @@ def write_dm_chain(fw: FeedWriter, w: World) -> None:
         ("bucket", S), ("operator", S), ("confidence", S), ("as_of", S), ("export_batch_id", S)]))
 
 
-def write_dm_misc(fw: FeedWriter, w: World, mo: Money, golden: dict) -> None:
+def write_dm_misc(fw: FeedWriter, w: World, mo: Money, target: dict) -> None:
     asof = asof_str(w)
     batch = batch_id(w)
     eom = month_end(w.end)
@@ -419,7 +420,7 @@ def write_dm_misc(fw: FeedWriter, w: World, mo: Money, golden: dict) -> None:
     }, [("platform", S), ("account_id", S), ("display_name", S), ("bucket", S), ("operator", S), ("owner_role", S),
         ("register_version", S), ("register_signed_at", S), ("export_batch_id", S)]))
 
-    uniq = golden["months"]
+    uniq = target["months"]
     rows = {k: [] for k in ["month", "settle_status", "trust_flag", "matrix_complete", "fail_rows", "waiting_on", "matrix_run_at",
                             "strip_text", "as_of", "export_batch_id"]}
     for p in uniq:
@@ -439,7 +440,7 @@ def write_dm_misc(fw: FeedWriter, w: World, mo: Money, golden: dict) -> None:
         ("matrix_run_at", S), ("strip_text", S), ("as_of", S), ("export_batch_id", S)]))
 
     cur, prev = uniq[-1], uniq[-2]
-    gm = golden["monthly"]
+    gm = target["monthly"]
     chk = []
 
     def add(check_id, stage, period, scope, expected, observed, tol, result, evidence):
@@ -454,7 +455,7 @@ def write_dm_misc(fw: FeedWriter, w: World, mo: Money, golden: dict) -> None:
         add("Spend by owner adds up to the total", "spend", p, "ALL", tot, tot, 1.0, "PASS", "in-house + agency + offline buckets equal the feed total")
         add("Platform totals match recorded spend", "spend", p, "ALL", tot, tot, 1.0, "PASS", "platform totals equal the recorded spend rows")
         add("Pacing recomputed a second way", "report", p, "ALL", tot, tot, 1.0, "PASS", "month to date over elapsed working days times total, recomputed")
-        v = float(gm[(p, "COMPANY")]["nsli_plus_prenet_cents"] or 0) / 100.0
+        v = float(gm[(p, "COMPANY")]["net_plus_pending_cents"] or 0) / 100.0
         add("Net revenue per appointment matches the target feed", "sr", p, "COMPANY", v, v, 0.01, "PASS", "marketing cost target feed, company, appointments with a rep")
     add("Agency sheet matches the invoice", "spend", prev, "agency", 28410.0, 28410.0, 1.0, "PASS", "agency sheet equals the invoice")
     add("Agency sheet matches the invoice", "spend", cur, "agency", 19120.0, 19050.0, 100.0, "PASS_RESIDUAL",
@@ -524,7 +525,7 @@ class Series:
         return a.sum(axis=0)
 
 
-def write_dm_windows(fw: FeedWriter, w: World, golden: dict) -> None:
+def write_dm_windows(fw: FeedWriter, w: World, target: dict) -> None:
     sr = Series(w)
     end, first = w.end, w.start
     batch = batch_id(w)
@@ -647,20 +648,20 @@ def write_dm_windows(fw: FeedWriter, w: World, golden: dict) -> None:
                 rows["export_batch_id"].append(batch)
     # month-grain metrics: the warehouse fact behind them holds settled months only, so the "current" window is the
     # latest settled month, compared with the month before and the same month a year earlier; there is no weekly window
-    months = golden["months"]
+    months = target["months"]
     cur_p, prev_p = months[-2], months[-3]
     yoy_p = months[-14] if len(months) >= 14 else None
-    gm = golden["monthly"]
+    gm = target["monthly"]
 
     def mval(metric, period, office):
         r = gm.get((period, office))
         if r is None:
             return None
-        if metric == "nsli":
-            return None if r["nsli_plus_prenet_cents"] is None else r["nsli_plus_prenet_cents"] / 100.0
+        if metric == "net_basis":
+            return None if r["net_plus_pending_cents"] is None else r["net_plus_pending_cents"] / 100.0
         return r["marketing_cost_pct"]
 
-    for metric, fmt in (("nsli", "dollars"), ("marketing_cost_pct", "percent")):
+    for metric, fmt in (("net_basis", "dollars"), ("marketing_cost_pct", "percent")):
         for sk, sc, office in [("company", "ALL", "COMPANY")] + [("market", m.id, m.id) for m in MARKETS]:
             v = mval(metric, cur_p, office)
             for wname, pp in (("mtd", None), ("wow", None), ("mom", prev_p), ("yoy", yoy_p)):

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useOpener } from "@/lib/motion/opener"
 import { Dialog as SheetPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
@@ -55,6 +56,7 @@ function SheetContent({
   side?: "top" | "right" | "bottom" | "left"
   showCloseButton?: boolean
 }) {
+  const opener = useOpener()
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -66,6 +68,8 @@ function SheetContent({
           className
         )}
         {...props}
+        onOpenAutoFocus={(e) => { opener.onOpenAutoFocus(e); props.onOpenAutoFocus?.(e) }}
+        onCloseAutoFocus={(e) => { props.onCloseAutoFocus?.(e); if (!e.defaultPrevented) opener.onCloseAutoFocus(e) }}
       >
         {children}
         {showCloseButton && (

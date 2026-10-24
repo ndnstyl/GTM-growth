@@ -1,6 +1,6 @@
 # GTM OS demo data
 
-One seeded generator writes every data file the demo app reads. The company is fictional (Northbeam Home Services, six
+One seeded generator writes every data file the demo app reads. The company is fictional (Larkspur Home Services, six
 fictional markets, two brands). Nothing here is, or is derived from, real data.
 
 ## Run it
@@ -46,7 +46,7 @@ A query that errors, a feed that is missing or a dead measure is a named failure
 
 * `GSC_PRIMARY_SITE` in `lib/reports/sql/organic.sql.ts` names the Search Console site. The generator reads it, so the
   data always carries the site the code filters to; the check fails if the constant is not an `sc-domain:` literal.
-* Content library records use `brand_scope` values `universal`, `nb-main`, `nb-pro`, `both-variants` and gate keys
+* Content library records use `brand_scope` values `universal`, `lh-main`, `lh-pro`, `both-variants` and gate keys
   `RELEASE`, `PREREQ`, `OPSEC`, `SPEC`; `ContentLibrary.tsx` needs a label for each.
-* Feed file and column names the code reads (`lp_spine__fact_funnel_daily`, `callfloor_connect_rate_lp_*`, `lp_*` columns
+* Feed file and column names the code reads (`crm_spine__fact_funnel_daily`, `callfloor_connect_rate_crm_*`, `crm_*` columns
   in the spend and source-chain feeds) are kept because the SQL selects them by name.

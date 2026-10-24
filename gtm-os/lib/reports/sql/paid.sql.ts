@@ -137,8 +137,6 @@ export function campaignTableSql(opts: PaidFilterOpts & { dims?: DimSources }): 
       SELECT
         x.campaign_id,
         x.market_id,
-        -- the campaign's WHOLE window spend is the denominator (shares sum to 1.0 per
-        -- day, so the campaign-level sum of share*amount is the campaign total)
         SUM(x.share * x.amount_cents) / NULLIF(SUM(SUM(x.share * x.amount_cents)) OVER (PARTITION BY x.campaign_id), 0) AS w_share,
         STRING_AGG(DISTINCT x.basis, '+' ORDER BY x.basis) AS basis,
         MAX(x.market_count) AS market_count
@@ -265,10 +263,6 @@ export function geoTableSql(opts: PaidFilterOpts & { geoType?: string }): string
     FROM fact_geo_spend_daily
     WHERE platform = '${platform}'
       AND spend_date >= DATE '${fromDate}' AND spend_date <= DATE '${toDate}'
-      -- ONE geo_type only. Google reports a single delivery event in parallel as
-      -- city, postal AND county (measured 2026-08-23: each read exactly $3,366 on
-      -- 2026-08-21), so a table mixing them shows the same dollars three times.
-      -- data-contract.md line 48 rules this; the page must not re-open the trap.
       AND geo_type = '${geoType}'
     GROUP BY geo_id, geo_name, geo_type, location_type
     ORDER BY spend_cents DESC

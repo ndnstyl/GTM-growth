@@ -3,7 +3,7 @@
  "name": "Marketing cost target, daily",
  "description": "Net issued, net revenue and the share still pending per day by market.",
  "narrative": "The daily rows that roll up to the month, so a bad week can be found before the month closes.",
- "sourceKey": "golden_rule_daily",
+ "sourceKey": "efficiency_daily",
  "rows": [
   "date",
   "office"
@@ -13,8 +13,8 @@
   "net_iss",
   "net_usd",
   "prenet_usd",
-  "nsli_plus_prenet",
-  "ceiling_at_target"
+  "net_plus_pending",
+  "headroom_at_target"
  ],
  "filters": [],
  "datePreset": "last_13",

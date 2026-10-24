@@ -2,12 +2,12 @@
 // kiosk feed (the data), parked by the owner 2026-09-06 when the big
 // board moved to the owner's Apple app. It now reads two live feeds:
 //
-//   * the CRM funnel: `lp_spine__fact_funnel_daily.parquet` (through yesterday,
+//   * the CRM funnel: `crm_spine__fact_funnel_daily.parquet` (through yesterday,
 //     deterministic, carries cancels + net) and `funnel__fact_funnel_daily.parquet`
 //     (today only, provisional, net NULL). Same producer precedence as the
 //     contract view in _contract_views.ts: the data file wins every date it
 //     covers, the today file fills only dates the spine has not published.
-//   * the call-floor connect feed: `callfloor/callfloor_connect_rate_lp_daily.parquet`
+//   * the call-floor connect feed: `callfloor/callfloor_connect_rate_crm_daily.parquet`
 //     (one row per CRM pull window x day; the pull window IS the dial denominator,
 //     vault: "An CRM GetLead Lead Window Truncates the Call Count, So a Connect
 //     Rate Depends on the Pull"). The denominator of record is UNRULED (150
@@ -21,19 +21,22 @@
 export const CC_FUNNEL_SPINE = "cc_funnel_spine";
 export const CC_FUNNEL_TODAY = "cc_funnel_today";
 export const CC_FUNNEL_VIEW = "cc_funnel";
-export const CC_CONNECT_VIEW = "callfloor_connect_rate_lp_daily";
+export const CC_CONNECT_VIEW = "callfloor_connect_rate_crm_daily";
 export const CC_DIM_MARKET = "dim_market";
-export const CC_AGENT_VIEW = "callfloor_connect_rate_lp_agent_daily";
+export const CC_AGENT_VIEW = "callfloor_connect_rate_crm_agent_daily";
 
 export const CC_FEEDS = {
-  spine: { name: CC_FUNNEL_SPINE, url: "/data/reports/lp_spine__fact_funnel_daily.parquet" },
+  spine: { name: CC_FUNNEL_SPINE, url: "/data/reports/crm_spine__fact_funnel_daily.parquet" },
   today: { name: CC_FUNNEL_TODAY, url: "/data/reports/funnel__fact_funnel_daily.parquet" },
-  connect: { name: CC_CONNECT_VIEW, url: "/data/reports/callfloor/callfloor_connect_rate_lp_daily.parquet" },
+  connect: { name: CC_CONNECT_VIEW, url: "/data/reports/callfloor/callfloor_connect_rate_crm_daily.parquet" },
   market: { name: CC_DIM_MARKET, url: "/data/reports/dim_market.parquet" },
-  agents: { name: CC_AGENT_VIEW, url: "/data/reports/callfloor/callfloor_connect_rate_lp_agent_daily.parquet" },
+  agents: { name: CC_AGENT_VIEW, url: "/data/reports/callfloor/callfloor_connect_rate_crm_agent_daily.parquet" },
 } as const;
 
-export type CcPeriod = "today" | "mtd";
+import { presetDateSql } from "./overview.sql";
+import type { DatePreset } from "@/components/reports/FilterBar";
+
+export type CcPeriod = DatePreset;
 
 // Headline pull. "ledger" accumulates every CRM call the
 // pulls have ever seen, refreshed per person daily on the mini, so it is the
@@ -65,9 +68,7 @@ export function ccFunnelViewSql(haveSpine: boolean, haveToday: boolean): string 
 }
 
 function periodWhere(dateCol: string, period: CcPeriod): string {
-  return period === "today"
-    ? `${dateCol} = current_date`
-    : `${dateCol} >= date_trunc('month', current_date) AND ${dateCol} <= current_date`;
+  return presetDateSql(dateCol, period);
 }
 
 // Net per row: the published net where the spine has it; otherwise gross minus
@@ -111,9 +112,9 @@ export function ccFunnelByOfficeSql(period: CcPeriod): string {
 // rate is never shown without its source.
 export function ccDialsBySourceSql(period: CcPeriod): string {
   return `SELECT source,
-    SUM(lp_dials) AS lp_dials, SUM(lp_dials_d) AS lp_dials_d,
-    SUM(lp_connects) AS lp_connects, SUM(lp_connects_d) AS lp_connects_d,
-    SUM(lp_machine) AS lp_machine,
+    SUM(crm_dials) AS crm_dials, SUM(crm_dials_d) AS crm_dials_d,
+    SUM(crm_connects) AS crm_connects, SUM(crm_connects_d) AS crm_connects_d,
+    SUM(crm_machine) AS crm_machine,
     MAX(agents) AS agents_peak,
     COUNT(DISTINCT call_date) AS days_with_rows,
     MIN(TRY_CAST(call_date AS DATE)) AS first_date, MAX(TRY_CAST(call_date AS DATE)) AS last_date,
@@ -123,10 +124,10 @@ export function ccDialsBySourceSql(period: CcPeriod): string {
     GROUP BY source ORDER BY source`;
 }
 
-export function ccDialsDailySql(source: string): string {
-  return `SELECT TRY_CAST(call_date AS DATE) AS call_date, lp_dials, lp_dials_d, lp_connects, lp_connects_d, lp_machine, agents
+export function ccDialsDailySql(source: string, period: CcPeriod): string {
+  return `SELECT TRY_CAST(call_date AS DATE) AS call_date, crm_dials, crm_dials_d, crm_connects, crm_connects_d, crm_machine, agents
     FROM ${CC_CONNECT_VIEW}
-    WHERE source = '${source}' AND ${periodWhere("TRY_CAST(call_date AS DATE)", "mtd")}
+    WHERE source = '${source}' AND ${periodWhere("TRY_CAST(call_date AS DATE)", period)}
     ORDER BY call_date DESC`;
 }
 
@@ -136,11 +137,11 @@ export function ccDialsDailySql(source: string): string {
 // rate needs the CRM setter feed joined on the agent key, not invented here.
 export function ccAgentsSql(period: CcPeriod, source: string): string {
   return `SELECT agent_key, MIN(agent_name_lp) AS agent_name,
-    SUM(lp_dials) AS lp_dials, SUM(lp_connects) AS lp_connects,
+    SUM(crm_dials) AS crm_dials, SUM(crm_connects) AS crm_connects,
     COUNT(DISTINCT call_date) AS days_with_rows,
     MAX(TRY_CAST(call_date AS DATE)) AS last_date
     FROM ${CC_AGENT_VIEW}
     WHERE source = '${source}' AND ${periodWhere("TRY_CAST(call_date AS DATE)", period)}
     GROUP BY agent_key
-    ORDER BY lp_dials DESC`;
+    ORDER BY crm_dials DESC`;
 }

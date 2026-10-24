@@ -8,8 +8,10 @@
 // requests leave this machine: lead data is queried locally in DuckDB-WASM
 // and never sent anywhere.
 
+import { dateRangeFor, daysBetweenInclusive } from "@/lib/reports/dates";
 import { reducedMotionNow } from "@/lib/motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { withBase } from "@/lib/demo/base";
 import type { Map as MapLibreMap, Marker as MapLibreMarker } from "maplibre-gl";
 import { getDb, query, registerParquet } from "@/lib/reports/duck";
 import type { FilterState } from "@/components/reports/FilterBar";
@@ -70,40 +72,6 @@ type OutOfAreaRow = {
   flagged_rate: number;
 };
 
-function dateRangeFor(preset: FilterState["preset"]): { from: string; to: string } {
-  const now = new Date();
-  const iso = (d: Date) => d.toISOString().slice(0, 10);
-  const to = new Date(now);
-  const from = new Date(now);
-  switch (preset) {
-    case "yesterday":
-      from.setUTCDate(from.getUTCDate() - 1);
-      to.setUTCDate(to.getUTCDate() - 1);
-      break;
-    case "wtd": {
-      const day = (from.getUTCDay() + 6) % 7; // Monday start
-      from.setUTCDate(from.getUTCDate() - day);
-      break;
-    }
-    case "mtd":
-      from.setUTCDate(1);
-      break;
-    case "last7":
-      from.setUTCDate(from.getUTCDate() - 6);
-      break;
-    case "last28":
-      from.setUTCDate(from.getUTCDate() - 27);
-      break;
-    case "mom":
-      from.setUTCMonth(from.getUTCMonth() - 1, 1);
-      to.setUTCDate(0);
-      break;
-    case "ytd":
-      from.setUTCMonth(0, 1);
-      break;
-  }
-  return { from: iso(from), to: iso(to) };
-}
 
 // Defensive coercion for the table: the DuckDB-WASM loader normalizes
 // BigInt to Number already (lib/reports/duck.ts), but a SUM() over a
@@ -112,13 +80,9 @@ function dateRangeFor(preset: FilterState["preset"]): { from: string; to: string
 // through this first.
 type GeoCoverage = { distinct_days: number; days_in_window?: number; leads: number; first_day: string | null; last_day: string | null };
 
-// Days in [from, to] capped at today, from the same strings the SQL filters on.
+// Days in [from, to], from the same calendar strings the SQL filters on (the window already ends on the last full data day).
 function daysInWindow(from: string, to: string): number {
-  // "Today" in ET, the spine clock (core.et_today); UTC would cap a window one day late after 8pm ET.
-  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-  const end = to < today ? to : today;
-  const ms = Date.UTC(+end.slice(0, 4), +end.slice(5, 7) - 1, +end.slice(8, 10)) - Date.UTC(+from.slice(0, 4), +from.slice(5, 7) - 1, +from.slice(8, 10));
-  return Math.max(1, Math.round(ms / 86400000) + 1);
+  return daysBetweenInclusive(from, to);
 }
 
 // 5th-95th percentile bounds so a single far-away out-of-area lead (e.g. a
@@ -188,7 +152,6 @@ export function LeadMap({
   const [outOfArea, setOutOfArea] = useState<OutOfAreaRow[]>([]);
   const [coverage, setCoverage] = useState<GeoCoverage | null>(null);
   const [tilesFailed, setTilesFailed] = useState(false);
-  const [showCounties, setShowCounties] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const { from, to } = useMemo(() => dateRangeFor(filters.preset), [filters.preset]);
@@ -249,13 +212,19 @@ export function LeadMap({
       const maplibregl = await import("maplibre-gl");
       await import("maplibre-gl/dist/maplibre-gl.css" as string).catch(() => undefined);
       if (cancelled || !containerRef.current) return;
+      // The worker ships with the app (copied in at build), so the base map never waits on a CDN or a blob worker.
+      maplibregl.setWorkerUrl(withBase("/maplibre/maplibre-gl-worker.mjs"));
 
       const map = new maplibregl.Map({
         container: containerRef.current,
-        style: "https://tiles.openfreemap.org/styles/positron",
-        center: [-83, 28], // frames FL + Houston at low zoom
-        zoom: 4.3,
+        style: "https://tiles.openfreemap.org/styles/dark",
+        center: [-95.2, 39.7], // the six demo markets sit across the central plains
+        zoom: 5,
         attributionControl: { compact: true },
+      });
+      // Some basemap layers name sprite icons the style does not ship; give them a blank image so nothing warns.
+      map.on("styleimagemissing", (e: { id: string }) => {
+        if (!map.hasImage(e.id)) map.addImage(e.id, { width: 1, height: 1, data: new Uint8Array(4) });
       });
       map.on("error", (e: { error?: { message?: string } }) => {
         // A tile/style load failure surfaces here; anything else (e.g. a
@@ -271,7 +240,7 @@ export function LeadMap({
       });
       window.setTimeout(() => {
         if (!sawTileLoad) {
-          reportLog.warn("[reports] no tile dataloading event within 4s; markers render independently of this");
+          reportLog.info("[reports] no tile dataloading event within 4s; markers render independently of this");
         }
       }, 4000);
       mapRef.current = map;
@@ -342,9 +311,7 @@ export function LeadMap({
             el.style.boxShadow = "none";
           }
         }
-        const aggNote = p.aggregated && p.aggregated > 1 ? ` (${p.aggregated} zips aggregated)` : "";
         const basisNote = p.within_radius_mi != null ? ` · ${p.within_radius_mi} miles from the office` : "";
-        const branchNote = p.filed_branch ? `; filed: ${p.filed_branch}${p.serviceable_branch ? `, serviceable: ${p.serviceable_branch}` : ""}` : "";
         el.title = `ZIP ${p.zip} · ${style.label} · ${asNumber(p.leads).toLocaleString()} leads${basisNote}`;
 
         const marker = new maplibregl.Marker({ element: el, anchor: "center" })
@@ -400,10 +367,6 @@ export function LeadMap({
 
     build();
   }, [points, offices]);
-
-  const countyGeoJsonAvailable = false; // no GeoJSON county file on disk (see report); only a raw shapefile
-                                          // (cb_2025_us_county_500k.zip) exists and this machine has no
-                                          // ogr2ogr/geopandas to convert it, so the toggle is omitted.
 
   return (
     <div className="flex flex-col gap-3">

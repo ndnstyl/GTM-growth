@@ -123,7 +123,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "rtc_cents", type: "BIGINT" },
     { name: "turndown_cents", type: "BIGINT" },
-    // lp_spine additions (data-contract.md "CRM spine tables", v1.4): net
+    // crm_spine additions (data-contract.md "CRM spine tables", v1.4): net
     // basis needs cancel_gross_cents alongside gross_cents to reconcile
     // net_cents = gross_cents - cancel_gross_cents.
     { name: "cancels", type: "BIGINT" },
@@ -133,7 +133,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
   // --- CRM spine tables (data-contract.md "CRM spine tables (v1.4)"). Every
   // table below is (date, office, <dim>) grain with the shared funnel
   // measure set unless the contract narrows it (setter, sales_rep, calls).
-  fact("fact_lp_source_daily", [
+  fact("fact_crm_source_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "source_code", type: "VARCHAR" },
@@ -148,7 +148,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_subsource_daily", [
+  fact("fact_crm_subsource_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "subsource_code", type: "VARCHAR" },
@@ -164,7 +164,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_promoter_daily", [
+  fact("fact_crm_promoter_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "promoter", type: "VARCHAR" },
@@ -179,7 +179,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_product_daily", [
+  fact("fact_crm_product_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "product", type: "VARCHAR" },
@@ -194,7 +194,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_rank_daily", [
+  fact("fact_crm_rank_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "rank", type: "VARCHAR" },
@@ -209,7 +209,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_territory_daily", [
+  fact("fact_crm_territory_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "state", type: "VARCHAR" },
@@ -226,7 +226,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_disposition_daily", [
+  fact("fact_crm_disposition_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "lead_disposition", type: "VARCHAR" },
@@ -241,7 +241,7 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_call_result_daily", [
+  fact("fact_crm_call_result_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "last_call_result", type: "VARCHAR" },
@@ -256,14 +256,14 @@ export const CONTRACT_TABLES: ContractTable[] = [
     { name: "net_cents", type: "BIGINT" },
     { name: "unruled_appointments", type: "BIGINT" },
   ]),
-  fact("fact_lp_setter_daily", [
+  fact("fact_crm_setter_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "setter", type: "VARCHAR" },
     { name: "leads_touched", type: "BIGINT" },
     { name: "sets", type: "BIGINT" },
   ]),
-  fact("fact_lp_sales_rep_daily", [
+  fact("fact_crm_sales_rep_daily", [
     { name: "date", type: "DATE" },
     { name: "office", type: "VARCHAR" },
     { name: "sales_rep", type: "VARCHAR" },
@@ -480,7 +480,7 @@ function emptyViewSql(t: ContractTable): string {
 // `order` is a total order of producer prefixes; a physical file whose name matches none of
 // them (an orphan from before the v1.1 rename) is excluded from the union and logged.
 const PRECEDENCE: Record<string, { winner: string; dateCol: string; order: string[] }> = {
-  fact_funnel_daily: { winner: "lp_spine__", dateCol: "date", order: ["lp_spine__", "funnel__"] },
+  fact_funnel_daily: { winner: "crm_spine__", dateCol: "date", order: ["crm_spine__", "funnel__"] },
 };
 
 function unionViewSql(t: ContractTable, physicalNames: string[]): string {
@@ -525,7 +525,7 @@ function unionViewSql(t: ContractTable, physicalNames: string[]): string {
 
 // Manifest entries in these states have a parquet file on disk worth
 // fetching; "missing" (declared in the registry but not yet produced, e.g.
-// dim_subsource/fact_lp_subsource_daily pending the PII-guard role) and any
+// dim_subsource/fact_crm_subsource_daily pending the PII-guard role) and any
 // other non-fetchable status are skipped so a known-missing file never
 // logs a 404, it just resolves empty like an absent manifest key.
 export const FETCHABLE_STATUS = new Set(["published", "stale", "orphan", "unavailable_feed"]); // a file with history is still read; the badge carries the status

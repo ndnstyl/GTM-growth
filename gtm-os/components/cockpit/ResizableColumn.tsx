@@ -250,7 +250,7 @@ export function ResizableColumn({
             <Fragment key={p.id}>
               <div
                 ref={setItemRef(p.id)}
-                className="g-rise flex flex-col xl:min-h-0 max-xl:min-h-[300px]"
+                className="g-rise flex flex-col xl:min-h-0 max-xl:min-h-[300px]! max-xl:grow-0! max-xl:shrink-0! max-xl:basis-auto!"
                 style={{
                   ...(w > 0
                     ? { flexGrow: w, flexBasis: 0, flexShrink: 1, minHeight: MIN_PANEL_PX }
@@ -276,6 +276,7 @@ export function ResizableColumn({
         <div
           ref={spacerRef}
           aria-hidden
+          className="max-xl:hidden"
           style={
             spacer
               ? { flexGrow: weightOf(spacer), flexBasis: 0, flexShrink: 1, minHeight: 0 }

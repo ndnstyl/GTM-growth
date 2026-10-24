@@ -20,7 +20,6 @@ type Offer = {
 
 const TABS = ["swot", "offer", "definitions"] as const;
 const fmtDay = (iso: string) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
-type Tab = (typeof TABS)[number];
 
 const CLAIM_TONE: Record<string, string> = { approved: "text-[var(--good)]", pending: "text-[var(--warn)]", blocked: "text-[var(--crit)]" };
 const TEST_TONE: Record<string, string> = { winning: "text-[var(--good)]", testing: "text-[var(--warn)]", retired: "text-muted-foreground" };
@@ -48,7 +47,7 @@ function Quad({ title, tone, rows }: { title: string; tone: string; rows: Theme[
 }
 
 export default function ResearchPage() {
-  const [tab, setTab] = useHashTab(TABS, "swot");
+  const [tab] = useHashTab(TABS, "swot");
   const swot = useFixture<Swot>("/demo/research/swot.json");
   const offer = useFixture<Offer>("/demo/research/offer.json");
 

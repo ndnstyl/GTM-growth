@@ -89,31 +89,17 @@ def write_kpi(w: World, mo: Money, h: Headline) -> None:
     worst = max((v, k) for k, v in h.cps.items() if v)
     text = (f"Cost per set is ${best[0]:,.0f} in {best[1]} and ${worst[0]:,.0f} in {worst[1]} this week: move budget toward "
             f"{best[1]} and check the {worst[1]} landing page before Friday.")
-    numbers = {
-        "as_of": iso(w.end),
-        "tiles": [
-            {"key": "leads", "label": "Leads yesterday", "value": h.leads_y, "unit": "count", "delta_pct": h.pct(h.leads_y, h.leads_prev), "detail": "all markets, vs same day last week"},
-            {"key": "meetings", "label": "Meetings held", "value": h.demos_y, "unit": "count", "delta_pct": h.pct(h.demos_y, h.demos_prev), "detail": "yesterday"},
-            {"key": "opps", "label": "Appointments issued", "value": h.issues_y, "unit": "count", "delta_pct": h.pct(h.issues_y, h.issues_prev), "detail": "issued to reps"},
-            {"key": "revenue", "label": "Booked revenue MTD", "value": round(h.mtd_rev), "unit": "usd", "delta_pct": round(h.pct_to_pace - 100.0, 1), "detail": "vs pace"},
-            {"key": "cac", "label": "Blended CAC", "value": round(h.cac7), "unit": "usd", "delta_pct": h.pct(h.cac7, h.sp7p / max(h.sales7p, 1)), "detail": "ad spend per sale, last 7 days"},
-            {"key": "mer", "label": "MER", "value": round(h.mer7, 2), "unit": "ratio", "delta_pct": h.pct(h.mer7, h.rev7p / max(h.sp7p, 1)), "detail": "last 7 days, revenue ÷ ad spend"},
-        ],
-        "pace": {"goal": int(h.goal), "actual": round(h.mtd_rev), "pct_to_pace": h.pct_to_pace, "through": iso(w.end)},
-    }
-    tiles = [
-        {"key": t["key"], "label": t["label"], "value": t["value"], "unit": t["unit"], "as_of": iso(w.end), "source": "our database",
-         "confidence": "deterministic", "detail": t["detail"]} for t in numbers["tiles"]
-    ]
-    write_json(OUT_DATA / "kpi.json", {"tiles": tiles, "one_thing": {"date": iso(w.end), "text": text, "file": ""}, "numbers": numbers})
+    numbers = None
+    tiles = []
+    write_json(OUT_DATA / "kpi.json", {"tiles": tiles, "one_thing": {"date": iso(w.end + timedelta(days=1)), "text": text, "file": ""}})
 
 
 def write_meta(w: World) -> None:
-    built = ts_iso(w.end, 6, 30)
+    built = ts_iso(w.end + timedelta(days=1), 6, 30)
     feeds = {k: "ok" for k in ["board", "kpi", "routines", "initiatives", "consent_ops", "reports", "content"]}
     write_json(OUT_DATA / "meta.json", {
         "built_at": built, "feeds": feeds, "north_star_as_of": iso(w.end), "queue_as_of": iso(w.end),
-        "queue_newest_delta": iso(w.end), "today": iso(w.end),
+        "queue_newest_delta": iso(w.end), "today": iso(w.end + timedelta(days=1)),
     })
 
 
@@ -146,7 +132,7 @@ CARDS = [
 
 
 def write_board(w: World) -> None:
-    today = w.end
+    today = w.end + timedelta(days=1)
     cards = []
     for i, (stage, title, desc, owner, off, status, pri, blocked) in enumerate(CARDS, 1):
         due = today + timedelta(days=off)
@@ -172,18 +158,24 @@ JOBS = [
     ("hygiene-read-weekly", "08:45"), ("call-swot-weekly", "09:00"), ("cockpit", "always on"), ("answer-service", "always on"),
     ("usage-meter", "always on"), ("report-builder", "always on"),
 ]
+PLAIN = {
+    "completeness-gate": "Data completeness check", "call-swot-weekly": "Weekly call themes", "hygiene-read-weekly": "Weekly ad account check",
+    "usage-meter": "Usage tracker", "cost-sync": "Cost sync", "creative-library-sync": "Creative library sync",
+    "answer-service": "Answer service", "report-builder": "Report builder",
+}
+plain = lambda k: PLAIN.get(k) or k.replace("-", " ").capitalize()
 SERVICES = [("cockpit", 0), ("answer-service", 0), ("usage-meter", 0), ("report-builder", 0)]
 
 
 def write_routines(w: World) -> None:
-    built = ts_iso(w.end, 6, 30)
+    built = ts_iso(w.end + timedelta(days=1), 6, 30)
     jobs = []
     for label, sched in JOBS:
         port = None
-        jobs.append({"label": label.replace("-", " ").capitalize(), "schedule": sched, "loaded": True, "pid": None if sched != "always on" else 4100 + len(jobs),
+        jobs.append({"label": plain(label), "schedule": sched, "loaded": True, "pid": None if sched != "always on" else 4100 + len(jobs),
                      "last_exit": 0, "plist": "", "serves_port": port})
     write_json(OUT_DATA / "routines.json", {
-        "jobs": jobs, "services": [{"name": n.replace("-", " ").capitalize(), "port": p, "listening": True} for n, p in SERVICES], "alerts": [], "built_at": built,
+        "jobs": jobs, "services": [{"name": plain(n), "port": p, "listening": True} for n, p in SERVICES], "alerts": [], "built_at": built,
     })
 
 
@@ -192,7 +184,7 @@ def _next_weekday(d: date, wd: int) -> date:
 
 
 def write_initiatives(w: World) -> None:
-    today = w.end
+    today = w.end + timedelta(days=1)
     markets = [m.name for m in MARKETS]
     ev, live = [], []
 
@@ -220,7 +212,7 @@ def write_initiatives(w: World) -> None:
                 if start <= today <= end:
                     live.append({"id": f"tv-{m.lower()}", "channel": "tv", "label": f"Regional TV flight, {m}", "market": m, "start": iso(start),
                                  "end": iso(end), "owner": "Marketing lead", "phones": "Morning call volume runs high after evening spots.",
-                                 "exec": "Four-week flight, one week dark after.", "lp_subsource": "Regional TV",
+                                 "exec": "Four-week flight, one week dark after.", "crm_subsource": "Regional TV",
                                  "tracking": {"status": "ok", "owner": "Media buyer", "note": "call tracking number rotates by flight", "due": iso(end)},
                                  "days_left": (end - today).days})
     # home shows on weekends
@@ -242,13 +234,13 @@ def write_initiatives(w: World) -> None:
                     owner="Media buyer", phones="A small bump for two weeks."))
     live.append({"id": "billboard-hrb", "channel": "billboard", "label": "Billboard, Harborview north corridor", "market": "Harborview",
                  "start": iso(today - timedelta(days=21)), "end": iso(today + timedelta(days=39)), "owner": "Media buyer",
-                 "phones": "Steady background calls; no spike.", "exec": "Sixty-day flight.", "lp_subsource": "Billboard",
+                 "phones": "Steady background calls; no spike.", "exec": "Sixty-day flight.", "crm_subsource": "Billboard",
                  "tracking": {"status": "ok", "owner": "Media buyer", "note": "vanity URL and QR on the board", "due": iso(today + timedelta(days=39))},
                  "days_left": 39})
     live.append({"id": "video-streaming", "channel": "video", "label": "Streaming video, all markets", "market": None,
                  "start": iso(today - timedelta(days=9)), "end": iso(today + timedelta(days=19)), "owner": "Marketing lead",
                  "phones": "Lifts branded search two days later.", "exec": "Awareness flight tied to the TV markets.",
-                 "lp_subsource": "Streaming video",
+                 "crm_subsource": "Streaming video",
                  "tracking": {"status": "needs_fix", "owner": "Media buyer", "note": "tracked link missing on one creative", "due": iso(today + timedelta(days=2))},
                  "days_left": 19})
     ev.sort(key=lambda e: (e["date"], e["time"] or "99:99", e["label"]))
@@ -275,8 +267,9 @@ def write_initiatives(w: World) -> None:
 
 
 def write_consent(w: World) -> None:
-    gen = ts_iso(w.end, 6, 30) + "-05:00"
-    base = datetime(w.end.year, w.end.month, w.end.day, 17, 0)
+    gen = ts_iso(w.end + timedelta(days=1), 6, 30) + "-05:00"
+    _d = w.end + timedelta(days=1)
+    base = datetime(_d.year, _d.month, _d.day, 6, 20)
     at = lambda mins: (base - timedelta(minutes=mins)).isoformat(timespec="seconds") + "-05:00"
     items = [
         {"kind": "failed_job", "job": "Nightly consent replay", "owner": "Compliance lead", "owner_basis": "named", "severity": "critical",
@@ -288,7 +281,7 @@ def write_consent(w: World) -> None:
          "provider": "demo-gateway", "status": "failed", "contact": "phone …0142", "person_ref": "P002", "prospect_id": None, "at": at(190),
          "age_s": 11400, "owner": "Messaging lead", "owner_basis": "default", "what": "Text message failed at the carrier"},
         {"kind": "ambiguous_stop", "severity": "warning", "candidate_id": 318, "source_lane": "website chat", "contact": "phone …7731",
-         "person_ref": "P001", "prospect_id": "NB-20418", "at": at(95), "age_s": 5700, "owner": "Compliance lead", "owner_basis": "named",
+         "person_ref": "P001", "prospect_id": "LH-20418", "at": at(95), "age_s": 5700, "owner": "Compliance lead", "owner_basis": "named",
          "state": "waiting", "what": "Stop request needs a person's call (website chat)"},
     ]
     write_json(OUT_DATA / "consent_ops.json", {
@@ -309,7 +302,7 @@ def write_consent(w: World) -> None:
         "timeline": {"window_days": 14, "contact_points_in_window": 2, "contact_points_cap": 150, "persons_shown": 2, "entries_cap": 40,
                      "basis": "synthetic demo data", "shared_person_keys_split": 0},
         "persons": [
-            {"ref": "P001", "prospect_ids": ["NB-20418"], "contacts": ["phone …7731"], "last_at": at(95), "entries_total": 3, "entries_shown": 3,
+            {"ref": "P001", "prospect_ids": ["LH-20418"], "contacts": ["phone …7731"], "last_at": at(95), "entries_total": 3, "entries_shown": 3,
              "timeline": [
                  {"at": at(95), "kind": "hold", "what": "stop queued for a person", "lane": "website chat", "channel": None, "contact": "phone …7731"},
                  {"at": at(100), "kind": "decision", "what": "held for review (marketing)", "lane": "website chat", "channel": "text", "contact": "phone …7731"},
@@ -326,7 +319,7 @@ def write_consent(w: World) -> None:
 
 def write_snapshots(w: World, mo: Money, h: Headline, S) -> None:
     d = OUT_DATA / "snapshots"
-    asof = ts_iso(w.end, 6, 30)
+    asof = ts_iso(w.end + timedelta(days=1), 6, 30)
     ai, wk = S.ai(), S.work()
     write_json(d / "_index.json", ["pipeline_health", "launch_week", "ai_ops_pulse"])
     write_json(d / "pipeline_health.json", {"as_of": asof, "data": {

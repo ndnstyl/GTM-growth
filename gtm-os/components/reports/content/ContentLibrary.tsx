@@ -38,7 +38,7 @@ const GATES: Record<string, { label: string; owner: string }> = {
   SPEC: { label: "Needs a number from operations", owner: "Operations" },
 };
 const TIER_LABEL: Record<string, string> = { flagship: "Flagship", series: "Short", carousel: "Carousel", still: "Still" };
-const BRAND_LABEL: Record<string, string> = { universal: "Both brands", "nb-main": "Northbeam Home", "nb-pro": "Northbeam Pro", "both-variants": "Both brands, two versions" };
+const BRAND_LABEL: Record<string, string> = { universal: "Both brands", "lh-main": "Larkspur Home", "lh-pro": "Larkspur Pro", "both-variants": "Both brands, two versions" };
 
 function tierClass(t: string) {
   if (t === "flagship") return "border-primary bg-accent text-accent-foreground";
@@ -216,7 +216,7 @@ export function ContentLibrary() {
 
   return (
     <div className="reports-shell flex min-h-full flex-col">
-      <div className="px-6 pt-4"><PageHeader title="Content library" subtitle="Northbeam Home and Northbeam Pro, year one, storyboarded" /></div>
+      <div className="px-6 pt-4"><PageHeader title="Content library" subtitle="Larkspur Home and Larkspur Pro, year one, storyboarded" /></div>
 
       {err ? (
         <div className="m-6 rounded-lg border border-[var(--crit)] p-4 text-[13px] font-semibold text-[var(--crit)]">

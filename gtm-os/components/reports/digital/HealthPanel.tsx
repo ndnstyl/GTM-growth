@@ -31,14 +31,9 @@ export async function readFeedAsOf(presence: FeedPresence): Promise<FeedAsOf[]> 
   return out;
 }
 
-export function HealthPanel({ presence, asOf }: { presence: FeedPresence | null; asOf: FeedAsOf[] | null }) {
+export function HealthPanel({ presence }: { presence: FeedPresence | null; asOf?: FeedAsOf[] | null }) {
   const [tie, setTie] = useState<TieRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [host, setHost] = useState<string>("");
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- the host is read from the browser once after mount so the static export and the client agree
-    setHost(typeof window !== "undefined" ? window.location.host || "file" : "");
-  }, []);
   useEffect(() => {
     if (!presence) return;
     if (presence.missing.includes("dm_tieout")) {
@@ -90,7 +85,7 @@ export function HealthPanel({ presence, asOf }: { presence: FeedPresence | null;
     <PanelFrame
       id="tieout"
       title="Data checks"
-      subtitle={`served by ${host || "unknown host"}`}
+      subtitle="Board totals checked against the CRM"
       qualifiers={{ dataThrough: latest, confidence: "checks", verdict: tie === null ? "loading" : fails.length ? `FAIL: ${fails.length} ${fails.length === 1 ? "row" : "rows"}` : tie.length ? `PASS, ${tie.length} rows` : "no tie-out rows published" }}
       exportSlice={exportSlice}
     >
@@ -117,12 +112,6 @@ export function HealthPanel({ presence, asOf }: { presence: FeedPresence | null;
           rows={(fails.length ? fails : tie).map((t) => ({ ...t }))}
           reasonFor={() => "not published by the tie-out"}
         />
-      )}
-      <div className="mt-3 text-[11px] font-bold uppercase tracking-wide text-muted-foreground">Feeds on this host (each feed&apos;s own as-of)</div>
-      {!asOf ? (
-        <Reason text="Reading the data" tone="muted" />
-      ) : (
-        <RowsTable columns={[{ key: "feed", label: "Feed" }, { key: "as_of", label: "As of" }]} rows={asOf} reasonFor={() => "not published to this host"} />
       )}
     </PanelFrame>
   );

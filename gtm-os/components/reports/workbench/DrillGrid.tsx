@@ -151,6 +151,7 @@ export function DrillPanel({
   );
 
   const [sorting, setSorting] = useState<SortingState>([]);
+  // eslint-disable-next-line react-hooks/incompatible-library -- TanStack Table returns functions the compiler cannot memoise; the table is rebuilt each render by design.
   const table = useReactTable({
     data: rows ?? [],
     columns,

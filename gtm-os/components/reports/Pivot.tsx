@@ -50,14 +50,6 @@ function fmtCell(v: unknown): string {
   return PLATFORM_NAME[s] ?? s;
 }
 
-function confidenceLabel(rank: number | null): { text: string; cls: string } {
-  if (rank === null || Number.isNaN(rank)) return { text: "n/a", cls: "bg-secondary text-muted-foreground" };
-  if (rank >= 4) return { text: "deterministic", cls: "bg-[var(--good)]/15 text-[var(--good)]" };
-  if (rank === 3) return { text: "mapped", cls: "bg-[var(--warn)]/15 text-[var(--warn)]" };
-  if (rank === 2) return { text: "provisional", cls: "bg-[var(--warn)]/15 text-[var(--warn)]" };
-  return { text: "unavailable", cls: "bg-[var(--crit)]/15 text-[var(--crit)]" };
-}
-
 function toCsv(rows: Record<string, unknown>[], columns: string[]): string {
   const esc = (v: unknown) => {
     const s = v === null || v === undefined ? "" : String(v);

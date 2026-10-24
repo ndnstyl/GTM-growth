@@ -28,8 +28,8 @@
    "not_applicable": {},
    "withheld_reason": null
   },
-  "nsli": {
-   "windows_metric": "nsli",
+  "net_basis": {
+   "windows_metric": "net_basis",
    "kind": "ratio",
    "format": "dollars",
    "company_scope": {

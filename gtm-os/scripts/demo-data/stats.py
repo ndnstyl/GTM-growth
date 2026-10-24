@@ -25,13 +25,13 @@ class Stats:
             SELECT * FROM read_parquet('{p('microsoft_ads__fact_spend_daily')}')""")
         c.execute(f"CREATE VIEW camp AS SELECT * FROM read_parquet('{p('google_ads__dim_campaign')}') UNION ALL BY NAME "
                   f"SELECT * FROM read_parquet('{p('meta__dim_campaign')}') UNION ALL BY NAME SELECT * FROM read_parquet('{p('microsoft_ads__dim_campaign')}')")
-        for n in ("lp_spine__fact_funnel_daily", "dm_spend_daily", "dm_source_chain_daily", "golden_rule__monthly", "dm_windows",
+        for n in ("crm_spine__fact_funnel_daily", "dm_spend_daily", "dm_source_chain_daily", "efficiency__monthly", "dm_windows",
                   "lens_projection", "lens_month", "fact_gsc_daily", "fact_gsc_site_daily", "fact_ga4_channel_daily", "meter_question_daily",
                   "meter_accuracy_period", "meter_cost_daily", "work_runs_daily", "dim_market", "spine_funnel_monthly", "spine_spend_monthly",
                   "meter_seat_daily", "meter_latency_period", "meter_gaps_period", "work_savings_period"):
             c.execute(f"CREATE VIEW {n} AS SELECT * FROM read_parquet('{p(n)}')")
-        c.execute(f"CREATE VIEW cf AS SELECT * FROM read_parquet('{p('callfloor/callfloor_connect_rate_lp_daily')}') WHERE source = 'ledger'")
-        c.execute(f"CREATE VIEW cfa AS SELECT * FROM read_parquet('{p('callfloor/callfloor_connect_rate_lp_agent_daily')}') WHERE source = 'ledger'")
+        c.execute(f"CREATE VIEW cf AS SELECT * FROM read_parquet('{p('callfloor/callfloor_connect_rate_crm_daily')}') WHERE source = 'ledger'")
+        c.execute(f"CREATE VIEW cfa AS SELECT * FROM read_parquet('{p('callfloor/callfloor_connect_rate_crm_agent_daily')}') WHERE source = 'ledger'")
         self.d7 = end - timedelta(days=6)
         self.p7 = end - timedelta(days=13)
         self.p7e = end - timedelta(days=7)
@@ -73,12 +73,12 @@ class Stats:
     # ------------------------------------------------------------------ funnel
     def funnel(self, a: date, b: date) -> dict:
         r = self.one(f"""SELECT SUM(leads), SUM(sets), SUM(issues), SUM(demos), SUM(sales), SUM(gross_cents)/100.0, SUM(net_cents)/100.0
-                         FROM lp_spine__fact_funnel_daily WHERE {self._w('date', a, b)}""")
+                         FROM crm_spine__fact_funnel_daily WHERE {self._w('date', a, b)}""")
         return dict(zip(["leads", "sets", "issues", "demos", "sales", "gross", "net"], [float(x) for x in r]))
 
     def funnel_by_market(self, a: date, b: date) -> list[dict]:
         r = self.rows(f"""SELECT m.name, f.office_id, SUM(leads), SUM(sets), SUM(issues), SUM(demos), SUM(sales), SUM(gross_cents)/100.0
-                          FROM lp_spine__fact_funnel_daily f JOIN dim_market m ON m.market_id = f.office_id
+                          FROM crm_spine__fact_funnel_daily f JOIN dim_market m ON m.market_id = f.office_id
                           WHERE {self._w('f.date', a, b)} GROUP BY 1,2 ORDER BY 1""")
         return [dict(name=x[0], id=x[1], leads=x[2], sets=x[3], issues=x[4], demos=x[5], sales=x[6], gross=x[7]) for x in r]
 
@@ -103,13 +103,13 @@ class Stats:
 
     # ------------------------------------------------------------------ floor
     def floor(self, a: date, b: date) -> dict:
-        r = self.one(f"SELECT SUM(lp_dials), SUM(lp_connects), AVG(agents) FILTER (WHERE agents > 0), SUM(lp_machine) FROM cf WHERE {self._w('call_date', a, b)}")
+        r = self.one(f"SELECT SUM(crm_dials), SUM(crm_connects), AVG(agents) FILTER (WHERE agents > 0), SUM(crm_machine) FROM cf WHERE {self._w('call_date', a, b)}")
         dials, conn, agents, mach = r
         return {"dials": float(dials), "connects": float(conn), "rate": 100.0 * conn / dials, "agents": float(agents)}
 
     def agent_rates(self, a: date, b: date) -> list[tuple]:
-        return self.rows(f"""SELECT agent_name_lp, SUM(lp_dials), SUM(lp_connects), 100.0*SUM(lp_connects)/NULLIF(SUM(lp_dials),0) AS rate
-                             FROM cfa WHERE {self._w('call_date', a, b)} GROUP BY 1 HAVING SUM(lp_dials) > 200 ORDER BY rate""")
+        return self.rows(f"""SELECT agent_name_lp, SUM(crm_dials), SUM(crm_connects), 100.0*SUM(crm_connects)/NULLIF(SUM(crm_dials),0) AS rate
+                             FROM cfa WHERE {self._w('call_date', a, b)} GROUP BY 1 HAVING SUM(crm_dials) > 200 ORDER BY rate""")
 
     # ------------------------------------------------------------------ organic
     def gsc(self, a: date, b: date) -> dict:
@@ -124,7 +124,7 @@ class Stats:
 
     # ------------------------------------------------------------------ efficiency
     def efficiency(self) -> dict:
-        r = self.rows("SELECT period, marketing_cost_pct, bonus_tier, nsli_plus_prenet_cents/100.0, target_pct FROM golden_rule__monthly WHERE office='COMPANY' AND universe='rep_assigned' ORDER BY period DESC LIMIT 3")
+        r = self.rows("SELECT period, marketing_cost_pct, target_band, net_plus_pending_cents/100.0, target_pct FROM efficiency__monthly WHERE office='COMPANY' AND universe='rep_assigned' ORDER BY period DESC LIMIT 3")
         return {"cur": r[0], "prev": r[1], "prev2": r[2]}
 
     def landing(self):

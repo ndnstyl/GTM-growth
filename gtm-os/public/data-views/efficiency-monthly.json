@@ -3,7 +3,7 @@
  "name": "Marketing cost target, monthly",
  "description": "Net issued, net revenue and the share still pending, revenue per issued appointment and cost percent by market.",
  "narrative": "The monthly record behind the target: revenue per net issued appointment, the ceiling it implies and the cost percent against it.",
- "sourceKey": "golden_rule_monthly",
+ "sourceKey": "efficiency_monthly",
  "rows": [
   "period",
   "office"
@@ -13,9 +13,9 @@
   "net_iss",
   "net_usd",
   "prenet_usd",
-  "nsli",
-  "nsli_plus_prenet",
-  "ceiling_at_target",
+  "net_basis",
+  "net_plus_pending",
+  "headroom_at_target",
   "marketing_cost_pct"
  ],
  "filters": [],

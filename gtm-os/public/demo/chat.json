@@ -3,7 +3,7 @@
  "suggestions": [
   "How did paid media do this week?",
   "Which market has the lowest cost per set?",
-  "Which reps are below the floor?",
+  "Which reps are below the floor average?",
   "What is the top objection on calls?",
   "Where does the month land?",
   "How accurate are the AI answers?"
@@ -20,7 +20,7 @@
     "media"
    ],
    "q": "How did paid media do this week?",
-   "answer": "Paid platform spend was **$47,331** over the last 7 days, flat on the week before.\nGoogle Ads $26,194, Meta $15,833, Microsoft Ads $5,304.\nAll-in ad spend (media, agency fees and offline) was $59,986 against $266,135 of booked revenue.",
+   "answer": "Ad spend was **{{ad_spend@last7}}** over the last 7 days, down 4% on the week before.\nGoogle Ads $26,194, Meta $15,833, Microsoft Ads $5,304 went through the three ad platforms; the rest is agency fees and offline media.\nThat spend sat against {{gross_revenue@last7}} of revenue, a MER of {{mer@last7}}.",
    "sources": [
     {
      "label": "Paid Media report",
@@ -42,7 +42,7 @@
     "pause"
    ],
    "q": "Which campaign is the weakest?",
-   "answer": "Over the last 14 days **NB Pro | Harborview | Search | Trade** (Google Ads) cost $118.51 per conversion on $3,072 of spend, the highest of any lead-generating campaign above $3,000. The best was NB | Regional | Retargeting at $14.29. Awareness video is left out of this ranking.\nA pause or a budget cut here frees money for the winners.",
+   "answer": "Over the last 14 days **LH Pro | Harborview | Search | Trade** (Google Ads) cost $118.51 per conversion on $3,072 of spend, the highest of any lead-generating campaign above $3,000. The best was LH | Regional | Retargeting at $14.29. Awareness video is left out of this ranking.\nA pause or a budget cut here frees money for the winners.",
    "sources": [
     {
      "label": "Paid Media report",
@@ -63,7 +63,7 @@
     "top"
    ],
    "q": "Which campaign is working best?",
-   "answer": "**NB | Regional | Retargeting** is the most efficient campaign over the last 14 days at $14.29 per conversion on $6,513 of spend.",
+   "answer": "**LH | Regional | Retargeting** is the most efficient campaign over the last 14 days at $14.29 per conversion on $6,513 of spend.",
    "sources": [
     {
      "label": "Paid Media report",
@@ -82,7 +82,7 @@
     "volume"
    ],
    "q": "How many leads did we get yesterday?",
-   "answer": "**366 leads** yesterday, down 1% on the same day last week. 102 became set appointments and 10 became sales.",
+   "answer": "**{{leads@yesterday}} leads** yesterday, down 1% on the same day last week. Of those leads, {{sets@yesterday}} appointments were set, and the day closed with {{sales@yesterday}} sales.",
    "sources": [
     {
      "label": "Overview",
@@ -102,7 +102,7 @@
     "cheaper"
    ],
    "q": "What is our cost per lead?",
-   "answer": "Cost per lead is **$21.01** over the last 7 days (down 2% on the prior week), counting all ad spend over all leads.",
+   "answer": "Cost per lead is **{{cost_per_lead@last7}}** over the last 7 days (down 2% on the prior week): {{ad_spend@last7}} of ad spend over {{leads@last7}} leads.",
    "sources": [
     {
      "label": "Overview",
@@ -123,11 +123,11 @@
     "efficiency"
    ],
    "q": "What is our MER this week?",
-   "answer": "MER is **4.4x** over the last 7 days: $266,135 of revenue on $59,986 of ad spend. The prior week was 5.0x.",
+   "answer": "MER is **{{mer@last7}}** over the last 7 days: {{gross_revenue@last7}} of revenue on {{ad_spend@last7}} of ad spend. The prior week was 5.0x.",
    "sources": [
     {
      "label": "Workbench boards",
-     "href": "/reports/workbench/"
+     "href": "/reports/workbench/?board=board-mer"
     }
    ],
    "follow_ups": [
@@ -144,7 +144,7 @@
     "booked"
    ],
    "q": "Are we on pace this month?",
-   "answer": "Booked revenue is **$1,018,698** month to date against a monthly goal of $1,480,000. That is 89.0% of where the goal says we should be by today.",
+   "answer": "Booked revenue is **{{gross_revenue@mtd}}** month to date, through Oct 24, against a monthly goal of $1,480,000. The goal expects about $1,144,906 by now, so we are at 89% of pace.",
    "sources": [
     {
      "label": "Exec readout",
@@ -165,7 +165,7 @@
     "week"
    ],
    "q": "How is the funnel this week?",
-   "answer": "Last 7 days: **2,855 leads**, 788 sets, 569 issued appointments, 397 meetings held and **63 sales**.\nSet rate 27.6% (28.7% the week before); close rate 15.9%.",
+   "answer": "Last 7 days: **{{leads@last7}} leads**, {{sets@last7}} appointments set, {{issued@last7}} issued, {{meetings@last7}} meetings held and **{{sales@last7}} sales**.\nSet rate {{set_rate@last7}} (28.7% the week before); close rate {{close_rate@last7}}.",
    "sources": [
     {
      "label": "Workbench",
@@ -173,7 +173,7 @@
     }
    ],
    "follow_ups": [
-    "What is the set rate by market?"
+    "What is the set rate?"
    ]
   },
   {
@@ -207,7 +207,7 @@
     "best"
    ],
    "q": "Which market closes best?",
-   "answer": "Over 28 days **Lakemont** closes best at 20.0% of meetings held, and Riverbend lowest at 15.5%. Company close rate is 17.1%.",
+   "answer": "Over 28 days **Lakemont** closes best at 13.8% of issued appointments, and Riverbend lowest at 10.9%. Company close rate over the same days is {{close_rate@last28}}.",
    "sources": [
     {
      "label": "Workbench",
@@ -227,7 +227,7 @@
     "booked"
    ],
    "q": "What is the set rate?",
-   "answer": "Set rate is **27.6%** over the last 7 days against 28.7% the week before. 788 appointments were set from 2,855 leads.",
+   "answer": "Set rate is **{{set_rate@last7}}** over the last 7 days against 28.7% the week before: {{sets@last7}} appointments set from {{leads@last7}} leads.",
    "sources": [
     {
      "label": "Overview",
@@ -248,7 +248,7 @@
     "rate"
    ],
    "q": "What is the connect rate on the floor?",
-   "answer": "The floor connected **13.7%** of 14,865 dials over the last 7 days (prior week 13.7%), with about 26 reps on each open day.",
+   "answer": "The floor connected **{{connect_rate@last7}}** of {{dials@last7}} dials over the last 7 days (prior week 13.7%), with about 26 reps on each open day.",
    "sources": [
     {
      "label": "Sales Floor",
@@ -256,7 +256,7 @@
     }
    ],
    "follow_ups": [
-    "Which reps are below the floor?"
+    "Which reps are below the floor average?"
    ]
   },
   {
@@ -268,7 +268,7 @@
     "coach",
     "lowest"
    ],
-   "q": "Which reps are below the floor?",
+   "q": "Which reps are below the floor average?",
    "answer": "The three lowest connect rates over 14 days: **Remy C.** 8.3% on 701 dials, **Nico F.** 8.8% on 624 dials, **Kendall J.** 8.9% on 586 dials. The floor average is 13.7%, so these are the coaching candidates.",
    "sources": [
     {
@@ -393,7 +393,7 @@
     "chat"
    ],
    "q": "How accurate are the AI answers?",
-   "answer": "Of 2,736 answers a reviewer graded in the last 7 days, **94.0%** were right. The AI answered 88.2% of 5,751 questions handed off 7.0% and declined 4.7%.",
+   "answer": "Of 2,736 answers a reviewer graded in the last 7 days, **94.0%** were right. The AI answered 88.2% of 5,751 questions itself, handed off 7.0% and declined 4.7%.",
    "sources": [
     {
      "label": "AI accuracy board",
@@ -435,7 +435,7 @@
     "reliability"
    ],
    "q": "How healthy are the loops?",
-   "answer": "The scheduled loops, agents and skills ran **2,247 times** in the last 7 days; 99.38% succeeded and 7 failed. One loop, the creative library sync, has not fired in two days and is flagged on the health page.",
+   "answer": "The scheduled loops, AI seats and playbooks ran **2,247 times** in the last 7 days; 99.69% succeeded and 7 failed. One loop, the creative library sync, has not fired in two days and is flagged on the health page.",
    "sources": [
     {
      "label": "Health",
@@ -455,7 +455,7 @@
     "percent of revenue"
    ],
    "q": "Where are we against the marketing cost target?",
-   "answer": "All-in marketing cost is **28.0%** of net revenue this month against a target of 28%. Last month closed at 29.0%.",
+   "answer": "All-in marketing cost is **{{marketing_cost_pct@mtd}}** of net revenue month to date against a target of 28%. Last month closed at {{marketing_cost_pct@mom}}.",
    "sources": [
     {
      "label": "Marketing cost target board",
@@ -581,7 +581,7 @@
     "happened"
    ],
    "q": "What changed this week?",
-   "answer": "Leads were down 2%, ad spend down 4% and revenue down 15%. MER moved from 5.0x to 4.4x. The floor connect rate held at 13.7%.",
+   "answer": "Leads were down 2%, ad spend down 4% and revenue down 15%. MER moved from 5.0x to {{mer@last7}}. The floor connect rate held at {{connect_rate@last7}}.",
    "sources": [
     {
      "label": "Overview",
@@ -590,6 +590,69 @@
    ],
    "follow_ups": [
     "How did paid media do this week?"
+   ]
+  },
+  {
+   "id": "market-leads",
+   "match": [
+    "market",
+    "behind",
+    "leads",
+    "pacing"
+   ],
+   "q": "Which market is behind on leads?",
+   "answer": "**Pinecrest** is furthest behind: 550 leads in the last 7 days against 605 the week before (-9%). **Sunvale** is furthest ahead at +12%. Across all markets there were {{leads@last7}} leads.",
+   "sources": [
+    {
+     "label": "Leads and geo",
+     "href": "/reports/#leads_geo"
+    }
+   ],
+   "follow_ups": [
+    "Which market has the lowest cost per set?"
+   ]
+  },
+  {
+   "id": "ai-books",
+   "match": [
+    "book",
+    "booked",
+    "appointments",
+    "schedule",
+    "ai"
+   ],
+   "q": "How many appointments did the AI book?",
+   "answer": "None. The AI phone line does not book appointments. After hours it answers the call, captures the caller's name, address and need, and emails the team a summary the next morning. A person on the call floor sets the appointment.",
+   "sources": [
+    {
+     "label": "AI front door",
+     "href": "/reports/workbench/?board=board-ai-accuracy"
+    }
+   ],
+   "follow_ups": [
+    "How accurate are the AI answers?"
+   ]
+  },
+  {
+   "id": "ai-daytime",
+   "match": [
+    "daytime",
+    "business",
+    "hours",
+    "phone",
+    "answer",
+    "calls"
+   ],
+   "q": "Does the AI phone answer calls during the day?",
+   "answer": "No. Daytime calls go to the call floor. The AI phone line covers after-hours calls, and the website chat answers visitors around the clock and emails the team the full conversation for leads and complaints.",
+   "sources": [
+    {
+     "label": "AI front door",
+     "href": "/reports/workbench/?board=board-ai-accuracy"
+    }
+   ],
+   "follow_ups": [
+    "What is the connect rate on the floor?"
    ]
   }
  ]

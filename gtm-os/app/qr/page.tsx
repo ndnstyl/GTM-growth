@@ -51,6 +51,7 @@ export default function QrPage() {
   const [q, setQ] = useState("");
   const [note, setNote] = useState<string | null>(null);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the visitor's saved rows once after mount; reading storage during render would break hydration.
   useEffect(() => { setMine(lsGet<Row[]>("qr-mine", [])); }, []);
 
   const url = useMemo(() => buildUrl(form.base, form), [form]);

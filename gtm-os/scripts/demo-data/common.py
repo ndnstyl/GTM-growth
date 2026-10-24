@@ -21,7 +21,7 @@ OUT_REPORTS = OUT_DATA / "reports"
 OUT_VIEWS = PUBLIC / "data-views"
 OUT_DEMO = PUBLIC / "demo"
 
-COMPANY_NAME = "Northbeam Home Services"
+COMPANY_NAME = "Larkspur Home Services"
 
 
 def stream(seed: int, name: str) -> np.random.Generator:
@@ -127,3 +127,9 @@ def clean_dir_files(p: Path, suffixes: tuple[str, ...]) -> int:
 
 def env_flag(name: str) -> bool:
     return os.environ.get(name, "") not in ("", "0", "false")
+
+
+def built_day(end):
+    """The morning after the last full data day: when every feed was built and what the app calls today."""
+    from datetime import timedelta
+    return end + timedelta(days=1)

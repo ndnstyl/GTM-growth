@@ -13,8 +13,8 @@ import { companyScopeFor, type RebaseMap } from "@/lib/reports/digital/rebase";
 import {
   daysText,
   deltaText,
-  GOLDEN_MONTH_METRICS,
-  goldenWindows,
+  TARGET_MONTH_METRICS,
+  targetWindows,
   normalizeFormat,
   signedCaveat,
   valueText,
@@ -22,7 +22,7 @@ import {
   windowOrder,
   windowsSql,
   windowSpan,
-  type GoldenMonthRow,
+  type TargetMonthRow,
   type WindowRow,
 } from "@/lib/reports/digital/windows";
 import type { FeedPresence } from "@/lib/reports/digital/feeds";
@@ -39,17 +39,17 @@ export function useWindowRows(metric: string, map: RebaseMap | null, scopeKind: 
     let cancelled = false;
     (async () => {
       try {
-        if (GOLDEN_MONTH_METRICS.has(metric)) {
-          if (presence.missing.includes("golden_rule__monthly")) {
+        if (TARGET_MONTH_METRICS.has(metric)) {
+          if (presence.missing.includes("efficiency__monthly")) {
             if (!cancelled) setRows([]);
             return;
           }
           const g = (await query(
-            "SELECT period, office, universe, nsli_cents, nsli_plus_prenet_cents, marketing_cost_pct, settle_status, as_of, confidence FROM golden_rule__monthly WHERE universe = 'rep_assigned' ORDER BY period DESC"
-          )) as unknown as GoldenMonthRow[];
+            "SELECT period, office, universe, net_only_cents, net_plus_pending_cents, marketing_cost_pct, settle_status, as_of, confidence FROM efficiency__monthly WHERE universe = 'rep_assigned' ORDER BY period DESC"
+          )) as unknown as TargetMonthRow[];
           const current = period ?? g.find((r) => r.office === "COMPANY")?.period ?? "";
           const offices = scopeKind === "company" ? ["COMPANY"] : scope ? [scope] : [...new Set(g.map((r) => r.office))].filter((o) => o !== "COMPANY").sort();
-          const out = offices.flatMap((o) => goldenWindows(g, metric as "nsli" | "marketing_cost_pct", o, current));
+          const out = offices.flatMap((o) => targetWindows(g, metric as "net_basis" | "marketing_cost_pct", o, current));
           if (!cancelled) setRows(out);
           return;
         }
@@ -112,7 +112,7 @@ export function ComparisonRow({ metric, map, period, presence }: { metric: strin
       id="comparison"
       title={pm ? `${pm.label}: company, like-for-like working days` : "Comparison windows"}
       subtitle={cs && cs.scope_kind !== "company" ? `read at the ${cs.scope} platform scope` : "company scope"}
-      qualifiers={{ dataThrough, confidence: "comparison windows", verdict: GOLDEN_MONTH_METRICS.has(metric) ? "month-grain, from the marketing cost target feed" : "from the comparison windows feed" }}
+      qualifiers={{ dataThrough, confidence: "comparison windows", verdict: TARGET_MONTH_METRICS.has(metric) ? "month-grain, from the marketing cost target feed" : "from the comparison windows feed" }}
       exportSlice={exportSlice}
     >
       {error && <Reason text={`windows query failed: ${error}`} tone="bad" />}

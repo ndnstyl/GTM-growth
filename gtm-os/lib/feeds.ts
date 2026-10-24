@@ -60,7 +60,7 @@ export type MediaEvent = {
 };
 export type LiveInitiative = {
   id: string; channel: string; label: string; market: string | null; start: string; end: string;
-  owner: string | null; phones: string | null; exec: string | null; lp_subsource: string | null;
+  owner: string | null; phones: string | null; exec: string | null; crm_subsource: string | null;
   tracking: { status: string; owner?: string; note?: string; due?: string } | null; days_left: number;
 };
 export type CoverDay = { date: string; stack: boolean; why: string };

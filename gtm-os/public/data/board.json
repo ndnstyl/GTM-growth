@@ -11,10 +11,10 @@
    "priority_raw": "high",
    "domain": "Market Research",
    "owner": "Avery R.",
-   "due": "2026-10-22",
+   "due": "2026-10-23",
    "blocked_on": "",
-   "created": "2026-10-09",
-   "mtime": 1792751400
+   "created": "2026-10-10",
+   "mtime": 1792837800
   },
   {
    "file": "launch-002",
@@ -27,10 +27,10 @@
    "priority_raw": "high",
    "domain": "Positioning & Offer",
    "owner": "Morgan T.",
-   "due": "2026-10-26",
+   "due": "2026-10-27",
    "blocked_on": "",
-   "created": "2026-10-08",
-   "mtime": 1792665000
+   "created": "2026-10-09",
+   "mtime": 1792751400
   },
   {
    "file": "launch-003",
@@ -43,10 +43,10 @@
    "priority_raw": "medium",
    "domain": "Positioning & Offer",
    "owner": "Casey L.",
-   "due": "2026-11-02",
+   "due": "2026-11-03",
    "blocked_on": "",
-   "created": "2026-10-07",
-   "mtime": 1792578600
+   "created": "2026-10-08",
+   "mtime": 1792665000
   },
   {
    "file": "launch-004",
@@ -59,10 +59,10 @@
    "priority_raw": "high",
    "domain": "Content Engine",
    "owner": "Riley S.",
-   "due": "2026-10-25",
+   "due": "2026-10-26",
    "blocked_on": "",
-   "created": "2026-10-06",
-   "mtime": 1792492200
+   "created": "2026-10-07",
+   "mtime": 1792578600
   },
   {
    "file": "launch-005",
@@ -75,10 +75,10 @@
    "priority_raw": "medium",
    "domain": "Content Engine",
    "owner": "Quinn P.",
-   "due": "2026-10-28",
+   "due": "2026-10-29",
    "blocked_on": "",
-   "created": "2026-10-05",
-   "mtime": 1792837800
+   "created": "2026-10-06",
+   "mtime": 1792924200
   },
   {
    "file": "launch-006",
@@ -91,10 +91,10 @@
    "priority_raw": "high",
    "domain": "Content Engine",
    "owner": "Parker W.",
-   "due": "2026-10-23",
+   "due": "2026-10-24",
    "blocked_on": "Two homeowners have not returned their release forms",
-   "created": "2026-10-04",
-   "mtime": 1792751400
+   "created": "2026-10-05",
+   "mtime": 1792837800
   },
   {
    "file": "launch-007",
@@ -107,10 +107,10 @@
    "priority_raw": "high",
    "domain": "Paid Media",
    "owner": "Reese D.",
-   "due": "2026-10-24",
+   "due": "2026-10-25",
    "blocked_on": "",
-   "created": "2026-10-03",
-   "mtime": 1792665000
+   "created": "2026-10-04",
+   "mtime": 1792751400
   },
   {
    "file": "launch-008",
@@ -123,10 +123,10 @@
    "priority_raw": "medium",
    "domain": "Paid Media",
    "owner": "Rowan G.",
-   "due": "2026-10-27",
+   "due": "2026-10-28",
    "blocked_on": "",
-   "created": "2026-10-02",
-   "mtime": 1792578600
+   "created": "2026-10-03",
+   "mtime": 1792665000
   },
   {
    "file": "launch-009",
@@ -139,10 +139,10 @@
    "priority_raw": "medium",
    "domain": "Paid Media",
    "owner": "Skyler N.",
-   "due": "2026-10-31",
+   "due": "2026-11-01",
    "blocked_on": "",
-   "created": "2026-10-01",
-   "mtime": 1792492200
+   "created": "2026-10-02",
+   "mtime": 1792578600
   },
   {
    "file": "launch-010",
@@ -155,10 +155,10 @@
    "priority_raw": "low",
    "domain": "Paid Media",
    "owner": "Dakota H.",
-   "due": "2026-10-21",
+   "due": "2026-10-22",
    "blocked_on": "",
-   "created": "2026-09-30",
-   "mtime": 1792837800
+   "created": "2026-10-01",
+   "mtime": 1792924200
   },
   {
    "file": "launch-011",
@@ -171,10 +171,10 @@
    "priority_raw": "high",
    "domain": "Capture & Consent",
    "owner": "Emerson C.",
-   "due": "2026-10-23",
+   "due": "2026-10-24",
    "blocked_on": "",
-   "created": "2026-09-29",
-   "mtime": 1792751400
+   "created": "2026-09-30",
+   "mtime": 1792837800
   },
   {
    "file": "launch-012",
@@ -187,10 +187,10 @@
    "priority_raw": "medium",
    "domain": "Capture & Consent",
    "owner": "Finley B.",
-   "due": "2026-10-27",
+   "due": "2026-10-28",
    "blocked_on": "",
-   "created": "2026-09-28",
-   "mtime": 1792665000
+   "created": "2026-09-29",
+   "mtime": 1792751400
   },
   {
    "file": "launch-013",
@@ -203,10 +203,10 @@
    "priority_raw": "high",
    "domain": "Speed to Lead",
    "owner": "Harper J.",
-   "due": "2026-10-29",
+   "due": "2026-10-30",
    "blocked_on": "",
-   "created": "2026-09-27",
-   "mtime": 1792578600
+   "created": "2026-09-28",
+   "mtime": 1792665000
   },
   {
    "file": "launch-014",
@@ -219,10 +219,10 @@
    "priority_raw": "medium",
    "domain": "Speed to Lead",
    "owner": "Jamie F.",
-   "due": "2026-11-05",
+   "due": "2026-11-06",
    "blocked_on": "",
-   "created": "2026-09-26",
-   "mtime": 1792492200
+   "created": "2026-09-27",
+   "mtime": 1792578600
   },
   {
    "file": "launch-015",
@@ -235,10 +235,10 @@
    "priority_raw": "high",
    "domain": "Sales Floor",
    "owner": "Kendall M.",
-   "due": "2026-10-24",
+   "due": "2026-10-25",
    "blocked_on": "",
-   "created": "2026-09-25",
-   "mtime": 1792837800
+   "created": "2026-09-26",
+   "mtime": 1792924200
   },
   {
    "file": "launch-016",
@@ -251,10 +251,10 @@
    "priority_raw": "medium",
    "domain": "Sales Floor",
    "owner": "Logan R.",
-   "due": "2026-11-01",
+   "due": "2026-11-02",
    "blocked_on": "",
-   "created": "2026-09-24",
-   "mtime": 1792751400
+   "created": "2026-09-25",
+   "mtime": 1792837800
   },
   {
    "file": "launch-017",
@@ -267,10 +267,10 @@
    "priority_raw": "high",
    "domain": "Attribution & Cost",
    "owner": "Mackenzie A.",
-   "due": "2026-10-20",
+   "due": "2026-10-21",
    "blocked_on": "Waiting on the agency's month-end invoice",
-   "created": "2026-09-23",
-   "mtime": 1792665000
+   "created": "2026-09-24",
+   "mtime": 1792751400
   },
   {
    "file": "launch-018",
@@ -283,10 +283,10 @@
    "priority_raw": "low",
    "domain": "Attribution & Cost",
    "owner": "Nico E.",
-   "due": "2026-11-03",
+   "due": "2026-11-04",
    "blocked_on": "",
-   "created": "2026-09-22",
-   "mtime": 1792578600
+   "created": "2026-09-23",
+   "mtime": 1792665000
   },
   {
    "file": "launch-019",
@@ -299,10 +299,10 @@
    "priority_raw": "medium",
    "domain": "Reporting Cockpit",
    "owner": "Oakley V.",
-   "due": "2026-10-26",
+   "due": "2026-10-27",
    "blocked_on": "",
-   "created": "2026-09-21",
-   "mtime": 1792492200
+   "created": "2026-09-22",
+   "mtime": 1792578600
   },
   {
    "file": "launch-020",
@@ -315,10 +315,10 @@
    "priority_raw": "low",
    "domain": "Reporting Cockpit",
    "owner": "Peyton Y.",
-   "due": "2026-11-06",
+   "due": "2026-11-07",
    "blocked_on": "",
-   "created": "2026-09-20",
-   "mtime": 1792837800
+   "created": "2026-09-21",
+   "mtime": 1792924200
   },
   {
    "file": "launch-021",
@@ -331,10 +331,10 @@
    "priority_raw": "high",
    "domain": "Reliability",
    "owner": "Remy O.",
-   "due": "2026-10-22",
+   "due": "2026-10-23",
    "blocked_on": "",
-   "created": "2026-09-19",
-   "mtime": 1792751400
+   "created": "2026-09-20",
+   "mtime": 1792837800
   },
   {
    "file": "launch-022",
@@ -347,10 +347,10 @@
    "priority_raw": "medium",
    "domain": "Reliability",
    "owner": "Sage U.",
-   "due": "2026-10-28",
+   "due": "2026-10-29",
    "blocked_on": "",
-   "created": "2026-09-18",
-   "mtime": 1792665000
+   "created": "2026-09-19",
+   "mtime": 1792751400
   },
   {
    "file": "launch-023",
@@ -363,10 +363,10 @@
    "priority_raw": "medium",
    "domain": "Reliability",
    "owner": "Tatum Z.",
-   "due": "2026-10-25",
+   "due": "2026-10-26",
    "blocked_on": "",
-   "created": "2026-09-17",
-   "mtime": 1792578600
+   "created": "2026-09-18",
+   "mtime": 1792665000
   }
  ],
  "views": {

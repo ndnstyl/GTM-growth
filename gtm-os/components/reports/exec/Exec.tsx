@@ -4,13 +4,13 @@
 // A missing feed says so in place; nothing is ever substituted from another source.
 
 import { useEffect, useState } from "react";
-import { dollars, loadSpineExec, MerReading, SpineExecFeed, UnitCosts } from "@/lib/reports/spine/client";
+import { dollars, loadSpineExec, SpineExecFeed } from "@/lib/reports/spine/client";
 import { PageHeader } from "@/components/shell/PageHeader";
+import { Kpi } from "@/components/shell/Kpi";
+import { dayLabel, fmt, metrics, monthValue, type KpiKey } from "@/lib/demo/metrics";
 
 const monthName = (period: string) => new Date(period + "-15T12:00:00").toLocaleDateString("en-US", { month: "long" });
-const dayLabel = (iso: string) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 const timeLabel = (iso: string) => new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-const PLATFORM: Record<string, string> = { google_ads: "Google Ads", meta: "Meta", microsoft_ads: "Microsoft Ads" };
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -21,50 +21,44 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-function MerCard({ mer }: { mer: MerReading | null }) {
-  if (!mer) return <div className="text-[13px] text-muted-foreground">No reading for this month yet.</div>;
-  const multiple = mer.spend_cents ? mer.revenue_cents / mer.spend_cents : null;
+const LAST_MONTH = Object.keys(metrics.months)[1];
+
+function MerCard() {
+  const v = (k: KpiKey) => monthValue(LAST_MONTH, k);
   return (
     <div>
-      <div className="text-2xl font-bold">{multiple !== null ? `${multiple.toFixed(1)}x` : "n/a"}</div>
+      <Kpi compact kpi="mer" win={LAST_MONTH} label="Revenue ÷ ad spend" value={fmt("mer", v("mer"))} />
       <div className="mt-1 text-[13px] text-[var(--ink2)]">
-        {dollars(mer.revenue_cents)} of revenue on {dollars(mer.spend_cents)} of ad spend
+        {fmt("gross_revenue", v("gross_revenue"))} of revenue on {fmt("ad_spend", v("ad_spend"))} of ad spend
       </div>
-      {mer.mer_pct !== null ? (
-        <div className="mt-1 text-[12px] text-muted-foreground">Ad spend as a share of revenue: {mer.mer_pct}%</div>
-      ) : null}
       <div className="mt-2 flex flex-wrap gap-1.5">
-        {mer.platforms_expected.map((p) => (
-          <span key={p} className={"rounded px-1.5 py-0.5 text-[12px] font-semibold " + (mer.platforms_reporting.includes(p) ? "bg-[var(--good)]/15 text-[var(--good)]" : "bg-[var(--crit)]/15 text-[var(--crit)] line-through")}>
-            {PLATFORM[p] ?? p}
-          </span>
+        {["Google Ads", "Meta", "Microsoft Ads"].map((p) => (
+          <span key={p} className="rounded bg-[var(--good)]/15 px-1.5 py-0.5 text-[12px] font-semibold text-[var(--good)]">{p}</span>
         ))}
       </div>
     </div>
   );
 }
 
-function UnitCostsCard({ u }: { u: UnitCosts | null }) {
-  if (!u) return <div className="text-[13px] text-muted-foreground">No unit costs for this month yet.</div>;
-  const rows: [string, number | null][] = [
-    ["Cost per lead", u.cost_per_lead_cents],
-    ["Cost per set", u.cost_per_set_cents],
-    ["Cost per issued appointment", u.cost_per_issue_cents],
-    ["Cost per sale", u.cost_per_sale_cents],
+function UnitCostsCard() {
+  const rows: [string, KpiKey][] = [
+    ["Cost per lead", "cost_per_lead"],
+    ["Cost per set", "cost_per_set"],
+    ["Cost per sale", "cost_per_sale"],
   ];
   return (
     <div>
       <table className="w-full text-[13px]">
         <tbody>
-          {rows.map(([label, cents]) => (
-            <tr key={label} className="border-b border-border/50 last:border-0">
+          {rows.map(([label, k]) => (
+            <tr key={k} className="border-b border-border/50 last:border-0">
               <td className="py-1.5 pr-2 text-[var(--ink2)]">{label}</td>
-              <td className="py-1.5 text-right font-semibold">{dollars(cents)}</td>
+              <td className="py-1.5 text-right font-semibold" data-kpi={k} data-window={LAST_MONTH}>{fmt(k, monthValue(LAST_MONTH, k))}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="mt-1.5 text-[12px] text-muted-foreground">{monthName(u.period)}, company total. Spend is reported at company level, never split finer than the source records.</div>
+      <div className="mt-1.5 text-[12px] text-muted-foreground">{monthName(LAST_MONTH)}, company total, ad spend over each count.</div>
     </div>
   );
 }
@@ -103,7 +97,7 @@ export function Exec() {
       <PageHeader title="Executive readout" subtitle={`Unit economics for the whole company, as of ${dayLabel(feed.as_of)}, ${timeLabel(feed.as_of)}. Sample data.`} />
 
       <Card title="Bottom line">
-        <p className="text-[14px] leading-relaxed">{feed.bottom_line}</p>
+        <p className="text-[14px] leading-relaxed">{`Last month the company booked ${fmt("gross_revenue", monthValue(LAST_MONTH, "gross_revenue"))} on ${fmt("ad_spend", monthValue(LAST_MONTH, "ad_spend"))} of ad spend, a MER of ${fmt("mer", monthValue(LAST_MONTH, "mer"))}, and trailing twelve-month revenue is ${feed.revenue_ttm && feed.revenue_ttm.change_pct != null ? (feed.revenue_ttm.change_pct >= 0 ? "+" : "") + feed.revenue_ttm.change_pct + "%" : "n/a"} on the year before. Cost per sale was ${fmt("cost_per_sale", monthValue(LAST_MONTH, "cost_per_sale"))}.`}</p>
       </Card>
 
       <div className="grid items-start gap-4 md:grid-cols-2">
@@ -126,12 +120,12 @@ export function Exec() {
           )}
         </Card>
 
-        <Card title={`MER, ${feed.mer.last_month ? monthName(feed.mer.last_month.period) : "last month"}`}>
-          <MerCard mer={feed.mer.last_month} />
+        <Card title={`MER, ${monthName(LAST_MONTH)}`}>
+          <MerCard />
         </Card>
 
-        <Card title={`Unit costs, ${feed.unit_costs.last_month ? monthName(feed.unit_costs.last_month.period) : "last month"}`}>
-          <UnitCostsCard u={feed.unit_costs.last_month} />
+        <Card title={`Unit costs, ${monthName(LAST_MONTH)}`}>
+          <UnitCostsCard />
         </Card>
 
         <Card title="Monthly revenue, last 13 months">

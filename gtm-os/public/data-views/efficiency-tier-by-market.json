@@ -3,18 +3,18 @@
  "name": "Marketing cost tier by market",
  "description": "Marketing cost as a share of net revenue and the tier it earns, by market and month.",
  "narrative": "Each market against the 28 percent target: the ceiling a market can spend at target and where it actually landed.",
- "sourceKey": "golden_rule_monthly",
+ "sourceKey": "efficiency_monthly",
  "rows": [
   "period",
   "office"
  ],
  "cols": [
-  "bonus_tier"
+  "target_band"
  ],
  "measures": [
-  "ceiling_at_target",
+  "headroom_at_target",
   "marketing_cost_pct",
-  "mer_traditional"
+  "mer_net_basis"
  ],
  "filters": [],
  "datePreset": "last_13",

@@ -1,7 +1,7 @@
 {
  "id": "board-mer",
  "name": "Board 2: Spend against revenue",
- "description": "Ad spend share of revenue, the spend split and spend by platform.",
+ "description": "MER (revenue per ad dollar), the spend split and spend by platform.",
  "panels": [
   {
    "viewId": "mer-board",

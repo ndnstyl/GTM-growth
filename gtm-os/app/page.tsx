@@ -19,7 +19,6 @@ import { ChatPanel } from "@/components/cockpit/ChatPanel";
 import { Routines } from "@/components/cockpit/Routines";
 import { ConsentOpsPanel } from "@/components/cockpit/ConsentOpsPanel";
 import { GtmMap } from "@/components/cockpit/GtmMap";
-import { HexBackdrop } from "@/components/cockpit/HexBackdrop";
 import { CardDialog } from "@/components/cockpit/CardDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
@@ -79,7 +78,6 @@ export default function Cockpit() {
 
   return (
     <div className="flex h-full flex-col overflow-y-auto p-3.5 xl:overflow-hidden">
-      <HexBackdrop />
       {saveErr && saveErrSeq !== dismissedErrSeq ? (
         <div
           role="alert"
@@ -92,13 +90,12 @@ export default function Cockpit() {
         </div>
       ) : null}
       <div className="grid grid-cols-1 xl:min-h-0 xl:flex-1 gap-3.5 xl:grid-cols-[300px_minmax(0,1fr)_330px] 2xl:grid-cols-[330px_minmax(0,1fr)_360px]">
-      <ResizableColumn col="left" panels={panels} save={save} renderPanel={renderPanel} />
 
-      <div className="g-rise flex flex-col xl:min-h-0 max-xl:order-first" style={{ ["--i" as string]: 1 }}>
+      <div className="g-rise flex flex-col xl:order-2 xl:min-h-0" style={{ ["--i" as string]: 1 }}>
         <h1 className="sr-only">GTM OS command cockpit</h1>
         <div className="px-1 pt-0.5">
           <div className="flex items-center gap-2">
-            <div className="min-w-0 flex-1 truncate text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Northbeam Home Services</div>
+            <div className="min-w-0 flex-1 truncate text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Larkspur Home Services</div>
             <div className="flex shrink-0 items-center gap-1 text-muted-foreground">
               <button type="button" aria-label="Read today's priority" title="Today's priority" onClick={() => setOneOpen(true)} className="rounded p-1.5 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary"><Info size={15} /></button>
               <button type="button" aria-label="Edit layout" title="Edit layout" onClick={() => setEditOpen(true)} className="rounded p-1.5 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary"><SlidersHorizontal size={15} /></button>
@@ -113,6 +110,7 @@ export default function Cockpit() {
               </button>
             </div>
           </div>
+          <p className="mt-0.5 text-[12px] text-muted-foreground">A sample company. Pick a stage, or ask the data below.</p>
           <button
             type="button"
             onClick={() => setOneOpen(true)}
@@ -149,7 +147,12 @@ export default function Cockpit() {
         </div>
       </div>
 
-      <ResizableColumn col="right" panels={panels} save={save} renderPanel={renderPanel} />
+      <div className="grid xl:min-h-0 xl:grid-rows-[minmax(0,1fr)] xl:order-1">
+  <ResizableColumn col="left" panels={panels} save={save} renderPanel={renderPanel} />
+      </div>
+      <div className="grid xl:min-h-0 xl:grid-rows-[minmax(0,1fr)] xl:order-3">
+  <ResizableColumn col="right" panels={panels} save={save} renderPanel={renderPanel} />
+      </div>
       </div>
 
       <CardDialog card={card} onClose={() => setCard(null)} />

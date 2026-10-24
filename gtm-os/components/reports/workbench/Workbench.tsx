@@ -5,10 +5,11 @@
 // STALE state, and lets the reader pick source × dims × measures (US1).
 
 import { useEffect, useMemo, useState } from "react";
+import { dayLabel } from "@/lib/demo/metrics";
 import { registerParquet } from "@/lib/reports/duck";
-import { SOURCES, findSource } from "@/lib/reports/workbench/sources";
-import type { ViewSlice } from "@/lib/reports/workbench/pivotSql";
-import { staleHours, type BatchState, type TrustFile } from "@/lib/reports/workbench/markers";
+import { SOURCES, findSource, type DeclaredSource } from "@/lib/reports/workbench/sources";
+import { buildPivot, type ViewSlice } from "@/lib/reports/workbench/pivotSql";
+import { staleHours, type BatchState } from "@/lib/reports/workbench/markers";
 import { PivotPanel } from "@/components/reports/workbench/PivotPanel";
 import { DrillPanel } from "@/components/reports/workbench/DrillGrid";
 import { BoardRunner } from "@/components/reports/workbench/BoardRunner";
@@ -29,28 +30,24 @@ type BatchManifest = {
   feeds: Record<string, { rows: number; sha256: string }>;
 };
 
-const asOfLabel = (iso: string) => new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" }) + ", " + new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+const asOfLabel = (iso: string) => dayLabel(iso) + ", " + new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
 
 export function Workbench() {
   const [ready, setReady] = useState(false);
   const [feedErrors, setFeedErrors] = useState<string[]>([]);
   const [batch, setBatch] = useState<BatchManifest | null>(null);
   const [state, setState] = useState<BatchState | null>(null);
-  // P0: the trust file. Null is a state the marker layer renders as its own
-  // warning, not a state it treats as fine, so a failed load is visible.
-  const [trust, setTrust] = useState<TrustFile | null>(null);
   // ?source=<key> deep link
-  const [sourceKey, setSourceKey] = useState(() => {
-    if (typeof window !== "undefined") {
-      const want = new URLSearchParams(window.location.search).get("source");
-      if (want && SOURCES.some((s) => s.key === want)) return want;
-    }
-    return SOURCES[0]?.key ?? "";
+  // The deep link is read in an effect after mount so the first client render matches the prerender.
+  const seed = (src: DeclaredSource | undefined) => ({
+    rows: src?.dims[0] ? [src.dims[0].key] : [],
+    measures: src ? src.measures.slice(0, 2).map((m) => m.key) : [],
   });
+  const [sourceKey, setSourceKey] = useState(SOURCES[0]?.key ?? "");
   const source = useMemo(() => findSource(sourceKey), [sourceKey]);
-  const [rows, setRows] = useState<string[]>(["period"]);
+  const [rows, setRows] = useState<string[]>(() => seed(SOURCES[0]).rows);
   const [cols, setCols] = useState<string[]>([]);
-  const [measures, setMeasures] = useState<string[]>([]);
+  const [measures, setMeasures] = useState<string[]>(() => seed(SOURCES[0]).measures);
   const [drill, setDrill] = useState<{
     cellDims: Record<string, string | null>;
     measureKey: string;
@@ -84,11 +81,6 @@ export function Workbench() {
         const st = await fetch("/data/reports/spine_state.json", { cache: "no-store" });
         // marker layer resolves each cell against ITS period
         if (st.ok) setState((await st.json()) as BatchState);
-        // P0: written at the end of every nightly build, one entry per feed,
-        // carrying the four answers a number owes a reader. If this fetch fails the
-        // markers say the numbers cannot state their own age, rather than staying quiet.
-        const tr = await fetch("/data/reports/_trust.json", { cache: "no-store" });
-        if (tr.ok) setTrust((await tr.json()) as TrustFile);
       } catch {
         /* absence renders below as UNAVAILABLE, never a crash */
       }
@@ -115,18 +107,43 @@ export function Workbench() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!source) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets pivot selection when the user picks a new source; source is chosen inline (no parent to key by), so remount-by-key does not apply here.
-    setRows(["period"]);
+  // Rows, columns and measures change in the same handler as the source, seeded from that source's own first
+  // dimension and measures, so no frame ever pairs one source with another source's selection.
+  const pickSource = (key: string) => {
+    const next = findSource(key);
+    if (!next) return;
+    const sd = seed(next);
+    setSourceKey(key);
+    setRows(sd.rows);
     setCols([]);
-    setMeasures(source.measures.slice(0, 2).map((m) => m.key));
+    setMeasures(sd.measures);
     setDrill(null);
-  }, [source]);
+  };
+
+  useEffect(() => {
+    const want = new URLSearchParams(window.location.search).get("source");
+    const next = want ? findSource(want) : undefined;
+    if (!next) return;
+    const sd = seed(next);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the ?source= deep link once after mount, which keeps hydration identical to the prerender.
+    setSourceKey(next.key);
+    setRows(sd.rows);
+    setMeasures(sd.measures);
+  }, []);
 
   const slice: ViewSlice | null = source
     ? { sourceKey, rows, cols, measures, filters: [] }
     : null;
+  const sliceProblem = useMemo(() => {
+    if (!source || !slice || rows.length === 0 || measures.length === 0) return null;
+    try {
+      buildPivot(source, slice);
+      return null;
+    } catch (e) {
+      return e instanceof Error ? e.message : "This slice cannot be built.";
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [source, sourceKey, rows, cols, measures]);
 
   const age = batch ? staleHours(batch.as_of) : null;
 
@@ -139,7 +156,7 @@ export function Workbench() {
     <div className="mx-auto max-w-6xl space-y-4 p-6" data-testid="workbench-root">
       <PageHeader
         title="Workbench"
-        subtitle={batch ? `Slice any feed. Data as of ${asOfLabel(batch.as_of)}.` : "Slice any feed."}
+        subtitle={batch ? `Slice any feed. Refreshed ${asOfLabel(batch.as_of)}.` : "Slice any feed."}
         actions={
           <>
             <select
@@ -221,7 +238,7 @@ export function Workbench() {
             aria-label="Source"
             className="rounded border border-border bg-background px-2 py-1"
             value={sourceKey}
-            onChange={(e) => setSourceKey(e.target.value)}
+            onChange={(e) => pickSource(e.target.value)}
           >
             {SOURCES.map((s) => (
               <option key={s.key} value={s.key}>{s.label}</option>
@@ -336,7 +353,7 @@ export function Workbench() {
         )}
       </div>
 
-      {ready && source && slice && rows.length > 0 && measures.length > 0 ? (
+      {ready && source && slice && !sliceProblem && rows.length > 0 && measures.length > 0 ? (
         <div className="rounded-xl border border-border bg-card p-4">
           <PivotPanel
             source={source}
@@ -347,7 +364,7 @@ export function Workbench() {
         </div>
       ) : (
         <div className="text-[12.5px] text-muted-foreground">
-          {ready ? "pick at least one row dimension and one measure" : "Loading the workbench…"}
+          {!ready ? "Loading the workbench…" : sliceProblem ? `This combination cannot be shown: ${sliceProblem}` : "pick at least one row dimension and one measure"}
         </div>
       )}
 

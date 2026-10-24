@@ -149,7 +149,7 @@ export function SeriesChart({ points, kind, fmt, fmtCompact, color = "var(--prim
             const y = p.value === null ? yOf(0) - 2 : yOf(p.value);
             const bh = p.value === null ? 2 : Math.max(1, yOf(0) - y);
             return (
-              <g key={i} className="g-slot" aria-label={title} onPointerMove={(e) => showTip(e, title)} onPointerLeave={hideTip}>
+              <g key={i} className="g-slot" role="img" aria-label={title} onPointerMove={(e) => showTip(e, title)} onPointerLeave={hideTip}>
                 <rect x={x - slot / 2} y={padT} width={slot} height={plotH} fill="transparent" />
                 <rect className="g-grow-y g-mark" style={stagger(i)} x={x - bw / 2} y={y} width={bw} height={bh} rx={2} fill={toneFill(p.value === null ? "empty" : p.tone)} fillOpacity={p.value === null ? 0.6 : points[i] === high ? 1 : 0.65} />
                 {p.value !== null && showLabel(i) && (
@@ -161,7 +161,7 @@ export function SeriesChart({ points, kind, fmt, fmtCompact, color = "var(--prim
             );
           }
           return (
-            <g key={i} className="g-slot" aria-label={title} onPointerMove={(e) => showTip(e, title)} onPointerLeave={hideTip}>
+            <g key={i} className="g-slot" role="img" aria-label={title} onPointerMove={(e) => showTip(e, title)} onPointerLeave={hideTip}>
                 <rect x={x - slot / 2} y={padT} width={slot} height={plotH} fill="transparent" />
               {p.value !== null ? (
                 <>

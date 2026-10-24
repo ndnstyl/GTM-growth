@@ -3,7 +3,7 @@
  "name": "Marketing cost target, matches the CRM",
  "description": "Rows checked, failures and explained residuals, by month and market.",
  "narrative": "Every published number is recomputed a second way each night; this view is where a mismatch would show first.",
- "sourceKey": "golden_rule_tieout",
+ "sourceKey": "efficiency_tieout",
  "rows": [
   "period",
   "office"

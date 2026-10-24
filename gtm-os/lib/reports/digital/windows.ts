@@ -150,14 +150,14 @@ export function valueText(row: WindowRow, format: Fmt): string {
 // the MTD value itself always renders. Per-market scopes read the same feed by office.
 // Nothing here aggregates: every figure is read off ONE feed row.
 
-export const GOLDEN_MONTH_METRICS = new Set(["nsli", "marketing_cost_pct"]);
+export const TARGET_MONTH_METRICS = new Set(["net_basis", "marketing_cost_pct"]);
 
-export type GoldenMonthRow = {
+export type TargetMonthRow = {
   period: string;
   office: string;
   universe?: string;
-  nsli_cents: number | null; // net only
-  nsli_plus_prenet_cents?: number | null; // the ruled Net revenue per issued appointment: net revenue per net issued
+  net_only_cents: number | null; // net only
+  net_plus_pending_cents?: number | null; // the ruled Net revenue per issued appointment: net revenue per net issued
   marketing_cost_pct: number | null;
   settle_status: string | null;
   as_of: string | null;
@@ -173,21 +173,21 @@ function shiftMonth(period: string, months: number): string {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
 }
 
-function goldenValue(row: GoldenMonthRow | undefined, metric: string): number | null {
+function targetValue(row: TargetMonthRow | undefined, metric: string): number | null {
   if (!row) return null;
-  if (metric === "nsli") return row.nsli_plus_prenet_cents === null || row.nsli_plus_prenet_cents === undefined ? null : row.nsli_plus_prenet_cents / 100;
+  if (metric === "net_basis") return row.net_plus_pending_cents === null || row.net_plus_pending_cents === undefined ? null : row.net_plus_pending_cents / 100;
   return row.marketing_cost_pct ?? null;
 }
 
 /** Build the four comparison rows for one month-grain metric at one office ('COMPANY' for
  * the company) from marketing cost target monthly rows (office + universe already filtered by the
  * caller's SQL, rep_assigned). `current` is the month the board shows. */
-export function goldenWindows(rows: GoldenMonthRow[], metric: "nsli" | "marketing_cost_pct", office: string, current: string): WindowRow[] {
+export function targetWindows(rows: TargetMonthRow[], metric: "net_basis" | "marketing_cost_pct", office: string, current: string): WindowRow[] {
   const byPeriod = new Map(rows.filter((r) => r.office === office).map((r) => [r.period, r]));
   const cur = byPeriod.get(current);
   const settled = (cur?.settle_status ?? "").toUpperCase() === "SETTLED";
-  const format = metric === "nsli" ? "dollars" : "percent";
-  const value = goldenValue(cur, metric);
+  const format = metric === "net_basis" ? "dollars" : "percent";
+  const value = targetValue(cur, metric);
   const base = {
     metric,
     scope_kind: office === "COMPANY" ? "company" : "market",
@@ -207,13 +207,13 @@ export function goldenWindows(rows: GoldenMonthRow[], metric: "nsli" | "marketin
   const mtd: WindowRow = {
     ...base, window: "mtd", value, prior_value: null, delta: null, delta_pct: null,
     prior_start: null, prior_end: null,
-    withheld_reason: noValue ?? (value === null ? `${metric === "nsli" ? "Net revenue per issued appointment" : "marketing cost percent"} not published for ${current}` : null),
+    withheld_reason: noValue ?? (value === null ? `${metric === "net_basis" ? "Net revenue per issued appointment" : "marketing cost percent"} not published for ${current}` : null),
   };
   const wow: WindowRow = { ...mtd, window: "wow", value: null, withheld_reason: NO_WEEKLY_WINDOW };
   const compare = (w: string, months: number): WindowRow => {
     const pp = shiftMonth(current, months);
     const prior = byPeriod.get(pp);
-    const pv = goldenValue(prior, metric);
+    const pv = targetValue(prior, metric);
     const withheld = noValue ?? (!settled ? NOT_LIKE_FOR_LIKE : !prior ? `no marketing cost target row for ${office} in ${pp}` : pv === null ? `no value published for ${pp}` : null);
     const diff = withheld || value === null || pv === null ? null : value - pv;
     return {

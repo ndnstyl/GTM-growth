@@ -3,6 +3,7 @@
 import { NavLink } from "@/lib/motion/nav";
 import { activeNow, reducedMotionNow, stagger } from "@/lib/motion";
 import chatFile from "@/public/demo/chat.json";
+import { KpiKey, Win, fmtW, plainTokens } from "@/lib/demo/metrics";
 
 // Ask-the-data chat. Answers are scripted over the demo company: the demo adapter matches the question to a canned
 // entry in /demo/chat.json and this panel plays it back with a short thinking pause and a typed-out reveal.
@@ -23,12 +24,29 @@ const DEFAULT_SUGGESTIONS = [
   "What are the top objections on calls?",
 ];
 
+function Tokens({ text, bold = false }: { text: string; bold?: boolean }) {
+  const parts = text.split(/(\{\{[a-z_]+@[a-z0-9]+\}\})/g);
+  return (
+    <>
+      {parts.map((p, i) => {
+        const m = p.match(/^\{\{([a-z_]+)@([a-z0-9]+)\}\}$/);
+        if (!m) return <span key={i}>{p}</span>;
+        return (
+          <span key={i} data-kpi={m[1]} data-window={m[2]} className={bold ? "font-semibold text-foreground" : undefined}>
+            {fmtW(m[2] as Win, m[1] as KpiKey)}
+          </span>
+        );
+      })}
+    </>
+  );
+}
+
 function Rich({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return (
     <>
       {parts.map((p, i) =>
-        p.startsWith("**") && p.endsWith("**") ? <b key={i} className="font-semibold text-foreground">{p.slice(2, -2)}</b> : <span key={i}>{p}</span>,
+        p.startsWith("**") && p.endsWith("**") ? <b key={i} className="font-semibold text-foreground"><Tokens text={p.slice(2, -2)} bold /></b> : <Tokens key={i} text={p} />,
       )}
     </>
   );
@@ -161,13 +179,13 @@ export function ChatPanel() {
             </div>
           ))}
         </div>
-        <div className="sr-only" aria-live="polite">{turns.length && turns[turns.length - 1].done ? turns[turns.length - 1].reply?.answer.replace(/\*\*/g, "") : ""}</div>
+        <div className="sr-only" aria-live="polite">{turns.length && turns[turns.length - 1].done ? plainTokens(turns[turns.length - 1].reply?.answer ?? "").replace(/\*\*/g, "") : ""}</div>
         <form onSubmit={submit} className="flex items-center gap-2 border-t border-border pt-2">
           <Search className="h-3.5 w-3.5 text-muted-foreground" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="which market is behind on leads?"
+            placeholder="Which market is behind on leads?"
             maxLength={500}
             className="min-w-0 flex-1 rounded bg-transparent px-1 text-[13px] outline-none placeholder:text-muted-foreground/70 focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Ask the data"

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useOpener } from "@/lib/motion/opener"
 import { Dialog as DialogPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
@@ -55,6 +56,7 @@ function DialogContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
 }) {
+  const opener = useOpener()
   return (
     <DialogPortal>
       <DialogOverlay />
@@ -65,6 +67,8 @@ function DialogContent({
           className
         )}
         {...props}
+        onOpenAutoFocus={(e) => { opener.onOpenAutoFocus(e); props.onOpenAutoFocus?.(e) }}
+        onCloseAutoFocus={(e) => { props.onCloseAutoFocus?.(e); if (!e.defaultPrevented) opener.onCloseAutoFocus(e) }}
       >
         {children}
         {showCloseButton && (

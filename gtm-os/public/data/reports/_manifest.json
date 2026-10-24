@@ -8,7 +8,15 @@
    "confidence_summary": {
     "deterministic": 8558
    },
-   "sha256": "c8d7d2f1f5973d4b2244b39adb00b5d8060f510ab47d5828cd7cdabec9aa8e1a"
+   "sha256": "0ae50707e3411156770740e8ea7477c084abb9b97e60bc306a73a76a16338d32"
+  },
+  "crm_spine__fact_funnel_daily": {
+   "rows": 2334,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 2334
+   },
+   "sha256": "b88891debddecc402b2a49aece9340506b5c8a083d8749e6453229dbc7841ccc"
   },
   "dim_channel": {
    "rows": 5,
@@ -16,7 +24,7 @@
    "confidence_summary": {
     "deterministic": 5
    },
-   "sha256": "cd72cf77f0c28e85b915bf2415f8bd2b5400ea2bc7b251e4cd6a0defbff355a7"
+   "sha256": "f9e95d4ddfe4df0cc4529327f8e19c1bc21d01927dfe34e4f3b57a165895841d"
   },
   "dim_company": {
    "rows": 2,
@@ -24,7 +32,7 @@
    "confidence_summary": {
     "deterministic": 2
    },
-   "sha256": "6de0ab51480e1eb99572733d0fdfeb621b60547601bd1d8b7531cec9f695fd3d"
+   "sha256": "3f1ef43bc7b7d11a774a9a79fb052bb37bc60f0ace022d769c27001acc389058"
   },
   "dim_market": {
    "rows": 6,
@@ -32,7 +40,7 @@
    "confidence_summary": {
     "deterministic": 6
    },
-   "sha256": "4715fac3da70b0692d1f1cf71a7d8a7443c252b50937ec1d83e7ec9062160826"
+   "sha256": "f1089513833d65edd5ebd0f9c5fb34976a9187fdd04998edcb157f30216d270c"
   },
   "dim_platform_account": {
    "rows": 3,
@@ -40,7 +48,7 @@
    "confidence_summary": {
     "deterministic": 3
    },
-   "sha256": "ebeacee91acbce193b9e72c240443d6cf84eba61eff492f458257cadfac42203"
+   "sha256": "3d05df38a2404491c27049fba7dee157e417496d98c56a6c65f959e031fe8ef8"
   },
   "dim_source": {
    "rows": 8,
@@ -48,7 +56,7 @@
    "confidence_summary": {
     "deterministic": 8
    },
-   "sha256": "d706e7e9fb2f99fb157f90cdfbf7f2ee5d62877748e00c0717ddf500e3972af7"
+   "sha256": "966ce194d10a9c1ac67e34da77035429c665aebb2984f7bb494bb17bc3340303"
   },
   "dim_subsource": {
    "rows": 10,
@@ -56,7 +64,7 @@
    "confidence_summary": {
     "deterministic": 10
    },
-   "sha256": "aac4e5a2c721bd210182a7b59afaeb686c37a06d7c935e145e1b6152dcdba5a4"
+   "sha256": "7c1aeb607847ee99d7a533849df6192718fda0636cb6275eb686d9a9458be9f7"
   },
   "dim_zip": {
    "rows": 198,
@@ -64,7 +72,7 @@
    "confidence_summary": {
     "deterministic": 198
    },
-   "sha256": "feebdd660be454302267d73b4dc3a60a76358ea372e63fc35f48ffc899c7e115"
+   "sha256": "b4e433423f3aba587d2c2e0bc1e25e7037e496bbfe4b0d84eb87b43cac2b5e1c"
   },
   "fact_ga4_channel_daily": {
    "rows": 36489,
@@ -72,7 +80,7 @@
    "confidence_summary": {
     "deterministic": 36489
    },
-   "sha256": "ac67fb3c6975d142a81cd156d9b024b17f88c9f0ad5658ae8adac8238a49e0f2"
+   "sha256": "acbde3c8b6204fddaa000bb2713b0a08c87fc45f302eadbd78b9a66b3b3fc710"
   },
   "fact_ga4_geo_daily": {
    "rows": 10114,
@@ -80,7 +88,7 @@
    "confidence_summary": {
     "deterministic": 10114
    },
-   "sha256": "bf39d6eebc6c1b1b4ae193cea5cc10c4da0d18aab7459706696831243c919a1b"
+   "sha256": "f9693ded7860aae43f8a12377f41d19e7382547bd1cec93a359a9674fbef7f73"
   },
   "fact_gsc_daily": {
    "rows": 54424,
@@ -88,7 +96,7 @@
    "confidence_summary": {
     "deterministic": 54424
    },
-   "sha256": "f6b5ab108104d76d85987e28db4c00a459b14f96eba8c5598bd25e279feb3f0f"
+   "sha256": "a64b882db91130cae0a635044026064fe1b36f7bcf3595131c0d882764f83fef"
   },
   "fact_gsc_site_daily": {
    "rows": 778,
@@ -96,7 +104,7 @@
    "confidence_summary": {
     "deterministic": 778
    },
-   "sha256": "3650dfdc5a7818f3390d683ebc6f2b39cc44a122872aa79d2f6356738c044b0f"
+   "sha256": "6ddef8cc80e0444e3652d0655c03190a3aff1e4135d995b2c613ce16a311bc15"
   },
   "fact_lead_zip_daily": {
    "rows": 133992,
@@ -104,7 +112,7 @@
    "confidence_summary": {
     "deterministic": 133992
    },
-   "sha256": "b9fa97aa8215d2aa7657e9397d2e28c7e0aecf943e594a27f1763d89f1308202"
+   "sha256": "676cc2351fa03b040524e70a4b9aeb6a429040dc67c4e853d574b4f02dec3611"
   },
   "funnel__fact_funnel_daily": {
    "rows": 6,
@@ -112,7 +120,7 @@
    "confidence_summary": {
     "provisional": 6
    },
-   "sha256": "74d89318dff1763432cc185c19f373b4aed88769d80fc9a8df3b093cd906d09d"
+   "sha256": "8572eaef7015ed3e5ab45fb79d4c320a1a24566ae55cfccbfe334bd70fc53f49"
   },
   "google_ads__dim_ad_set": {
    "rows": 22,
@@ -120,7 +128,7 @@
    "confidence_summary": {
     "deterministic": 22
    },
-   "sha256": "371d535194c2d1cecf53a2d6b59f617cf05ad41484bd1ca45e80a15024e20b45"
+   "sha256": "e2d4099aac9c8c6124fdceca223377a73ac7b2a8c30b6cc2fedcfa656d76e346"
   },
   "google_ads__dim_ad_unit": {
    "rows": 44,
@@ -128,7 +136,7 @@
    "confidence_summary": {
     "deterministic": 44
    },
-   "sha256": "be348db1f93fc3089627f9152da172345e9cc206c0377996f4b54da6f235ed46"
+   "sha256": "4ff73863f6532928e55a471faf6b0bb3407c51fbe0032a48ae73228322d1dbb1"
   },
   "google_ads__dim_campaign": {
    "rows": 11,
@@ -136,7 +144,7 @@
    "confidence_summary": {
     "deterministic": 11
    },
-   "sha256": "288ce413ef60cf6ce672ba05a21358507133f6eb16a35ed17aa0b762b4abc95b"
+   "sha256": "eb295ea6119bb4caea8f2b79579190417dc169b77921a91baf373d3ba1983bbe"
   },
   "google_ads__fact_conversion_action_daily": {
    "rows": 17116,
@@ -144,7 +152,7 @@
    "confidence_summary": {
     "deterministic": 17116
    },
-   "sha256": "637f1942ae42e93acd98fc95d53b7c4a463f0d3a6898e31e42d75c75aad092e6"
+   "sha256": "1121e64ce807f69849cc6daa6144c6148e9e15074668edba9af534b49d2d5ac7"
   },
   "google_ads__fact_geo_spend_daily": {
    "rows": 21006,
@@ -152,7 +160,7 @@
    "confidence_summary": {
     "deterministic": 21006
    },
-   "sha256": "fc1efb2a0515fed039866feb32ea9e7581fc470b1de0344d476c7419b50f51f3"
+   "sha256": "4b05ece2499a19291c54b0d3af4e8b07f10d2b560360228302fda2584e252075"
   },
   "google_ads__fact_spend_daily": {
    "rows": 29953,
@@ -161,15 +169,7 @@
     "deterministic": 29876,
     "provisional": 77
    },
-   "sha256": "4a5af855eadafb387ec4128dd3bd8d7a11973706a190100c42197b154b8d4e92"
-  },
-  "lp_spine__fact_funnel_daily": {
-   "rows": 2334,
-   "status": "published",
-   "confidence_summary": {
-    "deterministic": 2334
-   },
-   "sha256": "dc0bb1905f30e7a81bcca43a865412ac368573318787aa23cc5126655fb58e06"
+   "sha256": "4cc75c6a0336a5ce28d009d8e0701892315e3ad31ecad7dd49b277d19b43efbb"
   },
   "meta__dim_ad_set": {
    "rows": 20,
@@ -177,7 +177,7 @@
    "confidence_summary": {
     "deterministic": 20
    },
-   "sha256": "66514820395732b9b75ec1f9491b697cb90096dd45914814caf6f0d845744c5d"
+   "sha256": "611f2f11d1f2178b640f65b018406ef945db41ec68d0f846e9d407776fe27638"
   },
   "meta__dim_ad_unit": {
    "rows": 40,
@@ -185,7 +185,7 @@
    "confidence_summary": {
     "deterministic": 40
    },
-   "sha256": "541e0cf948a6fdfcecd5a09e021b33d7e256556572427ab51fa6c8cbc9cf1a48"
+   "sha256": "c1b5bc7d0f2b6b2a27c1837eab060ad8264336ce608e4e35171d2e77c68f0fe6"
   },
   "meta__dim_campaign": {
    "rows": 10,
@@ -193,7 +193,7 @@
    "confidence_summary": {
     "deterministic": 10
    },
-   "sha256": "d32ac40356c64764d096062a168e68ba773f186d4e641be9f6c5f585bf548f21"
+   "sha256": "31c81dd7b1a0a2b1fc7920eced94899d8c8cf13ace98b299b2825a2d3aafb20e"
   },
   "meta__fact_spend_daily": {
    "rows": 27230,
@@ -202,7 +202,7 @@
     "deterministic": 27090,
     "provisional": 140
    },
-   "sha256": "c9caad997c8a003e8c85643a03a46b3d0d54cc605acf07f5150e139f993b5c1e"
+   "sha256": "ec724830946da67d25206976562881fe7e9042c46d42633022510a85f9a6ce46"
   },
   "microsoft_ads__dim_ad_set": {
    "rows": 8,
@@ -210,7 +210,7 @@
    "confidence_summary": {
     "deterministic": 8
    },
-   "sha256": "8826437ec767a9a690d5e209ed0bd66b0784e2cab518508270e64e39a37a0e10"
+   "sha256": "c6b7f5fe99f52811dd69e8552832f28721ce53f1aa9b9fa25a8925c9105cc693"
   },
   "microsoft_ads__dim_ad_unit": {
    "rows": 16,
@@ -218,7 +218,7 @@
    "confidence_summary": {
     "deterministic": 16
    },
-   "sha256": "d31240e1554631024f9a0965c8e2277b1b73c7ea2a124f88f3473af35a96c5d9"
+   "sha256": "31bf1ebbaf00abd8a8d103284ea69456bcc9a4b86affe94fb33a141638254319"
   },
   "microsoft_ads__dim_campaign": {
    "rows": 4,
@@ -226,7 +226,7 @@
    "confidence_summary": {
     "deterministic": 4
    },
-   "sha256": "e1775e8ed454aaa764f1652115b4f8fa8eb5dd5e63448437762c8b27da73a940"
+   "sha256": "51de661ad1131dd25dadcd0f49d75c7efaee8c7182f2ac38dd0b3bebc86f12cd"
   },
   "microsoft_ads__fact_conversion_action_daily": {
    "rows": 6224,
@@ -234,7 +234,7 @@
    "confidence_summary": {
     "deterministic": 6224
    },
-   "sha256": "262a6fc6c6fc090bf4e96f63aa7b4d10a183c064a67737a5927382cee5005cab"
+   "sha256": "318419278512ed0773edee1bb48f7924204a3017c64deeeab349ad493d0f4c54"
   },
   "microsoft_ads__fact_geo_spend_daily": {
    "rows": 9336,
@@ -242,7 +242,7 @@
    "confidence_summary": {
     "deterministic": 9336
    },
-   "sha256": "2a369d632a88398314e574ab252401c5e0c4e8ca3ebca8398d0c086ff9397949"
+   "sha256": "ce6076dee8a4f2c92417be2b9fba7519e92920e722dd684e09fbff8dc873f4f3"
   },
   "microsoft_ads__fact_spend_daily": {
    "rows": 10892,
@@ -251,7 +251,7 @@
     "deterministic": 10864,
     "provisional": 28
    },
-   "sha256": "b51563831f32a7b0166b964b228c2056b4ad60b78c091c6c933e83c53f7d8f94"
+   "sha256": "6b7b3bb95875c18cf72e4a079c9d66286d0e52e8e3b85fe14d1ea6125d6fe80c"
   }
  }
 }

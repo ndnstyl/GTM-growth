@@ -1,6 +1,6 @@
 """Hand-written demo copy: library titles, script sets and meeting transcripts.
 
-Everything here is fictional (Northbeam Home Services). Nothing is generated from a template, so the first
+Everything here is fictional (Larkspur Home Services). Nothing is generated from a template, so the first
 click on any item reads like real work.
 """
 

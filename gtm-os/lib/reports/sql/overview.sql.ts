@@ -90,23 +90,18 @@ const CONF_RANK = (col: string) => `CASE ${col}
 
 export type OverviewOpts = { preset: DatePreset; market?: string };
 
-// covers it (campaign_market_allocation, shares sum to 1.0 per campaign-day), so
-// a South Florida campaign lands partly in Stuart and partly in Deerfield instead
-// of wholly in one. A campaign-day with no allocation row falls back to the
-// grammar's market_id at share 1.0, so nothing disappears while a day's
-// allocation is still being built.
+// Ad spend is the recorded all-in figure (online media, agency fees, offline media) by market and day, the same
+// rows lib/demo/metrics.ts totals, so a market table or trend never disagrees with a headline tile.
 const ALLOCATED_SPEND = `
   SELECT
-    f.*,
-    COALESCE(a.market_id, f.market_id) AS alloc_market_id,
-    COALESCE(a.share, 1.0) AS alloc_share,
-    f.amount_cents * COALESCE(a.share, 1.0) AS alloc_cents,
-    COALESCE(a.basis, 'grammar') AS alloc_basis
-  FROM fact_spend_daily f
-  LEFT JOIN campaign_market_allocation a
-    ON a.platform = f.platform AND a.campaign_id = f.campaign_id
-   AND TRY_CAST(a.spend_date AS DATE) = TRY_CAST(f.spend_date AS DATE)
-  WHERE f.grain = 'campaign'`;
+    TRY_CAST(spend_date AS DATE) AS spend_date,
+    platform, campaign_id, confidence, as_of,
+    market AS alloc_market_id,
+    amount_cents AS alloc_cents,
+    1.0 AS alloc_share,
+    'recorded' AS alloc_basis
+  FROM dm_spend_daily
+  WHERE bucket IN ('inhouse', 'vendor', 'offline')`;
 
 // Coverage + availability-split confidence per feed: distinct_days /
 // days_in_window (0 days = unavailable, no number), total_rows /
@@ -123,8 +118,6 @@ export function overviewTotalsSql(opts: OverviewOpts): string {
   return `
     WITH spend AS (
       SELECT
-        -- allocated share per market; with no market filter the
-        -- shares sum to 1.0 per campaign-day, so this is the plain campaign total
         ROUND(SUM(alloc_cents))::BIGINT AS spend_cents,
         MAX(as_of) AS spend_as_of,
         COUNT(*) AS spend_rows,
@@ -134,10 +127,6 @@ export function overviewTotalsSql(opts: OverviewOpts): string {
         (ARRAY_AGG(confidence ORDER BY ${CONF_RANK("confidence")} ASC)
           FILTER (WHERE confidence NOT LIKE 'unavailable_%'))[1] AS spend_worst_available_confidence,
         (ARRAY_AGG(confidence ORDER BY ${CONF_RANK("confidence")} ASC))[1] AS spend_confidence,
-        -- Which platforms this total actually contains. Meta spend runs in the
-        -- vendor's own ad account (the agency) and reaches no company surface, so a
-        -- spend/CPL/MER figure here is a PARTIAL-PLATFORM number, not a total.
-        -- Naming the platforms is the only honest way to show it (2026-08-23).
         STRING_AGG(DISTINCT platform, ', ' ORDER BY platform)
           FILTER (WHERE confidence NOT LIKE 'unavailable_%') AS spend_platforms
       FROM (${ALLOCATED_SPEND}) x
@@ -152,8 +141,6 @@ export function overviewTotalsSql(opts: OverviewOpts): string {
         SUM(demos) AS demos,
         SUM(sales) AS sales,
         SUM(gross_cents) AS gross_cents,
-        -- a day whose feed carries no net column (the today-only CRM
-        -- basis, never NULL (NULL made Net sum 7 days beside Gross summing 8).
         SUM(COALESCE(net_cents, gross_cents - COALESCE(cancel_gross_cents, 0))) AS net_cents,
         MAX(as_of) AS funnel_as_of,
         COUNT(*) AS funnel_rows,
@@ -178,7 +165,6 @@ export function overviewByMarketSql(opts: { preset: DatePreset }): string {
     WITH spend AS (
       SELECT
         alloc_market_id AS market_id,
-        -- market they cover and the market rows sum back to the company total
         ROUND(SUM(alloc_cents))::BIGINT AS spend_cents,
         COUNT(*) AS spend_rows,
         COUNT(*) FILTER (WHERE confidence LIKE 'unavailable_%') AS spend_unavailable_rows,

@@ -4,6 +4,7 @@
 export function watchScrollRegions(): () => void {
   if (typeof document === "undefined") return () => {};
   let timer: number | null = null;
+  let regionCount = 0;
   const mark = () => {
     for (const el of Array.from(document.querySelectorAll<HTMLElement>("div, section, ul, ol, pre, table"))) {
       if (el.hasAttribute("tabindex") || el.closest("[data-radix-focus-guard]")) continue;
@@ -11,8 +12,11 @@ export function watchScrollRegions(): () => void {
       const scrolls = (/(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1) || (/(auto|scroll)/.test(cs.overflowX) && el.scrollWidth > el.clientWidth + 1);
       if (!scrolls) continue;
       el.tabIndex = 0;
-      if (!el.getAttribute("role")) el.setAttribute("role", "region");
-      if (!el.getAttribute("aria-label") && !el.getAttribute("aria-labelledby")) el.setAttribute("aria-label", "Scrollable content");
+      if (!el.getAttribute("role") && (el.tagName === "DIV" || el.tagName === "SECTION")) el.setAttribute("role", "region");
+      if (!el.getAttribute("aria-label") && !el.getAttribute("aria-labelledby")) {
+        const h = el.closest("section, main, [role='dialog']")?.querySelector("h1, h2, h3")?.textContent?.trim();
+        el.setAttribute("aria-label", `${h ? h + ", scrollable" : "Scrollable content"} ${++regionCount}`);
+      }
     }
   };
   const schedule = () => {

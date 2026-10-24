@@ -29,10 +29,10 @@ def lane(name: str) -> str:
 SKEWS = {
     "lens_month": ["leads and sets are dated to entry; sales to contract date, so one month holds four clocks"],
     "lens_week": ["a week that has not closed carries no movement figure"],
-    "golden_rule__monthly": ["net lags: the most recent weeks are still inside the cancel window"],
+    "efficiency__monthly": ["net lags: the most recent weeks are still inside the cancel window"],
     "spine_funnel_monthly": ["cancels post in the month they happen, not the month of the sale"],
     "dm_source_chain_daily": ["unpaid sources carry no spend by construction"],
-    "lp_spine__fact_funnel_daily": ["the last two days restate as late data lands"],
+    "crm_spine__fact_funnel_daily": ["the last two days restate as late data lands"],
     "meta__fact_spend_daily": ["the last two days are provisional until the platform finalizes them"],
 }
 
@@ -44,21 +44,21 @@ def write_trust(w: World, fw: FeedWriter) -> None:
             "data_through": iso(w.end), "status": "published", "registered": True, "verdict": "VERIFIED", "verdict_date": iso(w.end),
             "review_cadence_days": 7, "holds": [], "skews": SKEWS.get(name, []), "settlement": None, "lens_read": name.startswith("lens_"),
         }
-        if name == "golden_rule__monthly":
+        if name == "efficiency__monthly":
             t["settlement"] = {"pattern": "append_only", "settlement_days": 40, "reason": "cancel window"}
         if name == "spine_spend_monthly":
             t["holds"] = [{"kind": "invoice", "state": "waiting", "why": "the agency's month-end invoice has not arrived; the last good file is served"}]
         feeds[name] = t
-    write_json(OUT_REPORTS / "_trust.json", {"generated_at": ts_iso(w.end, 6, 27), "feeds": feeds})
+    write_json(OUT_REPORTS / "_trust.json", {"generated_at": ts_iso(w.end + timedelta(days=1), 6, 27), "feeds": feeds})
 
 
 def write_health(w: World, fw: FeedWriter) -> None:
-    built = ts_iso(w.end, 6, 30)
+    built = ts_iso(w.end + timedelta(days=1), 6, 30)
     names = sorted(fw.files)
     feeds = []
     for n in names:
         f = fw.files[n]
-        feeds.append({"name": n, "schedule": lane(n), "status": f["status"], "as_of": ts_iso(w.end, 6, 25), "rows": f["rows"],
+        feeds.append({"name": n, "schedule": lane(n), "status": f["status"], "as_of": ts_iso(w.end + timedelta(days=1), 6, 25), "rows": f["rows"],
                       "state": "ok", "why": f"fresh: data through {iso(w.end)}", "last_alert": None})
     sched = {}
     for lane_name in ("hourly", "nightly", "weekly"):
@@ -224,7 +224,7 @@ def build_library(w: World) -> dict:
         for tier, fmt, dur in (("flagship", "film", 78), ("series", "short", 24), ("carousel", "carousel", 0)):
             k += 1
             series = SERIES[(month + (0 if tier == "flagship" else 2 if tier == "series" else 4)) % len(SERIES)]
-            brand = "universal" if tier == "flagship" else ("nb-pro" if (month % 4 == 0 and tier == "series") else "both-variants" if tier == "carousel" else "nb-main")
+            brand = "universal" if tier == "flagship" else ("lh-pro" if (month % 4 == 0 and tier == "series") else "both-variants" if tier == "carousel" else "lh-main")
             rid = f"{'F' if tier == 'flagship' else 'S' if tier == 'series' else 'C'}{month:02d}"
             gates = []
             if tier == "flagship" and month % 3 == 0:
@@ -272,7 +272,7 @@ def build_library(w: World) -> dict:
                 "week": 1 + (month + (0 if tier == "flagship" else 1 if tier == "series" else 2)) % 4,
             })
     by_month = {str(m): int(sum(r["est_credits_total"] for r in recs if r["publish_month"] == m)) for m in range(1, 13)}
-    return {"meta": {"generated_at": ts_iso(w.end, 6, 30), "records": len(recs), "credits_by_month": by_month, "credit_ceiling_month": 2500},
+    return {"meta": {"generated_at": ts_iso(w.end + timedelta(days=1), 6, 30), "records": len(recs), "credits_by_month": by_month, "credit_ceiling_month": 2500},
             "records": recs}
 
 

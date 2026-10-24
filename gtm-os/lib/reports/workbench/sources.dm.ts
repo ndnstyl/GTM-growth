@@ -13,7 +13,7 @@
 import type { DeclaredSource, Measure } from "./sources";
 import { PICKER_METRICS } from "../digital/picker";
 
-const SPEND_DIMS = ["period", "date", "platform", "account", "campaign", "market", "basis", "bucket", "operator", "row_type", "confidence", "display_name", "segment", "lp_subsource"];
+const SPEND_DIMS = ["period", "date", "platform", "account", "campaign", "market", "basis", "bucket", "operator", "row_type", "confidence", "display_name", "segment", "crm_subsource"];
 const CHAIN_DIMS = ["period", "date", "market", "source", "subsource", "subsource_code", "bucket", "operator", "confidence", "spend_note", "net_basis"];
 const WINDOW_DIMS = ["metric", "scope_kind", "scope", "win", "partial"];
 const PACING_DIMS = ["period", "metric", "market", "budget_status", "settle_status"];
@@ -66,7 +66,7 @@ export const DM_SOURCES: DeclaredSource[] = [
       { key: "confidence", label: "Confidence", expr: "s.confidence" },
       { key: "display_name", label: "Account or line name", expr: "s.display_name" },
       { key: "segment", label: "Owner and row type (chart segment)", expr: "(s.bucket || ' ' || s.row_type)" },
-      { key: "lp_subsource", label: "CRM sub-source", expr: "s.lp_subsource_descr" },
+      { key: "crm_subsource", label: "CRM sub-source", expr: "s.crm_subsource_descr" },
     ],
     measures: [
       { key: "spend", label: "Spend ($)", expr: "SUM(s.amount_cents) / 100.0", kind: "sum", format: "dollars", allowedDims: SPEND_DIMS },
@@ -101,7 +101,7 @@ export const DM_SOURCES: DeclaredSource[] = [
         { dimKey: "confidence", rowExpr: "r.confidence" },
         { dimKey: "display_name", rowExpr: "r.display_name" },
         { dimKey: "segment", rowExpr: "(r.bucket || ' ' || r.row_type)" },
-        { dimKey: "lp_subsource", rowExpr: "r.lp_subsource_descr" },
+        { dimKey: "crm_subsource", rowExpr: "r.crm_subsource_descr" },
       ],
       reconcile: { measureKey: "spend", rowExpr: "SUM(r.amount_cents) / 100.0" },
       recordFields: [

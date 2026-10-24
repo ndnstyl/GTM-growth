@@ -90,7 +90,7 @@ export function BoardRunner({ board, state, batch }: { board: ResolvedBoard; sta
         a.click();
         URL.revokeObjectURL(a.href);
       }, "image/png");
-    } catch (e) {
+    } catch {
       window.alert("The export did not complete. Try again.");
     }
   };

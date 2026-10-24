@@ -105,7 +105,7 @@ def write_research(w: World, calls_read: int) -> dict:
 
 from content_text import LIBRARY_TITLES, LIBRARY_NOTES, SCRIPTS, MEETINGS, fallback_script
 
-BRANDS = [("nb-main", "Northbeam Home"), ("nb-pro", "Northbeam Pro")]
+BRANDS = [("lh-main", "Larkspur Home"), ("lh-pro", "Larkspur Pro")]
 IDEA_TITLES = [
     ("Why a free estimate is worth the hour", "Most people expect a sales trap; show the actual hour.", "myth-buster"),
     ("A roof you stop thinking about", "Slow reveal of a finished roof at golden hour.", "before-after"),
@@ -133,7 +133,7 @@ def _thumb(path, title, hue):
            f'<stop offset="1" stop-color="hsl({(hue + 40) % 360},65%,38%)"/></linearGradient></defs>'
            f'<rect width="480" height="270" fill="url(#g)"/><circle cx="395" cy="70" r="38" fill="rgba(255,255,255,0.14)"/>'
            f'<text x="24" y="226" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff">{title}</text>'
-           f'<text x="24" y="250" font-family="Inter, Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.75)">Northbeam demo creative</text></svg>')
+           f'<text x="24" y="250" font-family="Inter, Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.75)">Larkspur demo creative</text></svg>')
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg, encoding="utf-8")
 
@@ -167,7 +167,7 @@ def write_studio(w: World) -> dict:
                 ("music", ["Upbeat acoustic bed", "Warm piano lift", "Light percussion pulse", "Quiet documentary pad"]),
                 ("endcard", ["Free estimate end card", "Financing end card", "Storm-prep end card"]),
                 ("broll", ["Crew on a roof at sunrise", "Finished front elevation", "Close-up of window install", "Gutter guard detail"]),
-                ("logo", ["Northbeam Home logo", "Northbeam Pro logo"])]
+                ("logo", ["Larkspur Home logo", "Larkspur Pro logo"])]
     elements = []
     n = 0
     for kind, labels in el_kinds:

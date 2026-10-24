@@ -1,7 +1,8 @@
 "use client";
 
+import { scrollWithin } from "@/lib/motion/scroll";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Play, Film, Image as ImageIcon, LayoutGrid, Check, Loader2 } from "lucide-react";
+import { Play, Film, Image as ImageIcon, LayoutGrid, Loader2 } from "lucide-react";
 import { PageFrame, Tabs, TabPanel, Card, Chip, GrowBar, Loading, Missing } from "@/components/apps/ui";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useFixture, useHashTab } from "@/lib/demo/useFixture";
@@ -21,8 +22,7 @@ type Crew = { seats: Seat[]; cuts: Cut[]; jobs: Job[] };
 type Step = { label: string; ms: number; output: string };
 
 const TABS = ["ideas", "library", "scripts", "crew"] as const;
-type Tab = (typeof TABS)[number];
-const MAIN_BRAND = "nb-main";
+const MAIN_BRAND = "lh-main";
 
 const STAGE_TONE: Record<string, string> = { draft: "text-[var(--ink2)]", review: "text-[var(--warn)]", approved: "text-[var(--good)]" };
 const IDEA_TONE: Record<string, string> = { idea: "text-[var(--ink2)]", scripted: "text-primary", in_edit: "text-[var(--warn)]", ready: "text-[var(--good)]" };
@@ -77,8 +77,11 @@ export default function StudioPage() {
   const [draft, setDraft] = useState({ title: "", hook: "" });
 
   useEffect(() => {
+    // The visitor's saved marks and ideas are read once after mount; reading storage during render would break hydration.
+    /* eslint-disable react-hooks/set-state-in-effect */
     setMarks(lsGet<Record<string, string>>("studio-marks", {}));
     setLocalIdeas(lsGet<Idea[]>("studio-ideas", []));
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   const brandLabel = (id: string) => brands.data?.brands.find((b) => b.id === id)?.label ?? id;
@@ -224,7 +227,7 @@ export default function StudioPage() {
                   <div className="mt-2 flex items-center gap-2 text-[12px] text-muted-foreground">
                     {i.brand !== (brand || MAIN_BRAND) ? <Chip>{brandLabel(i.brand)}</Chip> : null}
                     <Chip>{i.angle}</Chip><span>{dayLabel(i.created)}</span>
-                    <button onClick={() => { setRunIdea(i.id); setRunState(null); window.scrollTo?.({ top: 0 }); document.getElementById("studio-panel")?.scrollIntoView({ block: "start" }); }} className="ml-auto font-semibold text-primary hover:underline">Run this</button>
+                    <button onClick={() => { setRunIdea(i.id); setRunState(null); scrollWithin(document.getElementById("studio-panel")); }} className="ml-auto font-semibold text-primary hover:underline">Run this</button>
                   </div>
                 </Card>
               ))}

@@ -65,8 +65,8 @@ def build_views(w: World) -> list[dict]:
         V("unit-costs", "Unit costs by month", "Cost per lead, set, issued appointment and sale.",
           "What it costs to move one prospect one step down the funnel, month by month; ad spend over the stage count.",
           "spend_funnel_monthly", ["period"], [], ["cost_per_lead", "cost_per_set", "cost_per_issue", "cost_per_sale"]),
-        V("mer-board", "Ad spend as a share of revenue", "Ad spend divided by gross revenue, by month.",
-          "The share of every revenue dollar spent on ads; lower is better, and the trend matters more than any one month.",
+        V("mer-board", "MER: revenue for every ad dollar", "Gross revenue divided by ad spend, by month.",
+          "How many dollars of revenue each ad dollar returned; higher is better, and the trend matters more than any one month. The open month is partial.",
           "spend_funnel_monthly", ["period"], [], ["mer"], presentation="chart", chart={"kind": "line", "x": "period", "y": "mer"}),
         V("spend-media-fee-board", "Spend split: media, agency fees, offline", "Monthly spend by line type.",
           "How much of the budget buys media, how much pays the agency, and how much goes to print, TV and shows.",
@@ -77,20 +77,20 @@ def build_views(w: World) -> list[dict]:
           "spine_spend_monthly", ["period"], ["platform"], ["spend"]),
     ]
     # ---- efficiency target (all-in marketing cost against net revenue)
-    gm = "golden_rule_monthly"
+    gm = "efficiency_monthly"
     out += [
         V("efficiency-tier-by-market", "Marketing cost tier by market", "Marketing cost as a share of net revenue and the tier it earns, by market and month.",
           "Each market against the 28 percent target: the ceiling a market can spend at target and where it actually landed.",
-          gm, ["period", "office"], ["bonus_tier"], ["ceiling_at_target", "marketing_cost_pct", "mer_traditional"]),
+          gm, ["period", "office"], ["target_band"], ["headroom_at_target", "marketing_cost_pct", "mer_net_basis"]),
         V("efficiency-monthly", "Marketing cost target, monthly", "Net issued, net revenue and the share still pending, revenue per issued appointment and cost percent by market.",
           "The monthly record behind the target: revenue per net issued appointment, the ceiling it implies and the cost percent against it.",
-          gm, ["period", "office"], [], ["net_iss", "net_usd", "prenet_usd", "nsli", "nsli_plus_prenet", "ceiling_at_target", "marketing_cost_pct"]),
+          gm, ["period", "office"], [], ["net_iss", "net_usd", "prenet_usd", "net_basis", "net_plus_pending", "headroom_at_target", "marketing_cost_pct"]),
         V("efficiency-tieout", "Marketing cost target, matches the CRM", "Rows checked, failures and explained residuals, by month and market.",
           "Every published number is recomputed a second way each night; this view is where a mismatch would show first.",
-          "golden_rule_tieout", ["period", "office"], ["result"], ["rows", "fails", "residuals"]),
+          "efficiency_tieout", ["period", "office"], ["result"], ["rows", "fails", "residuals"]),
         V("efficiency-daily", "Marketing cost target, daily", "Net issued, net revenue and the share still pending per day by market.",
           "The daily rows that roll up to the month, so a bad week can be found before the month closes.",
-          "golden_rule_daily", ["date", "office"], [], ["net_iss", "net_usd", "prenet_usd", "nsli_plus_prenet", "ceiling_at_target"]),
+          "efficiency_daily", ["date", "office"], [], ["net_iss", "net_usd", "prenet_usd", "net_plus_pending", "headroom_at_target"]),
     ]
     # ---- growth lenses
     out += [
@@ -193,7 +193,7 @@ def build_boards(w: World) -> list[dict]:
         board("board-revenue", "Board 1: Revenue", "Gross and net monthly trends, market ranking (click a bar to filter) and the growth decomposition.",
               [("revenue-trend-board", 2), ("revenue-by-market-bar", 2), ("net-trend-board", 2), ("growth-decomposition", 2)],
               [{"fromPanel": 1, "selection": "category", "toPanels": [0, 2]}]),
-        board("board-mer", "Board 2: Spend against revenue", "Ad spend share of revenue, the spend split and spend by platform.",
+        board("board-mer", "Board 2: Spend against revenue", "MER (revenue per ad dollar), the spend split and spend by platform.",
               [("mer-board", 2), ("spend-media-fee-board", 2), ("spend-by-platform", 2)]),
         board("board-efficiency-target", "Board 3: Marketing cost target", "All-in marketing cost against net revenue, by market, checked against the CRM.",
               [("efficiency-tier-by-market", 2), ("efficiency-monthly", 2), ("efficiency-tieout", 2), ("efficiency-daily", 2)]),
@@ -282,7 +282,7 @@ def build_rebase_map(w: World) -> dict:
     diag_na = {"source": NA("a platform diagnostic has no CRM source detail")}
     m = {
         "spend": entry("spend", "sum", "dollars", company, sum_all, {}),
-        "nsli": entry("nsli", "ratio", "dollars", company, ["company", "market"], {
+        "net_basis": entry("net_basis", "ratio", "dollars", company, ["company", "market"], {
             "platform": NA("revenue per issued appointment is a CRM figure, not a platform figure"),
             "bucket": NA("net issued appointments are not split by who runs the ad account"),
             "source": NA("revenue per issued appointment by source would divide dollars by appointments one source did not alone produce")}),

@@ -1,8 +1,8 @@
 {
  "id": "mer-board",
- "name": "Ad spend as a share of revenue",
- "description": "Ad spend divided by gross revenue, by month.",
- "narrative": "The share of every revenue dollar spent on ads; lower is better, and the trend matters more than any one month.",
+ "name": "MER: revenue for every ad dollar",
+ "description": "Gross revenue divided by ad spend, by month.",
+ "narrative": "How many dollars of revenue each ad dollar returned; higher is better, and the trend matters more than any one month. The open month is partial.",
  "sourceKey": "spend_funnel_monthly",
  "rows": [
   "period"

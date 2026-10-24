@@ -19,7 +19,6 @@ const d = (s: string, n: number) => {
   return t.toISOString().slice(0, 10);
 };
 const from28 = d(end, -27);
-const from7 = d(end, -6);
 const presets = ["yesterday", "wtd", "mtd", "last7", "last28", "mom", "ytd"] as const;
 const sql: { name: string; sql: string; expectRows: boolean }[] = [];
 const add = (name: string, q: string, expectRows = true) => sql.push({ name, sql: q, expectRows });
@@ -66,13 +65,13 @@ for (const name of Object.keys(organic)) {
   }
   if (typeof q === "string") add(`organic.${name}`, q);
 }
-for (const per of ["today", "mtd"] as const) {
+for (const per of ["yesterday", "mtd"] as const) {
   add(`callcenter.company.${per}`, cc.ccFunnelCompanySql(per), per === "mtd");
   add(`callcenter.byOffice.${per}`, cc.ccFunnelByOfficeSql(per), per === "mtd");
   add(`callcenter.dialsBySource.${per}`, cc.ccDialsBySourceSql(per), per === "mtd");
   add(`callcenter.agents.${per}`, cc.ccAgentsSql(per, cc.CC_HEADLINE_SOURCE), per === "mtd");
 }
-add("callcenter.dialsDaily", cc.ccDialsDailySql(cc.CC_HEADLINE_SOURCE));
+add("callcenter.dialsDaily", cc.ccDialsDailySql(cc.CC_HEADLINE_SOURCE, "mtd"));
 const callcenter = {
   feeds: cc.CC_FEEDS,
   funnelViewSql: cc.ccFunnelViewSql(true, true),

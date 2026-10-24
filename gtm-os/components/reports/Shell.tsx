@@ -209,7 +209,7 @@ export function Shell() {
           ) : activeFeed.key === "organic" ? (
             <Organic filters={filters} />
           ) : activeFeed.key === "call_center" ? (
-            <CallCenter />
+            <CallCenter preset={filters.preset} />
           ) : activeFeed.key === "health" ? (
             <Health doc={health} jobs={jobHealth} />
           ) : null}

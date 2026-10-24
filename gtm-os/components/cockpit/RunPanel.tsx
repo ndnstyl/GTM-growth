@@ -4,7 +4,7 @@
 // on timers by the demo adapter; failures latch until acknowledged.
 
 import { useCallback, useEffect, useState } from "react";
-import { Play, Zap, AlertTriangle, Check, Loader2 } from "lucide-react";
+import { Play, Zap, AlertTriangle, Loader2 } from "lucide-react";
 import { useActiveInterval } from "@/lib/motion";
 import { realNow } from "@/lib/demo/clock";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -159,6 +159,7 @@ export function RunPanel({
                   <span className="font-semibold">{b.label}</span>
                   {b.state === "ready" ? (
                     <button
+                      aria-label={`Run ${b.label}`}
                       className="ml-auto flex items-center gap-1 rounded-full border border-border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider hover:border-primary hover:text-primary"
                       onClick={() => act(() => actions.loopTrigger(b.workflow_id), b.label)}
                     >

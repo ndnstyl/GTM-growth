@@ -26,7 +26,7 @@ export function Tabs<K extends string>({ tabs, value, onChange, idPrefix = "tab"
     else return;
     e.preventDefault();
     onChange(tabs[n].key);
-    document.getElementById(`${idPrefix}-${tabs[n].key}`)?.focus();
+    document.getElementById(`${idPrefix}-${tabs[n].key}`)?.focus({ preventScroll: true });
   };
   return (
     <div ref={box} role="tablist" className="relative flex flex-wrap gap-1 border-b border-border">

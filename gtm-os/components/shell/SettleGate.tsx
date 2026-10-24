@@ -13,7 +13,7 @@ const LOADING = /Loading|Building contract|Checking the data|computing|Reading t
 
 export function SettleGate({
   children,
-  quiet = 220,
+  quiet = 450,
   max = 5000,
   skeleton = 420,
   pad = "",

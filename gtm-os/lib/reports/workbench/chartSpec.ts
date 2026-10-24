@@ -95,10 +95,10 @@ export type ChartAdapterProps = {
   withheldX: { x: string; reason: string }[];
   // x values carrying an MTD (open month) marker: painted distinctly
   mtdX: string[];
-  format: "dollars" | "count" | "pct";
+  format: "dollars" | "count" | "pct" | "multiple";
   yLabel: string;
   // scatter only: the second measure's presentation
   y2Label?: string;
-  y2Format?: "dollars" | "count" | "pct";
+  y2Format?: "dollars" | "count" | "pct" | "multiple";
   onSelection?: (sel: { x: string; series: string | null; y: number } | null) => void;
 };

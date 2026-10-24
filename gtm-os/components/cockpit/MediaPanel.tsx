@@ -70,7 +70,7 @@ function DetailDialog({ sel, onClose }: { sel: Sel; onClose: () => void }) {
                 Tracking {sel.l.tracking.status.replace(/_/g, " ")}{sel.l.tracking.owner ? ` · ${sel.l.tracking.owner}` : ""}{sel.l.tracking.note ? ` · ${sel.l.tracking.note}` : ""}
               </p>
             ) : null}
-            <p className="text-[11px] text-muted-foreground">Lead source in the CRM: {sel.l.lp_subsource ?? "n/a"} · owner {sel.l.owner ?? "n/a"}</p>
+            <p className="text-[11px] text-muted-foreground">Lead source in the CRM: {sel.l.crm_subsource ?? "n/a"} · owner {sel.l.owner ?? "n/a"}</p>
           </>
         ) : sel?.kind === "item" ? (
           <>

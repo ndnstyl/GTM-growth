@@ -32,6 +32,7 @@ function fmtTick(v: number, format: string): string {
     return `$${v.toFixed(0)}`;
   }
   if (format === "pct") return `${v.toFixed(1)}%`;
+  if (format === "multiple") return `${v.toFixed(1)}x`;
   return v.toLocaleString("en-US");
 }
 

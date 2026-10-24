@@ -1,8 +1,9 @@
 "use client";
 
+import { scrollWithin } from "@/lib/motion/scroll";
 import { NavLink } from "@/lib/motion/nav";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 import gtm from "@/lib/demo/gtm.json";
 import { areaForStage } from "@/lib/demo/nav";
@@ -37,8 +38,11 @@ function label(st: StageStat): string {
   return h.startsWith(st.value) ? h.slice(st.value.length).replace(/^[\s,;:]+/, "") : h;
 }
 
+/** The hero opens on the stage with the most items, so the first detail panel is full. */
+const RICHEST = stages.reduce((best, st, i) => (st.items.length > stages[best].items.length ? i : best), 0);
+
 export function GtmMap() {
-  const [sel, setSel] = useState(0);
+  const [sel, setSel] = useState(RICHEST);
   const [filter, setFilter] = useState<Kind | null>(null);
   const stats = STATS;
   const detailRef = useRef<HTMLElement>(null);
@@ -123,7 +127,7 @@ export function GtmMap() {
 
   const choose = (i: number) => {
     setSel(i);
-    window.setTimeout(() => detailRef.current?.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" }), 30);
+    window.setTimeout(() => scrollWithin(detailRef.current, !reduced), 30);
   };
 
   return (
@@ -152,7 +156,7 @@ export function GtmMap() {
                   <span className="g-glare" aria-hidden="true" />
                   <span className="flex items-center gap-1.5">
                     <span className={`tick flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold transition-colors duration-300 ${on ? "bg-primary text-primary-foreground" : "bg-secondary text-[var(--ink2)]"}`}>{i + 1}</span>
-                    <span className="min-w-0 flex-1 truncate text-[13px] font-bold leading-tight">{s.name}</span>
+                    <span title={s.name} className="min-w-0 flex-1 line-clamp-2 break-words text-[13px] font-bold leading-tight">{s.name}</span>
                     {st ? <span aria-hidden="true" className={`h-2 w-2 shrink-0 rounded-full ${STATUS_RING[st.status] ?? STATUS_RING.ok} ${st.status === "ok" ? "" : "g-ping"}`} /> : null}
                   </span>
                   <span className="mt-1 line-clamp-2 min-h-[30px] text-[11px] leading-snug text-[var(--ink2)]">{s.outcome}</span>

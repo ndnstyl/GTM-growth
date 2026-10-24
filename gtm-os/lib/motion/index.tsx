@@ -75,10 +75,18 @@ export function startActivityGate(): void {
   // The embedding page knows best whether the frame is on screen. It can post { gtmOs: "visibility", visible: boolean }
   // to this window (the site's CockpitFrame does, from its own observer); that wins over every inference below.
   window.addEventListener("message", (e) => {
+    // Only the embedding page may pause the demo: not another frame, not an opener, not a foreign origin.
+    if (e.source !== window.parent) return;
     const d = e.data as { gtmOs?: string; visible?: unknown } | null;
     if (!d || d.gtmOs !== "visibility" || typeof d.visible !== "boolean") return;
     hostVisible = d.visible;
     recompute();
+  });
+  // Escape with nothing of ours open belongs to the host page (it may close the frame's lightbox).
+  window.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || e.defaultPrevented || window.parent === window) return;
+    if (document.querySelector('[role="dialog"], [data-state="open"][role="menu"]')) return;
+    window.parent.postMessage({ gtmOs: "escape" }, "*");
   });
   // Liveness probe. A cross-origin iframe scrolled far off screen is throttled by the browser: it gets no animation
   // frames and no intersection updates, so the observer above never reports it left. Once a second ask for one frame;
@@ -160,6 +168,7 @@ export function useSeen<T extends Element>(margin = "0px"): [React.RefObject<T |
     const el = ref.current;
     if (!el || seen || !gateOpen) return;
     if (typeof IntersectionObserver === "undefined") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- no observer in this browser, so the element counts as seen at once.
       setSeen(true);
       return;
     }

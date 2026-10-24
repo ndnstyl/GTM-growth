@@ -6,9 +6,18 @@ function format(msg: string): string {
   return msg.startsWith("[reports]") ? msg : `[reports] ${msg}`;
 }
 
+// Diagnostics stay silent unless a developer opts in with ?debug=1 or localStorage gtm-debug=1. Warnings and errors always print.
+function verbose(): boolean {
+  try {
+    return typeof window !== "undefined" && (new URLSearchParams(window.location.search).has("debug") || window.localStorage.getItem("gtm-debug") === "1");
+  } catch {
+    return false;
+  }
+}
+
 export const reportLog = {
   info(msg: string, ...args: unknown[]) {
-    console.info(format(msg), ...args);
+    if (verbose()) console.info(format(msg), ...args);
   },
   warn(msg: string, ...args: unknown[]) {
     console.warn(format(msg), ...args);

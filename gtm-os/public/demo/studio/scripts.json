@@ -2,7 +2,7 @@
  "sets": [
   {
    "id": "set-01",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "topic": "Why a free estimate is worth the hour",
    "created": "2026-10-22",
    "best": "v2",
@@ -38,7 +38,7 @@
   },
   {
    "id": "set-02",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "topic": "A roof you stop thinking about",
    "created": "2026-10-19",
    "best": "v2",
@@ -74,7 +74,7 @@
   },
   {
    "id": "set-03",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "topic": "Three questions before you sign",
    "created": "2026-10-16",
    "best": "v2",
@@ -110,7 +110,7 @@
   },
   {
    "id": "set-04",
-   "brand": "nb-pro",
+   "brand": "lh-pro",
    "topic": "The crew lead explains day one",
    "created": "2026-10-13",
    "best": "v1",
@@ -146,7 +146,7 @@
   },
   {
    "id": "set-05",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "topic": "What a monthly payment really looks like",
    "created": "2026-10-10",
    "best": "v3",
@@ -182,7 +182,7 @@
   },
   {
    "id": "set-06",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "topic": "Windows you can hear the difference in",
    "created": "2026-10-07",
    "best": "v1",
@@ -218,7 +218,7 @@
   },
   {
    "id": "set-07",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "topic": "Storm season checklist",
    "created": "2026-10-04",
    "best": "v1",
@@ -254,7 +254,7 @@
   },
   {
    "id": "set-08",
-   "brand": "nb-pro",
+   "brand": "lh-pro",
    "topic": "Neighbors who picked us",
    "created": "2026-10-01",
    "best": "v3",

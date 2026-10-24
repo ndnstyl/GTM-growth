@@ -1,23 +1,22 @@
 "use client";
 
-// Organic tab: GA4 (Northbeam only) and Search Console
+// Organic tab: GA4 (Larkspur only) and Search Console
 // (sc-domain:example.com only; example.org rows exist in the feed and are excluded on this page). No chart
 // library is wired into this app, so the 28-day trend is a plain inline SVG
 // line, single axis, same house pattern as LeadMap's offline-fallback SVG.
 
+import { dateRangeFor, daysBetweenInclusive } from "@/lib/reports/dates";
 import { useEffect, useMemo, useState } from "react";
 import { getDb, query, registerParquet } from "@/lib/reports/duck";
 import type { FilterState } from "@/components/reports/FilterBar";
 import {
   ga4KpiSql,
-  ga4MaxDateSql,
   ga4ByChannelSql,
   ga4ByLandingPageSql,
   ga4ByGeoSql,
   ga4GeoKpiSql,
   ga4TrendSql,
   gscKpiSql,
-  gscMaxDateSql,
   gscQueryExplorerSql,
   gscPageExplorerSql,
   gscByDeviceSql,
@@ -33,40 +32,6 @@ import { SeriesChart } from "@/components/reports/SeriesChart";
 
 type SubTab = "ga4" | "gsc";
 
-function dateRangeFor(preset: FilterState["preset"]): { from: string; to: string } {
-  const now = new Date();
-  const iso = (d: Date) => d.toISOString().slice(0, 10);
-  const to = new Date(now);
-  const from = new Date(now);
-  switch (preset) {
-    case "yesterday":
-      from.setUTCDate(from.getUTCDate() - 1);
-      to.setUTCDate(to.getUTCDate() - 1);
-      break;
-    case "wtd": {
-      const day = (from.getUTCDay() + 6) % 7;
-      from.setUTCDate(from.getUTCDate() - day);
-      break;
-    }
-    case "mtd":
-      from.setUTCDate(1);
-      break;
-    case "last7":
-      from.setUTCDate(from.getUTCDate() - 6);
-      break;
-    case "last28":
-      from.setUTCDate(from.getUTCDate() - 27);
-      break;
-    case "mom":
-      from.setUTCMonth(from.getUTCMonth() - 1, 1);
-      to.setUTCDate(0);
-      break;
-    case "ytd":
-      from.setUTCMonth(0, 1);
-      break;
-  }
-  return { from: iso(from), to: iso(to) };
-}
 
 // 2026-08-22): a cell shows the number AND a badge. `partial` when SOME
 // input rows are unavailable_* and/or fewer distinct days came back than
@@ -83,11 +48,6 @@ type ConfMeta = {
   distinct_days: unknown;
 };
 
-function daysBetweenInclusive(from: string, to: string): number {
-  const a = new Date(`${from}T00:00:00Z`).getTime();
-  const b = new Date(`${to}T00:00:00Z`).getTime();
-  return Math.round((b - a) / 86400000) + 1;
-}
 
 // Trend rows are already grouped one-per-date, so distinct_days for the
 // trend header is just the row count; excluded/total and the worst rank
@@ -282,7 +242,6 @@ export function Organic({ filters }: { filters: FilterState }) {
   const [error, setError] = useState<string | null>(null);
 
   const [ga4Kpi, setGa4Kpi] = useState<Record<string, unknown> | null>(null);
-  const [ga4MaxDate, setGa4MaxDate] = useState<string | null>(null);
   const [ga4ByChannel, setGa4ByChannel] = useState<Record<string, unknown>[]>([]);
   const [ga4ByPage, setGa4ByPage] = useState<Record<string, unknown>[]>([]);
   const [ga4ByGeo, setGa4ByGeo] = useState<Record<string, unknown>[]>([]);
@@ -295,7 +254,6 @@ export function Organic({ filters }: { filters: FilterState }) {
   const [gscSiteAvailable, setGscSiteAvailable] = useState(false);
   const [gscSiteKpi, setGscSiteKpi] = useState<Record<string, unknown> | null>(null);
   const [gscSiteTrend, setGscSiteTrend] = useState<Record<string, unknown>[]>([]);
-  const [gscMaxDate, setGscMaxDate] = useState<string | null>(null);
   const [gscQueries, setGscQueries] = useState<Record<string, unknown>[]>([]);
   const [gscPages, setGscPages] = useState<Record<string, unknown>[]>([]);
   const [gscDevice, setGscDevice] = useState<Record<string, unknown>[]>([]);
@@ -327,9 +285,8 @@ export function Organic({ filters }: { filters: FilterState }) {
       let gscClicksForLog = 0;
       try {
         if (haveGa4Channel) {
-          const [kpi, maxD, byChannel, byPage, trend] = await Promise.all([
+          const [kpi, byChannel, byPage, trend] = await Promise.all([
             query(ga4KpiSql({ fromDate: from, toDate: to })),
-            query<{ max_date: string }>(ga4MaxDateSql()),
             query(ga4ByChannelSql({ fromDate: from, toDate: to })),
             query(ga4ByLandingPageSql({ fromDate: from, toDate: to })),
             query(ga4TrendSql()),
@@ -337,7 +294,6 @@ export function Organic({ filters }: { filters: FilterState }) {
           if (cancelled) return;
           setGa4Kpi(kpi[0] ?? null);
           ga4SessionsForLog = asNumber(kpi[0]?.sessions);
-          setGa4MaxDate(maxD[0]?.max_date ?? null);
           setGa4ByChannel(byChannel);
           setGa4ByPage(byPage);
           setGa4Trend(trend);
@@ -352,9 +308,8 @@ export function Organic({ filters }: { filters: FilterState }) {
           setGa4GeoKpi(geoKpi[0] ?? null);
         }
         if (haveGsc) {
-          const [kpi, maxD, queries, pages, device, country, trend] = await Promise.all([
+          const [kpi, queries, pages, device, country, trend] = await Promise.all([
             query(gscKpiSql({ fromDate: from, toDate: to })),
-            query<{ max_date: string }>(gscMaxDateSql()),
             query(gscQueryExplorerSql({ fromDate: from, toDate: to, filterText: queryFilter })),
             query(gscPageExplorerSql({ fromDate: from, toDate: to })),
             query(gscByDeviceSql({ fromDate: from, toDate: to })),
@@ -364,7 +319,6 @@ export function Organic({ filters }: { filters: FilterState }) {
           if (cancelled) return;
           setGscKpi(kpi[0] ?? null);
           gscClicksForLog = asNumber(kpi[0]?.clicks);
-          setGscMaxDate(maxD[0]?.max_date ?? null);
           setGscQueries(queries);
           setGscPages(pages);
           setGscDevice(device);
@@ -419,7 +373,7 @@ export function Organic({ filters }: { filters: FilterState }) {
 
   return (
     <div className="flex flex-col gap-3 text-[13px]">
-      <p className="text-[13px] text-muted-foreground">Website traffic and search for Northbeam. The market filter does not apply here, because organic data has no market.</p>
+      <p className="text-[13px] text-muted-foreground">Website traffic and search for Larkspur. The market filter does not apply here, because organic data has no market.</p>
 
       {error && <div className="text-[12px] text-[var(--crit)]">{error}</div>}
 

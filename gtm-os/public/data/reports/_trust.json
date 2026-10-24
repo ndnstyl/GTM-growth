@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-10-24T06:27:00",
+ "generated_at": "2026-10-25T06:27:00",
  "feeds": {
-  "callfloor/callfloor_connect_rate_lp_agent_daily": {
+  "callfloor/callfloor_connect_rate_crm_agent_daily": {
    "data_through": "2026-10-24",
    "status": "published",
    "registered": true,
@@ -13,7 +13,7 @@
    "settlement": null,
    "lens_read": false
   },
-  "callfloor/callfloor_connect_rate_lp_daily": {
+  "callfloor/callfloor_connect_rate_crm_daily": {
    "data_through": "2026-10-24",
    "status": "published",
    "registered": true,
@@ -34,6 +34,20 @@
    "review_cadence_days": 7,
    "holds": [],
    "skews": [],
+   "settlement": null,
+   "lens_read": false
+  },
+  "crm_spine__fact_funnel_daily": {
+   "data_through": "2026-10-24",
+   "status": "published",
+   "registered": true,
+   "verdict": "VERIFIED",
+   "verdict_date": "2026-10-24",
+   "review_cadence_days": 7,
+   "holds": [],
+   "skews": [
+    "the last two days restate as late data lands"
+   ],
    "settlement": null,
    "lens_read": false
   },
@@ -231,6 +245,48 @@
    "settlement": null,
    "lens_read": false
   },
+  "efficiency__daily": {
+   "data_through": "2026-10-24",
+   "status": "published",
+   "registered": true,
+   "verdict": "VERIFIED",
+   "verdict_date": "2026-10-24",
+   "review_cadence_days": 7,
+   "holds": [],
+   "skews": [],
+   "settlement": null,
+   "lens_read": false
+  },
+  "efficiency__monthly": {
+   "data_through": "2026-10-24",
+   "status": "published",
+   "registered": true,
+   "verdict": "VERIFIED",
+   "verdict_date": "2026-10-24",
+   "review_cadence_days": 7,
+   "holds": [],
+   "skews": [
+    "net lags: the most recent weeks are still inside the cancel window"
+   ],
+   "settlement": {
+    "pattern": "append_only",
+    "settlement_days": 40,
+    "reason": "cancel window"
+   },
+   "lens_read": false
+  },
+  "efficiency__tieout": {
+   "data_through": "2026-10-24",
+   "status": "published",
+   "registered": true,
+   "verdict": "VERIFIED",
+   "verdict_date": "2026-10-24",
+   "review_cadence_days": 7,
+   "holds": [],
+   "skews": [],
+   "settlement": null,
+   "lens_read": false
+  },
   "fact_ga4_channel_daily": {
    "data_through": "2026-10-24",
    "status": "published",
@@ -292,48 +348,6 @@
    "lens_read": false
   },
   "funnel__fact_funnel_daily": {
-   "data_through": "2026-10-24",
-   "status": "published",
-   "registered": true,
-   "verdict": "VERIFIED",
-   "verdict_date": "2026-10-24",
-   "review_cadence_days": 7,
-   "holds": [],
-   "skews": [],
-   "settlement": null,
-   "lens_read": false
-  },
-  "golden_rule__daily": {
-   "data_through": "2026-10-24",
-   "status": "published",
-   "registered": true,
-   "verdict": "VERIFIED",
-   "verdict_date": "2026-10-24",
-   "review_cadence_days": 7,
-   "holds": [],
-   "skews": [],
-   "settlement": null,
-   "lens_read": false
-  },
-  "golden_rule__monthly": {
-   "data_through": "2026-10-24",
-   "status": "published",
-   "registered": true,
-   "verdict": "VERIFIED",
-   "verdict_date": "2026-10-24",
-   "review_cadence_days": 7,
-   "holds": [],
-   "skews": [
-    "net lags: the most recent weeks are still inside the cancel window"
-   ],
-   "settlement": {
-    "pattern": "append_only",
-    "settlement_days": 40,
-    "reason": "cancel window"
-   },
-   "lens_read": false
-  },
-  "golden_rule__tieout": {
    "data_through": "2026-10-24",
    "status": "published",
    "registered": true,
@@ -468,20 +482,6 @@
    ],
    "settlement": null,
    "lens_read": true
-  },
-  "lp_spine__fact_funnel_daily": {
-   "data_through": "2026-10-24",
-   "status": "published",
-   "registered": true,
-   "verdict": "VERIFIED",
-   "verdict_date": "2026-10-24",
-   "review_cadence_days": 7,
-   "holds": [],
-   "skews": [
-    "the last two days restate as late data lands"
-   ],
-   "settlement": null,
-   "lens_read": false
   },
   "meta__dim_ad_set": {
    "data_through": "2026-10-24",

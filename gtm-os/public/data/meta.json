@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-24T06:30:00",
+ "built_at": "2026-10-25T06:30:00",
  "feeds": {
   "board": "ok",
   "kpi": "ok",
@@ -12,5 +12,5 @@
  "north_star_as_of": "2026-10-24",
  "queue_as_of": "2026-10-24",
  "queue_newest_delta": "2026-10-24",
- "today": "2026-10-24"
+ "today": "2026-10-25"
 }

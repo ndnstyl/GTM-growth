@@ -55,7 +55,7 @@ export function NavLink({ href, children, onNavigate, ...rest }: NavLinkProps) {
     navigate(href);
   };
   return (
-    <Link href={href} onClick={onClick} {...rest}>
+    <Link href={href} prefetch={false} onClick={onClick} {...rest}>
       {children}
     </Link>
   );
@@ -67,11 +67,14 @@ export function NavLink({ href, children, onNavigate, ...rest }: NavLinkProps) {
  * transform only; the first placement is instant, every later one glides.
  */
 export function useSlider<T extends HTMLElement>(dep: string) {
-  const box = useRef<T | null>(null);
-  const ind = useRef<HTMLSpanElement | null>(null);
+  const boxRef = useRef<T | null>(null);
+  const indRef = useRef<HTMLSpanElement | null>(null);
+  // Callback refs, so a caller can attach them in JSX without handing a ref object around during render.
+  const box = useCallback((el: T | null) => { boxRef.current = el; }, []);
+  const ind = useCallback((el: HTMLSpanElement | null) => { indRef.current = el; }, []);
   useLayoutEffect(() => {
-    const c = box.current;
-    const i = ind.current;
+    const c = boxRef.current;
+    const i = indRef.current;
     if (!c || !i) return;
     const place = () => {
       const a = c.querySelector<HTMLElement>('[data-on="true"]');

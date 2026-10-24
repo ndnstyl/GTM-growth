@@ -3,6 +3,8 @@
 /* Health tab: one honest line per feed, read from
    /data/reports/_health.json, which the scheduler rewrites after every wave.
    No number on this tab is computed in the browser; it shows the file. */
+import { dayLabel } from "@/lib/demo/metrics";
+
 
 export type HealthFeed = {
   name: string;
@@ -107,110 +109,6 @@ function ago(iso: string | null | undefined): string {
   return `${Math.round(h / 24)} d ago`;
 }
 
-const GOV_STATE_CLS: Record<string, string> = {
-  observe: "bg-muted text-foreground",
-  ok: "bg-[var(--good)]/15 text-[var(--good)]",
-  warn: "bg-[var(--warn)]/15 text-[var(--warn)]",
-  spent: "bg-[var(--warn)]/15 text-[var(--warn)]",
-  cooldown: "bg-[var(--warn)]/15 text-[var(--warn)]",
-  flagged: "bg-[var(--crit)]/15 text-[var(--crit)]",
-  registry_invalid: "bg-[var(--crit)]/15 text-[var(--crit)]",
-};
-
-function fmtCountdown(s: number | null | undefined): string {
-  if (s == null) return "";
-  if (s <= 0) return "expired";
-  const m = Math.round(s / 60);
-  if (m < 60) return `${m} min`;
-  const h = Math.round(m / 60);
-  return `${h} h`;
-}
-
-function GovernorPanel({ v }: { v: GovernorHealth }) {
-  const redRow = (r: GovernorVendorRow) =>
-    r.state === "registry_invalid" || !!r.chronic_spent;
-  // outage. Rendered amber once per row and counted once up top, so a red badge on this
-  // panel always means a real incident (registry invalid, chronic spend, flagged).
-  const awaitingRatify = v.vendors.filter((r) => !!r.ratification_overdue && r.mode === "observe");
-  return (
-    <div className="rounded-xl border border-border bg-card p-3">
-      <div className="mb-2 flex flex-wrap items-center gap-2 text-[12.5px] font-bold">
-        API rate governor ({v.vendors.length} vendor{v.vendors.length === 1 ? "" : "s"})
-        <span className="font-normal text-[10.5px] text-muted-foreground">
-          as of {ago(v.as_of)}{v.stale ? `: SNAPSHOT STALE (${fmtCountdown(v.stale_age_s)} old), showing counters directly` : ""}
-        </span>
-      </div>
-
-      {v.cooldown_state_corrupt && (
-        <div className="mb-2 rounded px-2 py-1 text-[11px] font-semibold bg-[var(--crit)]/15 text-[var(--crit)]">
-          COOLDOWN STATE CORRUPT: the shared cooldown file was quarantined
-          {v.cooldown_state_corrupt.quarantined_at ? ` at ${v.cooldown_state_corrupt.quarantined_at}` : ""},
-          so cross-process backoff memory was thrown away. This does not self-clear: check the
-          quarantined file, then delete state/cooldown_corrupt.json.
-        </div>
-      )}
-      {v.registry_invalid && (
-        <div className="mb-2 rounded px-2 py-1 text-[11px] font-semibold bg-[var(--crit)]/15 text-[var(--crit)]">
-          REGISTRY INVALID: running on the last-known-good cache{v.lkg_expiry_s != null ? ` (expires in ${fmtCountdown(v.lkg_expiry_s)})` : ""}.
-        </div>
-      )}
-      {v.fallback_note && (
-        <div className="mb-2 text-[10.5px] text-muted-foreground">{v.fallback_note}</div>
-      )}
-      {awaitingRatify.length > 0 && (
-        <div className="mb-2 rounded px-2 py-1 text-[11px] bg-[var(--warn)]/15 text-[var(--warn)]">
-          {awaitingRatify.length} vendor{awaitingRatify.length === 1 ? "" : "s"} past the 7-day observe baseline with no ratified ceiling. Until then the governor only counts; it refuses nothing.
-        </div>
-      )}
-      {v.unregistered.length > 0 && (
-        <div className="mb-2 text-[11px]">
-          <span className="font-semibold">unregistered vendors seen:</span> {v.unregistered.join(", ")}
-        </div>
-      )}
-
-      <div className="overflow-x-auto">
-        <table className="w-full text-[13px]">
-          <thead className="text-muted-foreground">
-            <tr>
-              <th className="text-left">vendor</th>
-              <th className="text-left">mode</th>
-              <th className="text-left">state</th>
-              <th className="text-right">used / ceiling</th>
-              <th className="text-left">resets</th>
-              <th className="text-left">top lane</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[...v.vendors].sort((a, b) => a.vendor.localeCompare(b.vendor)).map((r) => {
-              const ratify = !!r.ratification_overdue && r.mode === "observe" && !redRow(r);
-              const cls = redRow(r) ? GOV_STATE_CLS.registry_invalid
-                : ratify ? GOV_STATE_CLS.warn
-                : (GOV_STATE_CLS[r.state ?? ""] ?? "bg-muted text-foreground");
-              const pctTxt = r.pct != null ? ` (${Math.round(r.pct * 100)}%)` : "";
-              return (
-                <tr key={r.vendor} className="border-t border-border align-top">
-                  <td className="py-1 font-mono text-[11px]">{r.vendor}</td>
-                  <td className="py-1">{r.mode ?? "?"}</td>
-                  <td className="py-1">
-                    <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${cls}`}>
-                      {(redRow(r) ? `${r.state ?? "?"} !!` : ratify ? "RATIFY" : r.state ?? "?").toUpperCase()}
-                    </span>
-                  </td>
-                  <td className="py-1 text-right">
-                    {r.used ?? "?"} / {r.ceiling ?? "∞"}{pctTxt}
-                  </td>
-                  <td className="py-1">{r.resets_at ? String(r.resets_at).slice(0, 16) : ""}</td>
-                  <td className="py-1 text-muted-foreground">{r.top_lane ?? ""}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
 export function Health({ doc, jobs }: { doc: HealthDoc | null; jobs: JobHealthDoc | null }) {
   // A malformed or foreign file must degrade to a message, never crash the tab.
   if (doc && (!doc.summary || !Array.isArray(doc.feeds))) {
@@ -230,7 +128,7 @@ export function Health({ doc, jobs }: { doc: HealthDoc | null; jobs: JobHealthDo
     );
   }
   const prettyName = (n: string) => {
-  const t = n.replace(/^(?:com\.[a-z]+\.)/, "").replace(/^(?:dim|fact|dm|lp_spine|funnel|spine|meter|work|golden_rule|callfloor\/callfloor)_*/, "").replace(/^google_ads__/, "Google Ads ").replace(/^meta__/, "Meta ").replace(/^microsoft_ads__/, "Microsoft Ads ").replace(/[_\/-]+/g, " ").replace(/\bfact\b|\bdim\b/g, "").replace(/\s+/g, " ").trim();
+  const t = n.replace(/^(?:com\.[a-z]+\.)/, "").replace(/^(?:dim|fact|dm|crm_spine|funnel|spine|meter|work|efficiency|callfloor\/callfloor)_*/, "").replace(/^google_ads__/, "Google Ads ").replace(/^meta__/, "Meta ").replace(/^microsoft_ads__/, "Microsoft Ads ").replace(/[_\/-]+/g, " ").replace(/\bfact\b|\bdim\b/g, "").replace(/\s+/g, " ").trim();
   return t.charAt(0).toUpperCase() + t.slice(1);
 };
 const expected: Record<string, string> = { hourly: "every 15 minutes, today's data", nightly: "6:10 AM ET, after the 5:30 AM CRM refresh", weekly: "weekly" };
@@ -240,7 +138,7 @@ const expected: Record<string, string> = { hourly: "every 15 minutes, today's da
         <span className={`rounded px-2 py-1 text-[11px] font-bold ${STATE_CLS[doc.overall === "ok" ? "ok" : doc.overall === "stale" ? "stale" : "error"]}`}>
           {doc.overall === "ok" ? "All healthy" : doc.overall === "stale" ? "Some feeds late" : "A feed is down"}
         </span>
-        <span>Data as of <b>{doc.as_of ? new Date(doc.as_of).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "n/a"}</b></span>
+        <span>Data through <b>{doc.as_of ? dayLabel(doc.as_of) : "n/a"}</b></span>
         <span>Health checked <b>{ago(doc.generated_at)}</b></span>
         <span>
           {doc.summary.ok + doc.summary.stale + doc.summary.cooldown + doc.summary.error + doc.summary.missing} of {doc.feeds.length} feeds:

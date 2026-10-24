@@ -26,7 +26,7 @@ function localRuns(): LocalRun[] {
 function settle(r: LocalRun): LocalRun {
   if (r.status !== "running") return r;
   const started = Date.parse(r.started);
-  if (realNow() - started < r.dur_ms) return r;
+  if (Date.now() - started < r.dur_ms) return r;
   return {
     ...r,
     status: "succeeded",
@@ -51,7 +51,7 @@ function allRuns(seed: Run[] | null): Run[] {
 function startRun(type: "skill" | "loop", target: string, label: string): { run_id: string } {
   const run_id = "demo-" + realNow().toString(36) + "-" + Math.floor(Math.random() * 1000).toString(36);
   const run: LocalRun = {
-    run_id, type, target, label, started: new Date(realNow()).toISOString(), ended: null, status: "running",
+    run_id, type, target, label, started: new Date().toISOString(), ended: null, status: "running",
     detail: null, acknowledged: false, log_tail: null, dur_ms: RUN_MS, model: type === "skill" ? "demo" : undefined,
   };
   lsSet("runs", [run, ...localRuns()].slice(0, 30));

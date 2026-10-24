@@ -14,7 +14,6 @@ import { Need, needKey, visibleCount } from "@/lib/needs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { copyText } from "@/lib/clipboard";
-import { realNow } from "@/lib/demo/clock";
 import { useActiveInterval } from "@/lib/motion";
 
 function weekOfYear(d: Date) {
@@ -36,10 +35,10 @@ export function CalendarPanel({ needs, onCard }: { needs: Need[]; onCard: (c: Ca
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration-safe read: Date must not be read during the prerendered static export, only after mount.
-    setNow(new Date(realNow()));
+    setNow(new Date());
   }, []);
   // The clock ticks only while the demo is on screen, and re-syncs the moment it comes back.
-  useActiveInterval(() => setNow(new Date(realNow())), 1000, { catchUp: true });
+  useActiveInterval(() => setNow(new Date()), 1000, { catchUp: true });
 
   const doCopy = async (path: string) => {
     const ok = await copyText(path);

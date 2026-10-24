@@ -280,9 +280,6 @@ export function markersFor(
     out.push({ kind: "partial", reason: `spend partial: missing: ${missing.join(", ")}` });
   }
 
-  if (keys.includes("provisional_cost") && !state.cost_definition_ruled) {
-    out.push;
-  }
   if (keys.includes("method_note")) {
     for (const e of state.effective_dates ?? []) {
       out.push({

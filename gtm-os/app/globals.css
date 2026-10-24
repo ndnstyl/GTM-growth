@@ -269,3 +269,10 @@ html.g-paused *, html.g-paused *::before, html.g-paused *::after { animation-pla
 /* table rows answer the pointer */
 tbody tr { transition: background-color 120ms var(--ease-out); }
 tbody tr:hover { background-color: color-mix(in oklab, var(--secondary) 55%, transparent); }
+
+/* WCAG 2.2 target size (2.5.8): every button-like control is at least 24px tall, 32px for coarse pointers. */
+button, [role="button"], summary, select { min-height: 24px; }
+button:not(:empty), [role="button"] { min-width: 24px; }
+@media (pointer: coarse) {
+  button, [role="button"], summary, select { min-height: 32px; }
+}

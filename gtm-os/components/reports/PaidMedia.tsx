@@ -13,6 +13,7 @@
 // (blocked on Business Manager assignment; the agency-managed spend is invoice
 // grain only) so its sub-tab never renders a KPI strip of zeros.
 
+import { dateRangeFor, daysBetweenInclusive } from "@/lib/reports/dates";
 import { useEffect, useMemo, useState } from "react";
 import { query, registerParquet } from "@/lib/reports/duck";
 import type { FilterState } from "@/components/reports/FilterBar";
@@ -36,40 +37,6 @@ const PLATFORM_ID: Record<PlatformTab, string> = {
   microsoft: "microsoft_ads",
 };
 
-function dateRangeFor(preset: FilterState["preset"]): { from: string; to: string } {
-  const now = new Date();
-  const iso = (d: Date) => d.toISOString().slice(0, 10);
-  const to = new Date(now);
-  const from = new Date(now);
-  switch (preset) {
-    case "yesterday":
-      from.setUTCDate(from.getUTCDate() - 1);
-      to.setUTCDate(to.getUTCDate() - 1);
-      break;
-    case "wtd": {
-      const day = (from.getUTCDay() + 6) % 7;
-      from.setUTCDate(from.getUTCDate() - day);
-      break;
-    }
-    case "mtd":
-      from.setUTCDate(1);
-      break;
-    case "last7":
-      from.setUTCDate(from.getUTCDate() - 6);
-      break;
-    case "last28":
-      from.setUTCDate(from.getUTCDate() - 27);
-      break;
-    case "mom":
-      from.setUTCMonth(from.getUTCMonth() - 1, 1);
-      to.setUTCDate(0);
-      break;
-    case "ytd":
-      from.setUTCMonth(0, 1);
-      break;
-  }
-  return { from: iso(from), to: iso(to) };
-}
 
 // spend_date can arrive as a full ISO timestamp string (generate_series'
 // date arithmetic in trendSql yields TIMESTAMP even though the source
@@ -77,13 +44,6 @@ function dateRangeFor(preset: FilterState["preset"]): { from: string; to: string
 function asDate(v: unknown): string {
   return String(v ?? "").slice(0, 10);
 }
-
-const CONF_LABEL: Record<string, { label: string; tone: string }> = {
-  mapped: { label: "mapped", tone: "text-[var(--good)]" },
-  deterministic: { label: "deterministic", tone: "text-[var(--good)]" },
-  provisional: { label: "provisional", tone: "text-[var(--warn)]" },
-  unknown: { label: "unranked", tone: "text-muted-foreground" },
-};
 
 // Confidence + coverage state for one aggregated cell (data-contract.md
 // rulings): a cell with SOME unavailable_* rows, or fewer distinct days than
@@ -118,12 +78,6 @@ function valueOrUnavailable(conf: ConfState | undefined, rendered: string): stri
   return conf && conf.available_rows === 0 ? "unavailable" : rendered;
 }
 
-// Inclusive day count between two "YYYY-MM-DD" strings.
-function daysBetweenInclusive(from: string, to: string): number {
-  const a = new Date(`${from}T00:00:00Z`).getTime();
-  const b = new Date(`${to}T00:00:00Z`).getTime();
-  return Math.round((b - a) / 86400000) + 1;
-}
 
 function money(cents: unknown): string {
   return `$${(asNumber(cents) / 100).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
@@ -327,6 +281,7 @@ function PlatformPanel({
   // contract-view builder or any other tab.
   useEffect(() => {
     if (platformTab !== "google") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- clears the Google-only dimension tables when another platform tab opens.
       setDims({});
       setDimsResolved([]);
       return;

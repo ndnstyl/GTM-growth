@@ -1,5 +1,6 @@
 "use client";
 
+import { dayLabel } from "@/lib/demo/metrics";
 import { Manifest } from "@/lib/reports/duck";
 import type { TrustFile } from "@/lib/reports/workbench/markers";
 
@@ -16,7 +17,7 @@ export function FreshnessStrip({ manifest }: { manifest: Manifest | null; trust?
   const n = Object.keys(manifest.files).length;
   return (
     <p className="text-[13px] text-muted-foreground">
-      Data as of {fmt(manifest.as_of)} · {n} feeds loaded · sample data
+      Data through {dayLabel(manifest.as_of)}, refreshed {fmt(manifest.as_of)} · {n} feeds loaded · sample data
     </p>
   );
 }

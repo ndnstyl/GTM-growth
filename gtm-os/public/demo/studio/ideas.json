@@ -2,7 +2,7 @@
  "ideas": [
   {
    "id": "idea-01",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Why a free estimate is worth the hour",
    "hook": "Most people expect a sales trap; show the actual hour.",
    "angle": "myth-buster",
@@ -11,7 +11,7 @@
   },
   {
    "id": "idea-02",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "A roof you stop thinking about",
    "hook": "Slow reveal of a finished roof at golden hour.",
    "angle": "before-after",
@@ -20,7 +20,7 @@
   },
   {
    "id": "idea-03",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Three questions before you sign",
    "hook": "A checklist any homeowner can use with any contractor.",
    "angle": "explainer",
@@ -29,7 +29,7 @@
   },
   {
    "id": "idea-04",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "The crew lead explains day one",
    "hook": "A crew lead walks through prep, not paint.",
    "angle": "behind-the-install",
@@ -38,7 +38,7 @@
   },
   {
    "id": "idea-05",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "What a monthly payment really looks like",
    "hook": "A plain breakdown of a financed roof.",
    "angle": "financing",
@@ -47,7 +47,7 @@
   },
   {
    "id": "idea-06",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Windows you can hear the difference in",
    "hook": "A sound test at the front door.",
    "angle": "demo",
@@ -56,7 +56,7 @@
   },
   {
    "id": "idea-07",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Storm season checklist",
    "hook": "Five things to check from the ground.",
    "angle": "seasonal",
@@ -65,7 +65,7 @@
   },
   {
    "id": "idea-08",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Neighbors who picked us",
    "hook": "Two doors on one street, one story.",
    "angle": "testimonial",
@@ -74,7 +74,7 @@
   },
   {
    "id": "idea-09",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Gutters: the cheapest fix that saves the most",
    "hook": "Water damage cost against a gutter guard.",
    "angle": "myth-buster",
@@ -83,7 +83,7 @@
   },
   {
    "id": "idea-10",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "How we price a siding job",
    "hook": "Open the spreadsheet on camera.",
    "angle": "explainer",
@@ -92,7 +92,7 @@
   },
   {
    "id": "idea-11",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Same house, one week later",
    "hook": "A time-lapse before and after.",
    "angle": "before-after",
@@ -101,7 +101,7 @@
   },
   {
    "id": "idea-12",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "What the warranty actually covers",
    "hook": "Read the warranty line by line.",
    "angle": "explainer",
@@ -110,7 +110,7 @@
   },
   {
    "id": "idea-13",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "A day in the life of an estimator",
    "hook": "Ride along on three estimates.",
    "angle": "behind-the-install",
@@ -119,7 +119,7 @@
   },
   {
    "id": "idea-14",
-   "brand": "nb-pro",
+   "brand": "lh-pro",
    "title": "Pro program: the contractor's view",
    "hook": "Why trade partners send us work.",
    "angle": "trade",
@@ -128,7 +128,7 @@
   },
   {
    "id": "idea-15",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Curb appeal that buyers notice",
    "hook": "What buyers see from the street.",
    "angle": "seasonal",
@@ -137,7 +137,7 @@
   },
   {
    "id": "idea-16",
-   "brand": "nb-main",
+   "brand": "lh-main",
    "title": "Energy bills: where the heat leaves",
    "hook": "Thermal camera on an old window.",
    "angle": "demo",

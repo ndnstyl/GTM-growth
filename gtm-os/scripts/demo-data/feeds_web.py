@@ -25,7 +25,7 @@ DOMAIN = _site_from_code()
 SITE = f"sc-domain:{DOMAIN}"
 SITE_PRO = "sc-domain:example.org"  # a second, smaller site so the explorers prove they filter to one
 SITE_URL = f"https://www.{DOMAIN}"
-PROPERTY = "GA4-NB-0001"
+PROPERTY = "GA4-LH-0001"
 
 AS_OF = [("as_of", TS), ("confidence", S), ("provenance_ref", S)]
 
@@ -241,7 +241,7 @@ def write_callfloor(fw: FeedWriter, w: World) -> dict:
     if (a_conn.sum(axis=1) != ct).any() or (a_dials.sum(axis=1) != w.dials).any():
         raise ValueError("agent rows do not sum to the company dial and connect totals")
 
-    rows = {k: [] for k in ["source", "call_date", "lp_dials", "lp_dials_d", "lp_connects", "lp_connects_d", "lp_machine", "agents", "as_of"]}
+    rows = {k: [] for k in ["source", "call_date", "crm_dials", "crm_dials_d", "crm_connects", "crm_connects_d", "crm_machine", "agents", "as_of"]}
     tot_conn = a_conn.sum(axis=1)
     # (source, fraction of the ledger it sees, first day index it covers)
     pulls = [("ledger", 1.0, 0), ("cache45", 0.58, max(0, D - 45)), ("wide75", 0.74, max(0, D - 75)), ("wide150", 0.88, max(0, D - 150))]
@@ -253,18 +253,18 @@ def write_callfloor(fw: FeedWriter, w: World) -> dict:
             c_ = int(round(tot_conn[di] * frac))
             rows["source"].append(src)
             rows["call_date"].append(w.days[di].isoformat())
-            rows["lp_dials"].append(d_)
-            rows["lp_dials_d"].append(int(round(w.dials_d[di] * frac)))
-            rows["lp_connects"].append(c_)
-            rows["lp_connects_d"].append(int(round(w.connects_d[di] * frac)))
-            rows["lp_machine"].append(int(round(w.machine[di] * frac)))
+            rows["crm_dials"].append(d_)
+            rows["crm_dials_d"].append(int(round(w.dials_d[di] * frac)))
+            rows["crm_connects"].append(c_)
+            rows["crm_connects_d"].append(int(round(w.connects_d[di] * frac)))
+            rows["crm_machine"].append(int(round(w.machine[di] * frac)))
             rows["agents"].append(int(agents_n[di]))
             rows["as_of"].append(asof)
-    fw.write("callfloor/callfloor_connect_rate_lp_daily", table(rows, [
-        ("source", S), ("call_date", S), ("lp_dials", I64), ("lp_dials_d", I64), ("lp_connects", I64), ("lp_connects_d", I64),
-        ("lp_machine", I64), ("agents", I64), ("as_of", S)]))
+    fw.write("callfloor/callfloor_connect_rate_crm_daily", table(rows, [
+        ("source", S), ("call_date", S), ("crm_dials", I64), ("crm_dials_d", I64), ("crm_connects", I64), ("crm_connects_d", I64),
+        ("crm_machine", I64), ("agents", I64), ("as_of", S)]))
 
-    rows = {k: [] for k in ["agent_key", "agent_name_lp", "source", "call_date", "lp_dials", "lp_connects"]}
+    rows = {k: [] for k in ["agent_key", "agent_name_lp", "source", "call_date", "crm_dials", "crm_connects"]}
     for k, (key, name) in enumerate(R):
         days_on = np.nonzero(active[:, k])[0]
         for di in days_on:
@@ -272,8 +272,8 @@ def write_callfloor(fw: FeedWriter, w: World) -> dict:
             rows["agent_name_lp"].append(name)
             rows["source"].append("ledger")
             rows["call_date"].append(w.days[di].isoformat())
-            rows["lp_dials"].append(int(a_dials[di, k]))
-            rows["lp_connects"].append(int(a_conn[di, k]))
-    fw.write("callfloor/callfloor_connect_rate_lp_agent_daily", table(rows, [
-        ("agent_key", S), ("agent_name_lp", S), ("source", S), ("call_date", S), ("lp_dials", I64), ("lp_connects", I64)]))
+            rows["crm_dials"].append(int(a_dials[di, k]))
+            rows["crm_connects"].append(int(a_conn[di, k]))
+    fw.write("callfloor/callfloor_connect_rate_crm_agent_daily", table(rows, [
+        ("agent_key", S), ("agent_name_lp", S), ("source", S), ("call_date", S), ("crm_dials", I64), ("crm_connects", I64)]))
     return {"agents_n": agents_n, "connects_total": tot_conn, "roster": R, "a_dials": a_dials, "a_conn": a_conn, "active": active}

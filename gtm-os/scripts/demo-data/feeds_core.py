@@ -13,7 +13,7 @@ import numpy as np
 from common import iso, split_int, split_int_matrix, stream, ts
 from feedio import B, D32, F64, FeedWriter, I64, S, TS, table
 from world import (
-    ACCOUNTS, AGENCY, BRAND_LABEL, BRANDS, CHANNELS, COMPANIES, IN_HOUSE, MARKETS, MIDX, NB, NM, NS, PLATFORMS,
+    ACCOUNTS, AGENCY, BRAND_LABEL, BRANDS, CHANNELS, COMPANIES, IN_HOUSE, MARKETS, MIDX, LH, NM, NS, PLATFORMS,
     SOURCE_CODES, SOURCE_LABEL, SUBSOURCES, SUB_SOURCE, World,
 )
 
@@ -45,7 +45,7 @@ def write_dims(fw: FeedWriter, w: World, asof) -> None:
     n = len(plats)
     fw.write("dim_platform_account", table({
         "platform": [p for p, _ in plats], "account_id": [a[0] for _, a in plats], "display_name": [a[1] for _, a in plats],
-        "company_id": ["NBH"] * n, "reporting_tz": ["America/Chicago"] * n,
+        "company_id": ["LSH"] * n, "reporting_tz": ["America/Chicago"] * n,
         "managed_by": ["in-house", "in-house and agency", AGENCY], **_meta(n, asof, prov="register:accounts"),
     }, [("platform", S), ("account_id", S), ("display_name", S), ("company_id", S), ("reporting_tz", S), ("managed_by", S)] + AS_OF_COLS), manifest=True)
 
@@ -64,7 +64,7 @@ def write_dims(fw: FeedWriter, w: World, asof) -> None:
     n = len(MARKETS)
     fw.write("dim_market", table({
         "market_id": [m.id for m in MARKETS], "code": [m.id for m in MARKETS], "name": [m.name for m in MARKETS],
-        "company_id": ["NBH"] * n, "office_lat": [m.lat for m in MARKETS], "office_lng": [m.lng for m in MARKETS],
+        "company_id": ["LSH"] * n, "office_lat": [m.lat for m in MARKETS], "office_lng": [m.lng for m in MARKETS],
         "office_match_type": ["census_exact" if i % 3 != 2 else "zcta_centroid" for i in range(n)],
         "office_address": [m.address for m in MARKETS], "has_service_area_list": [True] * n, "is_fallout_bucket": [False] * n,
         **_meta(n, asof, prov="register:markets"),
@@ -436,7 +436,7 @@ def write_lead_zip(fw: FeedWriter, w: World, classes, asof) -> None:
             for si in range(NS):
                 src = SUBSOURCES[si][2]
                 pl = SUBSOURCES[si][5]
-                for bi in range(NB):
+                for bi in range(LH):
                     n = int(leads[di, mi, si, bi])
                     if n == 0:
                         continue
@@ -526,7 +526,7 @@ def write_funnel(fw: FeedWriter, w: World, asof) -> None:
         cols["net_cents"].extend((f["gross"][:, mi] - f["cancel_gross"][:, mi]).astype(np.int64).tolist())
     n = len(cols["date"])
     conf = ["deterministic"] * n
-    fw.write("lp_spine__fact_funnel_daily", table({
+    fw.write("crm_spine__fact_funnel_daily", table({
         **cols, "as_of": [asof] * n, "confidence": conf, "provenance_ref": ["crm:daily-spine"] * n,
     }, [("source_system", S), ("office_id", S), ("office", S), ("date", S), ("leads", I64), ("sets", I64), ("issues", I64),
         ("demos", I64), ("sales", I64), ("gross_cents", I64), ("net_cents", I64), ("rtc_cents", I64), ("turndown_cents", I64),

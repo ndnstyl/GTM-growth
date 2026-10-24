@@ -29,6 +29,7 @@ export function fmt(v: unknown, format: string): string {
   // fraction, so this is NOT the shared format.ts pct (which expects a
   // fraction): same unit as before this consolidation.
   if (format === "pct") return n.toFixed(2) + "%";
+  if (format === "multiple") return n.toFixed(1) + "x";
   return formatCount(n);
 }
 

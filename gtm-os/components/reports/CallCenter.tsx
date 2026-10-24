@@ -21,6 +21,8 @@ import {
   type CcPeriod,
 } from "@/lib/reports/sql/callcenter.sql";
 import { reportLog } from "@/lib/reports/log";
+import { Kpi } from "@/components/shell/Kpi";
+import { KpiKey, PRESET_TO_WIN, fmt, metrics, value, win } from "@/lib/demo/metrics";
 
 // The kiosk parked/stale branches this gated no longer exist in the component;
 // retire the test and this export together.
@@ -40,17 +42,17 @@ type FunnelRow = {
 };
 type OfficeRow = FunnelRow & { office_id: string; office_name: string };
 type DialsRow = {
-  source: string; lp_dials: number | null; lp_dials_d: number | null; lp_connects: number | null;
-  lp_connects_d: number | null; lp_machine: number | null; agents_peak: number | null;
+  source: string; crm_dials: number | null; crm_dials_d: number | null; crm_connects: number | null;
+  crm_connects_d: number | null; crm_machine: number | null; agents_peak: number | null;
   days_with_rows: number; first_date: string | null; last_date: string | null; as_of: string | null;
 };
 type DialsDay = {
-  call_date: string; lp_dials: number; lp_dials_d: number; lp_connects: number; lp_connects_d: number;
-  lp_machine: number; agents: number;
+  call_date: string; crm_dials: number; crm_dials_d: number; crm_connects: number; crm_connects_d: number;
+  crm_machine: number; agents: number;
 };
 
 type AgentRow = {
-  agent_key: string; agent_name: string | null; lp_dials: number | null; lp_connects: number | null;
+  agent_key: string; agent_name: string | null; crm_dials: number | null; crm_connects: number | null;
   days_with_rows: number; last_date: string | null;
 };
 
@@ -61,10 +63,9 @@ const money = moneyCents;
 const ratio = (n: number | null | undefined, d: number | null | undefined) =>
   n == null || !d ? UNAVAILABLE : fmtPct(n / d);
 const day = (v: string | null | undefined) => (v ? String(v).slice(0, 10) : "unknown");
-const stamp = (v: string | null | undefined) => (v ? String(v).replace("T", " ").slice(0, 16) : "unknown");
 
-export function CallCenter() {
-  const [period, setPeriod] = useState<CcPeriod>("mtd");
+export function CallCenter({ preset = "mtd" }: { preset?: CcPeriod }) {
+  const period: CcPeriod = preset;
   const [feeds, setFeeds] = useState<Feeds | null>(null);
   const [company, setCompany] = useState<FunnelRow | null>(null);
   const [offices, setOffices] = useState<OfficeRow[]>([]);
@@ -73,7 +74,7 @@ export function CallCenter() {
   const [error, setError] = useState<string | null>(null);
   const [officeSort, setOfficeSort] = useState<{ key: keyof OfficeRow; dir: 1 | -1 }>({ key: "gross_cents", dir: 1 });
   const [agents, setAgents] = useState<AgentRow[]>([]);
-  const [agentSort, setAgentSort] = useState<{ key: keyof AgentRow; dir: 1 | -1 }>({ key: "lp_dials", dir: 1 });
+  const [agentSort, setAgentSort] = useState<{ key: keyof AgentRow; dir: 1 | -1 }>({ key: "crm_dials", dir: 1 });
 
   useEffect(() => {
     let cancelled = false;
@@ -106,13 +107,13 @@ export function CallCenter() {
         }
         if (connect) {
           const d = await query<DialsRow>(ccDialsBySourceSql(period));
-          const dd = await query<DialsDay>(ccDialsDailySql(CC_HEADLINE_SOURCE));
+          const dd = await query<DialsDay>(ccDialsDailySql(CC_HEADLINE_SOURCE, period));
           if (cancelled) return;
           setDials(d);
           setDialsDaily(dd);
           const h = d.find((r) => r.source === CC_HEADLINE_SOURCE);
           reportLog.info(
-            `[reports] callcenter ${period} dials(${CC_HEADLINE_SOURCE})=${h?.lp_dials ?? "null"} connects=${h?.lp_connects ?? "null"} through=${h?.last_date ?? "none"}`
+            `[reports] callcenter ${period} dials(${CC_HEADLINE_SOURCE})=${h?.crm_dials ?? "null"} connects=${h?.crm_connects ?? "null"} through=${h?.last_date ?? "none"}`
           );
         } else {
           setDials([]);
@@ -140,28 +141,13 @@ export function CallCenter() {
 
   const funnelAvailable = (feeds.spine || feeds.today) && company != null && company.rows > 0;
   const headline = dials.find((r) => r.source === CC_HEADLINE_SOURCE) ?? dials[0] ?? null;
-  const label = period === "today" ? "today" : "MTD";
+  const wd = win(PRESET_TO_WIN[period] ?? "mtd");
+  const wk = PRESET_TO_WIN[period] ?? "mtd";
+  const label = wd.label.toLowerCase();
   const c = company;
 
-  // Coverage text per tile: its own day count and the last date it covers.
-  const funnelCov = c
-    ? period === "today"
-      ? `${c.days_with_rows ? day(c.last_date) : "no row for today yet"}${c.provisional_rows ? ", provisional (CRM open day)" : ""}`
-      : `${c.days_with_rows} of ${c.days_elapsed ?? "?"} days, through ${day(c.last_date)}${c.provisional_rows ? `, ${c.provisional_rows} provisional row(s)` : ""}`
-    : "no funnel rows";
-  const cancelCov = c
-    ? period === "today"
-      ? c.days_with_cancel_record ? day(c.last_date) : "no cancel record for today (CRM open day)"
-      : `${c.days_with_cancel_record} of ${c.days_with_rows} days carry a cancel record`
-    : "no funnel rows";
-  const dialsCov = headline
-    ? period === "today"
-      ? headline.days_with_rows ? `${day(headline.last_date)}, ${headline.source} pull` : "no dial rows for today yet"
-      : `${headline.days_with_rows} days, through ${day(headline.last_date)}, ${headline.source} pull`
-    : "no dial rows";
-
   const agentCols: [keyof AgentRow, string][] = [
-    ["agent_name", "Rep"], ["lp_dials", "Dials"], ["lp_connects", "Connects"], ["days_with_rows", "Days"], ["last_date", "Through"],
+    ["agent_name", "Rep"], ["crm_dials", "Dials"], ["crm_connects", "Connects"], ["days_with_rows", "Days"], ["last_date", "Through"],
   ];
   const sortedAgents = [...agents].sort((x, y) => {
     const a = x[agentSort.key]; const b = y[agentSort.key];
@@ -169,8 +155,10 @@ export function CallCenter() {
     return (a < b ? -1 : a > b ? 1 : 0) * -agentSort.dir;
   });
   const sortedOffices = [...offices].sort((x, y) => {
-    const a = (x[officeSort.key] as number | null) ?? -1e18;
-    const b = (y[officeSort.key] as number | null) ?? -1e18;
+    const av = x[officeSort.key]; const bv = y[officeSort.key];
+    if (typeof av === "string" || typeof bv === "string") return -officeSort.dir * String(av ?? "").localeCompare(String(bv ?? ""));
+    const a = (av as number | null) ?? -1e18;
+    const b = (bv as number | null) ?? -1e18;
     return officeSort.dir * (b - a);
   });
   const officeCols: [keyof OfficeRow, string][] = [
@@ -180,23 +168,13 @@ export function CallCenter() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap gap-2">
-        {(["today", "mtd"] as CcPeriod[]).map((p) => (
-          <Chip key={p} on={period === p} onClick={() => setPeriod(p)}>
-            {p === "today" ? "Today" : "Month to date"}
-          </Chip>
-        ))}
-      </div>
-
       {!funnelAvailable && (
         <Missing
           what={`CRM funnel rows for ${label}`}
           why={
             !feeds.spine && !feeds.today
-              ? "neither lp_spine__fact_funnel_daily nor funnel__fact_funnel_daily registered (file absent at /data/reports/)"
-              : period === "today"
-              ? "the today file (funnel__fact_funnel_daily) has not published today's row yet; the next refresh writes it"
-              : "the data file carries no rows for this month"
+              ? "the funnel data did not load"
+              : "the data file carries no rows for this window"
           }
           owner="Reporting"
           byWhen="next wave run"
@@ -204,12 +182,10 @@ export function CallCenter() {
       )}
 
       <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
-        <Tile label="Gross revenue" value={c ? money(c.gross_cents) : UNAVAILABLE} sub={label === "MTD" ? "month to date" : "today"} />
-        <Tile label="Net revenue" value={c ? money(c.net_cents) : UNAVAILABLE} sub="gross minus cancels, counted in the cancel month" />
-        <Tile label="Leads" value={c ? num(c.leads) : UNAVAILABLE} sub={`${c ? num(c.sets) : UNAVAILABLE} became appointments`} />
-        <Tile label="Appointments issued" value={c ? num(c.issues) : UNAVAILABLE} sub="handed to a rep" />
-        <Tile label="Sales" value={c ? num(c.sales) : UNAVAILABLE} sub={`${c ? num(c.cancels) : UNAVAILABLE} cancels in the period`} />
-        <Tile label="Close rate" value={c ? ratio(c.sales, c.issues) : UNAVAILABLE} sub="sales ÷ issued appointments" />
+        {(["gross_revenue", "net_revenue", "leads", "issued", "sales", "close_rate"] as KpiKey[]).map((k) => (
+          <Kpi key={k} kpi={k} win={wk} label={metrics.kpis[k].label} value={fmt(k, value(wk, k))}
+            note={k === "net_revenue" ? "gross minus cancels" : k === "issued" ? "handed to a rep" : k === "close_rate" ? "sales ÷ issued appointments" : wd.label} />
+        ))}
       </div>
 
       {!headline && (
@@ -218,7 +194,7 @@ export function CallCenter() {
           why={
             feeds.connect
               ? "the connect feed has no rows in this window"
-              : "callfloor_connect_rate_lp_daily.parquet not registered (file absent at /data/reports/callfloor/)"
+              : "callfloor_connect_rate_crm_daily.parquet not registered (file absent at /data/reports/callfloor/)"
           }
           owner="Reporting"
           byWhen="next export run"
@@ -226,14 +202,13 @@ export function CallCenter() {
       )}
 
       <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-5">
-        <Tile label="Dials" value={headline ? num(headline.lp_dials) : UNAVAILABLE} sub="from the CRM's call log" />
-        <Tile label="Connects" value={headline ? num(headline.lp_connects) : UNAVAILABLE} sub={`${headline ? num(headline.lp_machine) : UNAVAILABLE} more reached a machine`} />
-        <Tile label="Connect rate" value={headline ? ratio(headline.lp_connects, headline.lp_dials) : UNAVAILABLE} sub="connects ÷ dials" />
-        <Tile label="Set rate" value={c && headline ? ratio(c.sets, headline.lp_connects) : UNAVAILABLE} sub="appointments set ÷ connects" />
-        <Tile label="Dials per set" value={c && headline && c.sets && headline.lp_dials != null ? (headline.lp_dials / c.sets).toFixed(1) : UNAVAILABLE} sub={`${headline ? num(headline.agents_peak) : UNAVAILABLE} reps dialing on the busiest day`} />
+        {(["dials", "connects", "connect_rate", "set_rate", "dials_per_set"] as KpiKey[]).map((k) => (
+          <Kpi key={k} kpi={k} win={wk} label={metrics.kpis[k].label} value={fmt(k, value(wk, k))}
+            note={k === "dials" ? "from the CRM's call log" : k === "connects" ? `${headline ? num(headline.crm_machine) : "n/a"} more reached a machine` : k === "connect_rate" ? "connects ÷ dials" : k === "set_rate" ? "appointments set ÷ leads" : "dials ÷ appointments set"} />
+        ))}
       </div>
 
-      <Panel title="Dials and connects by day" sub="month to date">
+      <Panel title="Dials and connects by day" sub={wd.label}>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-right text-[13px] tabular-nums">
             <thead>
@@ -247,10 +222,10 @@ export function CallCenter() {
               {dialsDaily.map((r) => (
                 <tr key={r.call_date} className="border-b border-border">
                   <td className="whitespace-nowrap px-2.5 py-1.5 text-left">{day(r.call_date)}</td>
-                  <td className="px-2.5 py-1.5">{num(r.lp_dials)}</td>
-                  <td className="px-2.5 py-1.5">{num(r.lp_connects)}</td>
-                  <td className="px-2.5 py-1.5">{num(r.lp_machine)}</td>
-                  <td className="px-2.5 py-1.5">{ratio(r.lp_connects, r.lp_dials)}</td>
+                  <td className="px-2.5 py-1.5">{num(r.crm_dials)}</td>
+                  <td className="px-2.5 py-1.5">{num(r.crm_connects)}</td>
+                  <td className="px-2.5 py-1.5">{num(r.crm_machine)}</td>
+                  <td className="px-2.5 py-1.5">{ratio(r.crm_connects, r.crm_dials)}</td>
                   <td className="px-2.5 py-1.5">{num(r.agents)}</td>
                 </tr>
               ))}
@@ -273,7 +248,7 @@ export function CallCenter() {
                     aria-sort={officeSort.key === k ? (officeSort.dir > 0 ? "descending" : "ascending") : "none"}
                     className={`whitespace-nowrap px-2.5 py-1.5 text-[12px] font-semibold text-[var(--ink2)] first:text-left ${officeSort.key === k ? "text-primary" : ""}`}
                   >
-                    <button type="button" className="font-semibold hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary" onClick={() => setOfficeSort((s) => (s.key === k ? { key: k, dir: (s.dir * -1) as 1 | -1 } : { key: k, dir: 1 }))}>
+                    <button type="button" className="min-h-6 font-semibold hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary" onClick={() => setOfficeSort((s) => (s.key === k ? { key: k, dir: (s.dir * -1) as 1 | -1 } : { key: k, dir: 1 }))}>
                       {l}{officeSort.key === k ? (officeSort.dir > 0 ? " ↓" : " ↑") : ""}
                     </button>
                   </th>
@@ -312,7 +287,7 @@ export function CallCenter() {
         {!feeds.agents ? (
           <Missing
             what={`Dials and connects by rep for ${label}`}
-            why="callfloor_connect_rate_lp_agent_daily.parquet not registered (file absent at /data/reports/callfloor/)"
+            why="callfloor_connect_rate_crm_agent_daily.parquet not registered (file absent at /data/reports/callfloor/)"
             owner="Reporting"
             byWhen="next export run"
           />
@@ -327,7 +302,7 @@ export function CallCenter() {
                       aria-sort={agentSort.key === k ? (agentSort.dir > 0 ? "descending" : "ascending") : "none"}
                       className={`whitespace-nowrap px-2.5 py-1.5 text-[12px] font-semibold text-[var(--ink2)] first:text-left ${agentSort.key === k ? "text-primary" : ""}`}
                     >
-                      <button type="button" className="font-semibold hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary" onClick={() => setAgentSort((st) => (st.key === k ? { key: k, dir: (st.dir * -1) as 1 | -1 } : { key: k, dir: 1 }))}>
+                      <button type="button" className="min-h-6 font-semibold hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary" onClick={() => setAgentSort((st) => (st.key === k ? { key: k, dir: (st.dir * -1) as 1 | -1 } : { key: k, dir: 1 }))}>
                         {l}{agentSort.key === k ? (agentSort.dir > 0 ? " ↓" : " ↑") : ""}
                       </button>
                     </th>
@@ -339,11 +314,11 @@ export function CallCenter() {
                 {sortedAgents.map((a) => (
                   <tr key={a.agent_key} className="border-b border-border">
                     <td className="whitespace-nowrap px-2.5 py-1.5 text-left">{a.agent_name ?? a.agent_key}</td>
-                    <td className="px-2.5 py-1.5">{num(a.lp_dials)}</td>
-                    <td className="px-2.5 py-1.5">{num(a.lp_connects)}</td>
+                    <td className="px-2.5 py-1.5">{num(a.crm_dials)}</td>
+                    <td className="px-2.5 py-1.5">{num(a.crm_connects)}</td>
                     <td className="px-2.5 py-1.5">{num(a.days_with_rows)}</td>
                     <td className="whitespace-nowrap px-2.5 py-1.5">{day(a.last_date)}</td>
-                    <td className="px-2.5 py-1.5">{ratio(a.lp_connects, a.lp_dials)}</td>
+                    <td className="px-2.5 py-1.5">{ratio(a.crm_connects, a.crm_dials)}</td>
                   </tr>
                 ))}
                 {sortedAgents.length === 0 && (
@@ -370,7 +345,7 @@ function Panel({ title, sub, children }: { title: string; sub?: string; children
   return (
     <div className="rounded-xl border border-border bg-card p-3.5 px-4">
       <div className="mb-2 flex items-baseline gap-2.5">
-        <h3 className="text-[13px] font-semibold text-foreground">{title}</h3>
+        <h2 className="text-[13px] font-semibold text-foreground">{title}</h2>
         {sub && <span className="ml-auto text-[11.5px] font-normal normal-case text-muted-foreground">{sub}</span>}
       </div>
       {children}
@@ -378,25 +353,3 @@ function Panel({ title, sub, children }: { title: string; sub?: string; children
   );
 }
 
-function Chip({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`rounded-full border border-border px-3.5 py-1 text-[12.5px] ${
-        on ? "bg-primary font-semibold text-primary-foreground" : "bg-card text-[var(--ink2)]"
-      }`}
-    >
-      {children}
-    </button>
-  );
-}
-
-function Tile({ label, value, sub }: { label: string; value: string; sub: string }) {
-  return (
-    <div className="rounded-xl border border-border bg-card p-2.5 px-3.5">
-      <div className="text-[12px] text-[var(--ink2)]">{label}</div>
-      <div className="text-[20px] font-bold">{value || UNAVAILABLE}</div>
-      <div className="min-h-[32px] text-[12px] text-muted-foreground">{sub}</div>
-    </div>
-  );
-}

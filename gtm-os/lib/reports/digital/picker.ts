@@ -20,7 +20,7 @@ export const PICKER_GROUPS: PickerGroup[] = [
     label: "Money chain",
     metrics: [
       { key: "spend", label: "Spend", format: "dollars", kind: "sum" },
-      { key: "nsli", label: "Net revenue per issued appointment (net revenue per net issued)", format: "dollars", kind: "ratio" },
+      { key: "net_basis", label: "Net revenue per issued appointment (net revenue per net issued)", format: "dollars", kind: "ratio" },
       { key: "marketing_cost_pct", label: "Marketing cost percent of Net revenue per issued appointment", format: "pct", kind: "ratio" },
       { key: "cost_per_lead", label: "Cost per lead", format: "dollars", kind: "ratio" },
       { key: "cost_per_set", label: "Cost per set", format: "dollars", kind: "ratio" },

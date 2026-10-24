@@ -1,5 +1,5 @@
 {
- "today_date": "2026-10-24",
+ "today_date": "2026-10-25",
  "today": [],
  "live": [
   {
@@ -12,14 +12,14 @@
    "owner": "Marketing lead",
    "phones": "Morning call volume runs high after evening spots.",
    "exec": "Four-week flight, one week dark after.",
-   "lp_subsource": "Regional TV",
+   "crm_subsource": "Regional TV",
    "tracking": {
     "status": "ok",
     "owner": "Media buyer",
     "note": "call tracking number rotates by flight",
     "due": "2026-11-15"
    },
-   "days_left": 22
+   "days_left": 21
   },
   {
    "id": "tv-pinecrest",
@@ -31,14 +31,14 @@
    "owner": "Marketing lead",
    "phones": "Morning call volume runs high after evening spots.",
    "exec": "Four-week flight, one week dark after.",
-   "lp_subsource": "Regional TV",
+   "crm_subsource": "Regional TV",
    "tracking": {
     "status": "ok",
     "owner": "Media buyer",
     "note": "call tracking number rotates by flight",
     "due": "2026-11-15"
    },
-   "days_left": 22
+   "days_left": 21
   },
   {
    "id": "tv-stonebridge",
@@ -50,14 +50,14 @@
    "owner": "Marketing lead",
    "phones": "Morning call volume runs high after evening spots.",
    "exec": "Four-week flight, one week dark after.",
-   "lp_subsource": "Regional TV",
+   "crm_subsource": "Regional TV",
    "tracking": {
     "status": "ok",
     "owner": "Media buyer",
     "note": "call tracking number rotates by flight",
     "due": "2026-11-15"
    },
-   "days_left": 22
+   "days_left": 21
   },
   {
    "id": "tv-sunvale",
@@ -69,31 +69,31 @@
    "owner": "Marketing lead",
    "phones": "Morning call volume runs high after evening spots.",
    "exec": "Four-week flight, one week dark after.",
-   "lp_subsource": "Regional TV",
+   "crm_subsource": "Regional TV",
    "tracking": {
     "status": "ok",
     "owner": "Media buyer",
     "note": "call tracking number rotates by flight",
     "due": "2026-11-15"
    },
-   "days_left": 22
+   "days_left": 21
   },
   {
    "id": "billboard-hrb",
    "channel": "billboard",
    "label": "Billboard, Harborview north corridor",
    "market": "Harborview",
-   "start": "2026-10-03",
-   "end": "2026-12-02",
+   "start": "2026-10-04",
+   "end": "2026-12-03",
    "owner": "Media buyer",
    "phones": "Steady background calls; no spike.",
    "exec": "Sixty-day flight.",
-   "lp_subsource": "Billboard",
+   "crm_subsource": "Billboard",
    "tracking": {
     "status": "ok",
     "owner": "Media buyer",
     "note": "vanity URL and QR on the board",
-    "due": "2026-12-02"
+    "due": "2026-12-03"
    },
    "days_left": 39
   },
@@ -102,17 +102,17 @@
    "channel": "video",
    "label": "Streaming video, all markets",
    "market": null,
-   "start": "2026-10-15",
-   "end": "2026-11-12",
+   "start": "2026-10-16",
+   "end": "2026-11-13",
    "owner": "Marketing lead",
    "phones": "Lifts branded search two days later.",
    "exec": "Awareness flight tied to the TV markets.",
-   "lp_subsource": "Streaming video",
+   "crm_subsource": "Streaming video",
    "tracking": {
     "status": "needs_fix",
     "owner": "Media buyer",
     "note": "tracked link missing on one creative",
-    "due": "2026-10-26"
+    "due": "2026-10-27"
    },
    "days_left": 19
   }
@@ -184,7 +184,7 @@
    "label": "New reel set goes live, test 1",
    "channel": "social",
    "market": "All markets",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "time": "09:00",
    "end_time": null,
    "window_end": null,
@@ -199,28 +199,13 @@
    "label": "Billboard creative swap, Harborview",
    "channel": "billboard",
    "market": "Harborview",
-   "date": "2026-10-30",
+   "date": "2026-10-31",
    "time": null,
    "end_time": null,
    "window_end": null,
    "priority": "normal",
    "owner": "Media buyer",
    "phones": "Same phone number; no change to routing.",
-   "source": "registry"
-  },
-  {
-   "initiative": "show-harborview",
-   "initiative_label": "Home show, Harborview",
-   "label": "Home show weekend, Harborview",
-   "channel": "events",
-   "market": "Harborview",
-   "date": "2026-10-31",
-   "time": "10:00",
-   "end_time": "18:00",
-   "window_end": "2026-11-01",
-   "priority": "high",
-   "owner": "Events manager",
-   "phones": "Booth leads sync to the call list Monday morning.",
    "source": "registry"
   },
   {
@@ -274,7 +259,7 @@
    "label": "Magazine issue lands, November",
    "channel": "magazine",
    "market": "Pinecrest",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "time": null,
    "end_time": null,
    "window_end": null,
@@ -284,12 +269,27 @@
    "source": "registry"
   },
   {
+   "initiative": "show-harborview",
+   "initiative_label": "Home show, Harborview",
+   "label": "Home show weekend, Harborview",
+   "channel": "events",
+   "market": "Harborview",
+   "date": "2026-11-07",
+   "time": "10:00",
+   "end_time": "18:00",
+   "window_end": "2026-11-08",
+   "priority": "high",
+   "owner": "Events manager",
+   "phones": "Booth leads sync to the call list Monday morning.",
+   "source": "registry"
+  },
+  {
    "initiative": "social-test",
    "initiative_label": "Social creative test",
    "label": "New reel set goes live, test 2",
    "channel": "social",
    "market": "All markets",
-   "date": "2026-11-07",
+   "date": "2026-11-08",
    "time": "09:00",
    "end_time": null,
    "window_end": null,
@@ -681,7 +681,7 @@
    "label": "New reel set goes live, test 1",
    "channel": "social",
    "market": "All markets",
-   "date": "2026-10-28",
+   "date": "2026-10-29",
    "time": "09:00",
    "end_time": null,
    "window_end": null,
@@ -696,28 +696,13 @@
    "label": "Billboard creative swap, Harborview",
    "channel": "billboard",
    "market": "Harborview",
-   "date": "2026-10-30",
+   "date": "2026-10-31",
    "time": null,
    "end_time": null,
    "window_end": null,
    "priority": "normal",
    "owner": "Media buyer",
    "phones": "Same phone number; no change to routing.",
-   "source": "registry"
-  },
-  {
-   "initiative": "show-harborview",
-   "initiative_label": "Home show, Harborview",
-   "label": "Home show weekend, Harborview",
-   "channel": "events",
-   "market": "Harborview",
-   "date": "2026-10-31",
-   "time": "10:00",
-   "end_time": "18:00",
-   "window_end": "2026-11-01",
-   "priority": "high",
-   "owner": "Events manager",
-   "phones": "Booth leads sync to the call list Monday morning.",
    "source": "registry"
   },
   {
@@ -771,7 +756,7 @@
    "label": "Magazine issue lands, November",
    "channel": "magazine",
    "market": "Pinecrest",
-   "date": "2026-11-04",
+   "date": "2026-11-05",
    "time": null,
    "end_time": null,
    "window_end": null,
@@ -781,12 +766,27 @@
    "source": "registry"
   },
   {
+   "initiative": "show-harborview",
+   "initiative_label": "Home show, Harborview",
+   "label": "Home show weekend, Harborview",
+   "channel": "events",
+   "market": "Harborview",
+   "date": "2026-11-07",
+   "time": "10:00",
+   "end_time": "18:00",
+   "window_end": "2026-11-08",
+   "priority": "high",
+   "owner": "Events manager",
+   "phones": "Booth leads sync to the call list Monday morning.",
+   "source": "registry"
+  },
+  {
    "initiative": "social-test",
    "initiative_label": "Social creative test",
    "label": "New reel set goes live, test 2",
    "channel": "social",
    "market": "All markets",
-   "date": "2026-11-07",
+   "date": "2026-11-08",
    "time": "09:00",
    "end_time": null,
    "window_end": null,
@@ -856,21 +856,6 @@
    "source": "registry"
   },
   {
-   "initiative": "social-test",
-   "initiative_label": "Social creative test",
-   "label": "New reel set goes live, test 3",
-   "channel": "social",
-   "market": "All markets",
-   "date": "2026-11-17",
-   "time": "09:00",
-   "end_time": null,
-   "window_end": null,
-   "priority": "normal",
-   "owner": "Content lead",
-   "phones": "Watch set rate on the weekend for the first 48 hours.",
-   "source": "registry"
-  },
-  {
    "initiative": "mail-harborview",
    "initiative_label": "Direct mail, Harborview",
    "label": "Mailer drop: fall offer, Harborview",
@@ -916,18 +901,18 @@
    "source": "registry"
   },
   {
-   "initiative": "show-stonebridge",
-   "initiative_label": "Home show, Stonebridge",
-   "label": "Home show weekend, Stonebridge",
-   "channel": "events",
-   "market": "Stonebridge",
-   "date": "2026-11-21",
-   "time": "10:00",
-   "end_time": "18:00",
-   "window_end": "2026-11-22",
-   "priority": "high",
-   "owner": "Events manager",
-   "phones": "Booth leads sync to the call list Monday morning.",
+   "initiative": "social-test",
+   "initiative_label": "Social creative test",
+   "label": "New reel set goes live, test 3",
+   "channel": "social",
+   "market": "All markets",
+   "date": "2026-11-18",
+   "time": "09:00",
+   "end_time": null,
+   "window_end": null,
+   "priority": "normal",
+   "owner": "Content lead",
+   "phones": "Watch set rate on the weekend for the first 48 hours.",
    "source": "registry"
   },
   {
@@ -1048,6 +1033,21 @@
    "priority": "normal",
    "owner": "Media buyer",
    "phones": "Expect calls up about 20 percent in Sunvale from day three after the drop; staff the afternoon shift.",
+   "source": "registry"
+  },
+  {
+   "initiative": "show-stonebridge",
+   "initiative_label": "Home show, Stonebridge",
+   "label": "Home show weekend, Stonebridge",
+   "channel": "events",
+   "market": "Stonebridge",
+   "date": "2026-11-28",
+   "time": "10:00",
+   "end_time": "18:00",
+   "window_end": "2026-11-29",
+   "priority": "high",
+   "owner": "Events manager",
+   "phones": "Booth leads sync to the call list Monday morning.",
    "source": "registry"
   },
   {
@@ -1204,7 +1204,7 @@
  "cover_today": null,
  "next_cover": null,
  "quiet_today": {
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "why": "no mail, TV or show placement lands today"
  },
  "volume_week": {
@@ -1218,7 +1218,7 @@
    "id": "oi-1",
    "label": "Confirm the tracked link on the streaming creative",
    "owner": "Media buyer",
-   "due": "2026-10-26",
+   "due": "2026-10-27",
    "status": "open",
    "initiative": "video-streaming",
    "initiative_label": "Streaming video",
@@ -1229,7 +1229,7 @@
    "id": "oi-2",
    "label": "Send the November mail list to the vendor",
    "owner": "Marketing lead",
-   "due": "2026-10-23",
+   "due": "2026-10-24",
    "status": "open",
    "initiative": "mail-harborview",
    "initiative_label": "Direct mail, Harborview",
@@ -1240,7 +1240,7 @@
    "id": "oi-3",
    "label": "Staff the Saturday home show booth",
    "owner": "Events manager",
-   "due": "2026-10-27",
+   "due": "2026-10-28",
    "status": "in_progress",
    "initiative": "show-stonebridge",
    "initiative_label": "Home show, Stonebridge",
@@ -1259,7 +1259,7 @@
   "upcoming14": 12,
   "open_items": 3
  },
- "as_of": "2026-10-24T06:30:00",
- "registry_updated": "2026-10-22",
+ "as_of": "2026-10-25T06:30:00",
+ "registry_updated": "2026-10-23",
  "registry": "demo media calendar"
 }

@@ -22,7 +22,7 @@ export type Measure = {
   // trailing-twelve-month figure (linear exprs). Ratios (NULLIF divisions)
   // are never additive: a sum of monthly ratios is not a TTM.
   additive?: boolean;
-  format: "dollars" | "count" | "pct";
+  format: "dollars" | "count" | "pct" | "multiple";
   // grain law [conv C9]: a slice outside this list RENDERS a refusal
   allowedDims: string[];
   // marker keys resolved against the batch state feed [conv C4/F4]
@@ -157,52 +157,6 @@ export function validateRegistry(sources: DeclaredSource[]): void {
   }
 }
 
-// Every evaluability dimension is allowed on every review-fraud measure. It is
-// one array, not six copies, because the failure mode is a new evaluability
-// dimension that is pivotable on one measure and silently absent on the next , 
-// which is how a reader ends up looking at a count whose unmeasured share they
-// cannot break out.
-const RF_CASE_DIMS = [
-  "rf_run",
-  "rf_subject",
-  "rf_case",
-  "rf_kind",
-  "rf_tier",
-  "rf_tier_actionable",
-  "rf_triage",
-  "rf_coverage",
-  "rf_coverage_label",
-  "rf_unmeasured_signals",
-  "rf_sibling_floor",
-  "rf_exonerating",
-  "rf_evaluability_reading",
-  "rf_branch_reading",
-  "rf_locations_complete",
-  "rf_ruleset",
-  "rf_engine",
-  "rf_platforms",
-];
-
-const RF_SIGNAL_DIMS = [
-  "rf_run",
-  "rf_current_run",
-  "rf_case",
-  "rf_subject",
-  "rf_tier",
-  "rf_signal",
-  "rf_status",
-  "rf_strong",
-  "rf_unmeasured_strong_flag",
-  "rf_gap_kind",
-  "rf_not_evaluable_reason",
-  "rf_basis",
-  "rf_fired",
-  "rf_per_reviewer",
-  "rf_coverage",
-  "rf_coverage_label",
-  "rf_ruleset",
-];
-
 // ---------------------------------------------------------------------------
 // every measure is single-defined; cross-fact ratios live ONLY in the
 // spend×funnel preset at PERIOD grain (per-period pre-rollups in `from`
@@ -311,7 +265,7 @@ export const SOURCES: DeclaredSource[] = [
     dateExpr: "(COALESCE(s.period, f.period) || '-01')",
     dims: [{ key: "period", label: "Month", expr: "COALESCE(s.period, f.period)" }],
     measures: [
-      { key: "mer", presenceGated: true, label: "MER (spend/revenue %)", expr: "100.0 * SUM(s.spend_cents) / NULLIF(SUM(f.gross_cents), 0)", kind: "derived", format: "pct", allowedDims: ["period"], markers: ["platform_presence", "provisional_cost"] },
+      { key: "mer", presenceGated: true, label: "MER (revenue ÷ ad spend)", expr: "SUM(f.gross_cents) / NULLIF(SUM(s.spend_cents), 0)", kind: "derived", format: "multiple", allowedDims: ["period"], markers: ["platform_presence", "provisional_cost"] },
       { key: "cost_per_lead", presenceGated: true, label: "Cost per lead ($)", expr: "SUM(s.spend_cents) / 100.0 / NULLIF(SUM(f.leads), 0)", kind: "derived", format: "dollars", allowedDims: ["period"], markers: ["platform_presence", "provisional_cost"] },
       { key: "cost_per_set", presenceGated: true, label: "Cost per set ($)", expr: "SUM(s.spend_cents) / 100.0 / NULLIF(SUM(f.sets), 0)", kind: "derived", format: "dollars", allowedDims: ["period"], markers: ["platform_presence", "provisional_cost"] },
       { key: "cost_per_issue", presenceGated: true, label: "Cost per issued appointment ($)", expr: "SUM(s.spend_cents) / 100.0 / NULLIF(SUM(f.issues), 0)", kind: "derived", format: "dollars", allowedDims: ["period"], markers: ["platform_presence", "provisional_cost"] },
@@ -324,12 +278,12 @@ export const SOURCES: DeclaredSource[] = [
   // the eight offices; the tie-out adds ALL (CRM's company pull) and market_sum (the Σ-offices check).
   // universe: rep_assigned (what the CRM report counts) | all_appts (company total incl. no-rep appointments).
   {
-    key: "golden_rule_monthly",
+    key: "efficiency_monthly",
     label: "Marketing cost target: Net revenue per issued appointment, ceiling per issued lead, by month and market ",
-    feeds: [{ name: "golden_rule__monthly", url: "/data/reports/golden_rule__monthly.parquet", registration: "explicit" }],
+    feeds: [{ name: "efficiency__monthly", url: "/data/reports/efficiency__monthly.parquet", registration: "explicit" }],
     // the feed carries a COMPANY rollup row beside the offices and two universes; a pivot must never sum a rollup
     // rollup row: the company total is the sum of the office rows (UNFILED included), which is what a pivot does anyway.
-    from: "(SELECT * FROM golden_rule__monthly WHERE office <> 'COMPANY' AND universe = 'rep_assigned') g",
+    from: "(SELECT * FROM efficiency__monthly WHERE office <> 'COMPANY' AND universe = 'rep_assigned') g",
     dateExpr: "(g.period || '-01')",
     dims: [
       { key: "period", label: "Month", expr: "g.period" },
@@ -337,37 +291,37 @@ export const SOURCES: DeclaredSource[] = [
       { key: "settle_status", label: "Settle status", expr: "g.settle_status" },
       { key: "trust_flag", label: "Trust flag", expr: "g.trust_flag" },
       { key: "cost_status", label: "Cost status", expr: "g.cost_status" },
-      { key: "bonus_tier", label: "Bonus tier (% of net volume)", expr: "COALESCE(g.bonus_tier, 'UNAVAILABLE until cost lands')" },
-      { key: "bonus_tier_decidable", label: "Tier decidable (outside the ±0.8% band)", expr: "CASE g.bonus_tier_decidable WHEN 1 THEN 'yes' WHEN 0 THEN 'no: inside the band' ELSE 'n/a' END" },
+      { key: "target_band", label: "Target band (% of net volume)", expr: "COALESCE(g.target_band, 'UNAVAILABLE until cost lands')" },
+      { key: "band_decidable", label: "Band decidable (outside the ±0.8% band)", expr: "CASE g.band_decidable WHEN 1 THEN 'yes' WHEN 0 THEN 'no: inside the band' ELSE 'n/a' END" },
     ],
     measures: [
-      { key: "iss", label: "Issued appts", expr: "SUM(g.iss)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "net_iss", label: "Net issued appts", expr: "SUM(g.net_iss)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "demo", label: "Demos", expr: "SUM(g.demo)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "close_n", label: "Sales", expr: "SUM(g.close_n)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "close_usd", label: "Close (gross $)", expr: "SUM(g.close_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "prenet_usd", label: "Pending net ($)", expr: "SUM(g.prenet_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "cancel_usd", label: "Cancelled ($)", expr: "SUM(g.cancel_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "credit_decl_usd", label: "Credit declined ($)", expr: "SUM(g.credit_decl_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "net_usd", label: "Net sales ($)", expr: "SUM(g.net_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "no_rep_appts", label: "Appointments with no rep", expr: "SUM(g.no_rep_appts)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "sales_without_job", label: "Sales with no job record", expr: "SUM(g.sales_without_job)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "zero_amount_sales", label: "Sales with no dollar amount", expr: "SUM(g.zero_amount_sales)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "nsli", label: "Net revenue per issued appointment ($)", expr: "SUM(g.net_cents) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "nsli_plus_prenet", label: "Net revenue per issued appointment incl. pending net ($)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "ceiling_at_target", label: "Cost ceiling per issued lead at target ($)", expr: "(MAX(g.target_pct) / 100.0) * NULLIF(SUM(g.net_cents) + SUM(g.prenet_cents), 0) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "target_pct", label: "Target (%)", expr: "MAX(g.target_pct)", kind: "derived", format: "pct", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "dup_sale_appts", label: "Second-sale appointment on one job (counted once)", expr: "SUM(g.dup_sale_appts)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "mer_traditional", label: "Revenue per marketing dollar (x)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / NULLIF(SUM(g.cost_per_issued_cents) * 1.0, 0)", kind: "derived", format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
-      { key: "marketing_cost_pct", label: "Marketing cost as a share of net revenue (%)", expr: "100.0 * SUM(g.cost_per_issued_cents) / NULLIF(SUM(g.net_cents) + SUM(g.prenet_cents), 0)", kind: "derived", format: "pct", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "bonus_tier", "bonus_tier_decidable"] },
+      { key: "iss", label: "Issued appts", expr: "SUM(g.iss)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "net_iss", label: "Net issued appts", expr: "SUM(g.net_iss)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "demo", label: "Demos", expr: "SUM(g.demo)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "close_n", label: "Sales", expr: "SUM(g.close_n)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "close_usd", label: "Close (gross $)", expr: "SUM(g.close_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "prenet_usd", label: "Pending net ($)", expr: "SUM(g.prenet_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "cancel_usd", label: "Cancelled ($)", expr: "SUM(g.cancel_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "credit_decl_usd", label: "Credit declined ($)", expr: "SUM(g.credit_decl_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "net_usd", label: "Net sales ($)", expr: "SUM(g.net_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "no_rep_appts", label: "Appointments with no rep", expr: "SUM(g.no_rep_appts)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "sales_without_job", label: "Sales with no job record", expr: "SUM(g.sales_without_job)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "zero_amount_sales", label: "Sales with no dollar amount", expr: "SUM(g.zero_amount_sales)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "net_basis", label: "Net revenue per issued appointment ($)", expr: "SUM(g.net_cents) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "net_plus_pending", label: "Net revenue per issued appointment incl. pending net ($)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "headroom_at_target", label: "Cost ceiling per issued lead at target ($)", expr: "(MAX(g.target_pct) / 100.0) * NULLIF(SUM(g.net_cents) + SUM(g.prenet_cents), 0) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "target_pct", label: "Target (%)", expr: "MAX(g.target_pct)", kind: "derived", format: "pct", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "dup_sale_appts", label: "Second-sale appointment on one job (counted once)", expr: "SUM(g.dup_sale_appts)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "mer_net_basis", label: "Revenue per marketing dollar (x)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / NULLIF(SUM(g.cost_per_issued_cents) * 1.0, 0)", kind: "derived", format: "count", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
+      { key: "marketing_cost_pct", label: "Marketing cost as a share of net revenue (%)", expr: "100.0 * SUM(g.cost_per_issued_cents) / NULLIF(SUM(g.net_cents) + SUM(g.prenet_cents), 0)", kind: "derived", format: "pct", allowedDims: ["period", "office", "settle_status", "trust_flag", "cost_status", "target_band", "band_decidable"] },
     ],
     tier: "T2",
   },
   {
-    key: "golden_rule_monthly_all_appts",
+    key: "efficiency_monthly_all_appts",
     label: "Marketing cost target: company total incl. appointments with no rep (every appointment, with or without a rep)",
-    feeds: [{ name: "golden_rule__monthly", url: "/data/reports/golden_rule__monthly.parquet", registration: "explicit" }],
-    from: "(SELECT * FROM golden_rule__monthly WHERE office <> 'COMPANY' AND universe = 'all_appts') g",
+    feeds: [{ name: "efficiency__monthly", url: "/data/reports/efficiency__monthly.parquet", registration: "explicit" }],
+    from: "(SELECT * FROM efficiency__monthly WHERE office <> 'COMPANY' AND universe = 'all_appts') g",
     dateExpr: "(g.period || '-01')",
     dims: [
       { key: "period", label: "Month", expr: "g.period" },
@@ -381,15 +335,15 @@ export const SOURCES: DeclaredSource[] = [
       { key: "net_usd", label: "Net sales ($, all)", expr: "SUM(g.net_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["period", "office", "settle_status"] },
       { key: "no_rep_appts", label: "Appointments with no rep", expr: "SUM(g.no_rep_appts)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status"] },
       { key: "no_rep_sales", label: "Sales with no rep", expr: "SUM(g.no_rep_sales)", kind: "sum", additive: true, format: "count", allowedDims: ["period", "office", "settle_status"] },
-      { key: "nsli_plus_prenet", label: "Net revenue per issued appointment incl. pending net ($, all)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status"] },
+      { key: "net_plus_pending", label: "Net revenue per issued appointment incl. pending net ($, all)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["period", "office", "settle_status"] },
     ],
     tier: "T2",
   },
   {
-    key: "golden_rule_daily",
+    key: "efficiency_daily",
     label: "Marketing cost target: daily by market",
-    feeds: [{ name: "golden_rule__daily", url: "/data/reports/golden_rule__daily.parquet", registration: "explicit" }],
-    from: "(SELECT * FROM golden_rule__daily WHERE office <> 'COMPANY' AND universe = 'rep_assigned') g",
+    feeds: [{ name: "efficiency__daily", url: "/data/reports/efficiency__daily.parquet", registration: "explicit" }],
+    from: "(SELECT * FROM efficiency__daily WHERE office <> 'COMPANY' AND universe = 'rep_assigned') g",
     dateExpr: "g.period",
     dims: [
       { key: "date", label: "Day", expr: "g.period" },
@@ -402,16 +356,16 @@ export const SOURCES: DeclaredSource[] = [
       { key: "close_n", label: "Sales", expr: "SUM(g.close_n)", kind: "sum", additive: true, format: "count", allowedDims: ["date", "month", "office"] },
       { key: "net_usd", label: "Net sales ($)", expr: "SUM(g.net_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["date", "month", "office"] },
       { key: "prenet_usd", label: "Pending net ($)", expr: "SUM(g.prenet_cents) / 100.0", kind: "sum", additive: true, format: "dollars", allowedDims: ["date", "month", "office"] },
-      { key: "nsli_plus_prenet", label: "Net revenue per issued appointment incl. pending net ($)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["date", "month", "office"] },
-      { key: "ceiling_at_target", label: "Cost ceiling per issued lead at target ($)", expr: "(MAX(g.target_pct) / 100.0) * NULLIF(SUM(g.net_cents) + SUM(g.prenet_cents), 0) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["date", "month", "office"] },
+      { key: "net_plus_pending", label: "Net revenue per issued appointment incl. pending net ($)", expr: "(SUM(g.net_cents) + SUM(g.prenet_cents)) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["date", "month", "office"] },
+      { key: "headroom_at_target", label: "Cost ceiling per issued lead at target ($)", expr: "(MAX(g.target_pct) / 100.0) * NULLIF(SUM(g.net_cents) + SUM(g.prenet_cents), 0) / 100.0 / NULLIF(SUM(g.net_iss), 0)", kind: "derived", format: "dollars", allowedDims: ["date", "month", "office"] },
     ],
     tier: "T2",
   },
   {
-    key: "golden_rule_tieout",
+    key: "efficiency_tieout",
     label: "Marketing cost target matches the CRM, per column",
-    feeds: [{ name: "golden_rule__tieout", url: "/data/reports/golden_rule__tieout.parquet", registration: "explicit" }],
-    from: "golden_rule__tieout t",
+    feeds: [{ name: "efficiency__tieout", url: "/data/reports/efficiency__tieout.parquet", registration: "explicit" }],
+    from: "efficiency__tieout t",
     dateExpr: "(t.period || '-01')",
     dims: [
       { key: "period", label: "Month", expr: "t.period" },

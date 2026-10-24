@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint",
-    "prebuild": "mkdir -p public/duckdb && cp node_modules/@duckdb/duckdb-wasm/dist/duckdb-eh.wasm node_modules/@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js public/duckdb/"
+    "prebuild": "mkdir -p public/duckdb && cp node_modules/@duckdb/duckdb-wasm/dist/duckdb-eh.wasm node_modules/@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js public/duckdb/ && mkdir -p public/maplibre && cp node_modules/maplibre-gl/dist/maplibre-gl-worker.mjs node_modules/maplibre-gl/dist/maplibre-gl-shared.mjs public/maplibre/"
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.33.1-dev57.0",

@@ -1,4 +1,4 @@
-"""The synthetic company: Northbeam Home Services.
+"""The synthetic company: Larkspur Home Services.
 
 One seeded simulation produces every number the demo shows, so every surface ties to every
 other (spend rows sum to the spend feed, leaf funnel counts sum to the funnel, and so on).
@@ -25,10 +25,10 @@ from common import daterange, split_int, split_int_matrix, stream
 # --------------------------------------------------------------------------------------
 
 COMPANIES = [
-    ("NBH", "Northbeam Home Services", "NBH"),
-    ("NBP", "Northbeam Pro (trade partner program)", "NBP"),
+    ("LSH", "Larkspur Home Services", "LSH"),
+    ("LSP", "Larkspur Pro (trade partner program)", "LSP"),
 ]
-BRAND_LABEL = {"NBH": "Northbeam Home", "NBP": "Northbeam Pro"}
+BRAND_LABEL = {"LSH": "Larkspur Home", "LSP": "Larkspur Pro"}
 
 
 @dataclass(frozen=True)
@@ -59,12 +59,12 @@ M_W = np.array([m.weight for m in MARKETS])
 
 PLATFORMS = ["google_ads", "meta", "microsoft_ads"]
 ACCOUNTS = {
-    "google_ads": ("GA-4417-0020", "Northbeam Google Ads"),
-    "meta": ("MA-2208-9141", "Northbeam Meta Ads"),
-    "microsoft_ads": ("MS-7305-1182", "Northbeam Microsoft Ads"),
+    "google_ads": ("GA-4417-0020", "Larkspur Google Ads"),
+    "meta": ("MA-2208-9141", "Larkspur Meta Ads"),
+    "microsoft_ads": ("MS-7305-1182", "Larkspur Microsoft Ads"),
 }
 AGENCY = "Apex Media Partners"
-IN_HOUSE = "Northbeam"
+IN_HOUSE = "Larkspur"
 AGENCY_FEE_RATE = 0.15
 
 # subsource = the CRM sub-source a lead is keyed to.
@@ -90,8 +90,8 @@ SOURCE_LABEL = {
 }
 SUB_SOURCE = np.array([SOURCE_CODES.index(s[2]) for s in SUBSOURCES])
 
-BRANDS = ["NBH", "NBP"]
-NB = 2
+BRANDS = ["LSH", "LSP"]
+LH = 2
 
 PRODUCTS = [
     # name, sales-mix weight, price factor
@@ -167,36 +167,36 @@ def make_campaigns() -> list[Campaign]:
     # Google: 3,800 a day
     g_total = 3800.0
     for m in MARKETS:
-        add("google_ads", f"NB | {m.name} | Search | Core", "NBH", IN_HOUSE, "ch_search", "search", {m.id: 1.0},
+        add("google_ads", f"LH | {m.name} | Search | Core", "LSH", IN_HOUSE, "ch_search", "search", {m.id: 1.0},
             g_total * 0.62 * m.weight, 6.4, None, 0.054, 0.085, "GAI", ["Exact match terms", "Phrase and broad terms"])
     pro_m = {"Harborview": 0.45, "Stonebridge": 0.35, "Pinecrest": 0.20}
     for mid, w in pro_m.items():
-        add("google_ads", f"NB Pro | {MARKETS[MIDX[mid]].name} | Search | Trade", "NBP", IN_HOUSE, "ch_search", "search", {mid: 1.0},
+        add("google_ads", f"LH Pro | {MARKETS[MIDX[mid]].name} | Search | Trade", "LSP", IN_HOUSE, "ch_search", "search", {mid: 1.0},
             g_total * 0.12 * w, 8.2, None, 0.041, 0.060, "GAI", ["Contractor terms", "Partner program terms"])
-    add("google_ads", "NB | Metro Triangle | Performance Max", "NBH", IN_HOUSE, "ch_pmax", "pmax",
+    add("google_ads", "LH | Metro Triangle | Performance Max", "LSH", IN_HOUSE, "ch_pmax", "pmax",
         _mk_weights(["Harborview", "Pinecrest", "Stonebridge", "Riverbend"]), g_total * 0.16, 3.1, None, 0.026, 0.036, "GAI",
         ["Asset group: homeowners", "Asset group: financing"])
-    add("google_ads", "NB | Regional | Video Awareness", "NBH", IN_HOUSE, "ch_video", "video",
+    add("google_ads", "LH | Regional | Video Awareness", "LSH", IN_HOUSE, "ch_video", "video",
         _mk_weights(allm), g_total * 0.10, None, 9.0, 0.0045, 0.012, "GAI", ["In-market audiences", "Custom intent audiences"])
     # Meta: 2,300 a day
     m_total = 2300.0
     agency_lead_markets = {"Riverbend", "Lakemont", "Sunvale"}
     for m in MARKETS:
         ag = m.id in agency_lead_markets
-        add("meta", f"NB | {m.name} | Lead Gen | Home Offer", "NBH", AGENCY if ag else IN_HOUSE, "ch_social", "social",
+        add("meta", f"LH | {m.name} | Lead Gen | Home Offer", "LSH", AGENCY if ag else IN_HOUSE, "ch_social", "social",
             {m.id: 1.0}, m_total * 0.55 * m.weight, None, 15.5, 0.0115, 0.046, "MAA" if ag else "MAI",
             ["Homeowners 35 to 64", "Lookalike: past customers"])
-    add("meta", "NB | Regional | Retargeting", "NBH", IN_HOUSE, "ch_retarget", "retarget", _mk_weights(allm),
+    add("meta", "LH | Regional | Retargeting", "LSH", IN_HOUSE, "ch_retarget", "retarget", _mk_weights(allm),
         m_total * 0.20, None, 21.0, 0.019, 0.070, "MAI", ["Site visitors 30 days", "Estimate started, not booked"])
-    add("meta", "NB | Regional | Video Brand Reach", "NBH", AGENCY, "ch_video", "video", _mk_weights(allm),
+    add("meta", "LH | Regional | Video Brand Reach", "LSH", AGENCY, "ch_video", "video", _mk_weights(allm),
         m_total * 0.15, None, 8.5, 0.0055, 0.018, "MAA", ["Broad reach", "Interest: home improvement"])
     for mid, w in {"Harborview": 0.6, "Stonebridge": 0.4}.items():
-        add("meta", f"NB Pro | {MARKETS[MIDX[mid]].name} | Lead Gen | Trade", "NBP", IN_HOUSE, "ch_social", "social",
+        add("meta", f"LH Pro | {MARKETS[MIDX[mid]].name} | Lead Gen | Trade", "LSP", IN_HOUSE, "ch_social", "social",
             {mid: 1.0}, m_total * 0.10 * w, None, 17.0, 0.0095, 0.039, "MAI", ["Contractors and remodelers", "Property managers"])
     # Microsoft: 800 a day, four markets
     ms_m = _mk_weights(["Harborview", "Pinecrest", "Stonebridge", "Riverbend"])
     for mid, w in ms_m.items():
-        add("microsoft_ads", f"NB | {MARKETS[MIDX[mid]].name} | Search | Core", "NBH", AGENCY, "ch_search", "search", {mid: 1.0},
+        add("microsoft_ads", f"LH | {MARKETS[MIDX[mid]].name} | Search | Core", "LSH", AGENCY, "ch_search", "search", {mid: 1.0},
             800.0 * w, 4.7, None, 0.042, 0.072, "BAA", ["Exact match terms", "Phrase and broad terms"])
 
     rng = stream(7, "campaign-ids")
@@ -420,10 +420,10 @@ def simulate(seed: int, start: date, end: date) -> World:
 
     # agency fees on agency-run media, by market and sub-source
     fee = np.zeros((D, NM, NS), dtype=np.int64)
-    leaf_media = np.zeros((D, NM, NS, NB), dtype=np.int64)
-    leaf_imps = np.zeros((D, NM, NS, NB), dtype=np.int64)
-    leaf_clicks = np.zeros((D, NM, NS, NB), dtype=np.int64)
-    paid_conv = np.zeros((D, NM, NS, NB))
+    leaf_media = np.zeros((D, NM, NS, LH), dtype=np.int64)
+    leaf_imps = np.zeros((D, NM, NS, LH), dtype=np.int64)
+    leaf_clicks = np.zeros((D, NM, NS, LH), dtype=np.int64)
+    paid_conv = np.zeros((D, NM, NS, LH))
     for c in camps:
         si, bi = SIDX[c.subsource], BRANDS.index(c.brand)
         leaf_media[:, :, si, bi] += a_spend[c.idx]
@@ -439,7 +439,7 @@ def simulate(seed: int, start: date, end: date) -> World:
     rng_l = stream(seed, "leads")
     trend_l = 0.88 + 0.14 * t
     f_lead = trend_l * DOW_LEAD[dow] * season
-    lead_mean = np.zeros((D, NM, NS, NB))
+    lead_mean = np.zeros((D, NM, NS, LH))
     lead_mean += paid_conv  # paid sources: platform conversions that became CRM leads
     brand_share = {"ORG": 0.76, "DMA": 0.80, "TVR": 0.90, "EVT": 0.88, "REF": 0.70, "DIR": 0.74}
     base = {"ORG": 128.0, "REF": 58.0, "DIR": 42.0}
@@ -535,7 +535,7 @@ def simulate(seed: int, start: date, end: date) -> World:
     for code in ("MAA", "BAA"):
         si = SIDX[code]
         # agency fee follows the media it is charged on
-        for bi in range(NB):
+        for bi in range(LH):
             leaf_spend[:, :, si, bi] = leaf_media[:, :, si, bi] + np.round(leaf_media[:, :, si, bi] * AGENCY_FEE_RATE).astype(np.int64)
         # reconcile rounding against the market-level fee
         diff = fee[:, :, si] - np.round(leaf_media[:, :, si, 0] * AGENCY_FEE_RATE).astype(np.int64) - np.round(leaf_media[:, :, si, 1] * AGENCY_FEE_RATE).astype(np.int64)

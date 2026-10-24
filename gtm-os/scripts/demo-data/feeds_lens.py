@@ -14,7 +14,7 @@ from common import split_int, stream
 from feeds_money import asof_str
 from feedio import B, F64, FeedWriter, I64, S, table
 from world import (
-    BRAND_LABEL, BRANDS, CHANNELS, MARKETS, MIDX, NB, NM, NS, PRODUCTS, SIDX, SOURCE_CODES, SOURCE_LABEL, SUBSOURCES, SUB_SOURCE, World,
+    BRAND_LABEL, BRANDS, CHANNELS, MARKETS, MIDX, LH, NM, NS, PRODUCTS, SIDX, SOURCE_CODES, SOURCE_LABEL, SUBSOURCES, SUB_SOURCE, World,
 )
 
 MEASURES = ["leads", "sets", "issues", "demos", "sales", "sold_cents", "cancel_cents", "cancels", "spend_cents", "impressions",

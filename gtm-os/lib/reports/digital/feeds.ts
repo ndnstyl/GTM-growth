@@ -17,11 +17,11 @@ export const DM_FEEDS: readonly string[] = Object.freeze([
   "dm_tieout",
   "dm_platform_diag_daily",
   // the marketing cost target strip reads the existing marketing cost target feeds as its single definition
-  "golden_rule__monthly",
-  "golden_rule__tieout",
+  "efficiency__monthly",
+  "efficiency__tieout",
   // the strip's data-through day is the last day the marketing cost target's daily feed carries, never
   // the export clock (the feed's as_of is when it was written, the data runs through yesterday)
-  "golden_rule__daily",
+  "efficiency__daily",
 ]);
 
 export type FeedPresence = { present: string[]; missing: string[] };

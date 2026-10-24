@@ -10,7 +10,6 @@ export const DEFINITIONS: Definition[] = [
   { term: "Cost per lead", meaning: "All ad spend ÷ leads.", owner: "Marketing lead" },
   { term: "Cost per set", meaning: "All-in ad spend ÷ appointments set.", owner: "Marketing lead" },
   { term: "MER", meaning: "Revenue ÷ ad spend, shown as a multiple such as 4.8x.", owner: "Marketing lead" },
-  { term: "Ad spend as a share of revenue", meaning: "Ad spend ÷ revenue, shown as a percent. It is MER turned upside down.", owner: "Marketing lead" },
   { term: "Revenue per marketing dollar", meaning: "Net revenue ÷ all-in marketing cost, which adds agency fees, tools and offline media to ad spend.", owner: "Marketing lead" },
   { term: "Net revenue", meaning: "Gross revenue minus cancels, counted in the month of the cancel.", owner: "Finance lead" },
   { term: "Marketing cost target", meaning: "All-in marketing cost ÷ net revenue, against a 28 percent target.", owner: "Marketing lead" },

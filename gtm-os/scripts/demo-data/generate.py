@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GTM OS demo data generator (Northbeam Home Services, fictional, synthetic).
+"""GTM OS demo data generator (Larkspur Home Services, fictional, synthetic).
 
 Writes every data file the app reads:
   public/data/*.json                cockpit feeds
@@ -56,7 +56,7 @@ def main(argv=None) -> int:
     for d, suf in ((OUT_REPORTS, (".parquet", ".json")), (OUT_VIEWS, (".json",)), (OUT_DEMO, (".json", ".svg", ".mp4"))):
         clean_dir_files(d, suf)
     # only the top-level feeds this generator writes: public/data/compass.json is built by the app's own build step and is not ours
-    ours = [OUT_DATA / f"{n}.json" for n in ("meta", "board", "kpi", "routines", "initiatives", "consent_ops")]
+    ours = [OUT_DATA / f"{n}.json" for n in ("meta", "board", "kpi", "metrics", "routines", "initiatives", "consent_ops")]
     for f in ours + sorted((OUT_DATA / "snapshots").glob("*.json")) + sorted((OUT_DATA / "content").glob("*.json")):
         if f.exists():
             f.unlink()
@@ -87,11 +87,11 @@ def main(argv=None) -> int:
     feeds_web.write_gsc(fw, w)
     callfloor = feeds_web.write_callfloor(fw, w)
 
-    golden = feeds_money.write_golden(fw, wf, mof, w, mo)
+    target = feeds_money.write_golden(fw, wf, mof, w, mo)
     feeds_money.write_dm_spend(fw, w)
     feeds_money.write_dm_chain(fw, w)
-    feeds_money.write_dm_misc(fw, w, mo, golden)
-    feeds_money.write_dm_windows(fw, w, golden)
+    feeds_money.write_dm_misc(fw, w, mo, target)
+    feeds_money.write_dm_windows(fw, w, target)
     feeds_money.write_dm_pacing(fw, w, mo)
     feeds_money.write_dm_diag(fw, w)
     spine = feeds_money.write_spine(fw, wf, mof)
@@ -103,6 +103,8 @@ def main(argv=None) -> int:
 
     fw.write_manifest(end)
     head = cockpit.Headline(w, mo)
+    import metrics as metrics_mod
+    M = metrics_mod.write_metrics(end, head.goal, head.pace_frac, asof)
     cockpit.write_meta(w)
     cockpit.write_kpi(w, mo, head)
     cockpit.write_board(w)
@@ -119,7 +121,7 @@ def main(argv=None) -> int:
     reportdocs.write_spine_docs(w, wf, mof, fw, spine)
 
     views.write_views(w)
-    fixtures.write_fixtures(w, S)
+    fixtures.write_fixtures(w, S, M)
 
     n_parquet = len(fw.files)
     total = sum(f.stat().st_size for f in (OUT_DATA).rglob("*") if f.is_file()) + sum(

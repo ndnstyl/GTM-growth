@@ -13,10 +13,9 @@ import { registerDigitalFeeds, type FeedPresence } from "@/lib/reports/digital/f
 import { loadRebaseMap, loadDigitalTemplates, type DigitalTemplate, type RebaseMap } from "@/lib/reports/digital/rebase";
 import { loadPickedMetric, DEFAULT_METRIC } from "@/lib/reports/digital/picker";
 import { findSource } from "@/lib/reports/workbench/sources";
-import type { DatePreset, FilterState } from "@/components/reports/FilterBar";
 import { DrillPanel } from "@/components/reports/workbench/DrillGrid";
 import { PageHeader } from "@/components/shell/PageHeader";
-import { GoldenStrip } from "./GoldenStrip";
+import { TargetStrip } from "./TargetStrip";
 import { MetricPicker } from "./MetricPicker";
 import { ComparisonRow } from "./ComparisonRow";
 import { RebasedPanels } from "./RebasedPanels";
@@ -25,14 +24,6 @@ import { SourceChainSection } from "./SourceChainSection";
 import { PacingPanel } from "./PacingPanel";
 import { HealthPanel, readFeedAsOf, type FeedAsOf } from "./HealthPanel";
 import { Reason } from "./PanelFrame";
-
-const PRESETS: { key: DatePreset; label: string }[] = [
-  { key: "mtd", label: "MTD" },
-  { key: "last7", label: "Last 7" },
-  { key: "last28", label: "Last 28" },
-  { key: "mom", label: "MoM" },
-  { key: "ytd", label: "YTD" },
-];
 
 export function DigitalBoard() {
   const [metric, setMetric] = useState<string>(DEFAULT_METRIC);
@@ -44,7 +35,6 @@ export function DigitalBoard() {
   const [markets, setMarkets] = useState<string[]>([]);
   const [period, setPeriod] = useState<string | null>(null);
   const [market, setMarket] = useState<string | undefined>(undefined);
-  const [preset, setPreset] = useState<DatePreset>("mtd");
   const [asOf, setAsOf] = useState<FeedAsOf[] | null>(null);
   // the last data day each feed carries: a feed's as_of is the export clock, which reads one
   // day later than the data it carries (the spend and CRM rows run through yesterday)
@@ -111,7 +101,6 @@ export function DigitalBoard() {
   }, []);
 
   const dataThrough = lastDay?.spend ?? "not published";
-  const filters: FilterState = { preset, market };
   const drillSource = drill ? findSource(drill.sourceKey) : undefined;
 
   return (
@@ -148,7 +137,7 @@ export function DigitalBoard() {
           )}
           {!presence && <Reason text="Preparing the data" tone="muted" />}
 
-          <GoldenStrip period={period} presence={presence} />
+          <TargetStrip period={period} presence={presence} />
           <MetricPicker value={metric} onChange={setMetric} />
           <ComparisonRow metric={metric} map={map} period={period} presence={presence} />
           <RebasedPanels templates={templates} metric={metric} map={map} period={period} presence={presence} />

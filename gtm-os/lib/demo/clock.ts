@@ -25,10 +25,14 @@ export function installClock(): void {
   const day = anchorDay();
   if (!day) return;
   const [y, m, d] = day.split("-").map(Number);
-  // The app's "now" is always the data's own day, late evening (23:00 to midnight), so no fixture timestamp
+  // The app's "now" is always the data's own day, late evening (from 9:00 and never past midnight), so no fixture timestamp
   // is ever in the future and nothing ages: today = the data's build day, yesterday = its last data day.
-  const base = new RealDate(y, m - 1, d, 23, 0, 0).getTime();
-  const shifted = (): number => base + (RealDate.now() % 3_600_000);
+  const base = new RealDate(y, m - 1, d, 9, 0, 0).getTime();
+  const loaded = RealDate.now();
+  const dayEnd = new RealDate(y, m - 1, d, 23, 59, 59).getTime();
+  // Runs forward from the build day's morning at the real pace and holds before midnight, so the demo's day never
+  // wraps and never reaches tomorrow.
+  const shifted = (): number => Math.min(base + (RealDate.now() - loaded), dayEnd);
   class ShiftedDate extends RealDate {
     constructor(...a: unknown[]) {
       if (a.length === 0) super(shifted());

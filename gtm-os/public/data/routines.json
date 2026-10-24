@@ -19,7 +19,7 @@
    "serves_port": null
   },
   {
-   "label": "Completeness gate",
+   "label": "Data completeness check",
    "schedule": "06:40",
    "loaded": true,
    "pid": null,
@@ -109,7 +109,7 @@
    "serves_port": null
   },
   {
-   "label": "Hygiene read weekly",
+   "label": "Weekly ad account check",
    "schedule": "08:45",
    "loaded": true,
    "pid": null,
@@ -118,7 +118,7 @@
    "serves_port": null
   },
   {
-   "label": "Call swot weekly",
+   "label": "Weekly call themes",
    "schedule": "09:00",
    "loaded": true,
    "pid": null,
@@ -145,7 +145,7 @@
    "serves_port": null
   },
   {
-   "label": "Usage meter",
+   "label": "Usage tracker",
    "schedule": "always on",
    "loaded": true,
    "pid": 4116,
@@ -175,7 +175,7 @@
    "listening": true
   },
   {
-   "name": "Usage meter",
+   "name": "Usage tracker",
    "port": 0,
    "listening": true
   },
@@ -186,5 +186,5 @@
   }
  ],
  "alerts": [],
- "built_at": "2026-10-24T06:30:00"
+ "built_at": "2026-10-25T06:30:00"
 }
