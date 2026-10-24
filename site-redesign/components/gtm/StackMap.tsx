@@ -35,11 +35,11 @@ export default function StackMap({ data }: { data: GtmHomeData }) {
     }
   };
 
-  const caption = (t: Tab) => (t === "stack" ? "No garage queens: every one of these is built and running, in whole or in part." : data.kinds[t]);
+  const caption = (t: Tab) => (t === "stack" ? "No show cars. Every one of these was built to be driven; open a stage to see what each one does today." : data.kinds[t]);
 
   return (
     <>
-      <Expander id="g-xp-stack" closedLabel="See the stack by kind of system" toggleClassName="g-xtoggle--lone" lazy>
+      <Expander id="g-xp-stack" closedLabel="See the stack by kind of system" toggleClassName="g-xtoggle--lone">
         <div className="g-tabs" role="tablist" aria-label="Kinds of system">
           {TABS.map((t, i) => (
             <button
@@ -76,7 +76,7 @@ export default function StackMap({ data }: { data: GtmHomeData }) {
                   <li key={s.name} className={cx("g-map-card", items.length === 0 && "is-empty")}>
                     <div className="g-map-top">
                       <span className="g-num">{two(i)}</span>
-                      <h3>{s.name}</h3>
+                      <p className="g-map-title">{s.name}</p>
                     </div>
                     {t.id === "stack" ? (
                       <p className="g-map-mix">{mix.map(([k, n]) => `${n} ${n === 1 ? k : PLURAL[k]}`).join(", ")}</p>

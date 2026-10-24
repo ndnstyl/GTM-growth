@@ -7,21 +7,18 @@
  "rows": [
   "period"
  ],
- "cols": [
-  "intent"
- ],
+ "cols": [],
  "measures": [
-  "lat_n",
-  "lat_retrieval_p50",
-  "lat_retrieval_p95",
-  "lat_complete_p50",
-  "lat_complete_p95",
-  "lat_retrieval_budget_p50",
-  "lat_complete_budget_p50"
+  "lat_complete_p50"
  ],
  "filters": [],
  "datePreset": "last_25",
- "presentation": "table",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "line",
+  "x": "period",
+  "y": "lat_complete_p50"
+ },
  "origin": "canon",
  "created_by": "GTM OS demo build",
  "created_at": "2026-10-24"

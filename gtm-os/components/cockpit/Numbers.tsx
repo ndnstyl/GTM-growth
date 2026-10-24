@@ -26,7 +26,7 @@ export function Numbers({ loading = false }: { kpi?: unknown; loading?: boolean 
       action={<NavLink href={"/reports/#overview"} className="hover:text-primary">Overview →</NavLink>}
     >
       <div className="text-[12px] text-muted-foreground">Data through {dayLabel(metrics.through)}</div>
-      <div className="mt-1 grid grid-cols-2 gap-x-4 gap-y-2.5">
+      <div className="mt-1 grid grid-cols-1 gap-x-4 gap-y-2.5 min-[480px]:grid-cols-2">
         {TILES.map((t, ti) => {
           const d = t.k === "gross_revenue" ? null : deltaPct(t.w, t.k);
           const lowerBetter = metrics.kpis[t.k].lower_is_better;

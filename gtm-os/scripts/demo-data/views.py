@@ -74,20 +74,20 @@ def build_views(w: World) -> list[dict]:
           chart={"kind": "stacked_bar", "x": "period", "y": "spend", "series": "row_type"}),
         V("spend-by-platform", "Spend by platform", "Monthly ad spend by platform.",
           "Where the money goes each month across the three ad platforms and offline media.",
-          "spine_spend_monthly", ["period"], ["platform"], ["spend"]),
+          "spine_spend_monthly", ["period", "platform"], [], ["spend"], presentation="chart", chart={"kind": "stacked_bar", "x": "period", "y": "spend", "series": "platform"}),
     ]
     # ---- efficiency target (all-in marketing cost against net revenue)
     gm = "efficiency_monthly"
     out += [
-        V("efficiency-tier-by-market", "Marketing cost tier by market", "Marketing cost as a share of net revenue and the tier it earns, by market and month.",
+        V("efficiency-tier-by-market", "Marketing cost against the 28% target", "Marketing cost as a share of net revenue, whole company, by month.",
           "Each market against the 28 percent target: the ceiling a market can spend at target and where it actually landed.",
-          gm, ["period", "office"], ["target_band"], ["headroom_at_target", "marketing_cost_pct", "mer_net_basis"]),
+          gm, ["period"], [], ["marketing_cost_pct"], [f_eq("office", "COMPANY")], presentation="chart", chart={"kind": "line", "x": "period", "y": "marketing_cost_pct"}),
         V("efficiency-monthly", "Marketing cost target, monthly", "Net issued, net revenue and the share still pending, revenue per issued appointment and cost percent by market.",
           "The monthly record behind the target: revenue per net issued appointment, the ceiling it implies and the cost percent against it.",
-          gm, ["period", "office"], [], ["net_iss", "net_usd", "prenet_usd", "net_basis", "net_plus_pending", "headroom_at_target", "marketing_cost_pct"]),
+          gm, ["period"], [], ["net_iss", "net_usd", "prenet_usd", "marketing_cost_pct"], [f_eq("office", "COMPANY")]),
         V("efficiency-tieout", "Marketing cost target, matches the CRM", "Rows checked, failures and explained residuals, by month and market.",
           "Every published number is recomputed a second way each night; this view is where a mismatch would show first.",
-          "efficiency_tieout", ["period", "office"], ["result"], ["rows", "fails", "residuals"]),
+          "efficiency_tieout", ["period"], [], ["rows", "fails", "residuals"], [f_eq("office", "COMPANY")]),
         V("efficiency-daily", "Marketing cost target, daily", "Net issued, net revenue and the share still pending per day by market.",
           "The daily rows that roll up to the month, so a bad week can be found before the month closes.",
           "efficiency_daily", ["date", "office"], [], ["net_iss", "net_usd", "prenet_usd", "net_plus_pending", "headroom_at_target"]),
@@ -115,21 +115,21 @@ def build_views(w: World) -> list[dict]:
     out += [
         V("ai-accuracy-asked", "Questions asked and how they ended", "Questions by day and topic: answered, refused, deflected, errored.",
           "How much the AI is asked, and how often it answers, hands off or declines.",
-          "meter_questions", ["q_date"], ["intent"], ["q_asked", "q_answered", "q_refused", "q_deflected", "q_errored", "q_other_n", "q_answer_rate"], preset="last_25"),
+          "meter_questions", ["q_date"], [], ["q_asked"], preset="last_25", presentation="chart", chart={"kind": "bar", "x": "q_date", "y": "q_asked"}),
         V("ai-accuracy-faithfulness", "Answer faithfulness", "Share of checked answers fully supported by their sources.",
           "Whether answers say what the sources say; unsupported claims are counted, not averaged away.",
-          "meter_faithfulness", ["period"], [], ["faith_checked_n", "faith_supported_n", "faith_unfaithful_n", "faith_unverified_n", "faith_excluded_unvalidated_n", "faith_faithfulness_pct"], preset="last_25"),
+          "meter_faithfulness", ["period"], [], ["faith_faithfulness_pct"], preset="last_25", presentation="chart", chart={"kind": "line", "x": "period", "y": "faith_faithfulness_pct"}),
         V("ai-accuracy-gaps", "Knowledge gaps", "Gaps opened, closed and still open at the end of each month.",
           "The list of questions the AI could not answer well, and whether it is shrinking.",
           "meter_gaps", ["period"], [], ["gap_open_at_end", "gap_opened", "gap_closed", "gap_median_days_to_close"], preset="all"),
         V("ai-accuracy-graded", "Graded answers by topic", "Graded accuracy, routing accuracy and stale-source rate by topic.",
           "Where the AI is strongest and weakest, by topic, from answers a reviewer actually graded.",
-          "meter_accuracy", ["intent"], [], ["acc_gradeable_n", "acc_graded_n", "acc_ungraded_n", "acc_right_n", "acc_wrong_source_n", "acc_better_source_n", "acc_wrong_tool_n", "acc_unfaithful_n", "acc_stale_n", "acc_re_verify_n", "acc_graded_accuracy_pct", "acc_routing_accuracy_pct", "acc_stale_pct"], preset="last_25"),
+          "meter_accuracy", ["intent"], [], ["acc_graded_n", "acc_right_n", "acc_graded_accuracy_pct", "acc_routing_accuracy_pct"], preset="last_25"),
         V("ai-accuracy-latency", "Response speed", "Retrieval and full-answer time by topic against budget.",
           "How long a customer waits, against the budget set for each step.",
-          "meter_latency", ["period"], ["intent"], ["lat_n", "lat_retrieval_p50", "lat_retrieval_p95", "lat_complete_p50", "lat_complete_p95", "lat_retrieval_budget_p50", "lat_complete_budget_p50"], preset="last_25"),
-        V("ai-accuracy-learning", "Nightly learning runs", "Each night's learning run and whether it improved, held, regressed or rolled back.",
-          "The AI changes itself only when a checker agrees; rollbacks show the guardrail working.",
+          "meter_latency", ["period"], [], ["lat_complete_p50"], preset="last_25", presentation="chart", chart={"kind": "line", "x": "period", "y": "lat_complete_p50"}),
+        V("ai-accuracy-learning", "Nightly answer review", "Each night's learning run and whether it improved, held, regressed or rolled back.",
+          "A reviewer approves each change to the AI's answers; rollbacks show the guard working.",
           "meter_learning", ["run_date"], ["outcome"], ["learn_runs", "learn_improve_n", "learn_hold_n", "learn_regress_n", "learn_rollback_n", "learn_labels_checker", "learn_gaps_new", "learn_gaps_closed"], preset="last_25"),
         V("ai-completeness", "Meter completeness", "Requests the servers saw against calls counted, by day and host.",
           "Proof that no AI call went uncounted: every difference is named, and zero is the normal answer.",
@@ -196,13 +196,12 @@ def build_boards(w: World) -> list[dict]:
         board("board-mer", "Board 2: Spend against revenue", "MER (revenue per ad dollar), the spend split and spend by platform.",
               [("mer-board", 2), ("spend-media-fee-board", 2), ("spend-by-platform", 2)]),
         board("board-efficiency-target", "Board 3: Marketing cost target", "All-in marketing cost against net revenue, by market, checked against the CRM.",
-              [("efficiency-tier-by-market", 2), ("efficiency-monthly", 2), ("efficiency-tieout", 2), ("efficiency-daily", 2)]),
+              [("efficiency-tier-by-market", 2), ("efficiency-monthly", 2), ("efficiency-tieout", 2)]),
         board("board-ai-cost", "Board 4: AI cost", "What the AI workload costs, what it saves and whether every call was counted.",
               [("ai-cost-net-savings", 2), ("ai-seat-lane", 2), ("ai-cost-by-lane", 2), ("ai-cost-calls-trend", 2), ("ai-workflow-tokens", 2),
                ("ai-tier-mix", 2), ("ai-seat-by-model", 2), ("ai-completeness", 2)]),
         board("board-ai-accuracy", "Board 5: AI accuracy", "Questions, graded accuracy, faithfulness, speed, learning and gaps.",
-              [("ai-accuracy-asked", 2), ("ai-accuracy-graded", 2), ("ai-accuracy-faithfulness", 2), ("ai-accuracy-latency", 2),
-               ("ai-accuracy-learning", 2), ("ai-accuracy-gaps", 2)]),
+              [("ai-accuracy-asked", 2), ("ai-accuracy-faithfulness", 2), ("ai-accuracy-latency", 2), ("ai-accuracy-graded", 2), ("ai-accuracy-gaps", 2)]),
         board("board-work-ledger", "Board 6: Work ledger", "What the loops, AI seats and playbooks ran, whether it worked and what it saved.",
               [("work-runs-by-class-day", 2), ("work-outcomes", 1), ("work-routine-rollup", 1), ("work-savings-triple", 2), ("work-census-tie", 1),
                ("work-matrix-state", 1)]),
@@ -310,18 +309,17 @@ def build_rebase_map(w: World) -> dict:
             "version": 1, "authored_by": "GTM OS demo build", "scopes": ["company", "market", "platform", "bucket", "source"], "metrics": m}
 
 
+KEEP_BOARDS = ["board-mer", "board-efficiency-target", "board-ai-accuracy"]
+
+
 def write_views(w: World) -> list[str]:
-    views = build_views(w)
-    boards = build_boards(w)
+    boards = [b for b in build_boards(w) if b["id"] in KEEP_BOARDS]
+    keep = {p["viewId"] for b in boards for p in b["panels"]}
+    views = [v for v in build_views(w) if v["id"] in keep]
     write_json(OUT_VIEWS / "index.json", [v["id"] for v in views])
     write_json(OUT_VIEWS / "boards-index.json", [b["id"] for b in boards])
     for v in views:
         write_json(OUT_VIEWS / f"{v['id']}.json", v)
     for b in boards:
         write_json(OUT_VIEWS / f"{b['id']}.json", b)
-    templates, rmap = build_digital(w)
-    write_json(OUT_VIEWS / "digital" / "index.json", list(templates), indent=None)
-    write_json(OUT_VIEWS / "digital" / "rebase_map.json", rmap)
-    for k, t in templates.items():
-        write_json(OUT_VIEWS / "digital" / f"{k}.json", t)
     return [v["id"] for v in views]

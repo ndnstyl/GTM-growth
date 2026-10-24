@@ -104,11 +104,11 @@ export default function QrPage() {
       <div className="grid gap-4 lg:grid-cols-[1fr_300px]">
         <Card title="Build">
           <div className="grid gap-3 md:grid-cols-2">
-            {field("Name", "name", "Spring mailer, driveway")}
+            {field("Name", "name", "Fall mailer, driveway")}
             {field("Destination", "base", "https://example.com/offer")}
             {pick("Source", "source", sources)}
             {pick("Medium", "medium", mediums)}
-            {field("Campaign", "campaign", "spring-driveway")}
+            {field("Campaign", "campaign", "fall-driveway")}
             {field("Content (optional)", "content", "postcard-a")}
             {field("Market (optional)", "market", "Harborview")}
           </div>

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T06:30:00",
+ "generated_at": "2026-10-25T06:30:00",
  "counts": {
   "OK": 13,
   "STALE": 1,
@@ -15,7 +15,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T06:10:00",
+   "last_run_at": "2026-10-25T06:10:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -27,7 +27,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T05:33:00",
+   "last_run_at": "2026-10-25T05:33:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -39,7 +39,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T04:56:00",
+   "last_run_at": "2026-10-25T04:56:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -51,7 +51,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-22T02:30:00",
+   "last_run_at": "2026-10-23T02:30:00",
    "freshness_from": "run receipt",
    "state": "STALE",
    "reason": "has not fired in two days",
@@ -66,7 +66,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T03:42:00",
+   "last_run_at": "2026-10-25T03:42:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -78,7 +78,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T03:05:00",
+   "last_run_at": "2026-10-25T03:05:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -90,7 +90,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T02:28:00",
+   "last_run_at": "2026-10-25T02:28:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -102,7 +102,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T01:51:00",
+   "last_run_at": "2026-10-25T01:51:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -114,7 +114,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T01:14:00",
+   "last_run_at": "2026-10-25T01:14:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -126,7 +126,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T05:37:00",
+   "last_run_at": "2026-10-25T05:37:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -138,7 +138,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T05:00:00",
+   "last_run_at": "2026-10-25T05:00:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -150,7 +150,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T04:23:00",
+   "last_run_at": "2026-10-25T04:23:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -162,7 +162,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T03:46:00",
+   "last_run_at": "2026-10-25T03:46:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -174,7 +174,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T03:09:00",
+   "last_run_at": "2026-10-25T03:09:00",
    "freshness_from": "run receipt",
    "state": "OK"
   },
@@ -186,7 +186,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T06:28:00",
+   "last_run_at": "2026-10-25T06:28:00",
    "freshness_from": "run receipt",
    "state": "RUNNING"
   },
@@ -198,7 +198,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T06:28:00",
+   "last_run_at": "2026-10-25T06:28:00",
    "freshness_from": "run receipt",
    "state": "RUNNING"
   },
@@ -210,7 +210,7 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T06:28:00",
+   "last_run_at": "2026-10-25T06:28:00",
    "freshness_from": "run receipt",
    "state": "RUNNING"
   },
@@ -222,13 +222,13 @@
    "plist_parse": "ok",
    "log": null,
    "log_exists": false,
-   "last_run_at": "2026-10-24T06:28:00",
+   "last_run_at": "2026-10-25T06:28:00",
    "freshness_from": "run receipt",
    "state": "RUNNING"
   }
  ],
  "vendors": {
-  "as_of": "2026-10-24T06:30:00",
+  "as_of": "2026-10-25T06:30:00",
   "stale": false,
   "stale_age_s": 120,
   "registry_invalid": false,
@@ -243,7 +243,7 @@
     "ceiling": 100000,
     "pct": 0.412,
     "pace": 0.9,
-    "resets_at": "2026-10-24T23:30:00",
+    "resets_at": "2026-10-25T23:30:00",
     "state": "ok",
     "recheck_due": false,
     "top_lane": "creative-library-sync",
@@ -259,7 +259,7 @@
     "ceiling": 60000,
     "pct": 0.313,
     "pace": 0.9,
-    "resets_at": "2026-10-24T23:30:00",
+    "resets_at": "2026-10-25T23:30:00",
     "state": "ok",
     "recheck_due": false,
     "top_lane": "daily-ad-pull",
@@ -275,7 +275,7 @@
     "ceiling": 40000,
     "pct": 0.13,
     "pace": 0.9,
-    "resets_at": "2026-10-24T23:30:00",
+    "resets_at": "2026-10-25T23:30:00",
     "state": "ok",
     "recheck_due": false,
     "top_lane": "daily-ad-pull",
@@ -291,7 +291,7 @@
     "ceiling": 50000,
     "pct": 0.182,
     "pace": 0.9,
-    "resets_at": "2026-10-24T23:30:00",
+    "resets_at": "2026-10-25T23:30:00",
     "state": "ok",
     "recheck_due": false,
     "top_lane": "self-refreshing-reports",
@@ -307,7 +307,7 @@
     "ceiling": 80000,
     "pct": 0.28,
     "pace": 0.9,
-    "resets_at": "2026-10-24T23:30:00",
+    "resets_at": "2026-10-25T23:30:00",
     "state": "ok",
     "recheck_due": false,
     "top_lane": "sales-back-to-platforms",
@@ -323,7 +323,7 @@
     "ceiling": null,
     "pct": null,
     "pace": 0.9,
-    "resets_at": "2026-10-24T23:30:00",
+    "resets_at": "2026-10-25T23:30:00",
     "state": "observe",
     "recheck_due": false,
     "top_lane": "call-scoring",

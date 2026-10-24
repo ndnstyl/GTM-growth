@@ -100,7 +100,7 @@ export function BoardRunner({ board, state, batch }: { board: ResolvedBoard; sta
       <div className="mb-2">
         {board.description && <div className="text-[13px] text-[var(--ink2)]">{board.description}</div>}
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 [&>*]:min-w-0 md:grid-cols-2">
         {board.panels.map((p, i) => {
           const isChart = p.view.presentation === "chart";
           const spec = p.view.chartSpec as ChartSpec | undefined;

@@ -7,9 +7,9 @@ const CAPS = [
   "On-brand reels",
   "Media bought",
   "Consent sealed",
-  "Leads answered in seconds",
+  "Calls and chats answered in seconds",
   "Calls scored",
-  "Spend proven",
+  "Spend reconciled",
   "One screen",
   "Nothing fails quietly",
 ];

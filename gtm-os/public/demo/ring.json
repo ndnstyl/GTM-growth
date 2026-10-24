@@ -28,8 +28,8 @@
   "hidden": false
  },
  {
-  "path": "artifacts/brief/003-spring-offer-test-brief",
-  "title": "Spring offer test brief",
+  "path": "artifacts/brief/003-fall-offer-test-brief",
+  "title": "Fall offer test brief",
   "kind": "brief",
   "tags": [
    "offer",
@@ -106,7 +106,7 @@
    "social"
   ],
   "source": "Viral ad scriptwriter",
-  "note": "Three script variations for the weekend burst.",
+  "note": "Three script variations for the weekend push.",
   "created": "2026-10-16",
   "state": "ok",
   "hidden": false

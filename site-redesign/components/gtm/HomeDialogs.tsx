@@ -48,7 +48,7 @@ function FolderBody({ data }: { data: GtmHomeData }) {
   }, [fi]);
   return (
     <Sheet
-      label={`${two(fi)} / ${s.items.length} systems`}
+      label={`${two(fi)} / ${s.items.length} ${s.items.length === 1 ? "system" : "systems"}`}
       foot={
         <div className="g-pager">
           <button type="button" className="g-btn g-btn--ghost g-btn--sm g-pager-prev" onClick={() => setFi((fi + N - 1) % N)}>

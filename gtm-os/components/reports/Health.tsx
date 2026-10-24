@@ -129,23 +129,19 @@ export function Health({ doc, jobs }: { doc: HealthDoc | null; jobs: JobHealthDo
   }
   const prettyName = (n: string) => {
   const t = n.replace(/^(?:com\.[a-z]+\.)/, "").replace(/^(?:dim|fact|dm|crm_spine|funnel|spine|meter|work|efficiency|callfloor\/callfloor)_*/, "").replace(/^google_ads__/, "Google Ads ").replace(/^meta__/, "Meta ").replace(/^microsoft_ads__/, "Microsoft Ads ").replace(/[_\/-]+/g, " ").replace(/\bfact\b|\bdim\b/g, "").replace(/\s+/g, " ").trim();
-  return t.charAt(0).toUpperCase() + t.slice(1);
+  return (t.charAt(0).toUpperCase() + t.slice(1)).replace(/^Ga4 /, "GA4 ").replace(/^Gsc /, "Search Console ").replace(/^Tieout$/, "Matches the CRM").replace(/^Windows$/, "Comparison windows").replace(/^Funnel daily$/, "Funnel, daily").replace(/^Source chain daily$/, "Source to sale, daily").replace(/^Platform diag daily$/, "Platform diagnostics, daily");
 };
-const expected: Record<string, string> = { hourly: "every 15 minutes, today's data", nightly: "6:10 AM ET, after the 5:30 AM CRM refresh", weekly: "weekly" };
+const expected: Record<string, string> = { hourly: "every 15 minutes", nightly: "6:10 AM, after the 5:30 AM CRM refresh", weekly: "weekly" };
+  const lateJobs = jobs ? jobs.jobs.filter((j) => j.state === "STALE").length : 0;
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-3 text-[12px]">
-        <span className={`rounded px-2 py-1 text-[11px] font-bold ${STATE_CLS[doc.overall === "ok" ? "ok" : doc.overall === "stale" ? "stale" : "error"]}`}>
-          {doc.overall === "ok" ? "All healthy" : doc.overall === "stale" ? "Some feeds late" : "A feed is down"}
+        <span className={`rounded px-2 py-1 text-[11px] font-bold ${STATE_CLS[lateJobs > 0 || doc.overall !== "ok" ? "stale" : "ok"]}`}>
+          {lateJobs > 0 ? `${lateJobs} ${lateJobs === 1 ? "job is" : "jobs are"} late, every feed is fresh` : doc.overall === "ok" ? "Everything is on time" : "Some feeds are late"}
         </span>
         <span>Data through <b>{doc.as_of ? dayLabel(doc.as_of) : "n/a"}</b></span>
-        <span>Health checked <b>{ago(doc.generated_at)}</b></span>
-        <span>
-          {doc.summary.ok + doc.summary.stale + doc.summary.cooldown + doc.summary.error + doc.summary.missing} of {doc.feeds.length} feeds:
-          {" "}{doc.summary.ok} ok · {doc.summary.stale} stale · {doc.summary.cooldown} cooldown · {doc.summary.error} error · {doc.summary.missing} missing
-          {(doc.summary.parked ?? 0) > 0 && ` · ${doc.summary.parked} parked (excluded from the count above)`}
-        </span>
-        <span>{doc.alerts_24h} alerts in the last 24 hours</span>
+        <span>{doc.summary.ok} of {doc.feeds.length} feeds fresh</span>
+        <span>Last check <b>{ago(doc.generated_at)}</b></span>
       </div>
 
       <div className="rounded-xl border border-border bg-card p-3">
@@ -180,7 +176,7 @@ const expected: Record<string, string> = { hourly: "every 15 minutes, today's da
           <div className="mb-2 flex items-center gap-2 text-[12.5px] font-bold">
             Scheduled jobs ({jobs.jobs.length})
             <span className="font-normal text-[10.5px] text-muted-foreground">
-              Checked every 30 minutes, last {ago(jobs.generated_at)}. Stale means it stopped firing; failing means it fired and exited with an error.
+              Checked every 30 minutes, last {ago(jobs.generated_at)}. Late means it stopped firing; failed means it ran and hit an error.
             </span>
           </div>
           <div className="overflow-x-auto">

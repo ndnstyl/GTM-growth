@@ -218,7 +218,7 @@ export function overviewTrend28Sql(opts: { market?: string }): string {
   const funnelMarket = market ? `AND office_id = '${market}'` : "";
   return `
     WITH days AS (
-      SELECT (current_date - INTERVAL (n) DAY)::DATE AS d
+      SELECT (current_date - INTERVAL (n + 1) DAY)::DATE AS d
       FROM generate_series(0, 27) AS t(n)
     ),
     spend AS (

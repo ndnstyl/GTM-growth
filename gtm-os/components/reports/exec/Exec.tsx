@@ -10,7 +10,6 @@ import { Kpi } from "@/components/shell/Kpi";
 import { dayLabel, fmt, metrics, monthValue, type KpiKey } from "@/lib/demo/metrics";
 
 const monthName = (period: string) => new Date(period + "-15T12:00:00").toLocaleDateString("en-US", { month: "long" });
-const timeLabel = (iso: string) => new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -94,7 +93,7 @@ export function Exec() {
   const q = feed.verify_queue_pending;
   return (
     <div className="mx-auto max-w-5xl space-y-4 p-6">
-      <PageHeader title="Executive readout" subtitle={`Unit economics for the whole company, as of ${dayLabel(feed.as_of)}, ${timeLabel(feed.as_of)}. Sample data.`} />
+      <PageHeader title="Executive readout" subtitle={`Unit economics for the whole company, data through ${dayLabel(metrics.through)}. Sample data.`} />
 
       <Card title="Bottom line">
         <p className="text-[14px] leading-relaxed">{`Last month the company booked ${fmt("gross_revenue", monthValue(LAST_MONTH, "gross_revenue"))} on ${fmt("ad_spend", monthValue(LAST_MONTH, "ad_spend"))} of ad spend, a MER of ${fmt("mer", monthValue(LAST_MONTH, "mer"))}, and trailing twelve-month revenue is ${feed.revenue_ttm && feed.revenue_ttm.change_pct != null ? (feed.revenue_ttm.change_pct >= 0 ? "+" : "") + feed.revenue_ttm.change_pct + "%" : "n/a"} on the year before. Cost per sale was ${fmt("cost_per_sale", monthValue(LAST_MONTH, "cost_per_sale"))}.`}</p>

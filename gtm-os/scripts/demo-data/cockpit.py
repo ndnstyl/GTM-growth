@@ -173,7 +173,7 @@ def write_routines(w: World) -> None:
     for label, sched in JOBS:
         port = None
         jobs.append({"label": plain(label), "schedule": sched, "loaded": True, "pid": None if sched != "always on" else 4100 + len(jobs),
-                     "last_exit": 0, "plist": "", "serves_port": port})
+                     "last_exit": 0, "plist": "", "serves_port": port, "late": label == "creative-library-sync"})
     write_json(OUT_DATA / "routines.json", {
         "jobs": jobs, "services": [{"name": plain(n), "port": p, "listening": True} for n, p in SERVICES], "alerts": [], "built_at": built,
     })
@@ -272,8 +272,8 @@ def write_consent(w: World) -> None:
     base = datetime(_d.year, _d.month, _d.day, 6, 20)
     at = lambda mins: (base - timedelta(minutes=mins)).isoformat(timespec="seconds") + "-05:00"
     items = [
-        {"kind": "failed_job", "job": "Nightly consent replay", "owner": "Compliance lead", "owner_basis": "named", "severity": "critical",
-         "state": "failed", "age_s": 1260, "at": at(21), "exit_code": 4, "what": "Nightly consent replay failed; retry queued"},
+        {"kind": "failed_job", "job": "Nightly consent reconcile", "owner": "Compliance lead", "owner_basis": "named", "severity": "critical",
+         "state": "failed", "age_s": 1260, "at": at(21), "exit_code": 4, "what": "Nightly consent reconcile failed; retry queued"},
         {"kind": "spool", "severity": "warning", "state": "waiting", "age_s": 420, "held": 2, "revokes_held": 1, "limit_s": 900,
          "owner": "Compliance lead", "owner_basis": "named",
          "what": "2 consent captures held, inside the 15-minute limit"},

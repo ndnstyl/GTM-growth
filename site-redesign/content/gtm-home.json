@@ -7,7 +7,7 @@
    "items": [
     {
      "kind": "loop",
-     "name": "Call-based market SWOT",
+     "name": "Sales-call objection read",
      "outcome": "Reads recorded sales calls and writes up objections, strengths and weaknesses for each rep"
     }
    ]
@@ -19,7 +19,7 @@
     {
      "kind": "agent",
      "name": "Growth marketing lead",
-     "outcome": "Plans channel strategy, budget split and offer tests as recommendations; a person applies every change"
+     "outcome": "Recommends channel strategy, budget split and offer tests"
     },
     {
      "kind": "playbook",
@@ -45,7 +45,7 @@
   },
   {
    "name": "Content Engine",
-   "outcome": "One sentence in, finished scripts and edited reels out, on brand.",
+   "outcome": "Scripts from one sentence, reels from raw footage, on brand, with a person approving each one.",
    "items": [
     {
      "kind": "agent",
@@ -89,7 +89,7 @@
     },
     {
      "kind": "automation",
-     "name": "Content studio request desk",
+     "name": "Content studio panel",
      "outcome": "One studio panel where an idea becomes a ticket, is rendered into on-brand reels and lands in a media library"
     }
    ]
@@ -101,7 +101,7 @@
     {
      "kind": "agent",
      "name": "Paid media operator",
-     "outcome": "Audits accounts, pulls performance and drafts changes across Google, YouTube, Meta and Microsoft; a person applies every live change"
+     "outcome": "Audits accounts, pulls performance and drafts changes across Google, YouTube, Meta and Microsoft"
     },
     {
      "kind": "loop",
@@ -111,7 +111,7 @@
     {
      "kind": "loop",
      "name": "Sending sales back to ad platforms",
-     "outcome": "Each day the ad platforms are told which leads became sales (Google and Meta), so they can optimize for revenue"
+     "outcome": "Each day Google and Meta are told which leads became sales, so they can optimize for revenue"
     },
     {
      "kind": "loop",
@@ -152,7 +152,7 @@
     {
      "kind": "agent",
      "name": "Shows and events seat",
-     "outcome": "Answers events questions from a show playbook and drafts staffing kits and follow-up plans; recommend-only"
+     "outcome": "Answers events questions from a show playbook and drafts staffing kits and follow-up plans"
     }
    ]
   },
@@ -168,7 +168,7 @@
     {
      "kind": "automation",
      "name": "Website AI chat",
-     "outcome": "Answers website visitors around the clock, qualifies buyers and emails the team the full conversation for leads and complaints"
+     "outcome": "Answers website visitors around the clock, qualifies buyers and emails the team each lead's full conversation"
     },
     {
      "kind": "loop",
@@ -192,13 +192,13 @@
     },
     {
      "kind": "loop",
-     "name": "AI front door weekly",
-     "outcome": "Weekly scorecard for the AI phone answering"
+     "name": "AI answering and speed-to-lead scorecard",
+     "outcome": "One weekly scorecard across the AI phone line, the website chat and speed to lead"
     },
     {
      "kind": "loop",
      "name": "AI agent KPI report",
-     "outcome": "Weekly results report for the AI phone line: calls, leads and transfers"
+     "outcome": "The AI phone line's own weekly numbers: calls, leads and transfers"
     },
     {
      "kind": "loop",
@@ -230,7 +230,7 @@
   },
   {
    "name": "Attribution & Cost",
-   "outcome": "Daily spend recorded and checked against platform controls.",
+   "outcome": "Daily spend recorded and checked against each platform's own totals.",
    "items": [
     {
      "kind": "agent",
@@ -244,7 +244,7 @@
     },
     {
      "kind": "loop",
-     "name": "Daily cost sync and gap alert",
+     "name": "Daily cost sync and gap check",
      "outcome": "Every platform's spend is recorded daily and a daily check lists gaps"
     },
     {
@@ -270,7 +270,7 @@
     {
      "kind": "loop",
      "name": "AI spend meter",
-     "outcome": "Meters what each AI workload costs, with a daily reconciliation that is currently incomplete"
+     "outcome": "Meters what each AI workload costs"
     }
    ]
   },
@@ -351,7 +351,7 @@
     },
     {
      "kind": "loop",
-     "name": "Daily data completeness gate",
+     "name": "Daily data completeness check",
      "outcome": "Checks daily that every reporting table has a row for each expected day and lists each gap"
     },
     {
@@ -393,7 +393,7 @@
   }
  ],
  "kinds": {
-  "agent": "AI seats that hold a growth role: strategy, media buying, editing, analysis, review.",
+  "agent": "AI seats that recommend and draft across strategy, media, editing, analysis and review. A person applies every live change.",
   "playbook": "Repeatable playbooks an agent loads on demand: voice, video, QR, data rules, audits.",
   "loop": "Scheduled jobs that run daily or weekly with no one pressing a button.",
   "automation": "Always-on systems: AI answering, consent register, cockpit, classroom."

@@ -1,15 +1,17 @@
+import { Accent, SectionLabel } from "./TextFx";
 import React, { useEffect, useRef } from "react";
 import { Reveal, Expander } from "./Primitives";
 import { useDialogs } from "./Dialogs";
 import { subscribeScroll, clamp, docTop } from "./lib/scrollBus";
 import { useMotionAllowed } from "./lib/useMotion";
+import { useStats } from "./lib/stats";
 import { ExternalIcon, SrOnly } from "./Icons";
 
 interface Era {
   no: string;
   title: string;
   sum: string;
-  body: (total: number, stages: number) => string;
+  body: (total: number, stageWord: string) => string;
 }
 
 const ERAS: Era[] = [
@@ -23,7 +25,7 @@ const ERAS: Era[] = [
     no: "02 / High-stakes fields",
     title: "Legal, professional services, SaaS and other high-constraint work",
     sum: "Places where being wrong compounds quickly and belief is more dangerous than doing nothing.",
-    body: () => "In those rooms I slow the system down, find what drives outcomes, keep what compounds and remove what only looks productive.",
+    body: () => "In those rooms I slow the system down and find the few things that actually move the number.",
   },
   {
     no: "03 / Diagnose and rebuild",
@@ -42,13 +44,14 @@ const ERAS: Era[] = [
   {
     no: "05 / Now",
     title: "AI infrastructure under the growth work",
-    sum: "A full go-to-market stack I run in production, now offered as your fractional CAIO and CTO.",
-    body: (t, n) =>
-      `${t} systems across ${n} stages: AI seats, playbooks, scheduled loops and always-on systems. I assume things will break. The AI is the engine; hard rules and alarms are the brakes, and I do not ship one without the other.`,
+    sum: "I run a go-to-market stack in production, first touch to final report. Now I own yours as fractional CAIO and CTO.",
+    body: (t, w) =>
+      `${t} systems across ${w} stages: AI seats, playbooks, scheduled loops and always-on systems. I assume things will break, so every one of them has an owner, a check and an alarm.`,
   },
 ];
 
-export default function Story({ total, stages }: { total: number; stages: number }) {
+export default function Story({ total }: { total: number; stages?: number }) {
+  const { stageWord } = useStats();
   const dialogs = useDialogs();
   const motion = useMotionAllowed();
   const tl = useRef<HTMLDivElement | null>(null);
@@ -97,9 +100,9 @@ export default function Story({ total, stages }: { total: number; stages: number
       <div className="g-wrap">
         <div className="g-story-top">
         <Reveal className="g-sec-head">
-          <span className="g-label">My story</span>
+          <SectionLabel>My story</SectionLabel>
           <h2 id="g-story-h">
-            Twenty years of growth marketing, <em className="g-accent">now building AI infrastructure under it.</em>
+            Twenty years of growth marketing, <Accent>now building AI infrastructure under it.</Accent>
           </h2>
           <p className="g-lede">
             I am brought in when leadership senses something is wrong and cannot say why. My job is to find what is actually causal, keep what compounds and scrap what only looks productive.
@@ -118,7 +121,7 @@ export default function Story({ total, stages }: { total: number; stages: number
               <span className="g-logo g-logo--lg" aria-hidden="true" />
               <p className="g-sig-name">Mike Soto</p>
               <p className="g-sig-by">Fractional CAIO and CTO &middot; twenty years in growth &middot; runs the stack above in production</p>
-              <p className="g-sig-quote">&ldquo;I am brought in when leadership senses something is wrong and cannot say why.&rdquo;</p>
+              <p className="g-sig-quote">&ldquo;The AI is the engine. Hard rules and alarms are the brakes. I do not ship one without the other.&rdquo;</p>
               <a className="g-btn g-btn--ghost g-btn--sm" href="https://www.linkedin.com/in/michael-soto-7134ba158/" target="_blank" rel="noopener noreferrer">
                 See me on LinkedIn <ExternalIcon />
                 <SrOnly>(opens in a new tab)</SrOnly>
@@ -144,7 +147,7 @@ export default function Story({ total, stages }: { total: number; stages: number
                   <h3>{e.title}</h3>
                   <p className="g-sum g-muted">{e.sum}</p>
                   <Expander id={`g-e${i + 1}`} closedLabel="Read more">
-                    <p className="g-muted">{e.body(total, stages)}</p>
+                    <p className="g-muted">{e.body(total, stageWord)}</p>
                   </Expander>
                 </div>
               </li>

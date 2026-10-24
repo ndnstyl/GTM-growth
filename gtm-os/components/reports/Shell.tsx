@@ -10,10 +10,7 @@ import {
 import { FilterBar, FilterState } from "@/components/reports/FilterBar";
 import { Health, type HealthDoc, type JobHealthDoc } from "@/components/reports/Health";
 import { FreshnessStrip } from "@/components/reports/FreshnessStrip";
-import { LeadMap } from "@/components/reports/LeadMap";
-import { Organic } from "@/components/reports/Organic";
 import { PaidMedia } from "@/components/reports/PaidMedia";
-import { Pivot } from "@/components/reports/Pivot";
 import { CallCenter } from "@/components/reports/CallCenter";
 import { Overview } from "@/components/reports/Overview";
 import { PageHeader } from "@/components/shell/PageHeader";
@@ -27,9 +24,6 @@ import { reportLog } from "@/lib/reports/log";
 const TAB_SUB: Record<string, string> = {
   overview: "Funnel and spend across every market and channel",
   paid_media: "Google, Meta and Microsoft Ads by campaign",
-  organic: "Search and website traffic",
-  leads_geo: "Where leads come from, by market and zip",
-  explore: "Pivot any feed by any dimension",
   call_center: "Connect rates, dials and revenue per appointment",
   health: "Feed and job freshness",
 };
@@ -37,17 +31,11 @@ const TAB_SUB: Record<string, string> = {
 type TabKey =
   | "overview"
   | "paid_media"
-  | "organic"
-  | "leads_geo"
-  | "explore"
   | "call_center" | "health";
 
 const TABS: { key: TabKey; label: string }[] = [
   { key: "overview", label: "Overview" },
   { key: "paid_media", label: "Paid Media" },
-  { key: "organic", label: "Organic" },
-  { key: "leads_geo", label: "Leads & Geo" },
-  { key: "explore", label: "Explore" },
   { key: "call_center", label: "Sales floor" },
   { key: "health", label: "Health" },
 ];
@@ -75,10 +63,6 @@ export function Shell() {
   }, [tab]);
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [filters, setFilters] = useState<FilterState>({ preset: "mtd" });
-  const [geoOptions, setGeoOptions] = useState<{ market: string[]; source: string[] }>({
-    market: [],
-    source: [],
-  });
   const [contractResolution, setContractResolution] = useState<ContractResolution | null>(null);
   // Health + live refresh: _health.json is rewritten by every scheduler run.
   // Poll it every 5 minutes; when the store's as_of or manifest sha set changes,
@@ -171,11 +155,7 @@ export function Shell() {
           }
         />
         <FreshnessStrip manifest={manifest} />
-        <FilterBar
-          value={filters}
-          onChange={setFilters}
-          options={tab === "leads_geo" ? { market: geoOptions.market } : {}}
-        />
+        {tab === "overview" || tab === "paid_media" || tab === "call_center" ? <FilterBar value={filters} onChange={setFilters} options={{}} /> : null}
       </div>
 
       <div className="flex min-h-0 flex-1">
@@ -202,12 +182,6 @@ export function Shell() {
             <Overview filters={filters} ready={contractResolution !== null} />
           ) : activeFeed.key === "paid_media" ? (
             <PaidMedia filters={filters} ready={contractResolution !== null} />
-          ) : activeFeed.key === "explore" ? (
-            <Pivot ready={contractResolution !== null} filters={filters} />
-          ) : activeFeed.key === "leads_geo" ? (
-            <LeadMap filters={filters} onOptions={setGeoOptions} />
-          ) : activeFeed.key === "organic" ? (
-            <Organic filters={filters} />
           ) : activeFeed.key === "call_center" ? (
             <CallCenter preset={filters.preset} />
           ) : activeFeed.key === "health" ? (

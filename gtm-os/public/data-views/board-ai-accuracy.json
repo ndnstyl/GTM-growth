@@ -10,12 +10,6 @@
    }
   },
   {
-   "viewId": "ai-accuracy-graded",
-   "layout": {
-    "span": 2
-   }
-  },
-  {
    "viewId": "ai-accuracy-faithfulness",
    "layout": {
     "span": 2
@@ -28,7 +22,7 @@
    }
   },
   {
-   "viewId": "ai-accuracy-learning",
+   "viewId": "ai-accuracy-graded",
    "layout": {
     "span": 2
    }

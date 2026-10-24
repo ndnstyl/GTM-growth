@@ -131,7 +131,11 @@ export default function StudioPage() {
   };
   const runDone = runState?.done;
   const runPick = allIdeas.find((i) => i.id === runIdea);
-  const nextLib = (library.data?.items ?? []).find((i) => i.stage === "draft" && (!runPick || i.brand === runPick.brand)) ?? library.data?.items[0];
+  const base = (library.data?.items ?? []).find((i) => i.stage === "draft" && (!runPick || i.brand === runPick.brand)) ?? library.data?.items[0];
+  // The finished draft is filed under the idea that ran, with that idea's title, a 28-second cut and today's date.
+  const nextLib: LibItem | undefined = base && runPick
+    ? { ...base, id: "run-" + runPick.id, title: runPick.title, kind: "video", stage: "draft", duration_s: 28, created: new Date().toLocaleDateString("en-CA"), note: "In draft; ready for the brand lead's review." }
+    : base;
   const running = runState !== null && !runDone;
 
   const loading = brands.loading || ideas.loading || library.loading;
@@ -195,7 +199,7 @@ export default function StudioPage() {
                               <svg key="d" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8" stroke="var(--good)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" pathLength={1} className="g-draw-now" /></svg>
                             ) : active ? <Loader2 size={14} className="animate-spin text-primary" /> : <span className="text-muted-foreground">·</span>}
                           </span>
-                          <span><b>{s.label}</b>{done ? <span key="o" className="g-fade text-[var(--ink2)]">: {s.output}</span> : null}</span>
+                          <span><b>{s.label}</b>{done ? <span key="o" className="g-fade text-[var(--ink2)]">: {s.output.replace("{title}", runPick?.title ?? "your idea")}</span> : null}</span>
                         </li>
                       );
                     })}
@@ -204,7 +208,7 @@ export default function StudioPage() {
               ) : <p className="mt-2 text-[13px] text-[var(--ink2)]">Pick an idea and run it. The crew researches, scripts, cuts, animates, mixes and finishes a draft. Nothing is published.</p>}
               {runDone && nextLib ? (
                 <div role="status" className="g-detail mt-3 rounded-lg border border-[var(--good)]/50 bg-[var(--good)]/10 p-3 text-[13px]">
-                  Draft ready in the library: <b>{nextLib.title}</b>.{" "}
+                  Draft ready: <b>{nextLib.title}</b>.{" "}
                   <button onClick={() => { setTab("library"); setOpen(nextLib); }} className="font-semibold text-primary hover:underline">Open it</button>
                 </div>
               ) : null}

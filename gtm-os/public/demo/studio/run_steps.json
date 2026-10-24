@@ -23,7 +23,7 @@
   {
    "label": "Cutting the rough edit",
    "ms": 1700,
-   "output": "Assembled a 28 second vertical cut with captions."
+   "output": "Assembled a 28-second vertical cut with captions."
   },
   {
    "label": "Checking brand and claims rules",
@@ -33,7 +33,7 @@
   {
    "label": "Filing the result",
    "ms": 900,
-   "output": "Saved to the library for review: Why a free estimate is worth the hour."
+   "output": "Saved to the library as a draft: {title}."
   }
  ],
  "result_id": "lib-001"

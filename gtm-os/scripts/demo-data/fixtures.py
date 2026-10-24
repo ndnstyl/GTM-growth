@@ -115,15 +115,15 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
     add("funnel-week", ["funnel", "sets", "demos", "conversion", "week"], "How is the funnel this week?",
         f"Last 7 days: **{K('leads','last7')} leads**, {K('sets','last7')} appointments set, {K('issued','last7')} issued, {K('meetings','last7')} meetings held and **{K('sales','last7')} sales**.\n"
         f"Set rate {K('set_rate','last7')} ({MP('last7')['set_rate']:.1f}% the week before); close rate {K('close_rate','last7')}.",
-        [src("Workbench", "/reports/workbench/")], ["What is the set rate?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["What is the set rate?"])
     add("best-market", ["market", "lowest", "cost per set", "best", "worst"], "Which market has the lowest cost per set?",
         f"Over the last 7 days **{cps[0][1]}** is the cheapest at {usd(cps[0][0])} per set ({cps[0][2]} sets) and **{cps[-1][1]}** the most expensive at {usd(cps[-1][0])}.\n"
         f"Moving budget toward the cheaper market is the first lever.",
-        [src("Digital Marketing board", "/reports/digital/")], ["Which market closes best?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["Which market closes best?"])
     add("close-market", ["close", "rate", "market", "closes", "best"], "Which market closes best?",
         f"Over 28 days **{close_by_mkt[0][1]}** closes best at {pct(close_by_mkt[0][0])} of issued appointments, and {close_by_mkt[-1][1]} lowest at {pct(close_by_mkt[-1][0])}. "
         f"Company close rate over the same days is {K('close_rate','last28')}.",
-        [src("Workbench", "/reports/workbench/")], ["Which source's leads close best?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["Which source's leads close best?"])
     add("set-rate", ["set", "rate", "appointments", "booked"], "What is the set rate?",
         f"Set rate is **{K('set_rate','last7')}** over the last 7 days against {MP('last7')['set_rate']:.1f}% the week before: {K('sets','last7')} appointments set from {K('leads','last7')} leads.",
         [src("Overview", "/reports/")], ["What is the connect rate on the floor?"])
@@ -138,31 +138,23 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
     add("source-close", ["source", "close", "best", "referral", "leads"], "Which source's leads close best?",
         f"Over 28 days **{srcc[0]['name']}** closes best at {pct(srcc[0]['close'])} of meetings held ({int(srcc[0]['demos'])} meetings). "
         f"The weakest is {srcc[-1]['name']} at {pct(srcc[-1]['close'])}.",
-        [src("Digital Marketing board", "/reports/digital/")], ["How is direct mail doing?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["How is direct mail doing?"])
     add("direct-mail", ["mail", "direct", "postcards", "mailer"], "How is direct mail doing?",
         f"Over 28 days direct mail produced **{int(mail['leads'])} leads** and {int(mail['sets'])} sets on {usd(mail['spend'])} of spend, "
         f"{usd(mail['cps'])} per set. Responses land over the ten days after each Tuesday drop.",
-        [src("Digital Marketing board", "/reports/digital/")], ["How is regional TV doing?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["How is regional TV doing?"])
     add("tv", ["tv", "television", "flight", "regional"], "How is regional TV doing?",
         f"Regional TV over 28 days: **{int(tv['leads'])} leads**, {int(tv['sets'])} sets, {usd(tv['spend'])} of spend, {usd(tv['cps'])} per set. "
         f"Four markets carry flights, four weeks on and one off.",
-        [src("Digital Marketing board", "/reports/digital/")], ["How is direct mail doing?"])
-    add("organic", ["organic", "search", "seo", "clicks", "google"], "How is organic search doing?",
-        f"Search Console clicks were **{int(gsc['clicks']):,}** over the last 7 days, {delta(gsc['clicks'], gscp['clicks'])} on the prior week, from {int(gsc['impressions']):,} impressions. "
-        f"The top query was \"{tq[0]}\" with {int(tq[1])} clicks.",
-        [src("Organic report", "/reports/#organic")], ["Which channels send the most web traffic?"])
-    tot = sum(x[1] for x in ga)
-    add("web-traffic", ["traffic", "sessions", "website", "channels", "web"], "Which channels send the most web traffic?",
-        "Sessions over the last 7 days: " + ", ".join(f"**{g[0]}** {int(g[1]):,} ({100 * g[1] / tot:.0f}%)" for g in ga[:3]) + f", out of {int(tot):,} in total.",
-        [src("Organic report", "/reports/#organic")], ["How is organic search doing?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["How is direct mail doing?"])
     add("ai-accuracy", ["ai", "accuracy", "answers", "graded", "chat"], "How accurate are the AI answers?",
         f"Of {int(ai['graded']):,} answers a reviewer graded in the last 7 days, **{pct(100 * ai['right'] / ai['graded'])}** were right. "
         f"The AI answered {pct(100 * ai['answered'] / ai['asked'])} of {int(ai['asked']):,} questions itself, handed off {pct(100 * ai['deflected'] / ai['asked'])} and declined {pct(100 - 100 * ai['answered'] / ai['asked'] - 100 * ai['deflected'] / ai['asked'])}.",
-        [src("AI accuracy board", "/reports/workbench/")], ["What does the AI cost?"])
+        [src("AI accuracy board", "/reports/workbench/?board=board-ai-accuracy")], ["What does the AI cost?"])
     add("ai-cost", ["ai", "cost", "tokens", "savings", "saved"], "What does the AI cost?",
         f"AI workloads made {int(ai['calls']):,} calls in the last 7 days. At vendor list price that work would cost **{usd(ai['frontier'])}**; it actually cost {usd(ai['actual'])}, "
         f"a saving of {usd(round(ai['frontier']) - round(ai['actual']))}. Month to date the saving is {usd(ai['mtd_net'])}.",
-        [src("AI cost board", "/reports/workbench/")], ["How healthy are the loops?"])
+        [src("AI accuracy board", "/reports/workbench/?board=board-ai-accuracy")], ["How healthy are the loops?"])
     add("loops-health", ["loops", "jobs", "health", "failed", "reliability"], "How healthy are the loops?",
         f"The scheduled loops, AI seats and playbooks ran **{int(wk['runs']):,} times** in the last 7 days; {pct(100 * (wk['runs'] - wk['failed']) / wk['runs'], 2)} succeeded and {int(wk['failed'])} failed. "
         f"One loop, the creative library sync, has not fired in two days and is flagged on the health page.",
@@ -174,7 +166,7 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
     add("month-landing", ["land", "projection", "forecast", "month", "end"], "Where does the month land?",
         f"Pacing the share of a month normally booked by today, the month lands near **${land[1] / 1e6:.1f}M**, somewhere between ${land[2] / 1e6:.2f}M and ${land[3] / 1e6:.2f}M. "
         f"The goal is ${goal / 1e6:.2f}M.",
-        [src("Workbench", "/reports/workbench/")], ["Are we on pace this month?"])
+        [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["Are we on pace this month?"])
     n_ready = sum(1 for x in lib if x["stage"] == "approved")
     n_review = sum(1 for x in lib if x["stage"] == "review")
     add("content-pipeline", ["content", "pipeline", "creative", "videos", "library"], "What is in the content pipeline?",
@@ -185,15 +177,10 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
         "Four consent items are open: one failed replay job, one capture held briefly, one failed text and one ambiguous stop waiting on a person. "
         "None is past its limit; the ambiguous stop is the one that needs a decision today.",
         [src("Capture and consent", "/capture/")], ["How healthy are the loops?"])
-    to = ex["research"]["top_objection"]
-    add("top-objection", ["objection", "calls", "objections", "swot", "spouse"], "What is the top objection on calls?",
-        f"**\"{to['text']}\"** came up on {n(to['calls'])} of {n(floor['connects'])} connected calls this week and is trending {to['trend']}. "
-        f"Suggested response: {to['rebuttal'][:1].lower() + to['rebuttal'][1:]}",
-        [src("Research", "/research/")], ["Where does the month land?"])
     add("speed", ["speed", "response", "fast", "latency", "first"], "How fast does the AI respond?",
         f"The median full answer takes **{ai['latency_s']:.1f} seconds** end to end over the last 7 days, inside the 3.5 second budget. "
         f"Open knowledge gaps: {ai['open_gaps']}.",
-        [src("AI accuracy board", "/reports/workbench/")], ["How accurate are the AI answers?"])
+        [src("AI accuracy board", "/reports/workbench/?board=board-ai-accuracy")], ["How accurate are the AI answers?"])
     add("what-changed", ["changed", "week", "summary", "news", "happened"], "What changed this week?",
         f"Leads were {delta(MV('last7')['leads'], MP('last7')['leads'])}, ad spend {delta(MV('last7')['ad_spend'], MP('last7')['ad_spend'])} and revenue {delta(MV('last7')['gross_revenue'], MP('last7')['gross_revenue'])}. "
         f"MER {'held at ' + K('mer','last7') if round(MP('last7')['mer'], 1) == round(MV('last7')['mer'], 1) else 'moved from ' + format(MP('last7')['mer'], '.1f') + 'x to ' + K('mer','last7')}. "
@@ -204,7 +191,7 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
     add("market-leads", ["market", "behind", "leads", "pacing"], "Which market is behind on leads?",
         f"**{lead_gap[0][1]}** is furthest behind: {int(lead_gap[0][2]):,} leads in the last 7 days against {int(lead_gap[0][3]):,} the week before ({lead_gap[0][0]:+.0f}%). "
         f"**{lead_gap[-1][1]}** is furthest ahead at {lead_gap[-1][0]:+.0f}%. Across all markets there were {K('leads','last7')} leads.",
-        [src("Leads and geo", "/reports/#leads_geo")], ["Which market has the lowest cost per set?"])
+        [src("Overview", "/reports/")], ["Which market has the lowest cost per set?"])
     add("ai-books", ["book", "booked", "appointments", "schedule", "ai"], "How many appointments did the AI book?",
         "None. The AI phone line does not book appointments. After hours it answers the call, captures the caller's name, address and need, and emails the team a summary the next morning. "
         "A person on the call floor sets the appointment.",
@@ -216,7 +203,7 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
     return {
         "intro": "Ask about leads, spend, speed to lead, the sales floor, AI or content. Answers come from the demo company's data.",
         "suggestions": ["How did paid media do this week?", "Which market has the lowest cost per set?", "Which reps are below the floor average?",
-                        "What is the top objection on calls?", "Where does the month land?", "How accurate are the AI answers?"],
+                        "Where does the month land?", "How accurate are the AI answers?"],
         "fallback": "That one is outside this demo script. Try one of the suggestions.", "entries": entries,
     }
 
@@ -257,12 +244,12 @@ def build_stage_stats(S: Stats, w: World, ex: dict, M: dict) -> dict:
 RING_ITEMS = [
     ("Weekly paid media read", "report", ["paid", "weekly"], "Paid media operator", "Spend, waste and tracking risk across the three platforms."),
     ("Call SWOT, last 7 days", "report", ["research", "calls"], "Call SWOT loop", "Objections, strengths and weaknesses."),
-    ("Spring offer test brief", "brief", ["offer", "test"], "Growth marketing lead", "Three offers, one winner so far."),
+    ("Fall offer test brief", "brief", ["offer", "test"], "Growth marketing lead", "Three offers, one winner so far."),
     ("Brand voice guide v3", "playbook", ["brand", "voice"], "Brand voice pass", "Tone rules every content tool follows."),
     ("Q4 budget allocation", "deck", ["budget", "planning"], "Growth marketing lead", "Where each dollar goes by market and channel."),
     ("Efficiency target readout", "report", ["efficiency", "cost"], "Marketing analyst", "All-in cost against net revenue by market."),
     ("November mail drop plan", "brief", ["mail", "offline"], "Media buyer", "Six markets, one mailer, a QR code on each."),
-    ("Storm-prep reel set", "script", ["content", "social"], "Viral ad scriptwriter", "Three script variations for the weekend burst."),
+    ("Storm-prep reel set", "script", ["content", "social"], "Viral ad scriptwriter", "Three script variations for the weekend push."),
     ("Install story flagship script", "script", ["content", "video"], "Viral ad scriptwriter", "Seventy-eight second film with six cut-down bytes."),
     ("Speed-to-lead weekly", "report", ["speed", "weekly"], "Speed-to-lead loop", "First-touch time by channel."),
     ("AI front door scorecard", "report", ["ai", "weekly"], "AI front door loop", "Answer rate, accuracy and hand-offs."),

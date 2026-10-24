@@ -9,16 +9,16 @@
  ],
  "cols": [],
  "measures": [
-  "faith_checked_n",
-  "faith_supported_n",
-  "faith_unfaithful_n",
-  "faith_unverified_n",
-  "faith_excluded_unvalidated_n",
   "faith_faithfulness_pct"
  ],
  "filters": [],
  "datePreset": "last_25",
- "presentation": "table",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "line",
+  "x": "period",
+  "y": "faith_faithfulness_pct"
+ },
  "origin": "canon",
  "created_by": "GTM OS demo build",
  "created_at": "2026-10-24"

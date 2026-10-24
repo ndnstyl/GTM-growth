@@ -10,7 +10,7 @@ import { realNow } from "@/lib/demo/clock";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { actions, latched, N8nButton, SkillRow, Run } from "@/lib/actions";
 
-const POLL_MS = 4000;
+const POLL_MS = 30000;
 
 /** A ring that fills over the run's real duration. Pure CSS: the delay is negative by the time already elapsed, so a
  *  reopened console picks the ring up mid-way. Runs with no known duration (seed history) fall back to a spinner. */

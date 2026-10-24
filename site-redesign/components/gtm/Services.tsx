@@ -1,3 +1,4 @@
+import { Accent, SectionLabel } from "./TextFx";
 import React from "react";
 import { Reveal, Expander, TiltCard } from "./Primitives";
 import { useDialogs } from "./Dialogs";
@@ -18,7 +19,7 @@ const makeServices = (w: string): Svc[] => [
     id: "caio",
     label: "Fractional",
     title: "Chief AI Officer",
-    lead: "The owner of your AI strategy for growth: what to automate and what to leave alone, with the number that says it paid.",
+    lead: "The owner of your AI strategy for growth and the direction behind your AI compliance decisions: what to automate, what to leave alone, and the number that says it paid.",
     scene: <SceneRoadmap />,
     groups: [
       {
@@ -26,7 +27,7 @@ const makeServices = (w: string): Svc[] => [
         items: [
           "An AI roadmap tied to pipeline and revenue",
           "Decisions on which go-to-market work to automate first",
-          "Rules for how AI is used with lead and customer data",
+          "Direction on AI compliance: which rules touch how you use AI with lead and customer data, and what the systems must do to stay inside them",
           "Training and runbooks so your team runs it",
         ],
       },
@@ -46,7 +47,7 @@ const makeServices = (w: string): Svc[] => [
         items: [
           "Architecture for your CRM, tracking and data flow",
           "Tool and vendor decisions with the cost made plain",
-          "Reliability: alarms, stall checks, data gates and a daily census of every job",
+          "Reliability: stall alarms, data-gap checks and a daily census of every job",
           "Custody of lead data and the consent record",
         ],
       },
@@ -66,7 +67,7 @@ const makeServices = (w: string): Svc[] => [
         items: [`A map of your ${w} stages and where money leaks`, "The highest-leak systems built first", "A written runbook and a team walkthrough"],
       },
       { h: "How it runs", items: ["Map, prove the data, build, hand over", "Each system runs on a schedule with alarms"] },
-      { h: "Outcomes", items: ["Spend proven before it reaches the CRM", "Every lead answered and routed", "One screen for the numbers"] },
+      { h: "Outcomes", items: ["Spend checked against each platform before it is reported", "After-hours calls and chats captured and handed to a person", "One screen for the numbers"] },
     ],
   },
 ];
@@ -79,9 +80,9 @@ export default function Services() {
     <section id="services" className="g-section" tabIndex={-1} aria-labelledby="g-services-h">
       <div className="g-wrap">
         <Reveal className="g-sec-head">
-          <span className="g-label">Services</span>
+          <SectionLabel>Services</SectionLabel>
           <h2 id="g-services-h">
-            One owner for the AI and tech behind <em className="g-accent">your growth.</em>
+            One owner for the AI and tech behind <Accent>your growth.</Accent>
           </h2>
           <p className="g-lede">Two ways to have me on the hook for your go-to-market technology, and a scoped build when you need the systems first.</p>
         </Reveal>

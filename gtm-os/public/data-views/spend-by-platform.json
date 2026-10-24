@@ -5,17 +5,22 @@
  "narrative": "Where the money goes each month across the three ad platforms and offline media.",
  "sourceKey": "spine_spend_monthly",
  "rows": [
-  "period"
- ],
- "cols": [
+  "period",
   "platform"
  ],
+ "cols": [],
  "measures": [
   "spend"
  ],
  "filters": [],
  "datePreset": "last_13",
- "presentation": "table",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "stacked_bar",
+  "x": "period",
+  "y": "spend",
+  "series": "platform"
+ },
  "origin": "canon",
  "created_by": "GTM OS demo build",
  "created_at": "2026-10-24"

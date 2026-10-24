@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGrid, ArrowUpRight, Clapperboard, QrCode, LineChart, Telescope, Table2 } from "lucide-react";
+import { LayoutGrid, ArrowUpRight, Clapperboard, QrCode, LineChart } from "lucide-react";
 import { Panel, Row } from "./Panel";
 import { useNavigate } from "@/lib/motion/nav";
 
@@ -9,9 +9,7 @@ type App = { name: string; desc: string; icon: React.ReactNode; href: string };
 const APPS: App[] = [
   { name: "Content Studio", desc: "ideas, scripts, crew and library", icon: <Clapperboard size={15} />, href: "/studio/" },
   { name: "QR & tracked URLs", desc: "build and register every offline link", icon: <QrCode size={15} />, href: "/qr/" },
-  { name: "Call SWOT", desc: "objections, strengths, weaknesses", icon: <Telescope size={15} />, href: "/research/#swot" },
-  { name: "Digital board", desc: "marketing cost target · spend by market · pacing", icon: <LineChart size={15} />, href: "/reports/digital/" },
-  { name: "Workbench", desc: "boards and slices over every feed", icon: <Table2 size={15} />, href: "/reports/workbench/" },
+  { name: "Marketing cost target", desc: "all-in cost against the 28% target", icon: <LineChart size={15} />, href: "/reports/workbench/?board=board-efficiency-target" },
 ];
 
 export function MicroApps() {

@@ -72,7 +72,6 @@ def write_research(w: World, calls_read: int) -> dict:
             {"name": "Hearth and Home Exteriors", "mentions": pct(0.011), "positioning": "Premium siding, slower and pricier."},
         ],
     }
-    write_json(OUT_DEMO / "research" / "swot.json", swot)
     offer = {
         "positioning": "The exterior contractor that gives you a written price in one visit and shows the monthly payment first.",
         "pillars": [
@@ -84,7 +83,7 @@ def write_research(w: World, calls_read: int) -> dict:
         ],
         "offers": [
             {"id": "o1", "name": "Free inspection and written price", "hook": "Get your exact price in one visit", "price_anchor": "No cost, no obligation", "guarantee": "Price held for 30 days", "test_status": "winning", "lift_pct": 12.4},
-            {"id": "o2", "name": "Spring financing offer", "hook": "Start now, first payment in 90 days", "price_anchor": "From $89 a month", "guarantee": "Rate locked at signing", "test_status": "testing", "lift_pct": 5.1},
+            {"id": "o2", "name": "Fall financing offer", "hook": "Start now, first payment in 90 days", "price_anchor": "From $89 a month", "guarantee": "Rate locked at signing", "test_status": "testing", "lift_pct": 5.1},
             {"id": "o3", "name": "Roof and gutters bundle", "hook": "Do both while the ladders are up", "price_anchor": "Gutters at half price with a roof", "guarantee": "One crew, one schedule", "test_status": "testing", "lift_pct": 3.2},
             {"id": "o4", "name": "Neighbor referral credit", "hook": "A $250 credit for you and a neighbor", "price_anchor": "$250 off each", "guarantee": "Credit applied at signing", "test_status": "retired", "lift_pct": -2.8},
         ],
@@ -94,7 +93,6 @@ def write_research(w: World, calls_read: int) -> dict:
             {"id": "b3", "name": "Veterans week thank-you", "channel": "social", "window": "Nov 6-11", "headline": "A thank-you offer for those who served", "status": "draft"},
         ],
     }
-    write_json(OUT_DEMO / "research" / "offer.json", offer)
     return {"objections": len(swot["objections"]), "competitors": len(swot["competitors"]), "offers_testing": sum(1 for o in offer["offers"] if o["test_status"] == "testing"),
             "offers_winning": sum(1 for o in offer["offers"] if o["test_status"] == "winning"), "top_objection": swot["objections"][0]}
 
@@ -110,7 +108,7 @@ IDEA_TITLES = [
     ("Why a free estimate is worth the hour", "Most people expect a sales trap; show the actual hour.", "myth-buster"),
     ("A roof you stop thinking about", "Slow reveal of a finished roof at golden hour.", "before-after"),
     ("Three questions before you sign", "A checklist any homeowner can use with any contractor.", "explainer"),
-    ("The crew lead explains day one", "A crew lead walks through prep, not paint.", "behind-the-install"),
+    ("The crew lead explains day one", "A crew lead walks through tear-off day, the part nobody films.", "behind-the-install"),
     ("What a monthly payment really looks like", "A plain breakdown of a financed roof.", "financing"),
     ("Windows you can hear the difference in", "A sound test at the front door.", "demo"),
     ("Storm season checklist", "Five things to check from the ground.", "seasonal"),
@@ -212,9 +210,9 @@ def write_studio(w: World) -> dict:
         {"label": "Writing three script variations", "ms": 1600, "output": "Wrote a pain hook, a story hook and a myth hook, each under thirty seconds."},
         {"label": "Scoring the variations", "ms": 1200, "output": "The myth hook scored highest on clarity; the story hook on warmth."},
         {"label": "Pulling matching footage", "ms": 1500, "output": "Matched twelve clips from the footage library to the script beats."},
-        {"label": "Cutting the rough edit", "ms": 1700, "output": "Assembled a 28 second vertical cut with captions."},
+        {"label": "Cutting the rough edit", "ms": 1700, "output": "Assembled a 28-second vertical cut with captions."},
         {"label": "Checking brand and claims rules", "ms": 1100, "output": "Passed: no restricted claims, correct end card, tracked link attached."},
-        {"label": "Filing the result", "ms": 900, "output": "Saved to the library for review: Why a free estimate is worth the hour."},
+        {"label": "Filing the result", "ms": 900, "output": "Saved to the library as a draft: {title}."},
     ], "result_id": "lib-001"})
     media = base / "media"
     media.mkdir(parents=True, exist_ok=True)

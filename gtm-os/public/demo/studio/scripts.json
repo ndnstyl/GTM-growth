@@ -64,7 +64,7 @@
     {
      "id": "v3",
      "label": "Myth hook",
-     "hook": "A new roof is not about looks. It is about forgetting you own one.",
+     "hook": "The best roof is the one you forget you own.",
      "body": "The best roof is the one nobody on the street talks about. Quiet gutters, clean lines, a warranty you never open. Free estimate this week.",
      "seconds": 31,
      "humor": 0.4,
@@ -100,7 +100,7 @@
     {
      "id": "v3",
      "label": "Myth hook",
-     "hook": "You do not need a contractor you trust. You need three answers you can check.",
+     "hook": "Three answers you can check beat a contractor you trust.",
      "body": "Trust is slow. Answers are fast. Written price, named crew, written warranty. If you have all three, sign. If not, keep looking. Free estimate when you are ready.",
      "seconds": 32,
      "humor": 0.4,
@@ -136,7 +136,7 @@
     {
      "id": "v3",
      "label": "Myth hook",
-     "hook": "Crews do not rush day one. Crews rush the wrong day one.",
+     "hook": "The crew that rushes the tear-off leaves nails in your driveway.",
      "body": "Rushing the tear-off is how nails end up in your driveway. We slow the first morning and finish ahead of the forecast. Ask to meet the lead before you book.",
      "seconds": 30,
      "humor": 0.5,
@@ -172,7 +172,7 @@
     {
      "id": "v3",
      "label": "Myth hook",
-     "hook": "Financing a roof is not a loan shark deal. It is a payment plan with a written end date.",
+     "hook": "Fixed rate, a written end date, approval before the crew is booked.",
      "body": "Fixed rate, no prepayment fee, approval before the crew is booked. Read the whole sheet before you sign anything. Ask for your monthly number.",
      "seconds": 31,
      "humor": 0.4,
@@ -280,7 +280,7 @@
     {
      "id": "v3",
      "label": "Myth hook",
-     "hook": "Word of mouth is not luck. It is a crew that cleans up the driveway.",
+     "hook": "The crew that cleans your driveway is the ad your neighbors see.",
      "body": "Every homeowner on this street can tell you how the crew treated their yard. That is the only ad we trust. See who your neighbors picked.",
      "seconds": 31,
      "humor": 0.4,

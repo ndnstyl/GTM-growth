@@ -8,8 +8,8 @@ import { useMotionFlag } from "./lib/useMotion";
 import { cx } from "./lib/cx";
 
 const SITE = "https://theinnovativenative.com";
-const TITLE = "Mike Soto | Fractional CAIO and CTO for go-to-market and AI";
-const DESC = "Fractional CAIO and CTO focused on go-to-market: AI systems that find buyers, answer them fast and prove the spend.";
+const TITLE = "Fractional CAIO and CTO for GTM + AI | Mike Soto";
+const DESC = "I own the AI and technology behind your go-to-market: the systems that find buyers, answer them fast and prove the spend.";
 
 /** The one-page home: tokens, fonts, head tags, the shared dialog controller, header and footer. */
 export default function GtmLayout({ children, dialogs }: { children: React.ReactNode; dialogs: React.ReactNode }) {
@@ -34,16 +34,20 @@ export default function GtmLayout({ children, dialogs }: { children: React.React
         <meta property="og:description" content={DESC} />
         <meta property="og:url" content={`${SITE}/`} />
         <meta property="og:image" content={`${SITE}/images/gtm/og-share.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Mike Soto, fractional CAIO and CTO for growth that runs on AI systems" />
+        <meta property="og:locale" content="en_US" />
+        <meta name="author" content="Mike Soto" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={TITLE} />
         <meta name="twitter:description" content={DESC} />
         <meta name="twitter:image" content={`${SITE}/images/gtm/og-share.png`} />
+        <meta name="twitter:image:alt" content="Mike Soto, fractional CAIO and CTO for growth that runs on AI systems" />
       </Head>
       <DialogProvider>
         <div className={cx("gtm-root", "g-page", "g-themed", fontVars)}>
-          <a className="g-skip" href="#main">
-            Skip to content
-          </a>
+          <div className="g-grain" aria-hidden="true" />
           <GtmHeader home />
           <main id="main" tabIndex={-1}>{children}</main>
           <GtmFooter nested />

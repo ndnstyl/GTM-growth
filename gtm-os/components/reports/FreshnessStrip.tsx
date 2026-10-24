@@ -1,13 +1,8 @@
 "use client";
 
-import { dayLabel } from "@/lib/demo/metrics";
+import { dayLabel, metrics } from "@/lib/demo/metrics";
 import { Manifest } from "@/lib/reports/duck";
 import type { TrustFile } from "@/lib/reports/workbench/markers";
-
-const fmt = (iso: string) => {
-  const d = new Date(iso);
-  return `${d.toLocaleDateString("en-US", { month: "short", day: "numeric" })}, ${d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}`;
-};
 
 /** One muted line. The per-feed list lives on the Health tab only. */
 export function FreshnessStrip({ manifest }: { manifest: Manifest | null; trust?: TrustFile | null }) {
@@ -17,7 +12,7 @@ export function FreshnessStrip({ manifest }: { manifest: Manifest | null; trust?
   const n = Object.keys(manifest.files).length;
   return (
     <p className="text-[13px] text-muted-foreground">
-      Data through {dayLabel(manifest.as_of)}, refreshed {fmt(manifest.as_of)} · {n} feeds loaded · sample data
+      Data through {dayLabel(metrics.through)} · {n} feeds loaded · sample data
     </p>
   );
 }

@@ -1,24 +1,32 @@
 {
  "id": "efficiency-tier-by-market",
- "name": "Marketing cost tier by market",
- "description": "Marketing cost as a share of net revenue and the tier it earns, by market and month.",
+ "name": "Marketing cost against the 28% target",
+ "description": "Marketing cost as a share of net revenue, whole company, by month.",
  "narrative": "Each market against the 28 percent target: the ceiling a market can spend at target and where it actually landed.",
  "sourceKey": "efficiency_monthly",
  "rows": [
-  "period",
-  "office"
+  "period"
  ],
- "cols": [
-  "target_band"
- ],
+ "cols": [],
  "measures": [
-  "headroom_at_target",
-  "marketing_cost_pct",
-  "mer_net_basis"
+  "marketing_cost_pct"
  ],
- "filters": [],
+ "filters": [
+  {
+   "dimKey": "office",
+   "op": "=",
+   "values": [
+    "COMPANY"
+   ]
+  }
+ ],
  "datePreset": "last_13",
- "presentation": "table",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "line",
+  "x": "period",
+  "y": "marketing_cost_pct"
+ },
  "origin": "canon",
  "created_by": "GTM OS demo build",
  "created_at": "2026-10-24"

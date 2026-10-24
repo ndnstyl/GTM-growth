@@ -1,7 +1,8 @@
+import { Accent, SectionLabel } from "./TextFx";
 import React, { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Primitives";
 import { useDialogs } from "./Dialogs";
-import { subscribeScroll, clamp } from "./lib/scrollBus";
+import { subscribeScroll, clamp, docTop } from "./lib/scrollBus";
 import { useMediaQuery, useMotionAllowed } from "./lib/useMotion";
 import { cx } from "./lib/cx";
 import { useStats } from "./lib/stats";
@@ -24,7 +25,7 @@ export function stageMeta(s: Stage): string {
 export default function Stages({ data, children }: { data: GtmHomeData; children?: React.ReactNode }) {
   const { stages } = data;
   const N = stages.length;
-  const { StageWord } = useStats();
+  const { StageWord, stageWord } = useStats();
   const dialogs = useDialogs();
   const motion = useMotionAllowed();
   // the layout itself is decided in CSS (so the server render and the hydrated page are the same height);
@@ -51,8 +52,16 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
     let tw = 0;
     let lastP = -1;
     let idx = 0;
+    const rows = phone ? Array.from(wrap.querySelectorAll<HTMLElement>(".g-cells--out .g-cell")) : [];
+    let rowTops: number[] = [];
+    let rowEnd = 0;
     return subscribeScroll({
       measure() {
+        if (phone) {
+          rowTops = rows.map(docTop);
+          const last = rows[rows.length - 1];
+          rowEnd = last ? docTop(last) + last.offsetHeight : 0;
+        }
         top = wrap.getBoundingClientRect().top + window.scrollY;
         run = Math.max(1, wrap.offsetHeight - stage.offsetHeight);
         hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--g-hh")) || 76;
@@ -61,6 +70,24 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
         rail.style.setProperty("--tw", String(tw));
       },
       update(y) {
+        if (phone) {
+          // phones: the list scrolls under the pinned strip, and the strip follows the row passing beneath it
+          const line = y + hh + stage.offsetHeight + 8;
+          let n = 0;
+          rowTops.forEach((t, k) => {
+            if (t <= line) n = k;
+          });
+          const pp = clamp((line - rowTops[0]) / Math.max(1, rowEnd - rowTops[0]), 0, 1);
+          if (Math.abs(pp - lastP) > 0.002) {
+            lastP = pp;
+            rail.style.setProperty("--p", pp.toFixed(4));
+          }
+          if (n !== idx) {
+            idx = n;
+            setCur(n);
+          }
+          return;
+        }
         const p = clamp((y + hh - top) / run, 0, 1);
         if (Math.abs(p - lastP) > 0.002) {
           lastP = p;
@@ -73,7 +100,7 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
         }
       },
     });
-  }, [scrub, N]);
+  }, [scrub, phone, N]);
 
   const jump = (i: number) => {
     const wrap = wrapRef.current;
@@ -95,6 +122,7 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
             <span className="g-num">{two(i)}</span>
             <span className="g-sr">, </span>
             <span className="g-cname">{s.name}</span>
+            <span className="g-cout">{s.outcome}</span>
             {s.items.length > 1 ? (
               <>
                 <span className="g-sr">, </span>
@@ -111,9 +139,9 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
     <section id="stages" className="g-section g-stages" tabIndex={-1} aria-labelledby="g-stages-h" ref={secRef}>
       <div className="g-wrap">
         <Reveal className="g-sec-head">
-          <span className="g-label">The ten stages</span>
+          <SectionLabel>{`The ${stageWord} stages`}</SectionLabel>
           <h2 id="g-stages-h">
-            {StageWord} stages, <em className="g-accent">first touch to final report.</em>
+            {StageWord} stages, <Accent>first touch to final report.</Accent>
           </h2>
           <p className="g-lede">Scroll through the stages, or open one to see the systems inside it.</p>
         </Reveal>
@@ -148,10 +176,16 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
                 {stages.map((s, i) => (
                   <div key={s.name} className={cx("g-ac", scrub && i === cur && "on", !scrub && i === 0 && "on")} aria-hidden={scrub && i === cur ? undefined : true}>
                     <span className="g-big">{two(i)}</span>
-                    <h3>{s.name}</h3>
+                    <p className="g-ac-title">{s.name}</p>
                     <p className="g-muted">{s.outcome}</p>
                     <span className="g-meta">{stageMeta(s)}</span>
-                    <button type="button" className="g-btn g-btn--primary g-btn--sm" aria-haspopup="dialog" onClick={(e) => open(i, e)} tabIndex={scrub && i === cur ? 0 : -1}>
+                    <ul className="g-ac-sys" aria-label={`Systems in ${s.name}`}>
+                      {s.items.slice(0, 5).map((it) => (
+                        <li key={it.name}>{it.name}</li>
+                      ))}
+                      {s.items.length > 5 ? <li className="g-ac-more">{`and ${s.items.length - 5} more`}</li> : null}
+                    </ul>
+                    <button type="button" className="g-btn g-btn--primary g-btn--sm" aria-haspopup="dialog" onClick={(e) => open(i, e)} tabIndex={-1}>
                       Open this stage
                     </button>
                   </div>
@@ -160,10 +194,10 @@ export default function Stages({ data, children }: { data: GtmHomeData; children
               {cells("g-cells--in")}
             </div>
           </div>
+          {/* phones: the list lives inside the sequence, so its rows scroll under the pinned strip */}
+          {cells("g-cells--out")}
         </div>
         {/* phones: the list sits under the short sticky strip instead of inside it */}
-        {cells("g-cells--out")}
-
         <Reveal className="g-stack-x">
           <StackMap data={data} />
         </Reveal>

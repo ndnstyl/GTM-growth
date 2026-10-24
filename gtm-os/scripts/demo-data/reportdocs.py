@@ -74,7 +74,8 @@ def write_health(w: World, fw: FeedWriter) -> None:
 
 
 def write_job_health(w: World) -> None:
-    built = datetime(w.end.year, w.end.month, w.end.day, 6, 30)
+    nxt = w.end + timedelta(days=1)
+    built = datetime(nxt.year, nxt.month, nxt.day, 6, 30)
     jobs = []
     for i, (label, sched) in enumerate(JOBS):
         if sched == "always on":
@@ -277,4 +278,4 @@ def build_library(w: World) -> dict:
 
 
 def write_library(w: World) -> None:
-    write_json(OUT_DATA / "content" / "library.json", build_library(w), indent=None)
+    return None

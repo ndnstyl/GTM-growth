@@ -7,7 +7,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Cost sync",
@@ -16,7 +17,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Data completeness check",
@@ -25,7 +27,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Creative library sync",
@@ -34,7 +37,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": true
   },
   {
    "label": "Call scoring",
@@ -43,7 +47,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Self refreshing reports",
@@ -52,7 +57,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Daily alert",
@@ -61,7 +67,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Sales back to platforms",
@@ -70,7 +77,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Nightly learning",
@@ -79,7 +87,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Nightly backup",
@@ -88,7 +97,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Chat handoff check",
@@ -97,7 +107,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Speed to lead weekly",
@@ -106,7 +117,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Weekly ad account check",
@@ -115,7 +127,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Weekly call themes",
@@ -124,7 +137,8 @@
    "pid": null,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Cockpit",
@@ -133,7 +147,8 @@
    "pid": 4114,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Answer service",
@@ -142,7 +157,8 @@
    "pid": 4115,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Usage tracker",
@@ -151,7 +167,8 @@
    "pid": 4116,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   },
   {
    "label": "Report builder",
@@ -160,7 +177,8 @@
    "pid": 4117,
    "last_exit": 0,
    "plist": "",
-   "serves_port": null
+   "serves_port": null,
+   "late": false
   }
  ],
  "services": [

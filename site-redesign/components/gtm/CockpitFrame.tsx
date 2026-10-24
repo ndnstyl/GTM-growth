@@ -74,8 +74,25 @@ export default function CockpitFrame({ variant, start, requireClick = false }: P
       if (start) setState("paused");
       return;
     }
-    if (start) begin();
-  }, [start, requireClick, armed, state, begin]);
+    if (!start) return;
+    if (!isDialog) {
+      begin();
+      return;
+    }
+    // the full-screen demo waits for its sheet to finish entering and for the browser to be idle, so the entry is smooth
+    // on a slow phone; the poster shows until then
+    let idle = 0;
+    const t = window.setTimeout(() => {
+      const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      if (ric) idle = ric(() => begin(), { timeout: 700 });
+      else begin();
+    }, 420);
+    return () => {
+      window.clearTimeout(t);
+      const cic = (window as unknown as { cancelIdleCallback?: (n: number) => void }).cancelIdleCallback;
+      if (idle && cic) cic(idle);
+    };
+  }, [start, requireClick, armed, state, begin, isDialog]);
 
   // coming back from the full-screen demo: load the inline copy again
   const wasSuspended = useRef(false);
@@ -114,13 +131,43 @@ export default function CockpitFrame({ variant, start, requireClick = false }: P
     if (!isDialog) return;
     try {
       frameRef.current?.contentWindow?.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") dialogs.close();
+        // the app's own drawers and dialogs handle Escape first; only an unhandled one leaves the demo
+        if (e.key === "Escape" && !e.defaultPrevented && !frameRef.current?.contentDocument?.querySelector('[role="dialog"]')) dialogs.close();
       });
     } catch (err) {
       /* a cross-origin frame cannot be listened to; the Close button after the frame is the way out */
     }
   };
 
+  // Tell the app when the frame leaves or enters the viewport and when the tab is hidden, so it can pause its own work.
+  // Message shape is the one the app listens for (app/lib/motion/index.tsx): { gtmOs: "visibility", visible: boolean }.
+  useEffect(() => {
+    const el = mountRef.current;
+    if (!el || (state !== "ready" && state !== "loading")) return;
+    let inView = true;
+    const send = () => {
+      const w = frameRef.current?.contentWindow;
+      if (!w) return;
+      w.postMessage({ gtmOs: "visibility", visible: inView && !document.hidden && !suspended }, window.location.origin);
+    };
+    const io = new IntersectionObserver((es) => {
+      inView = es[es.length - 1].isIntersecting;
+      send();
+    });
+    io.observe(el);
+    const onVis = () => send();
+    document.addEventListener("visibilitychange", onVis);
+    const f = frameRef.current;
+    f?.addEventListener("load", send);
+    send();
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
+      f?.removeEventListener("load", send);
+    };
+  }, [state, suspended]);
+
+  const expandRef = useRef<HTMLButtonElement | null>(null);
   const badge = BADGE[state];
   const showFrame = (state === "loading" || state === "ready") && !suspended;
   const frameStyle: React.CSSProperties | undefined = fit
@@ -142,7 +189,7 @@ export default function CockpitFrame({ variant, start, requireClick = false }: P
           {badge.text}
         </span>
         {!isDialog ? (
-          <button type="button" className="g-expand" aria-label="Open the live demo full screen" onClick={(e) => dialogs.open("gtmos", null, e.currentTarget)}>
+          <button ref={expandRef} type="button" className="g-expand" aria-label="Open the live demo full screen" onClick={(e) => dialogs.open("gtmos", null, e.currentTarget)}>
             <ExpandIcon />
           </button>
         ) : null}
@@ -166,7 +213,7 @@ export default function CockpitFrame({ variant, start, requireClick = false }: P
             className="g-explore"
             tabIndex={-1}
             aria-hidden="true"
-            onClick={(e) => dialogs.open("gtmos", null, e.currentTarget)}
+            onClick={() => dialogs.open("gtmos", null, expandRef.current)}
           >
             <span>
               <span className="g-explore-touch">Tap to explore</span>

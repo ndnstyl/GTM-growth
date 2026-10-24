@@ -5,18 +5,23 @@
  "narrative": "Every published number is recomputed a second way each night; this view is where a mismatch would show first.",
  "sourceKey": "efficiency_tieout",
  "rows": [
-  "period",
-  "office"
+  "period"
  ],
- "cols": [
-  "result"
- ],
+ "cols": [],
  "measures": [
   "rows",
   "fails",
   "residuals"
  ],
- "filters": [],
+ "filters": [
+  {
+   "dimKey": "office",
+   "op": "=",
+   "values": [
+    "COMPANY"
+   ]
+  }
+ ],
  "datePreset": "last_13",
  "presentation": "table",
  "origin": "canon",

@@ -20,12 +20,6 @@
    "layout": {
     "span": 2
    }
-  },
-  {
-   "viewId": "efficiency-daily",
-   "layout": {
-    "span": 2
-   }
   }
  ],
  "crossFilter": [],

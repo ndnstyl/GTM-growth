@@ -6,6 +6,7 @@
 // arrays to the selected engine adapter. The issued SQL is quoted on the
 // surface: the bake-off PASS/FAIL is "renders only pivotSql-computed data,
 
+import { dayLabel, metrics, monthName } from "@/lib/demo/metrics";
 import { useEffect, useMemo, useState } from "react";
 import { query } from "@/lib/reports/duck";
 import { buildPivot, dateWhereFor, type ViewSlice } from "@/lib/reports/workbench/pivotSql";
@@ -152,6 +153,13 @@ export function ChartPanel({
     }
   }
 
+  // The open month is a partial month, so charting it beside full months draws a cliff. It is left off the chart and named.
+  const openMonths = new Set([...mtdX, ...Object.entries(metrics.months).filter(([, m]) => m.partial).map(([k]) => k)]);
+  const dropped = data.filter((d) => openMonths.has(d.x));
+  if (dropped.length && spec.kind !== "pie" && spec.kind !== "donut" && spec.kind !== "scatter") {
+    for (const d of dropped) data.splice(data.indexOf(d), 1);
+  }
+
   const m2Meta = spec.y2 ? source.measures.find((m) => m.key === spec.y2) : undefined;
   const adapterProps: ChartAdapterProps = {
     spec,
@@ -176,10 +184,11 @@ export function ChartPanel({
           ))}
         </div>
       )}
-      <details className="mt-2 text-[10.5px] text-muted-foreground">
-        <summary className="cursor-pointer">Show the query</summary>
-        <pre className="mt-1 overflow-x-auto rounded bg-muted/40 p-2 leading-snug">{pivotStmt.sql}</pre>
-      </details>
+      {dropped.length > 0 && (
+        <div className="mt-1 text-[12px] text-muted-foreground">
+          {monthName(dropped[0].x)} is still open (through {dayLabel(metrics.through)}) and is not charted, so a part month does not read as a drop.
+        </div>
+      )}
     </div>
   );
 }

@@ -61,7 +61,7 @@ SCRIPTS = {
          "Slow shot up the front of the house, finished at golden hour. No stains, no curled edges, nothing to think about for years. That is what done looks like. See your options.", 0.1),
         ("Story hook", "The owner of this house stopped checking the ceiling after storms.",
          "Three winters of buckets in the hall, then one week with our crew. Now the first thing she notices after a storm is that nothing changed. Book an estimate.", 0.3),
-        ("Myth hook", "A new roof is not about looks. It is about forgetting you own one.",
+        ("Myth hook", "The best roof is the one you forget you own.",
          "The best roof is the one nobody on the street talks about. Quiet gutters, clean lines, a warranty you never open. Free estimate this week.", 0.4),
     ],
     2: [
@@ -69,7 +69,7 @@ SCRIPTS = {
          "Ask three things first: who is on my roof, what is in writing, and what happens if it rains on day two. Any honest contractor answers all three in a minute. Ask us.", 0.2),
         ("Story hook", "A Stonebridge couple asked a stranger three questions and saved four thousand dollars.",
          "Question one: is the price in writing. Question two: who does the work. Question three: what is covered. The first contractor stalled. The second one was us. Ask anyone these three.", 0.3),
-        ("Myth hook", "You do not need a contractor you trust. You need three answers you can check.",
+        ("Myth hook", "Three answers you can check beat a contractor you trust.",
          "Trust is slow. Answers are fast. Written price, named crew, written warranty. If you have all three, sign. If not, keep looking. Free estimate when you are ready.", 0.4),
     ],
     3: [
@@ -77,7 +77,7 @@ SCRIPTS = {
          "Our crew lead walks you through it: tarps down at seven, old shingles off by noon, deck inspected before a single new nail goes in. Prep is the job. The paint is the easy part.", 0.1),
         ("Story hook", "Marcus has led two hundred roof installs and still checks the deck by hand.",
          "He taps every board, marks the soft ones, and shows the homeowner before he fixes them. That ten minutes is why the roof is still dry in year ten. Meet the crew.", 0.3),
-        ("Myth hook", "Crews do not rush day one. Crews rush the wrong day one.",
+        ("Myth hook", "The crew that rushes the tear-off leaves nails in your driveway.",
          "Rushing the tear-off is how nails end up in your driveway. We slow the first morning and finish ahead of the forecast. Ask to meet the lead before you book.", 0.5),
     ],
     4: [
@@ -85,7 +85,7 @@ SCRIPTS = {
          "A new roof for about the cost of a streaming bundle and a phone plan. One number a month, fixed, no surprise at the end. See your monthly number in five minutes.", 0.3),
         ("Story hook", "The Alvarez family did the math at the kitchen table in four minutes.",
          "Roof price on the left, payment on the right, term in the middle. The payment was lower than their last two repair bills combined. They booked that night.", 0.3),
-        ("Myth hook", "Financing a roof is not a loan shark deal. It is a payment plan with a written end date.",
+        ("Myth hook", "Fixed rate, a written end date, approval before the crew is booked.",
          "Fixed rate, no prepayment fee, approval before the crew is booked. Read the whole sheet before you sign anything. Ask for your monthly number.", 0.4),
     ],
     5: [
@@ -109,7 +109,7 @@ SCRIPTS = {
          "Same roof, same week, same weather. One neighbor waited for a callback that never came. The other has been dry since March. Ask your neighbors who they called.", 0.2),
         ("Story hook", "The Okafors saw our truck next door and knocked before we left.",
          "They asked three questions and got an estimate that afternoon. Eight weeks later their street has two matching roofs and a thank-you note on our crew lead's windshield.", 0.4),
-        ("Myth hook", "Word of mouth is not luck. It is a crew that cleans up the driveway.",
+        ("Myth hook", "The crew that cleans your driveway is the ad your neighbors see.",
          "Every homeowner on this street can tell you how the crew treated their yard. That is the only ad we trust. See who your neighbors picked.", 0.4),
     ],
 }

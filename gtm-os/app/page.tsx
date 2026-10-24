@@ -89,7 +89,7 @@ export default function Cockpit() {
           </button>
         </div>
       ) : null}
-      <div className="grid grid-cols-1 xl:min-h-0 xl:flex-1 gap-3.5 xl:grid-cols-[300px_minmax(0,1fr)_330px] 2xl:grid-cols-[330px_minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 [&>*]:min-w-0 xl:min-h-0 xl:flex-1 gap-3.5 xl:grid-cols-[300px_minmax(0,1fr)_330px] 2xl:grid-cols-[330px_minmax(0,1fr)_360px]">
 
       <div className="g-rise flex flex-col xl:order-2 xl:min-h-0" style={{ ["--i" as string]: 1 }}>
         <h1 className="sr-only">GTM OS command cockpit</h1>

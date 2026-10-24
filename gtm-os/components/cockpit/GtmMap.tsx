@@ -29,7 +29,6 @@ const STATS: Record<string, StageStat> = Object.fromEntries((statsFile as { stag
 // Where the travelling beam lights a chevron: after card i when the grid has one (not at a row end).
 const hasChev = (i: number) => i < stages.length - 1 && (i + 1) % 5 !== 0;
 const BEAM_SEQ: { kind: "card" | "chev"; i: number }[] = stages.flatMap((_, i) => (hasChev(i) ? [{ kind: "card" as const, i }, { kind: "chev" as const, i }] : [{ kind: "card" as const, i }]));
-const BEAM_GAP = 44; // steps of rest between sweeps (about 16 s), so an idle cockpit is mostly still
 const kinds = gtm.kinds as Record<Kind, string>;
 
 /** The stat headline without the number it repeats ("6 objections tracked" with value "6" -> "objections tracked"). */
@@ -77,21 +76,32 @@ export function GtmMap() {
       requestAnimationFrame(() => ring.classList.add("ready"));
     };
     place(!ring.classList.contains("ready"));
-    const ro = new ResizeObserver(() => place(true));
+    // The first callback is the observer announcing the grid's current size, not a resize: skipping it keeps the
+    // ring gliding to the new card instead of jumping.
+    let announced = false;
+    const ro = new ResizeObserver(() => {
+      if (!announced) { announced = true; return; }
+      place(true);
+    });
     ro.observe(grid);
     return () => ro.disconnect();
   }, [sel]);
 
   // The beam: one timer lights card, chevron, card, chevron down the ten stages, then rests. Class toggles only,
   // no re-render. Stops with the activity gate and never starts under reduced motion.
+  const [beamDone, setBeamDone] = useState(false);
   const step = useRef(0);
   const lit = useRef<Element | null>(null);
   useActiveInterval(
     () => {
       lit.current?.classList.remove("beam");
       lit.current = null;
-      const at = step.current++ % (BEAM_SEQ.length + BEAM_GAP);
-      if (at >= BEAM_SEQ.length) return;
+      const at = step.current++;
+      if (at >= BEAM_SEQ.length) {
+        // one sweep on arrival, then the cockpit is still
+        if (!beamDone) setBeamDone(true);
+        return;
+      }
       const b = BEAM_SEQ[at];
       const el = b.kind === "card" ? cardEls.current[b.i] : chevEls.current[b.i];
       if (el) {
@@ -100,7 +110,7 @@ export function GtmMap() {
       }
     },
     360,
-    { enabled: !reduced },
+    { enabled: !reduced && !beamDone },
   );
 
   // Pointer tilt: the hovered card leans toward the pointer. Style variables only, written on the card itself.
@@ -156,15 +166,15 @@ export function GtmMap() {
                   <span className="g-glare" aria-hidden="true" />
                   <span className="flex items-center gap-1.5">
                     <span className={`tick flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold transition-colors duration-300 ${on ? "bg-primary text-primary-foreground" : "bg-secondary text-[var(--ink2)]"}`}>{i + 1}</span>
-                    <span title={s.name} className="min-w-0 flex-1 line-clamp-2 break-words text-[13px] font-bold leading-tight">{s.name}</span>
+                    <span title={s.name} className="min-w-0 flex-1 line-clamp-2 [overflow-wrap:normal] text-[13px] font-bold leading-tight xl:max-2xl:text-[11.5px]">{s.name}</span>
                     {st ? <span aria-hidden="true" className={`h-2 w-2 shrink-0 rounded-full ${STATUS_RING[st.status] ?? STATUS_RING.ok} ${st.status === "ok" ? "" : "g-ping"}`} /> : null}
                   </span>
-                  <span className="mt-1 line-clamp-2 min-h-[30px] text-[11px] leading-snug text-[var(--ink2)]">{s.outcome}</span>
-                  <span className="mt-auto flex min-h-[18px] min-w-0 items-baseline gap-1.5 overflow-hidden border-t border-border/60 pt-1" title={st ? `${st.value} ${label(st)} ${st.delta}` : undefined}>
+                  <span className="mt-1 line-clamp-2 min-h-[30px] text-[11px] leading-snug text-[var(--ink2)] xl:max-2xl:hidden">{s.outcome}</span>
+                  <span className="mt-auto flex min-h-[18px] min-w-0 items-baseline gap-1.5 overflow-hidden border-t border-border/60 pt-1 xl:max-2xl:flex-wrap xl:max-2xl:gap-x-1" title={st ? `${st.value} ${label(st)} ${st.delta}` : undefined}>
                     {st ? (
                       <>
                         <StatCount text={st.value} delay={300 + i * 60} className="tick shrink-0 text-[13px] font-bold text-primary" />
-                        <span className="min-w-0 flex-1 truncate text-[11px] text-[var(--ink2)]">{label(st)}</span>
+                        <span className="min-w-0 flex-1 truncate text-[11px] text-[var(--ink2)] xl:max-2xl:line-clamp-2 xl:max-2xl:basis-full xl:max-2xl:whitespace-normal xl:max-2xl:leading-tight">{label(st)}</span>
                         {st.delta ? <span className="max-w-[45%] shrink-0 truncate text-[11px] text-muted-foreground">{st.delta}</span> : null}
                       </>
                     ) : null}
@@ -203,7 +213,7 @@ export function GtmMap() {
                   <span className="min-w-0 flex-1 text-[12px] text-[var(--ink2)]">{st.outcome}</span>
                   {a ? (
                     <NavLink href={a.items[0].href} tabIndex={cur ? 0 : -1} className="flex shrink-0 items-center gap-1 text-[12px] font-semibold text-primary hover:underline">
-                      Open {a.label} <ArrowUpRight size={13} />
+                      Open {a.id === "command" ? "the cockpit" : a.label} <ArrowUpRight size={13} />
                     </NavLink>
                   ) : null}
                 </div>

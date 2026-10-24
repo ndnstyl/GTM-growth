@@ -1,3 +1,4 @@
+import { Accent, SectionLabel } from "./TextFx";
 import React from "react";
 import { Reveal, TiltCard } from "./Primitives";
 import { useDialogs } from "./Dialogs";
@@ -19,14 +20,13 @@ export const FEATURES: Feature[] = [
     id: "consent",
     label: "Capture and consent",
     title: "The Outside Consent Register",
-    card: 'Proof of consent that holds up when someone says "prove it."',
-    dialog: "Proof of consent that holds up when a lawyer asks for it.",
+    card: "Consents recorded, sealed and reconciled every night, retrievable on request.",
+    dialog: "Consents and opt-outs recorded with their exact wording, sealed, reconciled every night and retrievable on request.",
     points: [
-      "Every consent and opt-out recorded with its exact wording",
+      "Consents and opt-outs recorded with their exact wording",
       "Each entry sealed, so a change is never silent",
       "Reconciled against vendor records every night",
       "Any record retrievable on request",
-      "A free field guide with the table layout and a 30-day build plan",
     ],
     link: { href: "/guides/outside-consent-register", label: "Get the free field guide" },
   },
@@ -40,7 +40,6 @@ export const FEATURES: Feature[] = [
       "Shows what needs you and answers from your own records, source attached",
       "Says plainly when it does not know",
       "Pivot, filter and drill into your own numbers",
-      "Early access open",
     ],
     link: { href: "/echo-os", label: "Join early access" },
   },
@@ -51,9 +50,9 @@ export default function Featured() {
   return (
     <>
       <Reveal className="g-sub-head">
-        <span className="g-label">Featured systems</span>
+        <SectionLabel>Featured systems</SectionLabel>
         <h3 id="g-feat-h">
-          Two you can <em className="g-accent">open today.</em>
+          Two you can <Accent>open today.</Accent>
         </h3>
       </Reveal>
       <div className="g-feat">

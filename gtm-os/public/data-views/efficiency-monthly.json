@@ -5,20 +5,24 @@
  "narrative": "The monthly record behind the target: revenue per net issued appointment, the ceiling it implies and the cost percent against it.",
  "sourceKey": "efficiency_monthly",
  "rows": [
-  "period",
-  "office"
+  "period"
  ],
  "cols": [],
  "measures": [
   "net_iss",
   "net_usd",
   "prenet_usd",
-  "net_basis",
-  "net_plus_pending",
-  "headroom_at_target",
   "marketing_cost_pct"
  ],
- "filters": [],
+ "filters": [
+  {
+   "dimKey": "office",
+   "op": "=",
+   "values": [
+    "COMPANY"
+   ]
+  }
+ ],
  "datePreset": "last_13",
  "presentation": "table",
  "origin": "canon",

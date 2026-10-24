@@ -49,7 +49,7 @@
   "items": [
    {
     "kind": "failed_job",
-    "job": "Nightly consent replay",
+    "job": "Nightly consent reconcile",
     "owner": "Compliance lead",
     "owner_basis": "named",
     "severity": "critical",
@@ -57,7 +57,7 @@
     "age_s": 1260,
     "at": "2026-10-25T05:59:00-05:00",
     "exit_code": 4,
-    "what": "Nightly consent replay failed; retry queued"
+    "what": "Nightly consent reconcile failed; retry queued"
    },
    {
     "kind": "spool",

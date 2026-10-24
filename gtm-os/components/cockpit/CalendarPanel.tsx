@@ -71,7 +71,7 @@ export function CalendarPanel({ needs, onCard }: { needs: Need[]; onCard: (c: Ca
             ? now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit" })
             : <span className="g-skel inline-block h-[20px] w-[118px] align-middle" aria-label="Loading the time" />}
         </div>
-        <div className="pb-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{now ? Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g, " ") : "local time"}</div>
+        <div className="pb-2 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{now ? "Eastern time" : "local time"}</div>
         <div className="mb-3 flex flex-wrap gap-[3px]">
           {Array.from({ length: 52 }, (_, i) => (
             <span

@@ -104,7 +104,7 @@ export function Row({
       }`}
     >
       {left}
-      <span className="min-w-0 flex-1 truncate" title={typeof primary === "string" ? primary : undefined}>{primary}</span>
+      <span className="min-w-0 flex-1 line-clamp-2 break-words md:truncate" title={typeof primary === "string" ? primary : undefined}>{primary}</span>
       {aux ? <span className="max-w-[40%] truncate text-[11px] text-muted-foreground">{aux}</span> : null}
       {right}
     </div>

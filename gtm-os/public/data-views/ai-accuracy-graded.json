@@ -9,19 +9,10 @@
  ],
  "cols": [],
  "measures": [
-  "acc_gradeable_n",
   "acc_graded_n",
-  "acc_ungraded_n",
   "acc_right_n",
-  "acc_wrong_source_n",
-  "acc_better_source_n",
-  "acc_wrong_tool_n",
-  "acc_unfaithful_n",
-  "acc_stale_n",
-  "acc_re_verify_n",
   "acc_graded_accuracy_pct",
-  "acc_routing_accuracy_pct",
-  "acc_stale_pct"
+  "acc_routing_accuracy_pct"
  ],
  "filters": [],
  "datePreset": "last_25",

@@ -109,6 +109,7 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
     let W = 0;
     let H = 0;
     let dpr = 1;
+    let keep = { x1: 0, y1: 0, x2: 0, y2: 0 }; // the headline and lede block: no star is drawn behind the words
     let col = ["#00e5ff", "#ff3df5", "#ffffff"];
     let px = 0;
     let py = 0;
@@ -123,7 +124,13 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
     let lastDraw = 0;
 
     const apply = () => {
-      if (!motion) return;
+      if (!motion) {
+        // reduced motion: the end state, flat and full size, whatever a first render wrote
+        t.style.transform = "none";
+        t.style.willChange = "auto";
+        orbs.forEach((o) => (o.style.transform = "none"));
+        return;
+      }
       t.style.transform = `rotateX(${(16 * (1 - flat) - py * 3).toFixed(2)}deg) rotateY(${(px * 5 * (1 - flat * 0.6)).toFixed(2)}deg) scale(${(0.93 + 0.07 * flat).toFixed(3)})`;
       const d = [-30, 24];
       orbs.forEach((o, i) => {
@@ -141,9 +148,9 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
       const narrow = W < 700;
       for (let i = 0; i < stars.length; i += narrow ? 2 : 1) {
         const s = stars[i];
-        if (motion) s.p += 0.03;
         const x = s.x * W + px * -24 * s.z;
         const y = s.y * H + py * -14 * s.z;
+        if (x > keep.x1 && x < keep.x2 && y > keep.y1 && y < keep.y2) continue;
         ctx.globalAlpha = 0.25 + 0.45 * Math.abs(Math.sin(s.p)) * s.z + 0.1;
         ctx.fillStyle = col[s.c] || "#fff";
         ctx.beginPath();
@@ -159,6 +166,11 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
       if (w === W && Math.abs(h - H) < 60) return; // a phone address bar changes height only: keep the field still
       W = w;
       H = h;
+      const hr = hero.getBoundingClientRect();
+      const box = (sel: string) => hero.querySelector<HTMLElement>(sel)?.getBoundingClientRect();
+      const h1 = box("h1");
+      const lede = box(".g-lede");
+      if (h1 && lede) keep = { x1: Math.min(h1.left, lede.left) - hr.left - 24, y1: h1.top - hr.top - 12, x2: Math.max(h1.right, lede.right) - hr.left + 24, y2: lede.bottom - hr.top + 12 };
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = Math.round(W * dpr);
       cv.height = Math.round(H * dpr);
@@ -173,9 +185,8 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
       py += (ty - py) * 0.08;
       const moving = Math.abs(tx - px) > 0.002 || Math.abs(ty - py) > 0.002;
       apply();
-      if (moving || now - lastDraw > 120) draw(now);
-      if (moving) raf = requestAnimationFrame(tick);
-      else to = window.setTimeout(wake, 140); // idle: twinkle at a slow tick instead of 60 frames a second
+      if (moving) draw(now);
+      if (moving) raf = requestAnimationFrame(tick); // idle: nothing runs at all
     };
     const wake = () => {
       window.clearTimeout(to);
@@ -263,9 +274,7 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
           <span className="g-l2" ref={gradRef}>
             {L2.map((w, i) => (
               <React.Fragment key={i}>
-                <span className="g-w g-gw" style={{ ["--k" as string]: L1.length + i } as React.CSSProperties}>
-                  {w}
-                </span>
+                <span className="g-w g-gw">{w}</span>
                 {i < L2.length - 1 ? " " : ""}
               </React.Fragment>
             ))}
@@ -289,7 +298,7 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
               <CockpitFrame variant="inline" start={demoStart} requireClick={!motion || saveData} />
               <span className="g-chip g-fchip g-fchip--1">
                 <i />
-                Spend proven
+                Spend reconciled
               </span>
               <span className="g-chip g-fchip g-fchip--2">
                 <i />
@@ -297,7 +306,7 @@ export default function Hero({ total }: { total: number; stageCount?: number }) 
               </span>
               <span className="g-chip g-fchip g-fchip--3">
                 <i />
-                Leads answered in seconds
+                Calls and chats answered in seconds
               </span>
             </div>
           </div>

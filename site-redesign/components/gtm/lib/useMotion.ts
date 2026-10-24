@@ -2,12 +2,38 @@ import { useEffect, useSyncExternalStore } from "react";
 
 const QUERY = "(prefers-reduced-motion: reduce)";
 
+const STORE = "tin-motion";
+const EVENT = "gtm:motion";
+
+function manualOff(): boolean {
+  try {
+    return localStorage.getItem(STORE) === "off";
+  } catch (e) {
+    return false;
+  }
+}
+
 function subscribe(cb: () => void) {
   const mq = window.matchMedia(QUERY);
   mq.addEventListener("change", cb);
-  return () => mq.removeEventListener("change", cb);
+  window.addEventListener(EVENT, cb);
+  return () => {
+    mq.removeEventListener("change", cb);
+    window.removeEventListener(EVENT, cb);
+  };
 }
-const snapshot = () => !window.matchMedia(QUERY).matches;
+const snapshot = () => !window.matchMedia(QUERY).matches && !manualOff();
+
+/** The visitor's own pause: the same static path reduced motion uses, remembered on this device. */
+export function setMotionPaused(paused: boolean) {
+  try {
+    if (paused) localStorage.setItem(STORE, "off");
+    else localStorage.removeItem(STORE);
+  } catch (e) {
+    /* storage blocked: the pause holds for this page view only */
+  }
+  window.dispatchEvent(new Event(EVENT));
+}
 const serverSnapshot = () => true;
 
 /** true when the visitor allows motion. Reacts to the OS setting changing mid-session. */

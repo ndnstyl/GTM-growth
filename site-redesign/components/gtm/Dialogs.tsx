@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { cx } from "./lib/cx";
 import { useMotionAllowed } from "./lib/useMotion";
+import { trackBooking } from "./lib/track";
 
 /* ===== Controller: one dialog open at a time; opening another closes the current one first (swap). ===== */
 
@@ -17,6 +18,8 @@ interface Ctx {
   close: (after?: () => void) => void;
   /** Called by a Dialog when its exit has finished. */
   exited: () => void;
+  /** true from a swap request until the next dialog is up: the backdrop is held so the page never flashes between them */
+  swapping: boolean;
 }
 
 const DialogCtx = createContext<Ctx | null>(null);
@@ -29,17 +32,20 @@ export function useDialogs(): Ctx {
 
 export function DialogProvider({ children }: { children: React.ReactNode }) {
   const [current, setCurrent] = useState<Req | null>(null);
+  const [swapping, setSwapping] = useState(false);
   const pending = useRef<Req | null>(null);
   const afterClose = useRef<(() => void) | null>(null);
   const currentRef = useRef<Req | null>(null);
   currentRef.current = current;
 
   const open = useCallback((name: DialogName, payload?: unknown, opener?: HTMLElement | null) => {
+    if (name === "book") trackBooking("open");
     // a swap (folder to booking) keeps the original opener, so closing returns focus to the card the visitor started from
     const keep = currentRef.current?.opener;
     const req = { name, payload, opener: keep || opener || (document.activeElement as HTMLElement | null) };
     if (currentRef.current) {
       pending.current = req;
+      setSwapping(true);
       setCurrent(null);
     } else setCurrent(req);
   }, []);
@@ -56,14 +62,24 @@ export function DialogProvider({ children }: { children: React.ReactNode }) {
   const exited = useCallback(() => {
     const p = pending.current;
     pending.current = null;
-    if (p) setCurrent(p);
+    if (p) {
+      setCurrent(p);
+      window.setTimeout(() => setSwapping(false), 120);
+    }
     const a = afterClose.current;
     afterClose.current = null;
     if (a) a();
   }, []);
 
-  const value = useMemo(() => ({ current, open, close, exited }), [current, open, close, exited]);
-  return <DialogCtx.Provider value={value}>{children}</DialogCtx.Provider>;
+  const value = useMemo(() => ({ current, open, close, exited, swapping }), [current, open, close, exited, swapping]);
+  return (
+    <DialogCtx.Provider value={value}>
+      {children}
+      {/* held from a swap request until the next dialog is up: the old dialog is gone for a frame before the new one mounts, and
+          this scrim keeps the page dimmed through that frame so it never flashes undimmed */}
+      {swapping ? <div aria-hidden="true" style={{ position: "fixed", inset: 0, zIndex: 2147483000, background: "rgba(4, 5, 12, 0.74)", pointerEvents: "none" }} /> : null}
+    </DialogCtx.Provider>
+  );
 }
 
 /* ===== The dialog itself: native <dialog> (focus trap, Esc, inert page) with an animated open and close. ===== */
@@ -213,7 +229,7 @@ export function Dialog({ name, id, label, labelledBy, className, exitProp = "tra
     <dialog
       ref={ref}
       id={id}
-      className={cx("g-m", className, shown && "open")}
+      className={cx("g-m", className, shown && "open", ctx.swapping && (mounted || isOpen) && "swap")}
       aria-label={label}
       aria-labelledby={mounted ? labelledBy : undefined}
       onClick={(e) => {

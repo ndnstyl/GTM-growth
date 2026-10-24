@@ -104,9 +104,6 @@ body { font-family: var(--font-sans), system-ui, sans-serif; }
 .reports-shell th, .reports-shell td { padding-inline: 0.5rem; }
 .reports-shell th { font-weight: 600; }
 
-.maplibregl-canvas { filter: invert(1) hue-rotate(180deg) brightness(0.72) saturate(0.55) contrast(1.05); }
-.maplibregl-ctrl-attrib { background: rgba(11,12,26,.7) !important; color: #8d90b3 !important; }
-.maplibregl-ctrl-attrib a { color: #b4b8dc !important; }
 
 /* ============ Motion system ============
    Same tokens and easings as the site that frames this app (gtm.scss), so frame and app read as one product.
@@ -223,7 +220,7 @@ body { font-family: var(--font-sans), system-ui, sans-serif; }
 .g-bd-layer { position: absolute; inset: -3%; width: 106%; height: 106%; transition: transform 700ms var(--ease-out); will-change: transform; }
 .g-bd-a { transform: translate3d(calc(var(--px, 0) * -5px), calc(var(--py, 0) * -4px), 0); }
 .g-bd-b { transform: translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -10px), 0); }
-.g-bd-drift { display: block; width: 100%; height: 100%; will-change: transform; animation: g-drift 38s ease-in-out infinite alternate; }
+.g-bd-drift { display: block; width: 100%; height: 100%; will-change: transform; animation: g-drift 38s ease-in-out 1 both; }
 
 /* overlays: one recipe. Backdrop fades, the panel rises from z (scale + short travel) */
 [data-slot="dialog-overlay"], [data-slot="sheet-overlay"] { --tw-duration: 180ms; animation-duration: 180ms; }

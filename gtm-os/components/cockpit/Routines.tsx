@@ -66,6 +66,7 @@ function deriveRows(feed: RoutinesFeed, mounted: boolean): RoutineRow[] {
       });
       continue;
     }
+    if ((j as { late?: boolean }).late) { rows.push({ time: j.schedule.match(/(\d{2}):(\d{2})/) ? clock12(...(j.schedule.match(/(\d{2}):(\d{2})/) as RegExpMatchArray).slice(1, 3) as [string, string]) : "", name, status: "STALE", mins: 9996, title: "Has not fired in two days: a platform credential is waiting on its quarterly rotation" }); continue; }
     if (j.schedule.startsWith("every")) { rows.push({ time: j.schedule.replace("every ", ""), name, status: "LOOP", mins: 9998 }); continue; }
     const m = j.schedule.match(/(\d{2}):(\d{2})/);
     if (!m) { rows.push({ time: "", name, status: "QUEUED", mins: 9997 }); continue; }

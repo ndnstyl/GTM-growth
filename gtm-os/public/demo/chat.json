@@ -4,7 +4,6 @@
   "How did paid media do this week?",
   "Which market has the lowest cost per set?",
   "Which reps are below the floor average?",
-  "What is the top objection on calls?",
   "Where does the month land?",
   "How accurate are the AI answers?"
  ],
@@ -168,8 +167,8 @@
    "answer": "Last 7 days: **{{leads@last7}} leads**, {{sets@last7}} appointments set, {{issued@last7}} issued, {{meetings@last7}} meetings held and **{{sales@last7}} sales**.\nSet rate {{set_rate@last7}} (28.7% the week before); close rate {{close_rate@last7}}.",
    "sources": [
     {
-     "label": "Workbench",
-     "href": "/reports/workbench/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
@@ -189,8 +188,8 @@
    "answer": "Over the last 7 days **Sunvale** is the cheapest at $65 per set (74 sets) and **Harborview** the most expensive at $87.\nMoving budget toward the cheaper market is the first lever.",
    "sources": [
     {
-     "label": "Digital Marketing board",
-     "href": "/reports/digital/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
@@ -210,8 +209,8 @@
    "answer": "Over 28 days **Lakemont** closes best at 13.8% of issued appointments, and Riverbend lowest at 10.9%. Company close rate over the same days is {{close_rate@last28}}.",
    "sources": [
     {
-     "label": "Workbench",
-     "href": "/reports/workbench/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
@@ -293,8 +292,8 @@
    "answer": "Over 28 days **Referral** closes best at 24.3% of meetings held (337 meetings). The weakest is Microsoft Ads (Agency) at 9.4%.",
    "sources": [
     {
-     "label": "Digital Marketing board",
-     "href": "/reports/digital/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
@@ -313,8 +312,8 @@
    "answer": "Over 28 days direct mail produced **624 leads** and 152 sets on $21,344 of spend, $140 per set. Responses land over the ten days after each Tuesday drop.",
    "sources": [
     {
-     "label": "Digital Marketing board",
-     "href": "/reports/digital/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
@@ -333,54 +332,12 @@
    "answer": "Regional TV over 28 days: **468 leads**, 112 sets, $17,412 of spend, $155 per set. Four markets carry flights, four weeks on and one off.",
    "sources": [
     {
-     "label": "Digital Marketing board",
-     "href": "/reports/digital/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
     "How is direct mail doing?"
-   ]
-  },
-  {
-   "id": "organic",
-   "match": [
-    "organic",
-    "search",
-    "seo",
-    "clicks",
-    "google"
-   ],
-   "q": "How is organic search doing?",
-   "answer": "Search Console clicks were **3,257** over the last 7 days, down 1% on the prior week, from 63,923 impressions. The top query was \"roof replacement cost\" with 530 clicks.",
-   "sources": [
-    {
-     "label": "Organic report",
-     "href": "/reports/#organic"
-    }
-   ],
-   "follow_ups": [
-    "Which channels send the most web traffic?"
-   ]
-  },
-  {
-   "id": "web-traffic",
-   "match": [
-    "traffic",
-    "sessions",
-    "website",
-    "channels",
-    "web"
-   ],
-   "q": "Which channels send the most web traffic?",
-   "answer": "Sessions over the last 7 days: **Organic Search** 11,766 (33%), **Paid Social** 9,523 (26%), **Paid Search** 5,742 (16%), out of 36,169 in total.",
-   "sources": [
-    {
-     "label": "Organic report",
-     "href": "/reports/#organic"
-    }
-   ],
-   "follow_ups": [
-    "How is organic search doing?"
    ]
   },
   {
@@ -397,7 +354,7 @@
    "sources": [
     {
      "label": "AI accuracy board",
-     "href": "/reports/workbench/"
+     "href": "/reports/workbench/?board=board-ai-accuracy"
     }
    ],
    "follow_ups": [
@@ -417,8 +374,8 @@
    "answer": "AI workloads made 55,318 calls in the last 7 days. At vendor list price that work would cost **$551**; it actually cost $193, a saving of $358. Month to date the saving is $1,192.",
    "sources": [
     {
-     "label": "AI cost board",
-     "href": "/reports/workbench/"
+     "label": "AI accuracy board",
+     "href": "/reports/workbench/?board=board-ai-accuracy"
     }
    ],
    "follow_ups": [
@@ -479,8 +436,8 @@
    "answer": "Pacing the share of a month normally booked by today, the month lands near **$1.2M**, somewhere between $1.11M and $1.29M. The goal is $1.48M.",
    "sources": [
     {
-     "label": "Workbench",
-     "href": "/reports/workbench/"
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
     }
    ],
    "follow_ups": [
@@ -530,27 +487,6 @@
    ]
   },
   {
-   "id": "top-objection",
-   "match": [
-    "objection",
-    "calls",
-    "objections",
-    "swot",
-    "spouse"
-   ],
-   "q": "What is the top objection on calls?",
-   "answer": "**\"I need to talk to my spouse\"** came up on 256 of 2,034 connected calls this week and is trending up. Suggested response: offer a two-person estimate time and send the written summary to both of them the same day.",
-   "sources": [
-    {
-     "label": "Research",
-     "href": "/research/"
-    }
-   ],
-   "follow_ups": [
-    "Where does the month land?"
-   ]
-  },
-  {
    "id": "speed",
    "match": [
     "speed",
@@ -564,7 +500,7 @@
    "sources": [
     {
      "label": "AI accuracy board",
-     "href": "/reports/workbench/"
+     "href": "/reports/workbench/?board=board-ai-accuracy"
     }
    ],
    "follow_ups": [
@@ -604,8 +540,8 @@
    "answer": "**Pinecrest** is furthest behind: 550 leads in the last 7 days against 605 the week before (-9%). **Sunvale** is furthest ahead at +12%. Across all markets there were {{leads@last7}} leads.",
    "sources": [
     {
-     "label": "Leads and geo",
-     "href": "/reports/#leads_geo"
+     "label": "Overview",
+     "href": "/reports/"
     }
    ],
    "follow_ups": [

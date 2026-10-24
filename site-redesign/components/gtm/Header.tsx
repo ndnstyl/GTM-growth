@@ -16,11 +16,13 @@ export const NAV = navItems
   .map((n) => ({ id: n.href === "/" ? "home" : n.href.replace("/#", ""), label: n.label }));
 
 /** Sections that belong to a nav item (the ten stages sit under Services). */
-const SECTION_GROUP: Record<string, string> = { home: "home", services: "services", stages: "services", story: "story", cases: "cases" };
-const SECTION_IDS = ["home", "services", "stages", "story", "cases"];
+const SECTION_GROUP: Record<string, string> = { home: "home", services: "services", method: "services", stages: "services", story: "story", cases: "cases" };
+const SECTION_IDS = ["home", "services", "method", "stages", "story", "cases", "control", "faq"];
 
 /** A scroll that always takes about 700 ms however far it goes, then hands focus to the section. */
+let glide = 0;
 export function goToSection(id: string, smooth: boolean) {
+  cancelAnimationFrame(glide);
   const t = document.getElementById(id);
   if (!t) return;
   const hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--g-hh")) || 76;
@@ -35,14 +37,27 @@ export function goToSection(id: string, smooth: boolean) {
   }
   const t0 = performance.now();
   const ms = 700;
+  const stop = () => {
+    cancelAnimationFrame(glide);
+    window.removeEventListener("wheel", stop);
+    window.removeEventListener("touchstart", stop);
+    window.removeEventListener("keydown", stop);
+  };
+  // the visitor taking over (wheel, touch, key) ends the glide at once, and it never moves focus after that
+  window.addEventListener("wheel", stop, { passive: true, once: true });
+  window.addEventListener("touchstart", stop, { passive: true, once: true });
+  window.addEventListener("keydown", stop, { once: true });
   const step = (now: number) => {
     const k = Math.min(1, (now - t0) / ms);
     const e = 1 - Math.pow(1 - k, 3);
     window.scrollTo(0, from + (to - from) * e);
-    if (k < 1) requestAnimationFrame(step);
-    else done();
+    if (k < 1) glide = requestAnimationFrame(step);
+    else {
+      stop();
+      done();
+    }
   };
-  requestAnimationFrame(step);
+  glide = requestAnimationFrame(step);
 }
 
 function Lockup() {
@@ -94,7 +109,7 @@ export default function GtmHeader({ home = false }: { home?: boolean }) {
         SECTION_IDS.forEach((id, i) => {
           if (tops[i] <= line) n = id;
         });
-        const group = SECTION_GROUP[n];
+        const group = SECTION_GROUP[n] ?? "";
         if (group !== cur) {
           cur = group;
           setActive(group);
@@ -111,14 +126,19 @@ export default function GtmHeader({ home = false }: { home?: boolean }) {
   const onNav = (e: React.MouseEvent, id: string) => {
     if (!home) return; // other pages: the link navigates to /#id and the router scrolls
     e.preventDefault();
-    if (dialogs.current?.name === "menu") dialogs.close(() => goToSection(id, motion));
+    if (dialogs.current?.name === "menu") {
+      // jump while the opaque menu covers the page, then wipe: one motion that reveals the destination
+      goToSection(id, false);
+      // the page is inert while the menu is up, so focus lands on the chosen section once the menu has gone
+      dialogs.close(() => document.getElementById(id)?.focus({ preventScroll: true }));
+    }
     else goToSection(id, motion);
   };
 
   const hrefFor = (id: string) => (id === "home" ? (home ? "#home" : "/") : home ? `#${id}` : `/#${id}`);
 
   return (
-    <div className={home ? "g-chrome" : cx("gtm-root", "g-chrome", fontVars)}>
+    <div className={home ? "g-chrome" : cx("gtm-root", "g-chrome", "g-themed", fontVars)}>
       <header className="g-top" ref={headRef}>
         <div className="g-bar">
           <A href={home ? "#home" : "/"} className="g-brand" onClick={(e: React.MouseEvent) => onNav(e, "home")}>

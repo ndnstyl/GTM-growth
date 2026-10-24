@@ -7,21 +7,18 @@
  "rows": [
   "q_date"
  ],
- "cols": [
-  "intent"
- ],
+ "cols": [],
  "measures": [
-  "q_asked",
-  "q_answered",
-  "q_refused",
-  "q_deflected",
-  "q_errored",
-  "q_other_n",
-  "q_answer_rate"
+  "q_asked"
  ],
  "filters": [],
  "datePreset": "last_25",
- "presentation": "table",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "bar",
+  "x": "q_date",
+  "y": "q_asked"
+ },
  "origin": "canon",
  "created_by": "GTM OS demo build",
  "created_at": "2026-10-24"
