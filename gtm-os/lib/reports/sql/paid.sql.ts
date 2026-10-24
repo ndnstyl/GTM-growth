@@ -66,8 +66,8 @@ export type PaidFilterOpts = {
 };
 
 // filter selects a campaign-day's ALLOCATED share of spend, not the whole row, so
-// a South Florida campaign contributes its Stuart share to Stuart and its
-// Deerfield share to Deerfield. Without a market filter the campaign row is used
+// a regional campaign contributes its Harborview share to Harborview and its
+// Stonebridge share to Stonebridge. Without a market filter the campaign row is used
 // whole (shares sum to 1.0). A campaign-day with no allocation row falls back to
 // the grammar's market_id at share 1.0.
 const ALLOC_JOIN = (alias: string) => `
@@ -131,7 +131,7 @@ export function campaignTableSql(opts: PaidFilterOpts & { dims?: DimSources }): 
   const al = allocated("s", market);
   // market_label: a single-market campaign shows its market; a
   // split campaign shows every market with its spend-weighted share over the
-  // window and the basis, e.g. "STUART 62% / DEERFIELD 38% (geo_spend)".
+  // window and the basis, e.g. "HARBORVIEW 62% / STONEBRIDGE 38% (geo_spend)".
   return `
     WITH alloc AS (
       SELECT

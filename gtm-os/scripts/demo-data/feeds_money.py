@@ -4,10 +4,10 @@ and the spine monthly feeds.
 Definitions used everywhere (one place, so every surface agrees):
   ad spend        = online media + agency fees + offline media          (the "mapped" spend)
   all-in cost     = ad spend + marketing tools + marketing labor (a ruled constant)
-  net + pre-net   = sold - cancels - credit declines                    (the stable revenue figure)
-  pre-net         = the share of that figure still inside the cancel window (recent days)
-  net             = (net + pre-net) - pre-net
-  efficiency %    = all-in cost / (net + pre-net)                       (target 28 percent)
+  net + pending   = sold - cancels - credit declines                    (the stable revenue figure)
+  pending         = the share of that figure still inside the cancel window (recent days)
+  net             = (net + pending) - pending
+  efficiency %    = all-in cost / (net + pending)                       (target 28 percent)
 """
 from __future__ import annotations
 

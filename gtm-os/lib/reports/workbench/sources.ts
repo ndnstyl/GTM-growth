@@ -68,12 +68,12 @@ export type DeclaredSource = {
   dims: Dim[];
   measures: Measure[];
   drill?: DrillSpec;
-  drillNote?: string; // honest reason when no drill is declared [sr-T024 M]
+  drillNote?: string; // honest reason when no drill is declared
   tier: "T2";
   notes?: string;
 };
 
-/** FR-014: measure keys that were renamed, old key -> new key.
+/** Measure keys that were renamed, old key -> new key.
  *
  * A saved view is someone's saved question. Renaming a measure out from under it would
  * either break the view or, worse, silently drop the measure and leave a view that looks
@@ -274,7 +274,7 @@ export const SOURCES: DeclaredSource[] = [
     tier: "T2",
   },
   // ---- marketing cost marketing cost target (Net revenue per issued appointment x target) + CRM report tie-out ----
-  // office domain is wider than dim_office on purpose: COMPANY, UNFILED (no-branch appointments),
+  // office domain is wider than dim_office on purpose: COMPANY, UNASSIGNED (no-branch appointments),
   // the eight offices; the tie-out adds ALL (CRM's company pull) and market_sum (the Σ-offices check).
   // universe: rep_assigned (what the CRM report counts) | all_appts (company total incl. no-rep appointments).
   {
@@ -282,7 +282,7 @@ export const SOURCES: DeclaredSource[] = [
     label: "Marketing cost target: Net revenue per issued appointment, ceiling per issued lead, by month and market ",
     feeds: [{ name: "efficiency__monthly", url: "/data/reports/efficiency__monthly.parquet", registration: "explicit" }],
     // the feed carries a COMPANY rollup row beside the offices and two universes; a pivot must never sum a rollup
-    // rollup row: the company total is the sum of the office rows (UNFILED included), which is what a pivot does anyway.
+    // rollup row: the company total is the sum of the office rows (UNASSIGNED included), which is what a pivot does anyway.
     from: "(SELECT * FROM efficiency__monthly WHERE office <> 'COMPANY' AND universe = 'rep_assigned') g",
     dateExpr: "(g.period || '-01')",
     dims: [

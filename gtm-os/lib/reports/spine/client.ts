@@ -1,5 +1,5 @@
 // Spine exec-surface client.
-// Reads /data/reports/spine_exec.json: the export of the oxmkt COMPUTE VIEWS
+// Reads /data/reports/spine_exec.json: the export of the warehouse COMPUTE VIEWS
 // (spine.metric_*), and nothing else. Every figure the exec surface renders
 // comes through this typed feed; there is no hand-entry path and no second
 // source for any number (SC-004). 127's feeds may supply non-metric context

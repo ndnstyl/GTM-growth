@@ -42,7 +42,7 @@ const TABS: { key: TabKey; label: string }[] = [
 
 export function Shell() {
   const [tab, setTab] = useState<TabKey>("overview");
-  // Deep links: /reports/#callcenter (the retired lp.html redirect) and
+  // Deep links: /reports/#callcenter (an older deep link) and
   // /reports/#<tab_key>. The hash follows the active tab so a view is shareable.
   useEffect(() => {
     const fromHash = () => {

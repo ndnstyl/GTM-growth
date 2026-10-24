@@ -10,7 +10,7 @@ function toNumber(v: unknown): number | null {
   if (typeof v === "bigint") return Number(v);
   if (typeof v === "string") {
     const s = v.replace(/^"+|"+$/g, "").trim();
-    // toughlove 2026-09-05: Number("") and Number("  ") both coerce to 0 (a
+    // Number("") and Number("  ") both coerce to 0 (a
     // finite number), so an empty/whitespace string used to render as a
     // silent 0 instead of the UNAVAILABLE token the old local helpers gave a
     // non-numeric string via NaN. Empty/whitespace is non-numeric, not zero.

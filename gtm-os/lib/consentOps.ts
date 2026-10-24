@@ -111,7 +111,7 @@ export function queueRows(art: ConsentOps): Row[] {
 }
 
 /** EVERY person matching a person ref (P001, valid inside this artifact only), a prospect id, or the last four of a
- *  first match silently is the wrong-person failure lp-identifiers.md exists to prevent. Empty when nothing matches. */
+ *  first match silently is the wrong-person failure. Empty when nothing matches. */
 export function personsByQuery(art: ConsentOps, q: string): Person[] {
   const s = q.trim().replace(/^…/, "");
   if (!s) return [];

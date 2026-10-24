@@ -23,8 +23,9 @@ const registered = new Set<string>();
 
 async function initDb(): Promise<duckdb.AsyncDuckDB> {
   const bundle = {
-    mainModule: `${BASE}/duckdb/duckdb-eh.wasm`,
-    mainWorker: `${BASE}/duckdb/duckdb-browser-eh.worker.js`,
+    mainModule: `${BASE}/duckdb/duckdb-eh.wasm?v=2`,
+    // ?v=2: a new cache key, so Cloudflare serves the worker with the current security policy (it allows WebAssembly)
+    mainWorker: `${BASE}/duckdb/duckdb-browser-eh.worker.js?v=2`,
   };
   const worker = new Worker(bundle.mainWorker);
   const logger = new duckdb.ConsoleLogger(duckdb.LogLevel.WARNING);

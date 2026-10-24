@@ -152,7 +152,7 @@ export function buildDrillStatements(
   };
 }
 
-/** Batch pinning by VALUE [sr-T024 B3]: every feed carries an
+/** Batch pinning by VALUE: every feed carries an
  * export_batch_id column; the drill compares the two feeds' stamps, not
  * their names against a manifest that always lists everything. */
 export function buildBatchCheck(aggFeed: string, rowFeed: string): { id: string; sql: string } {
