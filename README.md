@@ -1,10 +1,10 @@
 # GTM Growth: the Growth Marketing + AI stack
 
-Ten go-to-market folders, first touch to final report. Every item running in production today.
+Ten go-to-market folders, first touch to final report. Every item here is built and running today, in whole or in part.
 
 ![The GTM stack, folder by folder](assets/svg/gtm-stack.svg)
 
-**72 live systems:** 11 AI agents · 14 skills · 33 loops · 14 automations.
+**66 live systems:** 11 AI agents · 13 skills · 32 loops · 10 automations, each one checked against its run record.
 
 Built by [Michael Soto, The Innovative Native](https://theinnovativenative.com). This repo shows **what each system does and the outcome**, folder by folder. How they're built (the prompts, the agent design, the wiring) stays private.
 
@@ -12,16 +12,16 @@ Built by [Michael Soto, The Innovative Native](https://theinnovativenative.com).
 
 | Folder | What it does | Live items |
 |---|---|---|
-| [01 · Market Research](01-market-research/) | Every sales call becomes a weekly read of objections, strengths and competitors. | 1 |
+| [01 · Market Research](01-market-research/) | Recorded sales calls become a read of objections, strengths and weaknesses. | 1 |
 | [02 · Positioning & Offer](02-positioning-and-offer/) | Channel strategy, brand voice and offer tests set before a dollar is spent. | 5 |
-| [03 · Content Engine](03-content-engine/) | One sentence in, finished scripts and edited reels out, on brand. | 10 |
+| [03 · Content Engine](03-content-engine/) | One sentence in, finished scripts and edited reels out, on brand. | 9 |
 | [04 · Paid Media](04-paid-media/) | Every platform's results land daily, and sales flow back so ads optimize for revenue. | 6 |
-| [05 · Capture & Consent](05-capture-and-consent/) | Every consent sealed with its exact wording, provable on demand. | 5 |
-| [06 · Speed to Lead](06-speed-to-lead/) | AI answers every call and chat, routes it, and hands it to a person. | 10 |
-| [07 · Sales Floor](07-sales-floor/) | Every call transcribed and scored daily, with training on tap. | 5 |
-| [08 · Attribution & Cost](08-attribution-and-cost/) | Every dollar of spend proven before it reaches the CRM. | 9 |
-| [09 · Reporting Cockpit](09-reporting-cockpit/) | One screen where the numbers refresh themselves and answer back. | 10 |
-| [10 · Reliability](10-reliability/) | Nothing fails quietly: jobs heal, stall alarms fire, data gates hold. | 11 |
+| [05 · Capture & Consent](05-capture-and-consent/) | Consents and opt-outs recorded with their exact wording and reconciled nightly. | 4 |
+| [06 · Speed to Lead](06-speed-to-lead/) | AI answers after-hours calls and website chats, captures the lead and hands it to a person. | 9 |
+| [07 · Sales Floor](07-sales-floor/) | Sales calls pulled, transcribed and scored daily, with training on tap. | 3 |
+| [08 · Attribution & Cost](08-attribution-and-cost/) | Daily spend recorded and checked against platform controls. | 8 |
+| [09 · Reporting Cockpit](09-reporting-cockpit/) | One screen where the numbers refresh themselves. | 10 |
+| [10 · Reliability](10-reliability/) | Failures flagged loudly: bounded self-healing, stall alarms and data-gap checks. | 11 |
 
 ## By kind
 

@@ -1,6 +1,6 @@
 # 09 · Reporting Cockpit
 
-One screen where the numbers refresh themselves and answer back.
+One screen where the numbers refresh themselves.
 
 ## Agents
 
@@ -19,7 +19,7 @@ One screen where the numbers refresh themselves and answer back.
 ## Automations
 
 - **ECHO OS cockpit**: One command center where marketing, sales and ops numbers live and refresh themselves
-- **BI workbench**: Every report can be pivoted, filtered, drilled into, charted and saved as a view
-- **Digital marketing board**: In-house and agency spend by market, platform and campaign, next to the marketing-cost check
+- **BI workbench**: Reports can be pivoted, filtered, drilled into, charted and saved as views
+- **Digital marketing board**: In-house ad spend and results by market, platform and campaign, refreshed daily
 - **Marketing initiatives tracker**: Every open initiative, with its owner and status, in the cockpit
-- **Cockpit chat**: Ask the data in plain English and get a sourced answer
+- **Cockpit chat**: Ask questions of the company knowledge base in plain English and get answers with sources

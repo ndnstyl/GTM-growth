@@ -1,19 +1,18 @@
 # 06 · Speed to Lead
 
-AI answers every call and chat, routes it, and hands it to a person.
+AI answers after-hours calls and website chats, captures the lead and hands it to a person.
 
 ## Loops
 
 - **After-hours call recovery**: Missed after-hours callers are in the team inbox by morning
 - **AI conversation outlier review**: Flags unusual calls and chats every day so the AI keeps improving
-- **Chat handoff check**: Confirms every website chat reached a person
+- **Chat handoff check**: Checks hourly that every engaged website chat was handed to a person
 - **Speed-to-lead weekly**: Weekly read of how fast each channel's leads get a first touch
 - **AI front door weekly**: Weekly scorecard for the AI answering lanes
-- **AI agent KPI report**: Weekly results report for the AI phone agent
-- **Service follow-up check**: Makes sure no service request sits without a reply
+- **AI agent KPI report**: Weekly results report for the AI phone line: calls, leads and transfers
+- **Service follow-up check**: Checks that every after-hours service call was followed up
 
 ## Automations
 
-- **AI phone answering**: Answers every inbound call, routes the caller from their first answer and books appointments when no person is free
-- **Website AI chat**: Qualifies website visitors around the clock and hands every chat to a person
-- **Facebook comment responder**: Finds and drafts replies to unanswered public comments, complaints first
+- **AI phone answering**: Answers after-hours calls, captures the caller's name, address and need, and emails the team a summary the next morning
+- **Website AI chat**: Answers website visitors around the clock, qualifies buyers and emails the team the full conversation for leads and complaints

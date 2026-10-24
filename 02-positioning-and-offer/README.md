@@ -4,7 +4,7 @@ Channel strategy, brand voice and offer tests set before a dollar is spent.
 
 ## Agents
 
-- **Growth marketing lead**: Covers a paid search and social manager's job: channel strategy, budget split and offer tests
+- **Growth marketing lead**: Plans channel strategy, budget split and offer tests as recommendations; a person applies every change
 
 ## Skills
 

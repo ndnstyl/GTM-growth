@@ -1,7 +1,7 @@
 # 01 · Market Research
 
-Every sales call becomes a weekly read of objections, strengths and competitors.
+Recorded sales calls become a read of objections, strengths and weaknesses.
 
 ## Loops
 
-- **Call-based market SWOT**: Turns every recorded sales call into a weekly read of objections, strengths, weaknesses and competitor mentions
+- **Call-based market SWOT**: Turns recorded sales calls into a read of objections, strengths and weaknesses per rep
