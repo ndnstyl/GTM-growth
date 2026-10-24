@@ -1,0 +1,190 @@
+{
+ "jobs": [
+  {
+   "label": "Daily ad pull",
+   "schedule": "06:10",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Cost sync",
+   "schedule": "06:25",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Completeness gate",
+   "schedule": "06:40",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Creative library sync",
+   "schedule": "02:15",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Call scoring",
+   "schedule": "every 15 min",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Self refreshing reports",
+   "schedule": "every 15 min",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Daily alert",
+   "schedule": "07:00",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Sales back to platforms",
+   "schedule": "05:30",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Nightly learning",
+   "schedule": "03:20",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Nightly backup",
+   "schedule": "01:30",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Chat handoff check",
+   "schedule": "every 15 min",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Speed to lead weekly",
+   "schedule": "08:30",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Hygiene read weekly",
+   "schedule": "08:45",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Call swot weekly",
+   "schedule": "09:00",
+   "loaded": true,
+   "pid": null,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Cockpit",
+   "schedule": "always on",
+   "loaded": true,
+   "pid": 4114,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Answer service",
+   "schedule": "always on",
+   "loaded": true,
+   "pid": 4115,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Usage meter",
+   "schedule": "always on",
+   "loaded": true,
+   "pid": 4116,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  },
+  {
+   "label": "Report builder",
+   "schedule": "always on",
+   "loaded": true,
+   "pid": 4117,
+   "last_exit": 0,
+   "plist": "",
+   "serves_port": null
+  }
+ ],
+ "services": [
+  {
+   "name": "Cockpit",
+   "port": 0,
+   "listening": true
+  },
+  {
+   "name": "Answer service",
+   "port": 0,
+   "listening": true
+  },
+  {
+   "name": "Usage meter",
+   "port": 0,
+   "listening": true
+  },
+  {
+   "name": "Report builder",
+   "port": 0,
+   "listening": true
+  }
+ ],
+ "alerts": [],
+ "built_at": "2026-10-24T06:30:00"
+}

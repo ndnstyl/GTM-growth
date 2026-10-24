@@ -1,0 +1,22 @@
+{
+ "batch_id": "batch-2026-10-24",
+ "as_of": "2026-10-24T06:25:00",
+ "feeds": {
+  "spine_funnel_monthly": {
+   "rows": 150,
+   "sha256": "e411e002aab3303d15187bc0fcb3d11ec87a3d32aca0ec575bb34c225aad2e04"
+  },
+  "spine_spend_monthly": {
+   "rows": 225,
+   "sha256": "4bbef8947158114d3deb4fc6760b7f8f7cd0ffff743bbba9762e118cece4e42a"
+  },
+  "spine_funnel_rows_daily": {
+   "rows": 4524,
+   "sha256": "2c297ca82ec5a7ea7146598af9a6918d826281fe7d068c3ec7e2d1d3ccdca4f6"
+  },
+  "spine_spend_rows": {
+   "rows": 1042,
+   "sha256": "d19bc00bccde1e0ebdef0d9ee6143e793a1e782462e74d1157a9b638098a3be8"
+  }
+ }
+}

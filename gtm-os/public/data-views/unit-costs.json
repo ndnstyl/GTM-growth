@@ -1,0 +1,23 @@
+{
+ "id": "unit-costs",
+ "name": "Unit costs by month",
+ "description": "Cost per lead, set, issued appointment and sale.",
+ "narrative": "What it costs to move one prospect one step down the funnel, month by month; ad spend over the stage count.",
+ "sourceKey": "spend_funnel_monthly",
+ "rows": [
+  "period"
+ ],
+ "cols": [],
+ "measures": [
+  "cost_per_lead",
+  "cost_per_set",
+  "cost_per_issue",
+  "cost_per_sale"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

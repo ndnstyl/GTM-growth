@@ -1,0 +1,47 @@
+{
+ "id": "board-ai-accuracy",
+ "name": "Board 5: AI accuracy",
+ "description": "Questions, graded accuracy, faithfulness, speed, learning and gaps.",
+ "panels": [
+  {
+   "viewId": "ai-accuracy-asked",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "ai-accuracy-graded",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "ai-accuracy-faithfulness",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "ai-accuracy-latency",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "ai-accuracy-learning",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "ai-accuracy-gaps",
+   "layout": {
+    "span": 2
+   }
+  }
+ ],
+ "crossFilter": [],
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

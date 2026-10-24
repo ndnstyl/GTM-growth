@@ -1,0 +1,29 @@
+{
+ "id": "ai-accuracy-learning",
+ "name": "Nightly learning runs",
+ "description": "Each night's learning run and whether it improved, held, regressed or rolled back.",
+ "narrative": "The AI changes itself only when a checker agrees; rollbacks show the guardrail working.",
+ "sourceKey": "meter_learning",
+ "rows": [
+  "run_date"
+ ],
+ "cols": [
+  "outcome"
+ ],
+ "measures": [
+  "learn_runs",
+  "learn_improve_n",
+  "learn_hold_n",
+  "learn_regress_n",
+  "learn_rollback_n",
+  "learn_labels_checker",
+  "learn_gaps_new",
+  "learn_gaps_closed"
+ ],
+ "filters": [],
+ "datePreset": "last_25",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

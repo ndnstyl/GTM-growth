@@ -1,0 +1,148 @@
+{
+ "ideas": [
+  {
+   "id": "idea-01",
+   "brand": "nb-main",
+   "title": "Why a free estimate is worth the hour",
+   "hook": "Most people expect a sales trap; show the actual hour.",
+   "angle": "myth-buster",
+   "status": "scripted",
+   "created": "2026-10-21"
+  },
+  {
+   "id": "idea-02",
+   "brand": "nb-main",
+   "title": "A roof you stop thinking about",
+   "hook": "Slow reveal of a finished roof at golden hour.",
+   "angle": "before-after",
+   "status": "idea",
+   "created": "2026-10-19"
+  },
+  {
+   "id": "idea-03",
+   "brand": "nb-main",
+   "title": "Three questions before you sign",
+   "hook": "A checklist any homeowner can use with any contractor.",
+   "angle": "explainer",
+   "status": "ready",
+   "created": "2026-10-17"
+  },
+  {
+   "id": "idea-04",
+   "brand": "nb-main",
+   "title": "The crew lead explains day one",
+   "hook": "A crew lead walks through prep, not paint.",
+   "angle": "behind-the-install",
+   "status": "in_edit",
+   "created": "2026-10-15"
+  },
+  {
+   "id": "idea-05",
+   "brand": "nb-main",
+   "title": "What a monthly payment really looks like",
+   "hook": "A plain breakdown of a financed roof.",
+   "angle": "financing",
+   "status": "scripted",
+   "created": "2026-10-13"
+  },
+  {
+   "id": "idea-06",
+   "brand": "nb-main",
+   "title": "Windows you can hear the difference in",
+   "hook": "A sound test at the front door.",
+   "angle": "demo",
+   "status": "idea",
+   "created": "2026-10-11"
+  },
+  {
+   "id": "idea-07",
+   "brand": "nb-main",
+   "title": "Storm season checklist",
+   "hook": "Five things to check from the ground.",
+   "angle": "seasonal",
+   "status": "ready",
+   "created": "2026-10-09"
+  },
+  {
+   "id": "idea-08",
+   "brand": "nb-main",
+   "title": "Neighbors who picked us",
+   "hook": "Two doors on one street, one story.",
+   "angle": "testimonial",
+   "status": "in_edit",
+   "created": "2026-10-07"
+  },
+  {
+   "id": "idea-09",
+   "brand": "nb-main",
+   "title": "Gutters: the cheapest fix that saves the most",
+   "hook": "Water damage cost against a gutter guard.",
+   "angle": "myth-buster",
+   "status": "scripted",
+   "created": "2026-10-05"
+  },
+  {
+   "id": "idea-10",
+   "brand": "nb-main",
+   "title": "How we price a siding job",
+   "hook": "Open the spreadsheet on camera.",
+   "angle": "explainer",
+   "status": "idea",
+   "created": "2026-10-03"
+  },
+  {
+   "id": "idea-11",
+   "brand": "nb-main",
+   "title": "Same house, one week later",
+   "hook": "A time-lapse before and after.",
+   "angle": "before-after",
+   "status": "ready",
+   "created": "2026-10-01"
+  },
+  {
+   "id": "idea-12",
+   "brand": "nb-main",
+   "title": "What the warranty actually covers",
+   "hook": "Read the warranty line by line.",
+   "angle": "explainer",
+   "status": "in_edit",
+   "created": "2026-09-29"
+  },
+  {
+   "id": "idea-13",
+   "brand": "nb-main",
+   "title": "A day in the life of an estimator",
+   "hook": "Ride along on three estimates.",
+   "angle": "behind-the-install",
+   "status": "scripted",
+   "created": "2026-09-27"
+  },
+  {
+   "id": "idea-14",
+   "brand": "nb-pro",
+   "title": "Pro program: the contractor's view",
+   "hook": "Why trade partners send us work.",
+   "angle": "trade",
+   "status": "idea",
+   "created": "2026-09-25"
+  },
+  {
+   "id": "idea-15",
+   "brand": "nb-main",
+   "title": "Curb appeal that buyers notice",
+   "hook": "What buyers see from the street.",
+   "angle": "seasonal",
+   "status": "ready",
+   "created": "2026-09-23"
+  },
+  {
+   "id": "idea-16",
+   "brand": "nb-main",
+   "title": "Energy bills: where the heat leaves",
+   "hook": "Thermal camera on an old window.",
+   "angle": "demo",
+   "status": "in_edit",
+   "created": "2026-09-21"
+  }
+ ]
+}

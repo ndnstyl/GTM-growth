@@ -1,0 +1,596 @@
+{
+ "intro": "Ask about leads, spend, speed to lead, the sales floor, AI or content. Answers come from the demo company's data.",
+ "suggestions": [
+  "How did paid media do this week?",
+  "Which market has the lowest cost per set?",
+  "Which reps are below the floor?",
+  "What is the top objection on calls?",
+  "Where does the month land?",
+  "How accurate are the AI answers?"
+ ],
+ "fallback": "That one is outside this demo script. Try one of the suggestions.",
+ "entries": [
+  {
+   "id": "paid-week",
+   "match": [
+    "paid",
+    "spend",
+    "ads",
+    "week",
+    "media"
+   ],
+   "q": "How did paid media do this week?",
+   "answer": "Paid platform spend was **$47,331** over the last 7 days, flat on the week before.\nGoogle Ads $26,194, Meta $15,833, Microsoft Ads $5,304.\nAll-in ad spend (media, agency fees and offline) was $59,986 against $266,135 of booked revenue.",
+   "sources": [
+    {
+     "label": "Paid Media report",
+     "href": "/reports/#paid_media"
+    }
+   ],
+   "follow_ups": [
+    "Which campaign is the weakest?",
+    "What is our MER this week?"
+   ]
+  },
+  {
+   "id": "weakest-campaign",
+   "match": [
+    "weakest",
+    "worst",
+    "campaign",
+    "waste",
+    "pause"
+   ],
+   "q": "Which campaign is the weakest?",
+   "answer": "Over the last 14 days **NB Pro | Harborview | Search | Trade** (Google Ads) cost $118.51 per conversion on $3,072 of spend, the highest of any lead-generating campaign above $3,000. The best was NB | Regional | Retargeting at $14.29. Awareness video is left out of this ranking.\nA pause or a budget cut here frees money for the winners.",
+   "sources": [
+    {
+     "label": "Paid Media report",
+     "href": "/reports/#paid_media"
+    }
+   ],
+   "follow_ups": [
+    "Which market has the lowest cost per set?"
+   ]
+  },
+  {
+   "id": "best-campaign",
+   "match": [
+    "best",
+    "strongest",
+    "winning",
+    "campaign",
+    "top"
+   ],
+   "q": "Which campaign is working best?",
+   "answer": "**NB | Regional | Retargeting** is the most efficient campaign over the last 14 days at $14.29 per conversion on $6,513 of spend.",
+   "sources": [
+    {
+     "label": "Paid Media report",
+     "href": "/reports/#paid_media"
+    }
+   ],
+   "follow_ups": [
+    "Which campaign is the weakest?"
+   ]
+  },
+  {
+   "id": "leads-yesterday",
+   "match": [
+    "leads",
+    "yesterday",
+    "volume"
+   ],
+   "q": "How many leads did we get yesterday?",
+   "answer": "**366 leads** yesterday, down 1% on the same day last week. 102 became set appointments and 10 became sales.",
+   "sources": [
+    {
+     "label": "Overview",
+     "href": "/reports/"
+    }
+   ],
+   "follow_ups": [
+    "How is the funnel this week?"
+   ]
+  },
+  {
+   "id": "cost-per-lead",
+   "match": [
+    "cost",
+    "lead",
+    "cpl",
+    "cheaper"
+   ],
+   "q": "What is our cost per lead?",
+   "answer": "Cost per lead is **$21.01** over the last 7 days (down 2% on the prior week), counting all ad spend over all leads.",
+   "sources": [
+    {
+     "label": "Overview",
+     "href": "/reports/"
+    }
+   ],
+   "follow_ups": [
+    "What is our MER this week?"
+   ]
+  },
+  {
+   "id": "mer",
+   "match": [
+    "mer",
+    "return",
+    "revenue",
+    "spend",
+    "efficiency"
+   ],
+   "q": "What is our MER this week?",
+   "answer": "MER is **4.4x** over the last 7 days: $266,135 of revenue on $59,986 of ad spend. The prior week was 5.0x.",
+   "sources": [
+    {
+     "label": "Workbench boards",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "Where does the month land?"
+   ]
+  },
+  {
+   "id": "revenue-mtd",
+   "match": [
+    "revenue",
+    "month",
+    "pace",
+    "goal",
+    "booked"
+   ],
+   "q": "Are we on pace this month?",
+   "answer": "Booked revenue is **$1,018,698** month to date against a monthly goal of $1,480,000. That is 89.0% of where the goal says we should be by today.",
+   "sources": [
+    {
+     "label": "Exec readout",
+     "href": "/reports/exec/"
+    }
+   ],
+   "follow_ups": [
+    "Where does the month land?"
+   ]
+  },
+  {
+   "id": "funnel-week",
+   "match": [
+    "funnel",
+    "sets",
+    "demos",
+    "conversion",
+    "week"
+   ],
+   "q": "How is the funnel this week?",
+   "answer": "Last 7 days: **2,855 leads**, 788 sets, 569 issued appointments, 397 meetings held and **63 sales**.\nSet rate 27.6% (28.7% the week before); close rate 15.9%.",
+   "sources": [
+    {
+     "label": "Workbench",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "What is the set rate by market?"
+   ]
+  },
+  {
+   "id": "best-market",
+   "match": [
+    "market",
+    "lowest",
+    "cost per set",
+    "best",
+    "worst"
+   ],
+   "q": "Which market has the lowest cost per set?",
+   "answer": "Over the last 7 days **Sunvale** is the cheapest at $65 per set (74 sets) and **Harborview** the most expensive at $87.\nMoving budget toward the cheaper market is the first lever.",
+   "sources": [
+    {
+     "label": "Digital Marketing board",
+     "href": "/reports/digital/"
+    }
+   ],
+   "follow_ups": [
+    "Which market closes best?"
+   ]
+  },
+  {
+   "id": "close-market",
+   "match": [
+    "close",
+    "rate",
+    "market",
+    "closes",
+    "best"
+   ],
+   "q": "Which market closes best?",
+   "answer": "Over 28 days **Lakemont** closes best at 20.0% of meetings held, and Riverbend lowest at 15.5%. Company close rate is 17.1%.",
+   "sources": [
+    {
+     "label": "Workbench",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "Which source's leads close best?"
+   ]
+  },
+  {
+   "id": "set-rate",
+   "match": [
+    "set",
+    "rate",
+    "appointments",
+    "booked"
+   ],
+   "q": "What is the set rate?",
+   "answer": "Set rate is **27.6%** over the last 7 days against 28.7% the week before. 788 appointments were set from 2,855 leads.",
+   "sources": [
+    {
+     "label": "Overview",
+     "href": "/reports/"
+    }
+   ],
+   "follow_ups": [
+    "What is the connect rate on the floor?"
+   ]
+  },
+  {
+   "id": "connect-rate",
+   "match": [
+    "connect",
+    "dials",
+    "floor",
+    "calls",
+    "rate"
+   ],
+   "q": "What is the connect rate on the floor?",
+   "answer": "The floor connected **13.7%** of 14,865 dials over the last 7 days (prior week 13.7%), with about 26 reps on each open day.",
+   "sources": [
+    {
+     "label": "Sales Floor",
+     "href": "/reports/#call_center"
+    }
+   ],
+   "follow_ups": [
+    "Which reps are below the floor?"
+   ]
+  },
+  {
+   "id": "agents-below",
+   "match": [
+    "reps",
+    "agents",
+    "below",
+    "coach",
+    "lowest"
+   ],
+   "q": "Which reps are below the floor?",
+   "answer": "The three lowest connect rates over 14 days: **Remy C.** 8.3% on 701 dials, **Nico F.** 8.8% on 624 dials, **Kendall J.** 8.9% on 586 dials. The floor average is 13.7%, so these are the coaching candidates.",
+   "sources": [
+    {
+     "label": "Sales Floor",
+     "href": "/reports/#call_center"
+    }
+   ],
+   "follow_ups": [
+    "What is the connect rate on the floor?"
+   ]
+  },
+  {
+   "id": "source-close",
+   "match": [
+    "source",
+    "close",
+    "best",
+    "referral",
+    "leads"
+   ],
+   "q": "Which source's leads close best?",
+   "answer": "Over 28 days **Referral** closes best at 24.3% of meetings held (337 meetings). The weakest is Microsoft Ads (Agency) at 9.4%.",
+   "sources": [
+    {
+     "label": "Digital Marketing board",
+     "href": "/reports/digital/"
+    }
+   ],
+   "follow_ups": [
+    "How is direct mail doing?"
+   ]
+  },
+  {
+   "id": "direct-mail",
+   "match": [
+    "mail",
+    "direct",
+    "postcards",
+    "mailer"
+   ],
+   "q": "How is direct mail doing?",
+   "answer": "Over 28 days direct mail produced **624 leads** and 152 sets on $21,344 of spend, $140 per set. Responses land over the ten days after each Tuesday drop.",
+   "sources": [
+    {
+     "label": "Digital Marketing board",
+     "href": "/reports/digital/"
+    }
+   ],
+   "follow_ups": [
+    "How is regional TV doing?"
+   ]
+  },
+  {
+   "id": "tv",
+   "match": [
+    "tv",
+    "television",
+    "flight",
+    "regional"
+   ],
+   "q": "How is regional TV doing?",
+   "answer": "Regional TV over 28 days: **468 leads**, 112 sets, $17,412 of spend, $155 per set. Four markets carry flights, four weeks on and one off.",
+   "sources": [
+    {
+     "label": "Digital Marketing board",
+     "href": "/reports/digital/"
+    }
+   ],
+   "follow_ups": [
+    "How is direct mail doing?"
+   ]
+  },
+  {
+   "id": "organic",
+   "match": [
+    "organic",
+    "search",
+    "seo",
+    "clicks",
+    "google"
+   ],
+   "q": "How is organic search doing?",
+   "answer": "Search Console clicks were **3,257** over the last 7 days, down 1% on the prior week, from 63,923 impressions. The top query was \"roof replacement cost\" with 530 clicks.",
+   "sources": [
+    {
+     "label": "Organic report",
+     "href": "/reports/#organic"
+    }
+   ],
+   "follow_ups": [
+    "Which channels send the most web traffic?"
+   ]
+  },
+  {
+   "id": "web-traffic",
+   "match": [
+    "traffic",
+    "sessions",
+    "website",
+    "channels",
+    "web"
+   ],
+   "q": "Which channels send the most web traffic?",
+   "answer": "Sessions over the last 7 days: **Organic Search** 11,766 (33%), **Paid Social** 9,523 (26%), **Paid Search** 5,742 (16%), out of 36,169 in total.",
+   "sources": [
+    {
+     "label": "Organic report",
+     "href": "/reports/#organic"
+    }
+   ],
+   "follow_ups": [
+    "How is organic search doing?"
+   ]
+  },
+  {
+   "id": "ai-accuracy",
+   "match": [
+    "ai",
+    "accuracy",
+    "answers",
+    "graded",
+    "chat"
+   ],
+   "q": "How accurate are the AI answers?",
+   "answer": "Of 2,736 answers a reviewer graded in the last 7 days, **94.0%** were right. The AI answered 88.2% of 5,751 questions handed off 7.0% and declined 4.7%.",
+   "sources": [
+    {
+     "label": "AI accuracy board",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "What does the AI cost?"
+   ]
+  },
+  {
+   "id": "ai-cost",
+   "match": [
+    "ai",
+    "cost",
+    "tokens",
+    "savings",
+    "saved"
+   ],
+   "q": "What does the AI cost?",
+   "answer": "AI workloads made 55,318 calls in the last 7 days. At vendor list price that work would cost **$551**; it actually cost $193, a saving of $358. Month to date the saving is $1,192.",
+   "sources": [
+    {
+     "label": "AI cost board",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "How healthy are the loops?"
+   ]
+  },
+  {
+   "id": "loops-health",
+   "match": [
+    "loops",
+    "jobs",
+    "health",
+    "failed",
+    "reliability"
+   ],
+   "q": "How healthy are the loops?",
+   "answer": "The scheduled loops, agents and skills ran **2,247 times** in the last 7 days; 99.38% succeeded and 7 failed. One loop, the creative library sync, has not fired in two days and is flagged on the health page.",
+   "sources": [
+    {
+     "label": "Health",
+     "href": "/reports/#health"
+    }
+   ],
+   "follow_ups": [
+    "What does the AI cost?"
+   ]
+  },
+  {
+   "id": "efficiency",
+   "match": [
+    "marketing cost",
+    "cost target",
+    "target",
+    "percent of revenue"
+   ],
+   "q": "Where are we against the marketing cost target?",
+   "answer": "All-in marketing cost is **28.0%** of net revenue this month against a target of 28%. Last month closed at 29.0%.",
+   "sources": [
+    {
+     "label": "Marketing cost target board",
+     "href": "/reports/workbench/?board=board-efficiency-target"
+    }
+   ],
+   "follow_ups": [
+    "Where does the month land?"
+   ]
+  },
+  {
+   "id": "month-landing",
+   "match": [
+    "land",
+    "projection",
+    "forecast",
+    "month",
+    "end"
+   ],
+   "q": "Where does the month land?",
+   "answer": "Pacing the share of a month normally booked by today, the month lands near **$1.2M**, somewhere between $1.11M and $1.29M. The goal is $1.48M.",
+   "sources": [
+    {
+     "label": "Workbench",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "Are we on pace this month?"
+   ]
+  },
+  {
+   "id": "content-pipeline",
+   "match": [
+    "content",
+    "pipeline",
+    "creative",
+    "videos",
+    "library"
+   ],
+   "q": "What is in the content pipeline?",
+   "answer": "The library holds **32 pieces**: 6 approved, 13 in review and 13 in draft. The edit crew has 12 cuts in progress.",
+   "sources": [
+    {
+     "label": "Content Studio",
+     "href": "/studio/"
+    }
+   ],
+   "follow_ups": [
+    "What changed this week?"
+   ]
+  },
+  {
+   "id": "consent",
+   "match": [
+    "consent",
+    "stop",
+    "opt-out",
+    "exceptions",
+    "compliance"
+   ],
+   "q": "Are there consent exceptions open?",
+   "answer": "Four consent items are open: one failed replay job, one capture held briefly, one failed text and one ambiguous stop waiting on a person. None is past its limit; the ambiguous stop is the one that needs a decision today.",
+   "sources": [
+    {
+     "label": "Capture and consent",
+     "href": "/capture/"
+    }
+   ],
+   "follow_ups": [
+    "How healthy are the loops?"
+   ]
+  },
+  {
+   "id": "top-objection",
+   "match": [
+    "objection",
+    "calls",
+    "objections",
+    "swot",
+    "spouse"
+   ],
+   "q": "What is the top objection on calls?",
+   "answer": "**\"I need to talk to my spouse\"** came up on 256 of 2,034 connected calls this week and is trending up. Suggested response: offer a two-person estimate time and send the written summary to both of them the same day.",
+   "sources": [
+    {
+     "label": "Research",
+     "href": "/research/"
+    }
+   ],
+   "follow_ups": [
+    "Where does the month land?"
+   ]
+  },
+  {
+   "id": "speed",
+   "match": [
+    "speed",
+    "response",
+    "fast",
+    "latency",
+    "first"
+   ],
+   "q": "How fast does the AI respond?",
+   "answer": "The median full answer takes **1.9 seconds** end to end over the last 7 days, inside the 3.5 second budget. Open knowledge gaps: 4.",
+   "sources": [
+    {
+     "label": "AI accuracy board",
+     "href": "/reports/workbench/"
+    }
+   ],
+   "follow_ups": [
+    "How accurate are the AI answers?"
+   ]
+  },
+  {
+   "id": "what-changed",
+   "match": [
+    "changed",
+    "week",
+    "summary",
+    "news",
+    "happened"
+   ],
+   "q": "What changed this week?",
+   "answer": "Leads were down 2%, ad spend down 4% and revenue down 15%. MER moved from 5.0x to 4.4x. The floor connect rate held at 13.7%.",
+   "sources": [
+    {
+     "label": "Overview",
+     "href": "/reports/"
+    }
+   ],
+   "follow_ups": [
+    "How did paid media do this week?"
+   ]
+  }
+ ]
+}

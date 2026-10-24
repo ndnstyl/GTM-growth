@@ -1,0 +1,75 @@
+{
+ "as_of": "2026-10-24",
+ "stages": [
+  {
+   "name": "Market Research",
+   "headline": "6 objections",
+   "value": "6",
+   "delta": "weekly",
+   "status": "ok"
+  },
+  {
+   "name": "Positioning & Offer",
+   "headline": "1 winning",
+   "value": "1",
+   "delta": "2 testing",
+   "status": "ok"
+  },
+  {
+   "name": "Content Engine",
+   "headline": "32 pieces",
+   "value": "32",
+   "delta": "6 approved",
+   "status": "ok"
+  },
+  {
+   "name": "Paid Media",
+   "headline": "$47.3k, 7 days",
+   "value": "$47.3k",
+   "delta": "flat",
+   "status": "ok"
+  },
+  {
+   "name": "Capture & Consent",
+   "headline": "4 open",
+   "value": "4",
+   "delta": "none past limit",
+   "status": "watch"
+  },
+  {
+   "name": "Speed to Lead",
+   "headline": "88.2% answered",
+   "value": "88.2%",
+   "delta": "94.0% right",
+   "status": "ok"
+  },
+  {
+   "name": "Sales Floor",
+   "headline": "13.7% connect",
+   "value": "13.7%",
+   "delta": "26 reps",
+   "status": "ok"
+  },
+  {
+   "name": "Attribution & Cost",
+   "headline": "28.0% of revenue",
+   "value": "28.0%",
+   "delta": "target 28%",
+   "status": "ok"
+  },
+  {
+   "name": "Reporting Cockpit",
+   "headline": "100% fresh",
+   "value": "100%",
+   "delta": "on time",
+   "status": "ok"
+  },
+  {
+   "name": "Reliability",
+   "headline": "7 failed runs",
+   "value": "7",
+   "delta": "1 loop stale",
+   "status": "alert"
+  }
+ ]
+}

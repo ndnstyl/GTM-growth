@@ -1,0 +1,32 @@
+{
+ "id": "ai-accuracy-graded",
+ "name": "Graded answers by topic",
+ "description": "Graded accuracy, routing accuracy and stale-source rate by topic.",
+ "narrative": "Where the AI is strongest and weakest, by topic, from answers a reviewer actually graded.",
+ "sourceKey": "meter_accuracy",
+ "rows": [
+  "intent"
+ ],
+ "cols": [],
+ "measures": [
+  "acc_gradeable_n",
+  "acc_graded_n",
+  "acc_ungraded_n",
+  "acc_right_n",
+  "acc_wrong_source_n",
+  "acc_better_source_n",
+  "acc_wrong_tool_n",
+  "acc_unfaithful_n",
+  "acc_stale_n",
+  "acc_re_verify_n",
+  "acc_graded_accuracy_pct",
+  "acc_routing_accuracy_pct",
+  "acc_stale_pct"
+ ],
+ "filters": [],
+ "datePreset": "last_25",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

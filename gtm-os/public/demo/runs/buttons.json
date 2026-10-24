@@ -1,0 +1,106 @@
+[
+ {
+  "workflow_id": "loop-ad-pull",
+  "label": "Daily ad performance pull",
+  "state": "ready",
+  "detail": "Pulls spend, clicks and conversions from every platform",
+  "last_run": {
+   "run_id": "run-seed-01",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:10:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-cost-sync",
+  "label": "Cost sync and gap alert",
+  "state": "ready",
+  "detail": "Records every platform's spend and flags any missing day",
+  "last_run": {
+   "run_id": "run-seed-02",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:14:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-completeness",
+  "label": "Daily completeness gate",
+  "state": "ready",
+  "detail": "Holds reports when a feed is missing a day",
+  "last_run": {
+   "run_id": "run-seed-03",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:18:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-call-scoring",
+  "label": "Call scoring",
+  "state": "ready",
+  "detail": "Transcribes and scores the latest sales calls",
+  "last_run": {
+   "run_id": "run-seed-04",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:22:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-library-sync",
+  "label": "Creative library sync",
+  "state": "ready",
+  "detail": "Pulls every live ad and describes it",
+  "last_run": {
+   "run_id": "run-seed-05",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:26:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-hygiene",
+  "label": "Weekly paid hygiene read",
+  "state": "ready",
+  "detail": "Checks for waste, broken tracking and policy risk",
+  "last_run": {
+   "run_id": "run-seed-06",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:30:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-speed-to-lead",
+  "label": "Speed-to-lead weekly",
+  "state": "ready",
+  "detail": "Reads first-touch time by channel",
+  "last_run": {
+   "run_id": "run-seed-07",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:34:00",
+   "link": "",
+   "acknowledged": true
+  }
+ },
+ {
+  "workflow_id": "loop-reports",
+  "label": "Rebuild the reports",
+  "state": "ready",
+  "detail": "Refreshes every report feed now",
+  "last_run": {
+   "run_id": "run-seed-08",
+   "status": "succeeded",
+   "ts": "2026-10-24T06:38:00",
+   "link": "",
+   "acknowledged": true
+  }
+ }
+]

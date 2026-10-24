@@ -1,0 +1,25 @@
+{
+ "id": "revenue-by-market-bar",
+ "name": "Revenue by market, ranked",
+ "description": "Gross revenue by market over the last 13 months.",
+ "narrative": "Which markets carry the company and which trail it. Click a bar on the revenue board to filter the trend beside it.",
+ "sourceKey": "spine_funnel_monthly",
+ "rows": [
+  "office"
+ ],
+ "cols": [],
+ "measures": [
+  "gross"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "bar_h",
+  "x": "office",
+  "y": "gross"
+ },
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

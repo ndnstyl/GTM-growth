@@ -1,0 +1,402 @@
+{
+  "title": "The Growth Marketing + AI Stack",
+  "subtitle": "Ten go-to-market folders, first touch to final report. Every item here is built and running today, in whole or in part.",
+  "kinds": {
+    "agent": "AI seats that hold a growth role: strategy, media buying, editing, analysis, review.",
+    "skill": "Repeatable playbooks an agent loads on demand: voice, video, QR, data rules, audits.",
+    "loop": "Scheduled jobs that run daily or weekly with no one pressing a button.",
+    "automation": "Always-on systems: AI answering, consent register, cockpit, classroom."
+  },
+  "stages": [
+    {
+      "name": "Market Research",
+      "outcome": "Recorded sales calls become a read of objections, strengths and weaknesses.",
+      "items": [
+        {
+          "kind": "loop",
+          "name": "Call-based market SWOT",
+          "outcome": "Turns recorded sales calls into a read of objections, strengths and weaknesses per rep"
+        }
+      ]
+    },
+    {
+      "name": "Positioning & Offer",
+      "outcome": "Channel strategy, brand voice and offer tests set before a dollar is spent.",
+      "items": [
+        {
+          "kind": "agent",
+          "name": "Growth marketing lead",
+          "outcome": "Plans channel strategy, budget split and offer tests as recommendations; a person applies every change"
+        },
+        {
+          "kind": "skill",
+          "name": "Brand voice system",
+          "outcome": "Produces a tone-of-voice and brand guide every content tool follows"
+        },
+        {
+          "kind": "skill",
+          "name": "Founder voice transfer",
+          "outcome": "Rewrites drafts so they sound like the founder, with AI tells removed"
+        },
+        {
+          "kind": "skill",
+          "name": "Copy variation burst",
+          "outcome": "Writes distinct hooks, headlines and offers to test, not reworded copies"
+        },
+        {
+          "kind": "skill",
+          "name": "Short-form strategy playbook",
+          "outcome": "Picks the audience, scores ideas and sets calls to action so reels bring leads, not just views"
+        }
+      ]
+    },
+    {
+      "name": "Content Engine",
+      "outcome": "One sentence in, finished scripts and edited reels out, on brand.",
+      "items": [
+        {
+          "kind": "agent",
+          "name": "Viral ad scriptwriter",
+          "outcome": "Turns one sentence into candidate ad scripts (hook, story, call to action), each checked against a claims rulebook before a person approves it"
+        },
+        {
+          "kind": "agent",
+          "name": "AI edit crew (seven seats)",
+          "outcome": "Seven seats (editor, transcriber, B-roll researcher, screen editor, sound designer, animator, finisher) take footage from brief to finished vertical and horizontal reels, with a person approving each cut"
+        },
+        {
+          "kind": "agent",
+          "name": "Motion engineer",
+          "outcome": "Builds reusable animated reel templates and motion graphics"
+        },
+        {
+          "kind": "skill",
+          "name": "Brand video engine",
+          "outcome": "Renders on-brand product and proof reels from real footage"
+        },
+        {
+          "kind": "skill",
+          "name": "Shot list director",
+          "outcome": "Plans shoots so every shot has a job in the edit"
+        },
+        {
+          "kind": "skill",
+          "name": "Social posting kit",
+          "outcome": "Prepares ready-to-post kits for channels that can't be automated"
+        },
+        {
+          "kind": "skill",
+          "name": "Slide and carousel generator",
+          "outcome": "Builds on-brand decks and LinkedIn carousels"
+        },
+        {
+          "kind": "loop",
+          "name": "Creative library sync",
+          "outcome": "Pulls every ad from Google, Meta and Microsoft daily, then renders and describes each one so the library can be searched"
+        },
+        {
+          "kind": "automation",
+          "name": "Content studio request desk",
+          "outcome": "One studio panel where an idea becomes a ticket, is rendered into on-brand reels and lands in a media library"
+        }
+      ]
+    },
+    {
+      "name": "Paid Media",
+      "outcome": "Every platform's results land daily, and sales flow back so ads optimize for revenue.",
+      "items": [
+        {
+          "kind": "agent",
+          "name": "Paid media operator",
+          "outcome": "Audits accounts, pulls performance and drafts changes across Google, YouTube, Meta and Microsoft; a person applies every live change"
+        },
+        {
+          "kind": "loop",
+          "name": "Daily ad performance pull",
+          "outcome": "Spend, clicks and conversions from every platform land in one warehouse each morning"
+        },
+        {
+          "kind": "loop",
+          "name": "Sending sales back to ad platforms",
+          "outcome": "Each day the ad platforms are told which leads became sales (Google and Meta), so they can optimize for revenue"
+        },
+        {
+          "kind": "loop",
+          "name": "Weekly paid hygiene read",
+          "outcome": "Catches waste, broken tracking and policy risk across accounts every week"
+        },
+        {
+          "kind": "loop",
+          "name": "Self-serve social link tagging",
+          "outcome": "Social posts logged in a shared sheet get tracked links generated automatically; rows that break the naming rules are refused"
+        },
+        {
+          "kind": "skill",
+          "name": "QR campaign builder",
+          "outcome": "Print-ready, scan-verified QR codes for mail, print and events, each one tracked"
+        }
+      ]
+    },
+    {
+      "name": "Capture & Consent",
+      "outcome": "Consents and opt-outs recorded with their exact wording and reconciled nightly.",
+      "items": [
+        {
+          "kind": "automation",
+          "name": "Outside consent register",
+          "outcome": "An independent register records consents and opt-outs with their exact wording, seals each entry, reconciles against vendor records nightly and can retrieve the record on request"
+        },
+        {
+          "kind": "loop",
+          "name": "Internal do-not-call program",
+          "outcome": "Daily suppression list fed by text and call stop requests, with a nightly audit of the evidence"
+        },
+        {
+          "kind": "loop",
+          "name": "Event show calendar sync",
+          "outcome": "Pushes the home-show schedule into the CRM event list automatically"
+        },
+        {
+          "kind": "agent",
+          "name": "Shows and events seat",
+          "outcome": "Answers events questions from a show playbook and drafts staffing kits and follow-up plans; recommend-only"
+        }
+      ]
+    },
+    {
+      "name": "Speed to Lead",
+      "outcome": "AI answers after-hours calls and website chats, captures the lead and hands it to a person.",
+      "items": [
+        {
+          "kind": "automation",
+          "name": "AI phone answering",
+          "outcome": "Answers after-hours calls, captures the caller's name, address and need, and emails the team a summary the next morning"
+        },
+        {
+          "kind": "automation",
+          "name": "Website AI chat",
+          "outcome": "Answers website visitors around the clock, qualifies buyers and emails the team the full conversation for leads and complaints"
+        },
+        {
+          "kind": "loop",
+          "name": "After-hours call recovery",
+          "outcome": "Missed after-hours callers are in the team inbox by morning"
+        },
+        {
+          "kind": "loop",
+          "name": "AI conversation outlier review",
+          "outcome": "Flags unusual calls and chats every day so the AI keeps improving"
+        },
+        {
+          "kind": "loop",
+          "name": "Chat handoff check",
+          "outcome": "Checks hourly that every engaged website chat was handed to a person"
+        },
+        {
+          "kind": "loop",
+          "name": "Speed-to-lead weekly",
+          "outcome": "Weekly read of how fast each channel's leads get a first touch"
+        },
+        {
+          "kind": "loop",
+          "name": "AI front door weekly",
+          "outcome": "Weekly scorecard for the AI answering lanes"
+        },
+        {
+          "kind": "loop",
+          "name": "AI agent KPI report",
+          "outcome": "Weekly results report for the AI phone line: calls, leads and transfers"
+        },
+        {
+          "kind": "loop",
+          "name": "Service follow-up check",
+          "outcome": "Checks that every after-hours service call was followed up"
+        }
+      ]
+    },
+    {
+      "name": "Sales Floor",
+      "outcome": "Sales calls pulled, transcribed and scored daily, with training on tap.",
+      "items": [
+        {
+          "kind": "loop",
+          "name": "AI call listening",
+          "outcome": "Pulls, transcribes and scores sales calls each day"
+        },
+        {
+          "kind": "loop",
+          "name": "Call floor diagnostics",
+          "outcome": "Daily board of dials, connects and set rate by rep"
+        },
+        {
+          "kind": "automation",
+          "name": "Training classroom",
+          "outcome": "Self-serve onboarding and product training for the floor"
+        }
+      ]
+    },
+    {
+      "name": "Attribution & Cost",
+      "outcome": "Daily spend recorded and checked against platform controls.",
+      "items": [
+        {
+          "kind": "agent",
+          "name": "Cost accuracy crew",
+          "outcome": "Research, report and senior-review seats check each platform's spend inputs and recompute totals before anything is reported"
+        },
+        {
+          "kind": "agent",
+          "name": "Marketing efficiency pacing analyst",
+          "outcome": "Tracks spend as a share of revenue by channel and office and warns before a target is missed"
+        },
+        {
+          "kind": "loop",
+          "name": "Daily cost sync and gap alert",
+          "outcome": "Every platform's spend is recorded daily and a daily check lists gaps"
+        },
+        {
+          "kind": "loop",
+          "name": "Monthly marketing-cost check",
+          "outcome": "Closes each month's marketing cost against revenue, with a month-to-date pull"
+        },
+        {
+          "kind": "loop",
+          "name": "Ad call to lead match",
+          "outcome": "Ties every ad-driven phone call to its lead daily"
+        },
+        {
+          "kind": "loop",
+          "name": "Contact attribution coverage",
+          "outcome": "Measures daily the share of contacts that carry a known source"
+        },
+        {
+          "kind": "loop",
+          "name": "CRM marketing feed and reconcile",
+          "outcome": "Lands CRM lead and sales data daily and reconciles it against ad data"
+        },
+        {
+          "kind": "loop",
+          "name": "AI spend meter",
+          "outcome": "Meters what each AI workload costs, with a daily reconciliation that is currently incomplete"
+        }
+      ]
+    },
+    {
+      "name": "Reporting Cockpit",
+      "outcome": "One screen where the numbers refresh themselves.",
+      "items": [
+        {
+          "kind": "automation",
+          "name": "GTM OS cockpit",
+          "outcome": "One command center where marketing, sales and ops numbers live and refresh themselves"
+        },
+        {
+          "kind": "automation",
+          "name": "BI workbench",
+          "outcome": "Reports can be pivoted, filtered, drilled into, charted and saved as views"
+        },
+        {
+          "kind": "skill",
+          "name": "BI workbench standard",
+          "outcome": "Holds every new report to the interactive standard"
+        },
+        {
+          "kind": "automation",
+          "name": "Digital marketing board",
+          "outcome": "In-house ad spend and results by market, platform and campaign, refreshed daily"
+        },
+        {
+          "kind": "automation",
+          "name": "Marketing initiatives tracker",
+          "outcome": "Every open initiative, with its owner and status, in the cockpit"
+        },
+        {
+          "kind": "automation",
+          "name": "Cockpit chat",
+          "outcome": "Ask questions of the company knowledge base in plain English and get answers with sources"
+        },
+        {
+          "kind": "loop",
+          "name": "Self-refreshing reports",
+          "outcome": "Rebuilt hourly, nightly and weekly, with recent days restated as late data lands"
+        },
+        {
+          "kind": "loop",
+          "name": "Daily reporting alert",
+          "outcome": "Morning alert when a number is late or looks wrong"
+        },
+        {
+          "kind": "loop",
+          "name": "Digital marketing daily record",
+          "outcome": "Logs each day's changes and decisions and rolls them into a Friday report"
+        },
+        {
+          "kind": "agent",
+          "name": "Marketing analyst",
+          "outcome": "Builds report packs and answers \"what does this number mean\""
+        }
+      ]
+    },
+    {
+      "name": "Reliability",
+      "outcome": "Failures flagged loudly: bounded self-healing, stall alarms and data-gap checks.",
+      "items": [
+        {
+          "kind": "loop",
+          "name": "Self-healing",
+          "outcome": "Classifies failed scheduled jobs and re-runs or restarts the fixable ones, up to three tries a day, then hands the rest to a person"
+        },
+        {
+          "kind": "loop",
+          "name": "Health and stability census",
+          "outcome": "Peer-reviewed checks that every scheduled job is alive and producing output"
+        },
+        {
+          "kind": "loop",
+          "name": "Reporting regression suite",
+          "outcome": "Runs a set of guard tests against the reporting code each day and flags any that fail"
+        },
+        {
+          "kind": "loop",
+          "name": "Daily data completeness gate",
+          "outcome": "Checks daily that every reporting table has a row for each expected day and lists each gap"
+        },
+        {
+          "kind": "loop",
+          "name": "API rate governor",
+          "outcome": "Keeps every integration under vendor rate limits"
+        },
+        {
+          "kind": "loop",
+          "name": "Nightly backup",
+          "outcome": "Every store is backed up each night to a separate disk"
+        },
+        {
+          "kind": "agent",
+          "name": "CI pair",
+          "outcome": "Commits finished work and verifies it passes checks and secret scans"
+        },
+        {
+          "kind": "agent",
+          "name": "Security reviewer seat",
+          "outcome": "Reviews changes that touch consumer contact or customer data before they ship"
+        },
+        {
+          "kind": "skill",
+          "name": "Data classification",
+          "outcome": "Decides which data may go to which AI tool"
+        },
+        {
+          "kind": "skill",
+          "name": "Compliance audit",
+          "outcome": "Playbook for a control-mapped gap review against SOC 2, PCI, ISO, privacy and AI rules"
+        },
+        {
+          "kind": "skill",
+          "name": "Diagnose",
+          "outcome": "Test-first method for silent failures"
+        }
+      ]
+    }
+  ]
+}

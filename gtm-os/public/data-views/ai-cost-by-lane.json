@@ -1,0 +1,28 @@
+{
+ "id": "ai-cost-by-lane",
+ "name": "AI calls and tokens by workload",
+ "description": "Calls, tokens and unpriced counts by workload and model.",
+ "narrative": "Which workloads use the most AI and which model tier serves them.",
+ "sourceKey": "meter_cost",
+ "rows": [
+  "lane"
+ ],
+ "cols": [
+  "model"
+ ],
+ "measures": [
+  "cost_calls",
+  "cost_prompt_tokens",
+  "cost_output_tokens",
+  "cost_frontier_all_usd",
+  "cost_unnamed_n",
+  "cost_unmapped_n",
+  "cost_unpriced_n"
+ ],
+ "filters": [],
+ "datePreset": "last_25",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

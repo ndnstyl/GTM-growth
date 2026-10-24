@@ -49,6 +49,22 @@ A survey of public GTM agent, skill and automation repos ([research/external-gtm
 - **The Outside Consent Register:** proof of consent that survives a demand letter, a class action and an AI audit. [Get the guide](https://theinnovativenative.com/guides/outside-consent-register)
 - **ECHO OS:** the AI cockpit that runs the business from one screen. [Join early access](https://theinnovativenative.com/echo-os)
 
+## GTM OS (the live demo cockpit)
+
+[`gtm-os/`](gtm-os/) is the source of GTM OS: a go-to-market command center that runs entirely in the browser on a
+fictional company's sample data. Eight areas (Command, Research & Offer, Content Studio, Paid Media, Capture & Speed,
+Sales Floor, Attribution & BI, AI Ops) map to the ten folders above. No backend: every server call is answered by a demo
+layer, the chat is scripted, and the reports run in the browser over sample data files.
+
+```bash
+cd gtm-os && npm install && npm run build   # static site in gtm-os/out, served at /gtm-os/
+```
+
+## Site redesign
+
+[`site-redesign/`](site-redesign/) holds the new one-page home for theinnovativenative.com: the React components, the
+page content, the styles, and the original design mockup and tokens.
+
 ## Rebuild the animations
 
 ```bash

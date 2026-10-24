@@ -1,0 +1,186 @@
+{
+ "schema": "consent_ops/1",
+ "generated_at": "2026-10-24T06:30:00-05:00",
+ "stale_after_s": 315360000,
+ "tier": "T1",
+ "source": {
+  "store": "demo consent register",
+  "database": "synthetic",
+  "transaction": "read only",
+  "owners_version": "demo-1.0",
+  "owners_signed_by": "Compliance lead (demo)"
+ },
+ "exceptions": {
+  "counts": {
+   "failed_job": 1,
+   "spool": 1,
+   "failed_dispatch": 1,
+   "ambiguous_stop": 1
+  },
+  "sections": {
+   "failed_job": {
+    "state": "ok",
+    "count": 1,
+    "shown": 1,
+    "owner": "Compliance lead"
+   },
+   "spool": {
+    "state": "ok",
+    "count": 1,
+    "shown": 1,
+    "owner": "Compliance lead"
+   },
+   "failed_dispatch": {
+    "state": "ok",
+    "count": 1,
+    "shown": 1
+   },
+   "ambiguous_stop": {
+    "state": "ok",
+    "count": 1,
+    "shown": 1
+   },
+   "pending_booking": {
+    "state": "ok",
+    "count": 0,
+    "shown": 0
+   }
+  },
+  "items": [
+   {
+    "kind": "failed_job",
+    "job": "Nightly consent replay",
+    "owner": "Compliance lead",
+    "owner_basis": "named",
+    "severity": "critical",
+    "state": "failed",
+    "age_s": 1260,
+    "at": "2026-10-24T16:39:00-05:00",
+    "exit_code": 4,
+    "what": "Nightly consent replay failed; retry queued"
+   },
+   {
+    "kind": "spool",
+    "severity": "warning",
+    "state": "waiting",
+    "age_s": 420,
+    "held": 2,
+    "revokes_held": 1,
+    "limit_s": 900,
+    "owner": "Compliance lead",
+    "owner_basis": "named",
+    "what": "2 consent captures held, inside the 15-minute limit"
+   },
+   {
+    "kind": "failed_dispatch",
+    "severity": "warning",
+    "request_id": 4412,
+    "lane": "text messages",
+    "channel": "text",
+    "purpose": "transactional",
+    "provider": "demo-gateway",
+    "status": "failed",
+    "contact": "phone …0142",
+    "person_ref": "P002",
+    "prospect_id": null,
+    "at": "2026-10-24T13:50:00-05:00",
+    "age_s": 11400,
+    "owner": "Messaging lead",
+    "owner_basis": "default",
+    "what": "Text message failed at the carrier"
+   },
+   {
+    "kind": "ambiguous_stop",
+    "severity": "warning",
+    "candidate_id": 318,
+    "source_lane": "website chat",
+    "contact": "phone …7731",
+    "person_ref": "P001",
+    "prospect_id": "NB-20418",
+    "at": "2026-10-24T15:25:00-05:00",
+    "age_s": 5700,
+    "owner": "Compliance lead",
+    "owner_basis": "named",
+    "state": "waiting",
+    "what": "Stop request needs a person's call (website chat)"
+   }
+  ]
+ },
+ "timeline": {
+  "window_days": 14,
+  "contact_points_in_window": 2,
+  "contact_points_cap": 150,
+  "persons_shown": 2,
+  "entries_cap": 40,
+  "basis": "synthetic demo data",
+  "shared_person_keys_split": 0
+ },
+ "persons": [
+  {
+   "ref": "P001",
+   "prospect_ids": [
+    "NB-20418"
+   ],
+   "contacts": [
+    "phone …7731"
+   ],
+   "last_at": "2026-10-24T15:25:00-05:00",
+   "entries_total": 3,
+   "entries_shown": 3,
+   "timeline": [
+    {
+     "at": "2026-10-24T15:25:00-05:00",
+     "kind": "hold",
+     "what": "stop queued for a person",
+     "lane": "website chat",
+     "channel": null,
+     "contact": "phone …7731"
+    },
+    {
+     "at": "2026-10-24T15:20:00-05:00",
+     "kind": "decision",
+     "what": "held for review (marketing)",
+     "lane": "website chat",
+     "channel": "text",
+     "contact": "phone …7731"
+    },
+    {
+     "at": "2026-10-23T09:20:00-05:00",
+     "kind": "capture",
+     "what": "grant (voice, text)",
+     "lane": "estimate form",
+     "channel": null,
+     "contact": "phone …7731"
+    }
+   ]
+  },
+  {
+   "ref": "P002",
+   "prospect_ids": [],
+   "contacts": [
+    "phone …0142"
+   ],
+   "last_at": "2026-10-24T13:50:00-05:00",
+   "entries_total": 2,
+   "entries_shown": 2,
+   "timeline": [
+    {
+     "at": "2026-10-24T13:50:00-05:00",
+     "kind": "dispatch",
+     "what": "text failed at the carrier",
+     "lane": "text messages",
+     "channel": "text",
+     "contact": "phone …0142"
+    },
+    {
+     "at": "2026-10-22T21:40:00-05:00",
+     "kind": "capture",
+     "what": "grant (text)",
+     "lane": "home show form",
+     "channel": null,
+     "contact": "phone …0142"
+    }
+   ]
+  }
+ ]
+}

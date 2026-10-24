@@ -1,0 +1,11 @@
+{
+ "as_of": "2026-10-24T06:30:00",
+ "data": {
+  "Loops healthy": "17 of 18",
+  "Runs, last 7 days": 2247,
+  "Graded accuracy": "94.0%",
+  "AI cost yesterday": "$19",
+  "Net saved yesterday": "$35",
+  "Open knowledge gaps": 4
+ }
+}

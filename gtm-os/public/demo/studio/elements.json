@@ -1,0 +1,123 @@
+{
+ "items": [
+  {
+   "id": "el-01",
+   "brand": "nb-main",
+   "kind": "voice",
+   "label": "Warm narrator, female",
+   "uses": 36
+  },
+  {
+   "id": "el-02",
+   "brand": "nb-main",
+   "kind": "voice",
+   "label": "Direct narrator, male",
+   "uses": 47
+  },
+  {
+   "id": "el-03",
+   "brand": "nb-main",
+   "kind": "voice",
+   "label": "Spanish narrator",
+   "uses": 10
+  },
+  {
+   "id": "el-04",
+   "brand": "nb-main",
+   "kind": "voice",
+   "label": "Crew-lead voice",
+   "uses": 53
+  },
+  {
+   "id": "el-05",
+   "brand": "nb-main",
+   "kind": "music",
+   "label": "Upbeat acoustic bed",
+   "uses": 6
+  },
+  {
+   "id": "el-06",
+   "brand": "nb-main",
+   "kind": "music",
+   "label": "Warm piano lift",
+   "uses": 25
+  },
+  {
+   "id": "el-07",
+   "brand": "nb-main",
+   "kind": "music",
+   "label": "Light percussion pulse",
+   "uses": 49
+  },
+  {
+   "id": "el-08",
+   "brand": "nb-main",
+   "kind": "music",
+   "label": "Quiet documentary pad",
+   "uses": 47
+  },
+  {
+   "id": "el-09",
+   "brand": "nb-main",
+   "kind": "endcard",
+   "label": "Free estimate end card",
+   "uses": 5
+  },
+  {
+   "id": "el-10",
+   "brand": "nb-main",
+   "kind": "endcard",
+   "label": "Financing end card",
+   "uses": 6
+  },
+  {
+   "id": "el-11",
+   "brand": "nb-main",
+   "kind": "endcard",
+   "label": "Storm-prep end card",
+   "uses": 27
+  },
+  {
+   "id": "el-12",
+   "brand": "nb-main",
+   "kind": "broll",
+   "label": "Crew on a roof at sunrise",
+   "uses": 41
+  },
+  {
+   "id": "el-13",
+   "brand": "nb-main",
+   "kind": "broll",
+   "label": "Finished front elevation",
+   "uses": 30
+  },
+  {
+   "id": "el-14",
+   "brand": "nb-main",
+   "kind": "broll",
+   "label": "Close-up of window install",
+   "uses": 45
+  },
+  {
+   "id": "el-15",
+   "brand": "nb-main",
+   "kind": "broll",
+   "label": "Gutter guard detail",
+   "uses": 16
+  },
+  {
+   "id": "el-16",
+   "brand": "nb-main",
+   "kind": "logo",
+   "label": "Northbeam Home logo",
+   "uses": 3
+  },
+  {
+   "id": "el-17",
+   "brand": "nb-pro",
+   "kind": "logo",
+   "label": "Northbeam Pro logo",
+   "uses": 52
+  }
+ ]
+}

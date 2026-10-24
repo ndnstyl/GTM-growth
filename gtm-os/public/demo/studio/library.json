@@ -1,0 +1,500 @@
+{
+ "items": [
+  {
+   "id": "lib-001",
+   "brand": "nb-main",
+   "title": "Why a free estimate is worth the hour",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 45,
+   "market": "All markets",
+   "created": "2026-10-23",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-001.svg"
+  },
+  {
+   "id": "lib-002",
+   "brand": "nb-main",
+   "title": "A roof you stop thinking about",
+   "kind": "video",
+   "stage": "review",
+   "duration_s": 78,
+   "market": "Pinecrest",
+   "created": "2026-10-21",
+   "channels": [
+    "social"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-002.svg"
+  },
+  {
+   "id": "lib-003",
+   "brand": "nb-main",
+   "title": "Three questions before you sign",
+   "kind": "carousel",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Stonebridge",
+   "created": "2026-10-19",
+   "channels": [
+    "youtube"
+   ],
+   "note": "Approved for paid and organic.",
+   "thumb": "/demo/studio/thumbs/lib-003.svg"
+  },
+  {
+   "id": "lib-004",
+   "brand": "nb-main",
+   "title": "The crew lead explains day one",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 78,
+   "market": "All markets",
+   "created": "2026-10-17",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-004.svg"
+  },
+  {
+   "id": "lib-005",
+   "brand": "nb-pro",
+   "title": "What a monthly payment really looks like",
+   "kind": "video",
+   "stage": "review",
+   "duration_s": 30,
+   "market": "Lakemont",
+   "created": "2026-10-15",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-005.svg"
+  },
+  {
+   "id": "lib-006",
+   "brand": "nb-main",
+   "title": "Windows you can hear the difference in",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 78,
+   "market": "Sunvale",
+   "created": "2026-10-13",
+   "channels": [
+    "social"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-006.svg"
+  },
+  {
+   "id": "lib-007",
+   "brand": "nb-main",
+   "title": "Storm season checklist",
+   "kind": "carousel",
+   "stage": "review",
+   "duration_s": null,
+   "market": "All markets",
+   "created": "2026-10-11",
+   "channels": [
+    "youtube"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-007.svg"
+  },
+  {
+   "id": "lib-008",
+   "brand": "nb-main",
+   "title": "Neighbors who picked us",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Pinecrest",
+   "created": "2026-10-09",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "Approved for paid and organic.",
+   "thumb": "/demo/studio/thumbs/lib-008.svg"
+  },
+  {
+   "id": "lib-009",
+   "brand": "nb-main",
+   "title": "Gutters: the cheapest fix that saves the most",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 15,
+   "market": "Stonebridge",
+   "created": "2026-10-07",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-009.svg"
+  },
+  {
+   "id": "lib-010",
+   "brand": "nb-pro",
+   "title": "How we price a siding job",
+   "kind": "video",
+   "stage": "review",
+   "duration_s": 78,
+   "market": "All markets",
+   "created": "2026-10-05",
+   "channels": [
+    "social"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-010.svg"
+  },
+  {
+   "id": "lib-011",
+   "brand": "nb-main",
+   "title": "Same house, one week later",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 15,
+   "market": "Lakemont",
+   "created": "2026-10-03",
+   "channels": [
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-011.svg"
+  },
+  {
+   "id": "lib-012",
+   "brand": "nb-main",
+   "title": "What the warranty actually covers",
+   "kind": "carousel",
+   "stage": "review",
+   "duration_s": null,
+   "market": "Sunvale",
+   "created": "2026-10-01",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-012.svg"
+  },
+  {
+   "id": "lib-013",
+   "brand": "nb-main",
+   "title": "A day in the life of an estimator",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "All markets",
+   "created": "2026-09-29",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "Approved for paid and organic.",
+   "thumb": "/demo/studio/thumbs/lib-013.svg"
+  },
+  {
+   "id": "lib-014",
+   "brand": "nb-main",
+   "title": "Pro program: the contractor's view",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 45,
+   "market": "Pinecrest",
+   "created": "2026-09-27",
+   "channels": [
+    "social"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-014.svg"
+  },
+  {
+   "id": "lib-015",
+   "brand": "nb-pro",
+   "title": "Curb appeal that buyers notice",
+   "kind": "still",
+   "stage": "review",
+   "duration_s": null,
+   "market": "Stonebridge",
+   "created": "2026-09-25",
+   "channels": [
+    "youtube"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-015.svg"
+  },
+  {
+   "id": "lib-016",
+   "brand": "nb-main",
+   "title": "Energy bills: where the heat leaves",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 24,
+   "market": "All markets",
+   "created": "2026-09-23",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-016.svg"
+  },
+  {
+   "id": "lib-017",
+   "brand": "nb-main",
+   "title": "Roof reveal, the 15-second version",
+   "kind": "video",
+   "stage": "review",
+   "duration_s": 45,
+   "market": "Lakemont",
+   "created": "2026-09-21",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-017.svg"
+  },
+  {
+   "id": "lib-018",
+   "brand": "nb-main",
+   "title": "Three questions before you sign: save this post",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Sunvale",
+   "created": "2026-09-19",
+   "channels": [
+    "social"
+   ],
+   "note": "Approved for paid and organic.",
+   "thumb": "/demo/studio/thumbs/lib-018.svg"
+  },
+  {
+   "id": "lib-019",
+   "brand": "nb-main",
+   "title": "Day one on the roof, crew lead cut",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 45,
+   "market": "All markets",
+   "created": "2026-09-17",
+   "channels": [
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-019.svg"
+  },
+  {
+   "id": "lib-020",
+   "brand": "nb-pro",
+   "title": "One financed roof, one monthly number",
+   "kind": "carousel",
+   "stage": "review",
+   "duration_s": null,
+   "market": "Pinecrest",
+   "created": "2026-09-15",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-020.svg"
+  },
+  {
+   "id": "lib-021",
+   "brand": "nb-main",
+   "title": "The window sound test, short cut",
+   "kind": "video",
+   "stage": "draft",
+   "duration_s": 30,
+   "market": "Stonebridge",
+   "created": "2026-09-13",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-021.svg"
+  },
+  {
+   "id": "lib-022",
+   "brand": "nb-main",
+   "title": "Storm checklist: five things from the ground",
+   "kind": "still",
+   "stage": "review",
+   "duration_s": null,
+   "market": "All markets",
+   "created": "2026-09-11",
+   "channels": [
+    "social"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-022.svg"
+  },
+  {
+   "id": "lib-023",
+   "brand": "nb-main",
+   "title": "Two doors on one street, customer cut",
+   "kind": "video",
+   "stage": "approved",
+   "duration_s": 78,
+   "market": "Lakemont",
+   "created": "2026-09-09",
+   "channels": [
+    "youtube"
+   ],
+   "note": "Approved for paid and organic.",
+   "thumb": "/demo/studio/thumbs/lib-023.svg"
+  },
+  {
+   "id": "lib-024",
+   "brand": "nb-main",
+   "title": "A gutter guard against the water bill",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "Sunvale",
+   "created": "2026-09-07",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-024.svg"
+  },
+  {
+   "id": "lib-025",
+   "brand": "nb-pro",
+   "title": "Our siding price, line by line",
+   "kind": "carousel",
+   "stage": "review",
+   "duration_s": null,
+   "market": "All markets",
+   "created": "2026-09-05",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-025.svg"
+  },
+  {
+   "id": "lib-026",
+   "brand": "nb-main",
+   "title": "Seven days from teardown to finished roof",
+   "kind": "still",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "Pinecrest",
+   "created": "2026-09-03",
+   "channels": [
+    "social"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-026.svg"
+  },
+  {
+   "id": "lib-027",
+   "brand": "nb-main",
+   "title": "The warranty in plain words",
+   "kind": "video",
+   "stage": "review",
+   "duration_s": 24,
+   "market": "Stonebridge",
+   "created": "2026-09-01",
+   "channels": [
+    "youtube"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-027.svg"
+  },
+  {
+   "id": "lib-028",
+   "brand": "nb-main",
+   "title": "Estimator ride-along: the best three minutes",
+   "kind": "video",
+   "stage": "approved",
+   "duration_s": 45,
+   "market": "All markets",
+   "created": "2026-08-30",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "Approved for paid and organic.",
+   "thumb": "/demo/studio/thumbs/lib-028.svg"
+  },
+  {
+   "id": "lib-029",
+   "brand": "nb-main",
+   "title": "Why trade partners send us their jobs",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "Lakemont",
+   "created": "2026-08-28",
+   "channels": [
+    "social",
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-029.svg"
+  },
+  {
+   "id": "lib-030",
+   "brand": "nb-pro",
+   "title": "What buyers see from the street first",
+   "kind": "video",
+   "stage": "review",
+   "duration_s": 45,
+   "market": "Sunvale",
+   "created": "2026-08-26",
+   "channels": [
+    "social"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-030.svg"
+  },
+  {
+   "id": "lib-031",
+   "brand": "nb-main",
+   "title": "Where the heat leaves: thermal stills",
+   "kind": "still",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "All markets",
+   "created": "2026-08-24",
+   "channels": [
+    "youtube"
+   ],
+   "note": "In draft; not yet sent for review.",
+   "thumb": "/demo/studio/thumbs/lib-031.svg"
+  },
+  {
+   "id": "lib-032",
+   "brand": "nb-main",
+   "title": "A free estimate, hour by hour",
+   "kind": "carousel",
+   "stage": "review",
+   "duration_s": null,
+   "market": "Pinecrest",
+   "created": "2026-08-22",
+   "channels": [
+    "social",
+    "email"
+   ],
+   "note": "With the brand lead for review.",
+   "thumb": "/demo/studio/thumbs/lib-032.svg"
+  }
+ ]
+}

@@ -1,0 +1,408 @@
+[
+ {
+  "path": "artifacts/report/001-weekly-paid-media-read",
+  "title": "Weekly paid media read",
+  "kind": "report",
+  "tags": [
+   "paid",
+   "weekly"
+  ],
+  "source": "Paid media operator",
+  "note": "Spend, waste and tracking risk across the three platforms.",
+  "created": "2026-10-24",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/002-call-swot-last-7-days",
+  "title": "Call SWOT, last 7 days",
+  "kind": "report",
+  "tags": [
+   "research",
+   "calls"
+  ],
+  "source": "Call SWOT loop",
+  "note": "Objections, strengths and weaknesses.",
+  "created": "2026-10-23",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/brief/003-spring-offer-test-brief",
+  "title": "Spring offer test brief",
+  "kind": "brief",
+  "tags": [
+   "offer",
+   "test"
+  ],
+  "source": "Growth marketing lead",
+  "note": "Three offers, one winner so far.",
+  "created": "2026-10-22",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/playbook/004-brand-voice-guide-v3",
+  "title": "Brand voice guide v3",
+  "kind": "playbook",
+  "tags": [
+   "brand",
+   "voice"
+  ],
+  "source": "Brand voice pass",
+  "note": "Tone rules every content tool follows.",
+  "created": "2026-10-21",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/deck/005-q4-budget-allocation",
+  "title": "Q4 budget allocation",
+  "kind": "deck",
+  "tags": [
+   "budget",
+   "planning"
+  ],
+  "source": "Growth marketing lead",
+  "note": "Where each dollar goes by market and channel.",
+  "created": "2026-10-20",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/006-efficiency-target-readout",
+  "title": "Efficiency target readout",
+  "kind": "report",
+  "tags": [
+   "efficiency",
+   "cost"
+  ],
+  "source": "Marketing analyst",
+  "note": "All-in cost against net revenue by market.",
+  "created": "2026-10-19",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/brief/007-november-mail-drop-plan",
+  "title": "November mail drop plan",
+  "kind": "brief",
+  "tags": [
+   "mail",
+   "offline"
+  ],
+  "source": "Media buyer",
+  "note": "Six markets, one mailer, a QR code on each.",
+  "created": "2026-10-18",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/script/008-storm-prep-reel-set",
+  "title": "Storm-prep reel set",
+  "kind": "script",
+  "tags": [
+   "content",
+   "social"
+  ],
+  "source": "Viral ad scriptwriter",
+  "note": "Three script variations for the weekend burst.",
+  "created": "2026-10-16",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/script/009-install-story-flagship-script",
+  "title": "Install story flagship script",
+  "kind": "script",
+  "tags": [
+   "content",
+   "video"
+  ],
+  "source": "Viral ad scriptwriter",
+  "note": "Seventy-eight second film with six cut-down bytes.",
+  "created": "2026-10-15",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/010-speed-to-lead-weekly",
+  "title": "Speed-to-lead weekly",
+  "kind": "report",
+  "tags": [
+   "speed",
+   "weekly"
+  ],
+  "source": "Speed-to-lead loop",
+  "note": "First-touch time by channel.",
+  "created": "2026-10-14",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/011-ai-front-door-scorecard",
+  "title": "AI front door scorecard",
+  "kind": "report",
+  "tags": [
+   "ai",
+   "weekly"
+  ],
+  "source": "AI front door loop",
+  "note": "Answer rate, accuracy and hand-offs.",
+  "created": "2026-10-13",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/deck/012-financing-explainer-carousel",
+  "title": "Financing explainer carousel",
+  "kind": "deck",
+  "tags": [
+   "content",
+   "financing"
+  ],
+  "source": "Slide and carousel builder",
+  "note": "Seven slides, brand checked.",
+  "created": "2026-10-12",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/brief/013-meta-budget-shift-proposal",
+  "title": "Meta budget shift proposal",
+  "kind": "brief",
+  "tags": [
+   "paid",
+   "meta"
+  ],
+  "source": "Paid media operator",
+  "note": "Move 15 percent to the cheapest market.",
+  "created": "2026-10-11",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/playbook/014-home-show-staffing-kit",
+  "title": "Home show staffing kit",
+  "kind": "playbook",
+  "tags": [
+   "events",
+   "sales"
+  ],
+  "source": "Events seat",
+  "note": "Booth script, staffing grid and lead form.",
+  "created": "2026-10-10",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/015-consent-exceptions-summary",
+  "title": "Consent exceptions summary",
+  "kind": "report",
+  "tags": [
+   "consent",
+   "compliance"
+  ],
+  "source": "Compliance lead",
+  "note": "Four open items and their owners.",
+  "created": "2026-10-08",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/016-creative-library-sync-log",
+  "title": "Creative library sync log",
+  "kind": "report",
+  "tags": [
+   "creative",
+   "ops"
+  ],
+  "source": "Creative library sync",
+  "note": "Ads pulled from three platforms and described.",
+  "created": "2026-10-07",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/017-agency-invoice-reconciliation",
+  "title": "Agency invoice reconciliation",
+  "kind": "report",
+  "tags": [
+   "cost",
+   "agency"
+  ],
+  "source": "Cost accuracy crew",
+  "note": "Seventy dollars of fees unposted.",
+  "created": "2026-10-06",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/brief/018-rep-coaching-notes-week-42",
+  "title": "Rep coaching notes, week 42",
+  "kind": "brief",
+  "tags": [
+   "sales",
+   "coaching"
+  ],
+  "source": "Sales floor coach",
+  "note": "Three reps, three scored calls each.",
+  "created": "2026-10-05",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/playbook/019-objection-handling-module",
+  "title": "Objection handling module",
+  "kind": "playbook",
+  "tags": [
+   "sales",
+   "training"
+  ],
+  "source": "Training classroom",
+  "note": "Eight new hires start Monday.",
+  "created": "2026-10-04",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/020-website-chat-transcript-review",
+  "title": "Website chat transcript review",
+  "kind": "report",
+  "tags": [
+   "ai",
+   "chat"
+  ],
+  "source": "AI outlier review",
+  "note": "Twelve flagged conversations, all handed to a person.",
+  "created": "2026-10-03",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/021-weekly-report-friday",
+  "title": "Weekly report, Friday",
+  "kind": "report",
+  "tags": [
+   "weekly",
+   "exec"
+  ],
+  "source": "Marketing analyst",
+  "note": "Revenue, spend, MER and pacing.",
+  "created": "2026-10-02",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/brief/022-qr-campaign-set-yard-signs",
+  "title": "QR campaign set, yard signs",
+  "kind": "brief",
+  "tags": [
+   "qr",
+   "offline"
+  ],
+  "source": "QR campaign builder",
+  "note": "Eighteen codes, scan-verified.",
+  "created": "2026-10-21",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/playbook/023-short-form-strategy-playbook",
+  "title": "Short-form strategy playbook",
+  "kind": "playbook",
+  "tags": [
+   "content",
+   "strategy"
+  ],
+  "source": "Short-form playbook",
+  "note": "Audience, scoring and calls to action.",
+  "created": "2026-10-20",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/024-cost-sync-gap-alert",
+  "title": "Cost sync gap alert",
+  "kind": "report",
+  "tags": [
+   "cost",
+   "alert"
+  ],
+  "source": "Cost sync loop",
+  "note": "Resolved: one missing day, backfilled.",
+  "created": "2026-10-19",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/025-landing-page-test-results",
+  "title": "Landing page test results",
+  "kind": "report",
+  "tags": [
+   "web",
+   "test"
+  ],
+  "source": "Marketing analyst",
+  "note": "Variant B lifts form starts 9 percent.",
+  "created": "2026-10-18",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/026-regional-tv-flight-recap",
+  "title": "Regional TV flight recap",
+  "kind": "report",
+  "tags": [
+   "tv",
+   "offline"
+  ],
+  "source": "Marketing analyst",
+  "note": "Calls land the morning after evening spots.",
+  "created": "2026-10-17",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/playbook/027-self-serve-link-tagging-guide",
+  "title": "Self-serve link tagging guide",
+  "kind": "playbook",
+  "tags": [
+   "links",
+   "social"
+  ],
+  "source": "Link tagging kit",
+  "note": "How any post gets a tracked link.",
+  "created": "2026-10-16",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/playbook/028-data-classification-checklist",
+  "title": "Data classification checklist",
+  "kind": "playbook",
+  "tags": [
+   "security",
+   "data"
+  ],
+  "source": "Data classification",
+  "note": "What may go to which tool.",
+  "created": "2026-10-15",
+  "state": "ok",
+  "hidden": false
+ },
+ {
+  "path": "artifacts/report/029-compliance-gap-review",
+  "title": "Compliance gap review",
+  "kind": "report",
+  "tags": [
+   "security",
+   "audit"
+  ],
+  "source": "Compliance audit",
+  "note": "Controls mapped, three gaps open.",
+  "created": "2026-10-13",
+  "state": "ok",
+  "hidden": false
+ }
+]

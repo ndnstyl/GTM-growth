@@ -1,0 +1,25 @@
+{
+ "id": "funnel-conversion",
+ "name": "Funnel, lead to sale",
+ "description": "Leads, sets, issues, demos and sales by month, with sales per issue.",
+ "narrative": "Every stage of the funnel in one table, so a drop in sales can be traced to the stage where it started.",
+ "sourceKey": "spine_funnel_monthly",
+ "rows": [
+  "period"
+ ],
+ "cols": [],
+ "measures": [
+  "leads",
+  "sets",
+  "issues",
+  "demos",
+  "sales",
+  "sale_per_issue"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

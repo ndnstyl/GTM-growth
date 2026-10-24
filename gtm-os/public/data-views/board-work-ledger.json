@@ -1,0 +1,47 @@
+{
+ "id": "board-work-ledger",
+ "name": "Board 6: Work ledger",
+ "description": "What the loops, AI seats and playbooks ran, whether it worked and what it saved.",
+ "panels": [
+  {
+   "viewId": "work-runs-by-class-day",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "work-outcomes",
+   "layout": {
+    "span": 1
+   }
+  },
+  {
+   "viewId": "work-routine-rollup",
+   "layout": {
+    "span": 1
+   }
+  },
+  {
+   "viewId": "work-savings-triple",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "work-census-tie",
+   "layout": {
+    "span": 1
+   }
+  },
+  {
+   "viewId": "work-matrix-state",
+   "layout": {
+    "span": 1
+   }
+  }
+ ],
+ "crossFilter": [],
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

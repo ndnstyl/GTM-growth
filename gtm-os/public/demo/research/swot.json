@@ -1,0 +1,178 @@
+{
+ "as_of": "2026-10-24",
+ "calls_read": 2034,
+ "period": "last 7 days",
+ "strengths": [
+  {
+   "theme": "Same-day estimate",
+   "calls": 234,
+   "quote": "I called at nine and somebody was at the house by two. Nobody else did that."
+  },
+  {
+   "theme": "Written price, no pressure",
+   "calls": 187,
+   "quote": "He left me the number in writing and said take your time. I liked that."
+  },
+  {
+   "theme": "Crew showed up on the day promised",
+   "calls": 159,
+   "quote": "My neighbor used someone else and waited three weeks. You were here Tuesday like you said."
+  },
+  {
+   "theme": "Clear financing options",
+   "calls": 130,
+   "quote": "The monthly payment was on the first page. That made it easy to say yes."
+  },
+  {
+   "theme": "Long warranty",
+   "calls": 104,
+   "quote": "The ten year warranty is what got my husband on board."
+  }
+ ],
+ "weaknesses": [
+  {
+   "theme": "Price shock on the first quote",
+   "calls": 181,
+   "quote": "I did not expect it to be that much. I thought it would be half."
+  },
+  {
+   "theme": "Hard to reach the office after five",
+   "calls": 116,
+   "quote": "I tried calling back last night and it just rang."
+  },
+  {
+   "theme": "Estimate window too wide",
+   "calls": 94,
+   "quote": "Between eight and noon is a big window to wait around the house."
+  },
+  {
+   "theme": "Unclear what is included",
+   "calls": 79,
+   "quote": "Does that price include removing the old windows? Nobody said."
+  },
+  {
+   "theme": "Slow to send the written proposal",
+   "calls": 63,
+   "quote": "He said I would have it that day and it came two days later."
+  }
+ ],
+ "opportunities": [
+  {
+   "theme": "Financing asked about unprompted",
+   "calls": 108,
+   "quote": "Do you do payments? I would do it this year if I could spread it out."
+  },
+  {
+   "theme": "Storm damage urgency",
+   "calls": 89,
+   "quote": "We had the hail last week and the insurance adjuster said to get quotes."
+  },
+  {
+   "theme": "Neighbors referred them",
+   "calls": 83,
+   "quote": "Three houses on our street have your signs up, so I figured I should call."
+  },
+  {
+   "theme": "Interest in bundling roof and gutters",
+   "calls": 55,
+   "quote": "If we are doing the roof anyway, can the gutters go on at the same time?"
+  },
+  {
+   "theme": "Spanish-language requests",
+   "calls": 39,
+   "quote": "Mi mamá prefiere hablar en español, ¿tienen alguien?"
+  }
+ ],
+ "threats": [
+  {
+   "theme": "Competitor quoted 12 percent lower",
+   "calls": 79,
+   "quote": "Another company came in about twelve percent under you for the same windows."
+  },
+  {
+   "theme": "Door-to-door storm chasers",
+   "calls": 57,
+   "quote": "A guy knocked on the door after the storm and wanted a deposit today."
+  },
+  {
+   "theme": "Big-box store installs",
+   "calls": 45,
+   "quote": "The home center said they could install it for less, so why should I pay you?"
+  },
+  {
+   "theme": "Rising material costs in the news",
+   "calls": 35,
+   "quote": "I read prices are going up again, so I am wondering if I should wait."
+  },
+  {
+   "theme": "Review scores on a competitor's page",
+   "calls": 26,
+   "quote": "Their page has a lot more reviews than yours does."
+  }
+ ],
+ "objections": [
+  {
+   "text": "I need to talk to my spouse",
+   "calls": 256,
+   "trend": "up",
+   "rebuttal": "Offer a two-person estimate time and send the written summary to both of them the same day."
+  },
+  {
+   "text": "The price is higher than I expected",
+   "calls": 181,
+   "trend": "up",
+   "rebuttal": "Lead with the monthly payment, then show what the price includes line by line."
+  },
+  {
+   "text": "I want to get a few more quotes",
+   "calls": 144,
+   "trend": "flat",
+   "rebuttal": "Agree, then give the three questions to ask every contractor, including warranty terms."
+  },
+  {
+   "text": "I am not ready to do it this year",
+   "calls": 106,
+   "trend": "down",
+   "rebuttal": "Name the cost of waiting for this specific home and book a follow-up date."
+  },
+  {
+   "text": "Can you do it cheaper if I pay cash?",
+   "calls": 77,
+   "trend": "flat",
+   "rebuttal": "Explain the one standard price and the written guarantee that comes with it."
+  },
+  {
+   "text": "I had a bad experience with a contractor before",
+   "calls": 63,
+   "trend": "down",
+   "rebuttal": "Acknowledge it, then walk through who is on the crew and how the job is checked at the end."
+  }
+ ],
+ "competitors": [
+  {
+   "name": "Summit Home Pros",
+   "mentions": 79,
+   "positioning": "Low price, long lead times, heavy use of subcontractors."
+  },
+  {
+   "name": "Ironwood Exteriors",
+   "mentions": 53,
+   "positioning": "Premium brand, strong reviews, financing through a partner bank."
+  },
+  {
+   "name": "BrightLine Remodeling",
+   "mentions": 43,
+   "positioning": "Whole-house packages, aggressive seasonal discounts."
+  },
+  {
+   "name": "Cardinal Roofing and Windows",
+   "mentions": 37,
+   "positioning": "Local family name, fast storm response."
+  },
+  {
+   "name": "Hearth and Home Exteriors",
+   "mentions": 22,
+   "positioning": "Premium siding, slower and pricier."
+  }
+ ]
+}

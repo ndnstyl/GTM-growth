@@ -1,0 +1,25 @@
+{
+ "id": "mer-board",
+ "name": "Ad spend as a share of revenue",
+ "description": "Ad spend divided by gross revenue, by month.",
+ "narrative": "The share of every revenue dollar spent on ads; lower is better, and the trend matters more than any one month.",
+ "sourceKey": "spend_funnel_monthly",
+ "rows": [
+  "period"
+ ],
+ "cols": [],
+ "measures": [
+  "mer"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "line",
+  "x": "period",
+  "y": "mer"
+ },
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

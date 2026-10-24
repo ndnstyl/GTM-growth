@@ -1,0 +1,29 @@
+{
+ "id": "board-mer",
+ "name": "Board 2: Spend against revenue",
+ "description": "Ad spend share of revenue, the spend split and spend by platform.",
+ "panels": [
+  {
+   "viewId": "mer-board",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "spend-media-fee-board",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "spend-by-platform",
+   "layout": {
+    "span": 2
+   }
+  }
+ ],
+ "crossFilter": [],
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

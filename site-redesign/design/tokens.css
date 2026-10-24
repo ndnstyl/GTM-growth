@@ -1,0 +1,47 @@
+/* The Innovative Native home tokens, v2. DARK IS THE DEFAULT (brand identity).
+   Light is the secondary theme, opt-in via :root[data-theme="light"] (toggle). No OS-preference flip by design. */
+:root{
+  color-scheme:dark;
+  --color-bg:#0b0c1a; --color-bg-deep:#06070f; --color-surface:#12132a; --color-surface-2:#181a36;
+  --color-text:#f4f5fb; --color-text-muted:#a3a7c7;
+  --color-line:#2a2c4a; --color-line-soft:rgba(255,255,255,.08); --color-border-strong:#6f76a8;
+  --color-accent:#00e5ff; --color-on-accent:#04141c; --color-accent-text:#00e5ff; --color-focus:#00e5ff;
+  --color-mark:#ff3df5; --color-mark-fill:#ff3df5;
+  --color-grad-a:#00e5ff; --color-grad-b:#ff3df5;
+  --color-success:#4ade80; --color-danger:#ff8a80; --color-warning:#ffc857;
+  --color-glow:rgba(0,229,255,.28); --color-glow-mark:rgba(255,61,245,.22);
+  --color-grid:rgba(0,229,255,.22); --color-dot:rgba(255,255,255,.14);
+  --color-glass:rgba(24,26,54,.62); --color-header:rgba(11,12,26,.72);
+  --shadow-card:0 1px 2px rgba(0,0,0,.4),0 20px 48px rgba(0,0,0,.4);
+  --shadow-frame:0 40px 120px rgba(0,229,255,.18),0 10px 30px rgba(0,0,0,.6);
+  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --text-xs:.8125rem; --text-sm:.9375rem; --text-base:1.0625rem; --text-lg:1.25rem;
+  --text-xl:clamp(1.5rem,1.2rem + 1.2vw,2rem);
+  --text-2xl:clamp(2rem,1.4rem + 2.4vw,3.5rem);
+  --text-hero:clamp(2.5rem,1.5rem + 4.6vw,5.5rem);
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+  --space-6:32px; --space-7:48px; --space-8:72px; --space-9:112px;
+  --gutter:16px; --maxw:1240px;
+  --radius-sm:8px; --radius-md:14px; --radius-lg:24px; --radius-xl:36px; --radius-pill:999px;
+  --dur-fast:150ms; --dur-base:300ms; --dur-slow:800ms; --dur-wave:18s; --dur-marquee:42s;
+  --ease-out:cubic-bezier(.2,.7,.2,1); --ease-inout:cubic-bezier(.65,0,.35,1); --ease-spring:cubic-bezier(.34,1.56,.64,1);
+  --depth-persp:1400px;
+}
+@media (min-width:720px){:root{--gutter:32px}}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --color-bg:#f6f7fb; --color-bg-deep:#e9ecf6; --color-surface:#ffffff; --color-surface-2:#eceef7;
+  --color-text:#0b0e22; --color-text-muted:#4b5075;
+  --color-line:#d5d9ea; --color-line-soft:rgba(11,14,34,.09); --color-border-strong:#6b7194;
+  --color-accent:#00e5ff; --color-on-accent:#04141c; --color-accent-text:#00677d; --color-focus:#00677d;
+  --color-mark:#a3007c; --color-mark-fill:#ff3df5;
+  --color-grad-a:#00677d; --color-grad-b:#a3007c;
+  --color-success:#0b6b3a; --color-danger:#b3261e; --color-warning:#8a5a00;
+  --color-glow:rgba(0,170,200,.25); --color-glow-mark:rgba(255,61,245,.14);
+  --color-grid:rgba(0,103,125,.22); --color-dot:rgba(11,14,34,.14);
+  --color-glass:rgba(255,255,255,.7); --color-header:rgba(246,247,251,.78);
+  --shadow-card:0 1px 2px rgba(11,14,34,.06),0 16px 36px rgba(11,14,34,.1);
+  --shadow-frame:0 40px 100px rgba(0,120,150,.25),0 8px 24px rgba(11,14,34,.12);
+}

@@ -1,0 +1,23 @@
+{
+ "id": "work-outcomes",
+ "name": "Run outcomes by class",
+ "description": "Runs, successes, failures and unknown ends by unit class.",
+ "narrative": "How reliable each kind of automation is: loops, AI seats, always-on systems and playbooks.",
+ "sourceKey": "work_runs_daily",
+ "rows": [
+  "unit_class"
+ ],
+ "cols": [],
+ "measures": [
+  "work_runs",
+  "work_success_n",
+  "work_failed_n",
+  "work_unknown_end_n"
+ ],
+ "filters": [],
+ "datePreset": "last_25",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

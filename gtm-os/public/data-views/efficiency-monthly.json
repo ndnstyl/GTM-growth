@@ -1,0 +1,27 @@
+{
+ "id": "efficiency-monthly",
+ "name": "Marketing cost target, monthly",
+ "description": "Net issued, net revenue and the share still pending, revenue per issued appointment and cost percent by market.",
+ "narrative": "The monthly record behind the target: revenue per net issued appointment, the ceiling it implies and the cost percent against it.",
+ "sourceKey": "golden_rule_monthly",
+ "rows": [
+  "period",
+  "office"
+ ],
+ "cols": [],
+ "measures": [
+  "net_iss",
+  "net_usd",
+  "prenet_usd",
+  "nsli",
+  "nsli_plus_prenet",
+  "ceiling_at_target",
+  "marketing_cost_pct"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

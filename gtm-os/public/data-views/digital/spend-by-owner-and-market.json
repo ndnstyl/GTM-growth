@@ -1,0 +1,36 @@
+{
+ "id": "digital-spend-by-owner-and-market",
+ "name": "Paid and social spend by who runs it, per market",
+ "description": "In-house beside agency on the same market and the same days; fees are their own segment of each bar.",
+ "narrative": "Each market's bar stacks in-house media, agency media and agency fees for the period, so the in-house result reads against the agency on the same market and the same days.",
+ "sourceKey": "dm_spend",
+ "rows": [
+  "market",
+  "segment"
+ ],
+ "cols": [],
+ "measures": [
+  "spend"
+ ],
+ "filters": [
+  {
+   "dimKey": "bucket",
+   "op": "in",
+   "values": [
+    "inhouse",
+    "vendor"
+   ]
+  }
+ ],
+ "datePreset": "all",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "stacked_bar",
+  "x": "market",
+  "y": "spend",
+  "series": "segment"
+ },
+ "origin": "canon",
+ "created_by": "Digital Marketing board build (demo)",
+ "created_at": "2026-10-24"
+}

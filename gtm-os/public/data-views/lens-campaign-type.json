@@ -1,0 +1,32 @@
+{
+ "id": "lens-campaign-type",
+ "name": "Paid media by campaign type",
+ "description": "Spend, impressions, clicks and click-through rate by campaign type.",
+ "narrative": "What each kind of campaign bought, measured as the platforms report it; paid media only, and labeled that way.",
+ "sourceKey": "lens_month",
+ "rows": [
+  "period"
+ ],
+ "cols": [
+  "lens_value"
+ ],
+ "measures": [
+  "impressions",
+  "clicks",
+  "ctr"
+ ],
+ "filters": [
+  {
+   "dimKey": "lens",
+   "op": "=",
+   "values": [
+    "campaign_type"
+   ]
+  }
+ ],
+ "datePreset": "last_13",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

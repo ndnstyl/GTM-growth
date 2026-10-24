@@ -1,0 +1,114 @@
+[
+ {
+  "name": "Brand voice pass",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Push planner",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Call SWOT",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Weekly paid media read",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Weekly report",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Copy variations",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Short-form strategy playbook",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Founder voice rewrite",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Shot list",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Slide and carousel builder",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "QR campaign builder",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Data classification check",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Compliance gap review",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ },
+ {
+  "name": "Silent failure diagnosis",
+  "model": "demo",
+  "effort": "-",
+  "max_turns": 0,
+  "running": false,
+  "runnable": true
+ }
+]

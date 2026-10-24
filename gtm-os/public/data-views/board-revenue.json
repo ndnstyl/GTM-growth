@@ -1,0 +1,44 @@
+{
+ "id": "board-revenue",
+ "name": "Board 1: Revenue",
+ "description": "Gross and net monthly trends, market ranking (click a bar to filter) and the growth decomposition.",
+ "panels": [
+  {
+   "viewId": "revenue-trend-board",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "revenue-by-market-bar",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "net-trend-board",
+   "layout": {
+    "span": 2
+   }
+  },
+  {
+   "viewId": "growth-decomposition",
+   "layout": {
+    "span": 2
+   }
+  }
+ ],
+ "crossFilter": [
+  {
+   "fromPanel": 1,
+   "selection": "category",
+   "toPanels": [
+    0,
+    2
+   ]
+  }
+ ],
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

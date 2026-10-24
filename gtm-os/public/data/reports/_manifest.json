@@ -1,0 +1,257 @@
+{
+ "producer": "gtm-os demo build (synthetic data)",
+ "as_of": "2026-10-25T06:25:00",
+ "files": {
+  "campaign_market_allocation": {
+   "rows": 8558,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 8558
+   },
+   "sha256": "c8d7d2f1f5973d4b2244b39adb00b5d8060f510ab47d5828cd7cdabec9aa8e1a"
+  },
+  "dim_channel": {
+   "rows": 5,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 5
+   },
+   "sha256": "cd72cf77f0c28e85b915bf2415f8bd2b5400ea2bc7b251e4cd6a0defbff355a7"
+  },
+  "dim_company": {
+   "rows": 2,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 2
+   },
+   "sha256": "6de0ab51480e1eb99572733d0fdfeb621b60547601bd1d8b7531cec9f695fd3d"
+  },
+  "dim_market": {
+   "rows": 6,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 6
+   },
+   "sha256": "4715fac3da70b0692d1f1cf71a7d8a7443c252b50937ec1d83e7ec9062160826"
+  },
+  "dim_platform_account": {
+   "rows": 3,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 3
+   },
+   "sha256": "ebeacee91acbce193b9e72c240443d6cf84eba61eff492f458257cadfac42203"
+  },
+  "dim_source": {
+   "rows": 8,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 8
+   },
+   "sha256": "d706e7e9fb2f99fb157f90cdfbf7f2ee5d62877748e00c0717ddf500e3972af7"
+  },
+  "dim_subsource": {
+   "rows": 10,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 10
+   },
+   "sha256": "aac4e5a2c721bd210182a7b59afaeb686c37a06d7c935e145e1b6152dcdba5a4"
+  },
+  "dim_zip": {
+   "rows": 198,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 198
+   },
+   "sha256": "feebdd660be454302267d73b4dc3a60a76358ea372e63fc35f48ffc899c7e115"
+  },
+  "fact_ga4_channel_daily": {
+   "rows": 36489,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 36489
+   },
+   "sha256": "ac67fb3c6975d142a81cd156d9b024b17f88c9f0ad5658ae8adac8238a49e0f2"
+  },
+  "fact_ga4_geo_daily": {
+   "rows": 10114,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 10114
+   },
+   "sha256": "bf39d6eebc6c1b1b4ae193cea5cc10c4da0d18aab7459706696831243c919a1b"
+  },
+  "fact_gsc_daily": {
+   "rows": 54424,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 54424
+   },
+   "sha256": "f6b5ab108104d76d85987e28db4c00a459b14f96eba8c5598bd25e279feb3f0f"
+  },
+  "fact_gsc_site_daily": {
+   "rows": 778,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 778
+   },
+   "sha256": "3650dfdc5a7818f3390d683ebc6f2b39cc44a122872aa79d2f6356738c044b0f"
+  },
+  "fact_lead_zip_daily": {
+   "rows": 133992,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 133992
+   },
+   "sha256": "b9fa97aa8215d2aa7657e9397d2e28c7e0aecf943e594a27f1763d89f1308202"
+  },
+  "funnel__fact_funnel_daily": {
+   "rows": 6,
+   "status": "published",
+   "confidence_summary": {
+    "provisional": 6
+   },
+   "sha256": "74d89318dff1763432cc185c19f373b4aed88769d80fc9a8df3b093cd906d09d"
+  },
+  "google_ads__dim_ad_set": {
+   "rows": 22,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 22
+   },
+   "sha256": "371d535194c2d1cecf53a2d6b59f617cf05ad41484bd1ca45e80a15024e20b45"
+  },
+  "google_ads__dim_ad_unit": {
+   "rows": 44,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 44
+   },
+   "sha256": "be348db1f93fc3089627f9152da172345e9cc206c0377996f4b54da6f235ed46"
+  },
+  "google_ads__dim_campaign": {
+   "rows": 11,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 11
+   },
+   "sha256": "288ce413ef60cf6ce672ba05a21358507133f6eb16a35ed17aa0b762b4abc95b"
+  },
+  "google_ads__fact_conversion_action_daily": {
+   "rows": 17116,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 17116
+   },
+   "sha256": "637f1942ae42e93acd98fc95d53b7c4a463f0d3a6898e31e42d75c75aad092e6"
+  },
+  "google_ads__fact_geo_spend_daily": {
+   "rows": 21006,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 21006
+   },
+   "sha256": "fc1efb2a0515fed039866feb32ea9e7581fc470b1de0344d476c7419b50f51f3"
+  },
+  "google_ads__fact_spend_daily": {
+   "rows": 29953,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 29876,
+    "provisional": 77
+   },
+   "sha256": "4a5af855eadafb387ec4128dd3bd8d7a11973706a190100c42197b154b8d4e92"
+  },
+  "lp_spine__fact_funnel_daily": {
+   "rows": 2334,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 2334
+   },
+   "sha256": "dc0bb1905f30e7a81bcca43a865412ac368573318787aa23cc5126655fb58e06"
+  },
+  "meta__dim_ad_set": {
+   "rows": 20,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 20
+   },
+   "sha256": "66514820395732b9b75ec1f9491b697cb90096dd45914814caf6f0d845744c5d"
+  },
+  "meta__dim_ad_unit": {
+   "rows": 40,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 40
+   },
+   "sha256": "541e0cf948a6fdfcecd5a09e021b33d7e256556572427ab51fa6c8cbc9cf1a48"
+  },
+  "meta__dim_campaign": {
+   "rows": 10,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 10
+   },
+   "sha256": "d32ac40356c64764d096062a168e68ba773f186d4e641be9f6c5f585bf548f21"
+  },
+  "meta__fact_spend_daily": {
+   "rows": 27230,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 27090,
+    "provisional": 140
+   },
+   "sha256": "c9caad997c8a003e8c85643a03a46b3d0d54cc605acf07f5150e139f993b5c1e"
+  },
+  "microsoft_ads__dim_ad_set": {
+   "rows": 8,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 8
+   },
+   "sha256": "8826437ec767a9a690d5e209ed0bd66b0784e2cab518508270e64e39a37a0e10"
+  },
+  "microsoft_ads__dim_ad_unit": {
+   "rows": 16,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 16
+   },
+   "sha256": "d31240e1554631024f9a0965c8e2277b1b73c7ea2a124f88f3473af35a96c5d9"
+  },
+  "microsoft_ads__dim_campaign": {
+   "rows": 4,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 4
+   },
+   "sha256": "e1775e8ed454aaa764f1652115b4f8fa8eb5dd5e63448437762c8b27da73a940"
+  },
+  "microsoft_ads__fact_conversion_action_daily": {
+   "rows": 6224,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 6224
+   },
+   "sha256": "262a6fc6c6fc090bf4e96f63aa7b4d10a183c064a67737a5927382cee5005cab"
+  },
+  "microsoft_ads__fact_geo_spend_daily": {
+   "rows": 9336,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 9336
+   },
+   "sha256": "2a369d632a88398314e574ab252401c5e0c4e8ca3ebca8398d0c086ff9397949"
+  },
+  "microsoft_ads__fact_spend_daily": {
+   "rows": 10892,
+   "status": "published",
+   "confidence_summary": {
+    "deterministic": 10864,
+    "provisional": 28
+   },
+   "sha256": "b51563831f32a7b0166b964b228c2056b4ad60b78c091c6c933e83c53f7d8f94"
+  }
+ }
+}

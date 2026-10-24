@@ -1,0 +1,33 @@
+{
+ "id": "lens-product-monthly",
+ "name": "Sold dollars by product",
+ "description": "Sales, sold dollars, demos and close rate by product and month.",
+ "narrative": "Which product lines grow, which shrink and how each one closes.",
+ "sourceKey": "lens_month",
+ "rows": [
+  "period"
+ ],
+ "cols": [
+  "lens_value"
+ ],
+ "measures": [
+  "sold",
+  "sales",
+  "demos",
+  "close_rate"
+ ],
+ "filters": [
+  {
+   "dimKey": "lens",
+   "op": "=",
+   "values": [
+    "product"
+   ]
+  }
+ ],
+ "datePreset": "last_13",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

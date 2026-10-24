@@ -1,0 +1,28 @@
+{
+ "id": "ai-accuracy-latency",
+ "name": "Response speed",
+ "description": "Retrieval and full-answer time by topic against budget.",
+ "narrative": "How long a customer waits, against the budget set for each step.",
+ "sourceKey": "meter_latency",
+ "rows": [
+  "period"
+ ],
+ "cols": [
+  "intent"
+ ],
+ "measures": [
+  "lat_n",
+  "lat_retrieval_p50",
+  "lat_retrieval_p95",
+  "lat_complete_p50",
+  "lat_complete_p95",
+  "lat_retrieval_budget_p50",
+  "lat_complete_budget_p50"
+ ],
+ "filters": [],
+ "datePreset": "last_25",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

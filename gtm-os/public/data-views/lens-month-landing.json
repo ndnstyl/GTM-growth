@@ -1,0 +1,30 @@
+{
+ "id": "lens-month-landing",
+ "name": "Where the month lands",
+ "description": "This month's sold dollars projected from the share normally booked by this day, with a band.",
+ "narrative": "A projection built from how much of a month is usually booked by now, with a band from the error the same method made in prior months.",
+ "sourceKey": "lens_projection",
+ "rows": [
+  "period"
+ ],
+ "cols": [
+  "lens_value"
+ ],
+ "measures": [
+  "projection_point"
+ ],
+ "filters": [
+  {
+   "dimKey": "projection_key",
+   "op": "=",
+   "values": [
+    "month_landing_sold"
+   ]
+  }
+ ],
+ "datePreset": "all",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

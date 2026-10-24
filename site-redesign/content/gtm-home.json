@@ -1,0 +1,469 @@
+{
+ "subtitle": "Ten go-to-market folders, first touch to final report. Every item here is built and running today, in whole or in part.",
+ "stages": [
+  {
+   "name": "Market Research",
+   "outcome": "Recorded sales calls become a read of objections, strengths and weaknesses.",
+   "items": [
+    {
+     "kind": "loop",
+     "name": "Call-based market SWOT",
+     "outcome": "Reads recorded sales calls and writes up objections, strengths and weaknesses for each rep"
+    }
+   ]
+  },
+  {
+   "name": "Positioning & Offer",
+   "outcome": "Channel strategy, brand voice and offer tests set before a dollar is spent.",
+   "items": [
+    {
+     "kind": "agent",
+     "name": "Growth marketing lead",
+     "outcome": "Plans channel strategy, budget split and offer tests as recommendations; a person applies every change"
+    },
+    {
+     "kind": "playbook",
+     "name": "Brand voice system",
+     "outcome": "Produces a tone-of-voice and brand guide every content tool follows"
+    },
+    {
+     "kind": "playbook",
+     "name": "Founder voice transfer",
+     "outcome": "Rewrites drafts so they sound like the founder, with AI tells removed"
+    },
+    {
+     "kind": "playbook",
+     "name": "Copy variation burst",
+     "outcome": "Writes distinct hooks, headlines and offers to test, not reworded copies"
+    },
+    {
+     "kind": "playbook",
+     "name": "Short-form strategy playbook",
+     "outcome": "Picks the audience, scores ideas and sets calls to action so reels bring leads, not just views"
+    }
+   ]
+  },
+  {
+   "name": "Content Engine",
+   "outcome": "One sentence in, finished scripts and edited reels out, on brand.",
+   "items": [
+    {
+     "kind": "agent",
+     "name": "Viral ad scriptwriter",
+     "outcome": "Turns one sentence into candidate ad scripts (hook, story, call to action), each checked against a claims rulebook before a person approves it"
+    },
+    {
+     "kind": "agent",
+     "name": "AI edit crew (seven seats)",
+     "outcome": "Seven seats (editor, transcriber, B-roll researcher, screen editor, sound designer, animator, finisher) take footage from brief to finished vertical and horizontal reels, with a person approving each cut"
+    },
+    {
+     "kind": "agent",
+     "name": "Motion engineer",
+     "outcome": "Builds reusable animated reel templates and motion graphics"
+    },
+    {
+     "kind": "playbook",
+     "name": "Brand video engine",
+     "outcome": "Renders on-brand product and proof reels from real footage"
+    },
+    {
+     "kind": "playbook",
+     "name": "Shot list director",
+     "outcome": "Plans shoots so every shot has a job in the edit"
+    },
+    {
+     "kind": "playbook",
+     "name": "Social posting kit",
+     "outcome": "Prepares ready-to-post kits for channels that can't be automated"
+    },
+    {
+     "kind": "playbook",
+     "name": "Slide and carousel generator",
+     "outcome": "Builds on-brand decks and LinkedIn carousels"
+    },
+    {
+     "kind": "loop",
+     "name": "Creative library sync",
+     "outcome": "Pulls every ad from Google, Meta and Microsoft daily, then renders and describes each one so the library can be searched"
+    },
+    {
+     "kind": "automation",
+     "name": "Content studio request desk",
+     "outcome": "One studio panel where an idea becomes a ticket, is rendered into on-brand reels and lands in a media library"
+    }
+   ]
+  },
+  {
+   "name": "Paid Media",
+   "outcome": "Every platform's results land daily, and sales flow back so ads optimize for revenue.",
+   "items": [
+    {
+     "kind": "agent",
+     "name": "Paid media operator",
+     "outcome": "Audits accounts, pulls performance and drafts changes across Google, YouTube, Meta and Microsoft; a person applies every live change"
+    },
+    {
+     "kind": "loop",
+     "name": "Daily ad performance pull",
+     "outcome": "Spend, clicks and conversions from every platform land in one database each morning"
+    },
+    {
+     "kind": "loop",
+     "name": "Sending sales back to ad platforms",
+     "outcome": "Each day the ad platforms are told which leads became sales (Google and Meta), so they can optimize for revenue"
+    },
+    {
+     "kind": "loop",
+     "name": "Weekly paid hygiene read",
+     "outcome": "Catches waste, broken tracking and policy risk across accounts every week"
+    },
+    {
+     "kind": "loop",
+     "name": "Self-serve social link tagging",
+     "outcome": "Social posts logged in a shared sheet get tracked links generated automatically; rows that break the naming rules are refused"
+    },
+    {
+     "kind": "playbook",
+     "name": "QR campaign builder",
+     "outcome": "Print-ready, scan-verified QR codes for mail, print and events, each one tracked"
+    }
+   ]
+  },
+  {
+   "name": "Capture & Consent",
+   "outcome": "Consents and opt-outs recorded with their exact wording and reconciled nightly.",
+   "items": [
+    {
+     "kind": "automation",
+     "name": "Outside consent register",
+     "outcome": "An independent register records consents and opt-outs with their exact wording, seals each entry, reconciles against vendor records nightly and can retrieve the record on request"
+    },
+    {
+     "kind": "loop",
+     "name": "Internal do-not-call program",
+     "outcome": "Daily suppression list fed by text and call stop requests, with a nightly audit of the evidence"
+    },
+    {
+     "kind": "loop",
+     "name": "Event show calendar sync",
+     "outcome": "Pushes the event schedule into the CRM event list automatically"
+    },
+    {
+     "kind": "agent",
+     "name": "Shows and events seat",
+     "outcome": "Answers events questions from a show playbook and drafts staffing kits and follow-up plans; recommend-only"
+    }
+   ]
+  },
+  {
+   "name": "Speed to Lead",
+   "outcome": "AI answers after-hours calls and website chats, captures the lead and hands it to a person.",
+   "items": [
+    {
+     "kind": "automation",
+     "name": "AI phone answering",
+     "outcome": "Answers after-hours calls, captures the caller's name, address and need, and emails the team a summary the next morning"
+    },
+    {
+     "kind": "automation",
+     "name": "Website AI chat",
+     "outcome": "Answers website visitors around the clock, qualifies buyers and emails the team the full conversation for leads and complaints"
+    },
+    {
+     "kind": "loop",
+     "name": "After-hours call recovery",
+     "outcome": "Missed after-hours callers are in the team inbox by morning"
+    },
+    {
+     "kind": "loop",
+     "name": "AI conversation outlier review",
+     "outcome": "Flags unusual calls and chats every day so the AI keeps improving"
+    },
+    {
+     "kind": "loop",
+     "name": "Chat handoff check",
+     "outcome": "Checks hourly that every engaged website chat was handed to a person"
+    },
+    {
+     "kind": "loop",
+     "name": "Speed-to-lead weekly",
+     "outcome": "Weekly read of how fast each channel's leads get a first touch"
+    },
+    {
+     "kind": "loop",
+     "name": "AI front door weekly",
+     "outcome": "Weekly scorecard for the AI phone answering"
+    },
+    {
+     "kind": "loop",
+     "name": "AI agent KPI report",
+     "outcome": "Weekly results report for the AI phone line: calls, leads and transfers"
+    },
+    {
+     "kind": "loop",
+     "name": "Service follow-up check",
+     "outcome": "Checks that every after-hours service call was followed up"
+    }
+   ]
+  },
+  {
+   "name": "Sales Floor",
+   "outcome": "Sales calls pulled, transcribed and scored daily, with training on tap.",
+   "items": [
+    {
+     "kind": "loop",
+     "name": "AI call listening",
+     "outcome": "Pulls, transcribes and scores sales calls each day"
+    },
+    {
+     "kind": "loop",
+     "name": "Call floor diagnostics",
+     "outcome": "Daily board of dials, connects and set rate by rep"
+    },
+    {
+     "kind": "automation",
+     "name": "Training classroom",
+     "outcome": "Self-serve onboarding and product training for the sales team"
+    }
+   ]
+  },
+  {
+   "name": "Attribution & Cost",
+   "outcome": "Daily spend recorded and checked against platform controls.",
+   "items": [
+    {
+     "kind": "agent",
+     "name": "Cost accuracy crew",
+     "outcome": "Three review seats (research, report, senior review) check each platform's spend inputs and recompute totals before anything is reported"
+    },
+    {
+     "kind": "agent",
+     "name": "Marketing efficiency pacing analyst",
+     "outcome": "Tracks spend as a share of revenue by channel and office and warns before a target is missed"
+    },
+    {
+     "kind": "loop",
+     "name": "Daily cost sync and gap alert",
+     "outcome": "Every platform's spend is recorded daily and a daily check lists gaps"
+    },
+    {
+     "kind": "loop",
+     "name": "Monthly marketing-cost check",
+     "outcome": "Closes each month's marketing cost against revenue, with a month-to-date pull"
+    },
+    {
+     "kind": "loop",
+     "name": "Ad call to lead match",
+     "outcome": "Ties every ad-driven phone call to its lead daily"
+    },
+    {
+     "kind": "loop",
+     "name": "Contact attribution coverage",
+     "outcome": "Measures daily the share of contacts that carry a known source"
+    },
+    {
+     "kind": "loop",
+     "name": "CRM marketing feed and reconcile",
+     "outcome": "Lands CRM lead and sales data daily and reconciles it against ad data"
+    },
+    {
+     "kind": "loop",
+     "name": "AI spend meter",
+     "outcome": "Meters what each AI workload costs, with a daily reconciliation that is currently incomplete"
+    }
+   ]
+  },
+  {
+   "name": "Reporting Cockpit",
+   "outcome": "One screen where the numbers refresh themselves.",
+   "items": [
+    {
+     "kind": "automation",
+     "name": "ECHO OS cockpit",
+     "outcome": "One command center where marketing, sales and ops numbers live and refresh themselves"
+    },
+    {
+     "kind": "automation",
+     "name": "BI workbench",
+     "outcome": "Reports can be pivoted, filtered, drilled into, charted and saved as views"
+    },
+    {
+     "kind": "playbook",
+     "name": "BI workbench standard",
+     "outcome": "Holds every new report to the interactive standard"
+    },
+    {
+     "kind": "automation",
+     "name": "Digital marketing board",
+     "outcome": "In-house ad spend and results by market, platform and campaign, refreshed daily"
+    },
+    {
+     "kind": "automation",
+     "name": "Marketing initiatives tracker",
+     "outcome": "Every open initiative, with its owner and status, in the cockpit"
+    },
+    {
+     "kind": "automation",
+     "name": "Cockpit chat",
+     "outcome": "Ask questions of the company knowledge base in plain English and get answers with sources"
+    },
+    {
+     "kind": "loop",
+     "name": "Self-refreshing reports",
+     "outcome": "Rebuilt hourly, nightly and weekly, with recent days restated as late data lands"
+    },
+    {
+     "kind": "loop",
+     "name": "Daily reporting alert",
+     "outcome": "Morning alert when a number is late or looks wrong"
+    },
+    {
+     "kind": "loop",
+     "name": "Digital marketing daily record",
+     "outcome": "Logs each day's changes and decisions and rolls them into a Friday report"
+    },
+    {
+     "kind": "agent",
+     "name": "Marketing analyst",
+     "outcome": "Builds report packs and answers \"what does this number mean\""
+    }
+   ]
+  },
+  {
+   "name": "Reliability",
+   "outcome": "Failures flagged loudly: bounded self-healing, stall alarms and data-gap checks.",
+   "items": [
+    {
+     "kind": "loop",
+     "name": "Self-healing",
+     "outcome": "Classifies failed scheduled jobs and re-runs or restarts the fixable ones, up to three tries a day, then hands the rest to a person"
+    },
+    {
+     "kind": "loop",
+     "name": "Health and stability census",
+     "outcome": "A second machine checks that every scheduled job is alive and producing output"
+    },
+    {
+     "kind": "loop",
+     "name": "Reporting regression suite",
+     "outcome": "Runs a set of guard tests against the reporting code each day and flags any that fail"
+    },
+    {
+     "kind": "loop",
+     "name": "Daily data completeness gate",
+     "outcome": "Checks daily that every reporting table has a row for each expected day and lists each gap"
+    },
+    {
+     "kind": "loop",
+     "name": "API rate governor",
+     "outcome": "Keeps every integration under vendor rate limits"
+    },
+    {
+     "kind": "loop",
+     "name": "Nightly backup",
+     "outcome": "Every store is backed up each night to a separate disk"
+    },
+    {
+     "kind": "agent",
+     "name": "CI pair",
+     "outcome": "Commits finished work and verifies it passes checks and secret scans"
+    },
+    {
+     "kind": "agent",
+     "name": "Security reviewer seat",
+     "outcome": "Reviews changes that touch consumer contact or customer data before they ship"
+    },
+    {
+     "kind": "playbook",
+     "name": "Data classification",
+     "outcome": "Decides which data may go to which AI tool"
+    },
+    {
+     "kind": "playbook",
+     "name": "Compliance audit",
+     "outcome": "Playbook for a control-mapped gap review against SOC 2, PCI, ISO, privacy and AI rules"
+    },
+    {
+     "kind": "playbook",
+     "name": "Diagnose",
+     "outcome": "Test-first method for silent failures"
+    }
+   ]
+  }
+ ],
+ "kinds": {
+  "agent": "AI seats that hold a growth role: strategy, media buying, editing, analysis, review.",
+  "playbook": "Repeatable playbooks an agent loads on demand: voice, video, QR, data rules, audits.",
+  "loop": "Scheduled jobs that run daily or weekly with no one pressing a button.",
+  "automation": "Always-on systems: AI answering, consent register, cockpit, classroom."
+ },
+ "cases": [
+  {
+   "id": "c1",
+   "tag": "Personal injury law · paid search",
+   "title": "Paid acquisition plateau at scale",
+   "a": 25,
+   "b": 30,
+   "unit": "%",
+   "metric": "better cost per intake-qualified case",
+   "challenge": "A mature acquisition system at $450k to $600k a month across search and local services ads. Reporting looked stable while the economics underneath decayed: cost per lead flat, intake-qualified rate falling, case quality down. Leadership read it as execution noise and wanted more budget.",
+   "built": "Success redefined around intake-qualified cases instead of lead volume. Account structure rebuilt to expose query-level marginal cost. Spend in the protected segments cut by roughly 20 to 25 percent and moved to underfunded intent clusters.",
+   "result": [
+    "Spend settled near $470k to $500k a month",
+    "Cost per intake-qualified case improved 25 to 30 percent",
+    "Case acceptance returned to its historical baseline",
+    "Decisions grounded in economics, not platform optics"
+   ]
+  },
+  {
+   "id": "c2",
+   "tag": "Multi-vertical · paid and inbound",
+   "title": "System noise versus signal",
+   "a": 18,
+   "b": 22,
+   "unit": "%",
+   "metric": "marketing efficiency at flat spend",
+   "challenge": "$180k to $320k a month across paid search, paid social and inbound, with more than 120 tracked KPIs. Fewer than 15 percent correlated with revenue, and 30 to 40 percent of weekly team capacity went to chasing variance with no causal impact.",
+   "built": "Non-causal metrics removed, cutting tracked KPIs by about 60 to 65 percent. System-level thresholds tied to revenue, retention and intake quality. Initiatives using 20 to 25 percent of capacity with no economic return stopped.",
+   "result": [
+    "Decision speed up while optimization frequency came down",
+    "Marketing efficiency up an estimated 18 to 22 percent with no added spend",
+    "A system that explains itself under review"
+   ]
+  },
+  {
+   "id": "c3",
+   "tag": "Paid search · $90k to $150k a month",
+   "title": "Disguised winners in paid search",
+   "a": 30,
+   "b": 35,
+   "unit": "%",
+   "metric": "of incremental qualified volume from segments once cut",
+   "challenge": "Budget moved on 14 to 30 day windows. Some segments swung 30 to 40 percent in weekly cost per acquisition, yet over 60 to 90 days they delivered 1.6 to 2.1 times the downstream value. They kept getting cut.",
+   "built": "High-variance segments isolated from the core optimization cycle. About 15 to 20 percent of spend protected from short-term suppression. Value judged over a 90 day window.",
+   "result": [
+    "Previously suppressed segments supplied about 30 to 35 percent of incremental qualified volume",
+    "Blended cost per acquisition normalized once windows matched downstream economics",
+    "Growth stabilized without raising total spend"
+   ]
+  },
+  {
+   "id": "c4",
+   "tag": "Mature acquisition · $3M+ a year",
+   "title": "Organizational fear as the constraint",
+   "a": 18,
+   "b": 22,
+   "unit": "%",
+   "metric": "blended acquisition efficiency within two quarters",
+   "challenge": "Flat or declining growth on more than $3M a year. About 35 to 45 percent of spend sat in initiatives with falling marginal returns, and the structural issues were discussed informally but never reflected in a decision.",
+   "built": "Fear of being wrong named as a limiting variable. The cost of inaction modeled against re-architecture over 6 and 12 month horizons. Changes phased to protect leadership credibility while restoring function.",
+   "result": [
+    "Structural change approved",
+    "Blended efficiency up about 18 to 22 percent within two quarters",
+    "Performance variability down materially",
+    "Decisions based on economics, not narrative defense"
+   ]
+  }
+ ]
+}

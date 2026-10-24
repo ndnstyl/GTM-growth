@@ -1,0 +1,12 @@
+{
+ "brands": [
+  {
+   "id": "nb-main",
+   "label": "Northbeam Home"
+  },
+  {
+   "id": "nb-pro",
+   "label": "Northbeam Pro"
+  }
+ ]
+}

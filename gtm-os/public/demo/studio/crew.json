@@ -1,0 +1,362 @@
+{
+ "seats": [
+  {
+   "id": "researcher",
+   "label": "Researcher",
+   "outcome": "Finds the angle, proof points and comparable ads",
+   "mode": "auto"
+  },
+  {
+   "id": "transcriber",
+   "label": "Transcriber",
+   "outcome": "Turns raw footage into a searchable transcript",
+   "mode": "auto"
+  },
+  {
+   "id": "editor",
+   "label": "Editor",
+   "outcome": "Assembles the rough cut from the script and footage",
+   "mode": "review"
+  },
+  {
+   "id": "animator",
+   "label": "Animator",
+   "outcome": "Builds the motion graphics and lower thirds",
+   "mode": "auto"
+  },
+  {
+   "id": "screen",
+   "label": "Screen editor",
+   "outcome": "Cuts screen recordings and product walkthroughs",
+   "mode": "auto"
+  },
+  {
+   "id": "sound",
+   "label": "Sound designer",
+   "outcome": "Mixes voice, music and effects",
+   "mode": "auto"
+  },
+  {
+   "id": "finisher",
+   "label": "Finisher",
+   "outcome": "Exports every aspect ratio and checks the brand rules",
+   "mode": "review"
+  }
+ ],
+ "cuts": [
+  {
+   "id": "cut-01",
+   "title": "Why a free estimate is worth the hour",
+   "brand": "nb-main",
+   "stage": "research",
+   "progress": 29,
+   "updated": "2026-10-24"
+  },
+  {
+   "id": "cut-02",
+   "title": "A roof you stop thinking about",
+   "brand": "nb-main",
+   "stage": "animate",
+   "progress": 51,
+   "updated": "2026-10-23"
+  },
+  {
+   "id": "cut-03",
+   "title": "Three questions before you sign",
+   "brand": "nb-main",
+   "stage": "finish",
+   "progress": 89,
+   "updated": "2026-10-22"
+  },
+  {
+   "id": "cut-04",
+   "title": "The crew lead explains day one",
+   "brand": "nb-main",
+   "stage": "transcribe",
+   "progress": 45,
+   "updated": "2026-10-21"
+  },
+  {
+   "id": "cut-05",
+   "title": "What a monthly payment really looks like",
+   "brand": "nb-pro",
+   "stage": "screen",
+   "progress": 37,
+   "updated": "2026-10-20"
+  },
+  {
+   "id": "cut-06",
+   "title": "Windows you can hear the difference in",
+   "brand": "nb-main",
+   "stage": "done",
+   "progress": 100,
+   "updated": "2026-10-24"
+  },
+  {
+   "id": "cut-07",
+   "title": "Storm season checklist",
+   "brand": "nb-main",
+   "stage": "edit",
+   "progress": 89,
+   "updated": "2026-10-23"
+  },
+  {
+   "id": "cut-08",
+   "title": "Neighbors who picked us",
+   "brand": "nb-main",
+   "stage": "sound",
+   "progress": 45,
+   "updated": "2026-10-22"
+  },
+  {
+   "id": "cut-09",
+   "title": "Gutters: the cheapest fix that saves the most",
+   "brand": "nb-main",
+   "stage": "research",
+   "progress": 20,
+   "updated": "2026-10-21"
+  },
+  {
+   "id": "cut-10",
+   "title": "How we price a siding job",
+   "brand": "nb-pro",
+   "stage": "animate",
+   "progress": 17,
+   "updated": "2026-10-20"
+  },
+  {
+   "id": "cut-11",
+   "title": "Same house, one week later",
+   "brand": "nb-main",
+   "stage": "finish",
+   "progress": 21,
+   "updated": "2026-10-24"
+  },
+  {
+   "id": "cut-12",
+   "title": "What the warranty actually covers",
+   "brand": "nb-main",
+   "stage": "transcribe",
+   "progress": 9,
+   "updated": "2026-10-23"
+  }
+ ],
+ "jobs": [
+  {
+   "id": "job-001",
+   "cut": "cut-01",
+   "seat": "researcher",
+   "status": "done",
+   "started": "2026-10-24T08:00:00",
+   "ended": "2026-10-24T08:02:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-002",
+   "cut": "cut-02",
+   "seat": "transcriber",
+   "status": "done",
+   "started": "2026-10-24T09:07:00",
+   "ended": "2026-10-24T09:10:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-003",
+   "cut": "cut-03",
+   "seat": "editor",
+   "status": "done",
+   "started": "2026-10-24T10:14:00",
+   "ended": "2026-10-24T10:18:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-004",
+   "cut": "cut-04",
+   "seat": "animator",
+   "status": "running",
+   "started": "2026-10-24T11:21:00",
+   "ended": null,
+   "summary": "Working through the footage now."
+  },
+  {
+   "id": "job-005",
+   "cut": "cut-05",
+   "seat": "screen",
+   "status": "queued",
+   "started": "2026-10-24T12:28:00",
+   "ended": null,
+   "summary": "Waiting for the previous seat."
+  },
+  {
+   "id": "job-006",
+   "cut": "cut-06",
+   "seat": "sound",
+   "status": "done",
+   "started": "2026-10-24T13:35:00",
+   "ended": "2026-10-24T13:42:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-007",
+   "cut": "cut-07",
+   "seat": "finisher",
+   "status": "done",
+   "started": "2026-10-24T14:42:00",
+   "ended": "2026-10-24T14:50:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-008",
+   "cut": "cut-08",
+   "seat": "researcher",
+   "status": "failed",
+   "started": "2026-10-24T15:49:00",
+   "ended": "2026-10-24T15:58:00",
+   "summary": "Stopped on a missing brand asset; the seat asked for a replacement."
+  },
+  {
+   "id": "job-009",
+   "cut": "cut-09",
+   "seat": "transcriber",
+   "status": "done",
+   "started": "2026-10-24T16:56:00",
+   "ended": "2026-10-24T17:06:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-010",
+   "cut": "cut-10",
+   "seat": "editor",
+   "status": "done",
+   "started": "2026-10-24T08:03:00",
+   "ended": "2026-10-24T08:05:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-011",
+   "cut": "cut-11",
+   "seat": "animator",
+   "status": "done",
+   "started": "2026-10-24T09:10:00",
+   "ended": "2026-10-24T09:13:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-012",
+   "cut": "cut-12",
+   "seat": "screen",
+   "status": "running",
+   "started": "2026-10-24T10:17:00",
+   "ended": null,
+   "summary": "Working through the footage now."
+  },
+  {
+   "id": "job-013",
+   "cut": "cut-01",
+   "seat": "sound",
+   "status": "queued",
+   "started": "2026-10-24T11:24:00",
+   "ended": null,
+   "summary": "Waiting for the previous seat."
+  },
+  {
+   "id": "job-014",
+   "cut": "cut-02",
+   "seat": "finisher",
+   "status": "done",
+   "started": "2026-10-24T12:31:00",
+   "ended": "2026-10-24T12:37:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-015",
+   "cut": "cut-03",
+   "seat": "researcher",
+   "status": "done",
+   "started": "2026-10-24T13:38:00",
+   "ended": "2026-10-24T13:45:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-016",
+   "cut": "cut-04",
+   "seat": "transcriber",
+   "status": "failed",
+   "started": "2026-10-24T14:45:00",
+   "ended": "2026-10-24T14:53:00",
+   "summary": "Stopped on a missing brand asset; the seat asked for a replacement."
+  },
+  {
+   "id": "job-017",
+   "cut": "cut-05",
+   "seat": "editor",
+   "status": "done",
+   "started": "2026-10-24T15:52:00",
+   "ended": "2026-10-24T16:01:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-018",
+   "cut": "cut-06",
+   "seat": "animator",
+   "status": "done",
+   "started": "2026-10-24T16:59:00",
+   "ended": "2026-10-24T17:09:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-019",
+   "cut": "cut-07",
+   "seat": "screen",
+   "status": "done",
+   "started": "2026-10-24T08:06:00",
+   "ended": "2026-10-24T08:08:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-020",
+   "cut": "cut-08",
+   "seat": "sound",
+   "status": "running",
+   "started": "2026-10-24T09:13:00",
+   "ended": null,
+   "summary": "Working through the footage now."
+  },
+  {
+   "id": "job-021",
+   "cut": "cut-09",
+   "seat": "finisher",
+   "status": "queued",
+   "started": "2026-10-24T10:20:00",
+   "ended": null,
+   "summary": "Waiting for the previous seat."
+  },
+  {
+   "id": "job-022",
+   "cut": "cut-10",
+   "seat": "researcher",
+   "status": "done",
+   "started": "2026-10-24T11:27:00",
+   "ended": "2026-10-24T11:32:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-023",
+   "cut": "cut-11",
+   "seat": "transcriber",
+   "status": "done",
+   "started": "2026-10-24T12:34:00",
+   "ended": "2026-10-24T12:40:00",
+   "summary": "Finished and handed to the next seat."
+  },
+  {
+   "id": "job-024",
+   "cut": "cut-12",
+   "seat": "editor",
+   "status": "failed",
+   "started": "2026-10-24T13:41:00",
+   "ended": "2026-10-24T13:48:00",
+   "summary": "Stopped on a missing brand asset; the seat asked for a replacement."
+  }
+ ]
+}

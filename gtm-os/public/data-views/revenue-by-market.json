@@ -1,0 +1,22 @@
+{
+ "id": "revenue-by-market",
+ "name": "Revenue by market",
+ "description": "Gross revenue and sales, month by market.",
+ "narrative": "Where the dollars land, month by month and market by market. A soft market shows here first; the drill shows which days drove it.",
+ "sourceKey": "spine_funnel_monthly",
+ "rows": [
+  "period"
+ ],
+ "cols": [
+  "office"
+ ],
+ "measures": [
+  "gross"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

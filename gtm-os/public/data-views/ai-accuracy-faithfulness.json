@@ -1,0 +1,25 @@
+{
+ "id": "ai-accuracy-faithfulness",
+ "name": "Answer faithfulness",
+ "description": "Share of checked answers fully supported by their sources.",
+ "narrative": "Whether answers say what the sources say; unsupported claims are counted, not averaged away.",
+ "sourceKey": "meter_faithfulness",
+ "rows": [
+  "period"
+ ],
+ "cols": [],
+ "measures": [
+  "faith_checked_n",
+  "faith_supported_n",
+  "faith_unfaithful_n",
+  "faith_unverified_n",
+  "faith_excluded_unvalidated_n",
+  "faith_faithfulness_pct"
+ ],
+ "filters": [],
+ "datePreset": "last_25",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

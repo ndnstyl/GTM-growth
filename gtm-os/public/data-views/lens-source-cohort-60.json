@@ -1,0 +1,39 @@
+{
+ "id": "lens-source-cohort-60",
+ "name": "Which source's leads close best by day 60",
+ "description": "Share of each week's leads that reached a sale by day 60, by source.",
+ "narrative": "Leads grouped by the week they arrived and followed forward, so a source is judged on how its leads mature, not on which month a sale landed in.",
+ "sourceKey": "lens_cohort",
+ "rows": [
+  "period"
+ ],
+ "cols": [
+  "lens_value"
+ ],
+ "measures": [
+  "reached_sale_share",
+  "cohort_leads",
+  "cohort_reached_sale"
+ ],
+ "filters": [
+  {
+   "dimKey": "lens",
+   "op": "=",
+   "values": [
+    "source"
+   ]
+  },
+  {
+   "dimKey": "mark_days",
+   "op": "=",
+   "values": [
+    "60"
+   ]
+  }
+ ],
+ "datePreset": "all",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

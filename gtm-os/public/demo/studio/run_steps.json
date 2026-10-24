@@ -1,0 +1,40 @@
+{
+ "steps": [
+  {
+   "label": "Researching the angle",
+   "ms": 1400,
+   "output": "Found three proof points and two comparable ads that did well in this market."
+  },
+  {
+   "label": "Writing three script variations",
+   "ms": 1600,
+   "output": "Wrote a pain hook, a story hook and a myth hook, each under thirty seconds."
+  },
+  {
+   "label": "Scoring the variations",
+   "ms": 1200,
+   "output": "The myth hook scored highest on clarity; the story hook on warmth."
+  },
+  {
+   "label": "Pulling matching footage",
+   "ms": 1500,
+   "output": "Matched twelve clips from the footage library to the script beats."
+  },
+  {
+   "label": "Cutting the rough edit",
+   "ms": 1700,
+   "output": "Assembled a 28 second vertical cut with captions."
+  },
+  {
+   "label": "Checking brand and claims rules",
+   "ms": 1100,
+   "output": "Passed: no restricted claims, correct end card, tracked link attached."
+  },
+  {
+   "label": "Filing the result",
+   "ms": 900,
+   "output": "Saved to the library for review: Why a free estimate is worth the hour."
+  }
+ ],
+ "result_id": "lib-001"
+}

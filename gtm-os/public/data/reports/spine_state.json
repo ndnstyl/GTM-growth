@@ -1,0 +1,254 @@
+{
+ "batch_id": "batch-2026-10-24",
+ "as_of": "2026-10-24T06:25:00",
+ "platforms_expected": [
+  "google_ads",
+  "meta",
+  "microsoft_ads"
+ ],
+ "platforms_reporting_by_period": {
+  "2024-10": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2024-11": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2024-12": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-01": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-02": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-03": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-04": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-05": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-06": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-07": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-08": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-09": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-10": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-11": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2025-12": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-01": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-02": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-03": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-04": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-05": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-06": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-07": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-08": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-09": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ],
+  "2026-10": [
+   "google_ads",
+   "meta",
+   "microsoft_ads"
+  ]
+ },
+ "cost_definition_ruled": true,
+ "months": [
+  {
+   "period": "2024-10",
+   "status": "closed"
+  },
+  {
+   "period": "2024-11",
+   "status": "closed"
+  },
+  {
+   "period": "2024-12",
+   "status": "closed"
+  },
+  {
+   "period": "2025-01",
+   "status": "closed"
+  },
+  {
+   "period": "2025-02",
+   "status": "closed"
+  },
+  {
+   "period": "2025-03",
+   "status": "closed"
+  },
+  {
+   "period": "2025-04",
+   "status": "closed"
+  },
+  {
+   "period": "2025-05",
+   "status": "closed"
+  },
+  {
+   "period": "2025-06",
+   "status": "closed"
+  },
+  {
+   "period": "2025-07",
+   "status": "closed"
+  },
+  {
+   "period": "2025-08",
+   "status": "closed"
+  },
+  {
+   "period": "2025-09",
+   "status": "closed"
+  },
+  {
+   "period": "2025-10",
+   "status": "closed"
+  },
+  {
+   "period": "2025-11",
+   "status": "closed"
+  },
+  {
+   "period": "2025-12",
+   "status": "closed"
+  },
+  {
+   "period": "2026-01",
+   "status": "closed"
+  },
+  {
+   "period": "2026-02",
+   "status": "closed"
+  },
+  {
+   "period": "2026-03",
+   "status": "closed"
+  },
+  {
+   "period": "2026-04",
+   "status": "closed"
+  },
+  {
+   "period": "2026-05",
+   "status": "closed"
+  },
+  {
+   "period": "2026-06",
+   "status": "closed"
+  },
+  {
+   "period": "2026-07",
+   "status": "closed"
+  },
+  {
+   "period": "2026-08",
+   "status": "closed"
+  },
+  {
+   "period": "2026-09",
+   "status": "closed"
+  },
+  {
+   "period": "2026-10",
+   "status": "open"
+  }
+ ],
+ "effective_dates": [
+  {
+   "source": "marketing register",
+   "date": "2024-10-01",
+   "what": "ad spend definition: online media, agency fees and offline media",
+   "ruling": "ruled"
+  },
+  {
+   "source": "marketing register",
+   "date": "2026-02-01",
+   "what": "agency fee rate moved to 15 percent of media",
+   "ruling": "ruled"
+  }
+ ],
+ "current_period": "2026-10"
+}

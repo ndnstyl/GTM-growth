@@ -1,0 +1,811 @@
+{
+ "generated_at": "2026-10-24T06:30:00",
+ "as_of": "2026-10-24",
+ "schedules": {
+  "hourly": {
+   "last_run": "2026-10-24T06:30:00",
+   "last_status": "ok",
+   "feeds_run": [
+    "funnel__fact_funnel_daily"
+   ],
+   "feeds_skipped": []
+  },
+  "nightly": {
+   "last_run": "2026-10-24T06:30:00",
+   "last_status": "ok",
+   "feeds_run": [
+    "callfloor/callfloor_connect_rate_lp_agent_daily",
+    "callfloor/callfloor_connect_rate_lp_daily",
+    "campaign_market_allocation",
+    "dim_channel",
+    "dim_company",
+    "dim_market",
+    "dim_platform_account",
+    "dim_source",
+    "dim_subsource",
+    "dim_zip",
+    "dm_cost_status",
+    "dm_ownership",
+    "dm_pacing",
+    "dm_platform_diag_daily",
+    "dm_source_chain_daily",
+    "dm_spend_daily",
+    "dm_tieout",
+    "dm_windows",
+    "dm_working_day",
+    "fact_ga4_channel_daily",
+    "fact_ga4_geo_daily",
+    "fact_gsc_daily",
+    "fact_gsc_site_daily",
+    "fact_lead_zip_daily",
+    "golden_rule__daily",
+    "golden_rule__monthly",
+    "golden_rule__tieout",
+    "google_ads__dim_ad_set",
+    "google_ads__dim_ad_unit",
+    "google_ads__dim_campaign",
+    "google_ads__fact_conversion_action_daily",
+    "google_ads__fact_geo_spend_daily",
+    "google_ads__fact_spend_daily",
+    "lens_month",
+    "lens_week",
+    "lp_spine__fact_funnel_daily",
+    "meta__dim_ad_set",
+    "meta__dim_ad_unit",
+    "meta__dim_campaign",
+    "meta__fact_spend_daily",
+    "meter_accuracy_period",
+    "meter_completeness",
+    "meter_cost_daily",
+    "meter_faithfulness_period",
+    "meter_latency_period",
+    "meter_question_daily",
+    "meter_seat_daily",
+    "meter_seat_model_daily",
+    "meter_tier_mix_daily",
+    "meter_workflow_tokens",
+    "microsoft_ads__dim_ad_set",
+    "microsoft_ads__dim_ad_unit",
+    "microsoft_ads__dim_campaign",
+    "microsoft_ads__fact_conversion_action_daily",
+    "microsoft_ads__fact_geo_spend_daily",
+    "microsoft_ads__fact_spend_daily",
+    "spine_funnel_monthly",
+    "spine_funnel_rows_daily",
+    "spine_spend_monthly",
+    "spine_spend_rows",
+    "work_class_period",
+    "work_runs_daily",
+    "work_savings_period"
+   ],
+   "feeds_skipped": []
+  },
+  "weekly": {
+   "last_run": "2026-10-24T06:30:00",
+   "last_status": "ok",
+   "feeds_run": [
+    "lens_cohort",
+    "lens_projection",
+    "meter_gaps_period",
+    "meter_learning_history",
+    "work_census_period",
+    "work_matrix_period"
+   ],
+   "feeds_skipped": []
+  }
+ },
+ "cooldown": {},
+ "summary": {
+  "ok": 70,
+  "stale": 0,
+  "error": 0,
+  "missing": 0,
+  "cooldown": 0,
+  "parked": 0
+ },
+ "feeds": [
+  {
+   "name": "callfloor/callfloor_connect_rate_lp_agent_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 8288,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "callfloor/callfloor_connect_rate_lp_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 567,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "campaign_market_allocation",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 8558,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_channel",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 5,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_company",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 2,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_market",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 6,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_platform_account",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 3,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_source",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 8,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_subsource",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 10,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dim_zip",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 198,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_cost_status",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 25,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_ownership",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 9,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_pacing",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 168,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_platform_diag_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 1167,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_source_chain_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 19145,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_spend_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 23009,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_tieout",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 10,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_windows",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 1215,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "dm_working_day",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 396,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "fact_ga4_channel_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 36489,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "fact_ga4_geo_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 10114,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "fact_gsc_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 54424,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "fact_gsc_site_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 778,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "fact_lead_zip_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 133992,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "funnel__fact_funnel_daily",
+   "schedule": "hourly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 6,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "golden_rule__daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 5446,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "golden_rule__monthly",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 350,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "golden_rule__tieout",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 72,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "google_ads__dim_ad_set",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 22,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "google_ads__dim_ad_unit",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 44,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "google_ads__dim_campaign",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 11,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "google_ads__fact_conversion_action_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 17116,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "google_ads__fact_geo_spend_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 21006,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "google_ads__fact_spend_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 29953,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "lens_cohort",
+   "schedule": "weekly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 1840,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "lens_month",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 650,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "lens_projection",
+   "schedule": "weekly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 49,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "lens_week",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 1430,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "lp_spine__fact_funnel_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 2334,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meta__dim_ad_set",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 20,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meta__dim_ad_unit",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 40,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meta__dim_campaign",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 10,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meta__fact_spend_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 27230,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_accuracy_period",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 12864,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_completeness",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 1556,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_cost_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 5057,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_faithfulness_period",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 402,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_gaps_period",
+   "schedule": "weekly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 13,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_latency_period",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 3112,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_learning_history",
+   "schedule": "weekly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 389,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_question_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 12448,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_seat_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 2723,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_seat_model_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 5445,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_tier_mix_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 2723,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "meter_workflow_tokens",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 18119,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "microsoft_ads__dim_ad_set",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 8,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "microsoft_ads__dim_ad_unit",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 16,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "microsoft_ads__dim_campaign",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 4,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "microsoft_ads__fact_conversion_action_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 6224,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "microsoft_ads__fact_geo_spend_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 9336,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "microsoft_ads__fact_spend_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 10892,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "spine_funnel_monthly",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 150,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "spine_funnel_rows_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 4524,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "spine_spend_monthly",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 225,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "spine_spend_rows",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 1042,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "work_census_period",
+   "schedule": "weekly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 495,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "work_class_period",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 3313,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "work_matrix_period",
+   "schedule": "weekly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 208,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "work_runs_daily",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 6299,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  },
+  {
+   "name": "work_savings_period",
+   "schedule": "nightly",
+   "status": "published",
+   "as_of": "2026-10-24T06:25:00",
+   "rows": 52,
+   "state": "ok",
+   "why": "fresh: data through 2026-10-24",
+   "last_alert": null
+  }
+ ],
+ "alerts_24h": 0,
+ "alerts_recent": [],
+ "overall": "ok"
+}

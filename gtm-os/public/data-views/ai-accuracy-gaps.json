@@ -1,0 +1,23 @@
+{
+ "id": "ai-accuracy-gaps",
+ "name": "Knowledge gaps",
+ "description": "Gaps opened, closed and still open at the end of each month.",
+ "narrative": "The list of questions the AI could not answer well, and whether it is shrinking.",
+ "sourceKey": "meter_gaps",
+ "rows": [
+  "period"
+ ],
+ "cols": [],
+ "measures": [
+  "gap_open_at_end",
+  "gap_opened",
+  "gap_closed",
+  "gap_median_days_to_close"
+ ],
+ "filters": [],
+ "datePreset": "all",
+ "presentation": "table",
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}

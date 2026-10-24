@@ -1,0 +1,27 @@
+{
+ "id": "spend-media-fee-board",
+ "name": "Spend split: media, agency fees, offline",
+ "description": "Monthly spend by line type.",
+ "narrative": "How much of the budget buys media, how much pays the agency, and how much goes to print, TV and shows.",
+ "sourceKey": "spine_spend_monthly",
+ "rows": [
+  "period",
+  "row_type"
+ ],
+ "cols": [],
+ "measures": [
+  "spend"
+ ],
+ "filters": [],
+ "datePreset": "last_13",
+ "presentation": "chart",
+ "chartSpec": {
+  "kind": "stacked_bar",
+  "x": "period",
+  "y": "spend",
+  "series": "row_type"
+ },
+ "origin": "canon",
+ "created_by": "GTM OS demo build",
+ "created_at": "2026-10-24"
+}
