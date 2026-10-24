@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+<title>Operator OS: a Claude Code plugin for growth and GTM operators</title>
+<meta name="description" content="Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.">
+<link rel="canonical" href="https://theinnovativenative.com/operator-os/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c1a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2300e5ff' stroke-width='7'/%3E%3Ccircle cx='47' cy='17' r='5' fill='%23ff3df5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Operator OS">
+<meta property="og:title" content="Operator OS: a Claude Code plugin for growth and GTM operators">
+<meta property="og:description" content="Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.">
+<meta property="og:url" content="https://theinnovativenative.com/operator-os/">
+<meta property="og:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<meta property="og:image:alt" content="The GTM OS cockpit, a video poster frame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Operator OS: a Claude Code plugin for growth and GTM operators">
+<meta name="twitter:description" content="Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.">
+<meta name="twitter:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<link rel="preload" href="assets/fonts/inter-normal-2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://theinnovativenative.com/operator-os/#app","name":"Operator OS","applicationCategory":"DeveloperApplication","operatingSystem":"Claude Code","description":"Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.","license":"https://opensource.org/licenses/MIT","installUrl":"https://github.com/ndnstyl/GTM-growth","url":"https://theinnovativenative.com/operator-os/","author":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://theinnovativenative.com/operator-os/#site","name":"Operator OS","url":"https://theinnovativenative.com/operator-os/","publisher":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]}}]}</script>
+<script>try{var t=localStorage.getItem("oos-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><div class="bar"><a class="brand" href="index.html">Operator <b>OS</b></a><nav class="main" id="mainnav" aria-label="Main"><a href="index.html" class="on" aria-current="page">Home</a><a href="architecture.html">Architecture</a><a href="install.html">Install</a><a href="tutorials.html">Tutorials</a><a href="agents.html">Agents</a><a href="skills.html">Skills</a><a href="hooks.html">Hooks</a><a href="vault.html">Vault</a><a href="review-loop.html">Review loop</a><a href="case-studies.html">Case studies</a><a href="how-it-was-built.html">How it was built</a></nav><div class="tools"><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><button class="theme" id="theme" type="button">Theme</button><a class="btn bookbtn" href="https://theinnovativenative.com/#book">Book a call</a></div></div></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+
+<p class="eyebrow">Open source &middot; MIT<span class="opt"> &middot; for people who run a business</span></p>
+<h1>Run the business.<br><em>Let the system keep the promises.</em></h1>
+<p class="lede">Operator OS is an open-source AI operating system for people who run a business. It is built so your spend is proven, every lead is answered, your numbers hold up, your compliance is defensible, and nothing fails quietly.</p>
+<p>It installs as a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers. Use it for GTM automation that stays inside your rules: paid media staged for your approval, lead follow-up that passes a review seat, and reporting whose numbers are recomputed before they count.</p>
+<div class="cta"><a class="btn" href="install.html">Install in one command</a><a class="btn alt" href="tutorials.html">Start a tutorial</a><a class="btn alt" href="#book">Book a call</a></div>
+<figure><img class="shot" src="assets/screens/gtm-command.webp" alt="The GTM OS Command cockpit: key numbers, a priority line, stage cards and an Ask the data panel, on a fictional company" width="1440" height="872" loading="eager" fetchpriority="high"><figcaption>What the harness runs underneath: the GTM OS cockpit, shown here on a fictional company. <a href="https://theinnovativenative.com/gtm-os/">Open the live demo.</a></figcaption></figure>
+<h2>What you get</h2>
+<div class="grid g5"><div class="card"><h3>Spend proven</h3><p>Every dollar is tied to a number you can recompute, and no agent can move your money on its own.</p><ul><li><a href="architecture.html">A rate and cost governor in front of every vendor call</a></li><li><a href="hooks.html">A write gate: the agent stages a change to an ad platform, you apply it</a></li><li><a href="review-loop.html">A rule that research, report and a senior tie-out must agree before a number counts</a></li><li><a href="agents.html">A paid-media seat that stages every change and never pushes one</a></li></ul></div><div class="card"><h3>Every lead answered</h3><p>Contact with customers is designed, reviewed and registered before it ships, so a lead is never lost to a loose end.</p><ul><li><a href="agents.html">A review seat that must pass any new automated customer contact</a></li><li><a href="architecture.html">A consent-evidence rule: nothing reads as tampered unless it was</a></li><li><a href="hooks.html">A rule that new lead sources enter through one registered door</a></li><li><a href="skills.html">Sensitive records handed only to a model on your own machine</a></li></ul></div><div class="card"><h3>Numbers trusted</h3><p>One definition per number, a counting basis printed beside it, and a different seat checking the work.</p><ul><li><a href="review-loop.html">The accuracy hierarchy: prove the inputs, compute, then tie out from a different pull</a></li><li><a href="hooks.html">A gate against hand-summed figures in a terminal</a></li><li><a href="skills.html">A docs-drift check that tests a document&#x27;s claims against the code</a></li><li><a href="vault.html">A vault where every count carries how it was counted</a></li></ul></div><div class="card"><h3>Compliance defensible</h3><p>Data is classified before it is touched, every action leaves a record, and a gap assessment is a skill, not a project.</p><ul><li><a href="architecture.html">Four data tiers and a routing table for which tool may see which tier</a></li><li><a href="skills.html">A compliance audit skill that maps controls to the frameworks that apply</a></li><li><a href="hooks.html">A local-only zone the cloud session cannot read</a></li><li><a href="hooks.html">An audit trail of every tool call and a secret scrubber for transcripts</a></li></ul></div><div class="card"><h3>Nothing failing quietly</h3><p>A job that can fail without telling you is treated as unfinished. Every failure path ends in an error, a visible refusal or an alert.</p><ul><li><a href="hooks.html">A write-time hook that refuses swallowed errors and hidden exit codes</a></li><li><a href="architecture.html">A rule that every wait has a deadline and every long task states a budget</a></li><li><a href="hooks.html">A hook that refuses detached processes nobody supervises</a></li><li><a href="architecture.html">A rule that a lookup which finds nothing says so, instead of returning empty</a></li></ul></div></div>
+<h2>Then look underneath</h2>
+<p>Every outcome above is held in place by something you can read. Nothing here is a slogan; each line links to the part that does the work.</p>
+<div class="stats"><div class="stat"><b>26</b><span>agents</span></div><div class="stat"><b>49</b><span>skills</span></div><div class="stat"><b>31</b><span>enforcement hooks</span></div><div class="stat"><b>18</b><span>rules</span></div><div class="stat"><b>8</b><span>system packs</span></div><div class="stat"><b>7</b><span>worked case studies</span></div></div>
+<div class="diagram-wrap" style="margin-top:16px"><svg class="dg-wide" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="t d">
+  <title id="t">Operator OS architecture</title>
+  <desc id="d">The operator talks to Claude Code. Inside the session sit rules, skills, agents and system packs. A band of enforcement hooks and gates surrounds the session. Outside the band are the operator's own systems, reached only through the gates. A vault gives memory in and takes learnings out.</desc>
+  <style>
+    .bg{fill:var(--d-bg,#0b0c1a)}
+    .ink{fill:var(--d-ink,#f4f5fb);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .mute{fill:var(--d-mute,#aeb2cc);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .panel{fill:var(--d-panel,#14162c);stroke:var(--d-edge,#3a3d63);stroke-width:1.5}
+    .band{fill:var(--d-band,#0d2236);stroke:#00e5ff;stroke-width:2}
+    .card{fill:var(--d-card,#1b1e3a);stroke:var(--d-edge,#3a3d63);stroke-width:1.2}
+    .acc{fill:var(--d-acc,#00e5ff);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .gate{fill:#00e5ff}
+    .gatetxt{fill:#06101f;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:700}
+    .line{stroke:var(--d-mute,#aeb2cc);stroke-width:1.6;fill:none}
+    .linea{stroke:#00e5ff;stroke-width:2;fill:none}
+    .dash{stroke:var(--d-acc2,#ff7bf7);stroke-width:1.5;stroke-dasharray:6 5;fill:none}
+    .head{fill:var(--d-mute,#aeb2cc)}
+    .heada{fill:var(--d-acc,#00e5ff)}
+  </style>
+  <rect class="bg" width="960" height="600"/>
+  <text class="ink" x="480" y="34" text-anchor="middle" font-size="20" font-weight="700">Outcomes in, enforcement around, memory underneath</text>
+
+  <!-- operator -->
+  <rect class="panel" x="24" y="200" width="130" height="150" rx="12"/>
+  <text class="ink" x="89" y="238" text-anchor="middle" font-size="16" font-weight="700">You</text>
+  <text class="mute" x="89" y="262" text-anchor="middle" font-size="13">the operator</text>
+  <text class="mute" x="89" y="290" text-anchor="middle" font-size="12">states a goal</text>
+  <text class="mute" x="89" y="308" text-anchor="middle" font-size="12">reads a result</text>
+  <text class="mute" x="89" y="326" text-anchor="middle" font-size="12">holds the keys</text>
+  <path class="line" d="M154 275 H196"/><path class="head" d="M196 270 l9 5 -9 5z"/>
+
+  <!-- hook band -->
+  <rect class="band" x="206" y="64" width="520" height="396" rx="18"/>
+  <text class="acc" x="224" y="90" font-size="14" font-weight="700">ENFORCEMENT BAND: 31 hooks check every tool call and every ending</text>
+
+  <!-- session panel -->
+  <rect class="panel" x="226" y="104" width="480" height="340" rx="12"/>
+  <text class="ink" x="246" y="130" font-size="15" font-weight="700">Claude Code session</text>
+
+  <rect class="card" x="246" y="144" width="440" height="52" rx="8"/>
+  <text class="ink" x="262" y="165" font-size="13" font-weight="700">Rules and constitution (18 rules)</text>
+  <text class="mute" x="262" y="184" font-size="12">loud failure, execute now, plain English, data tiers, platform writes</text>
+
+  <rect class="card" x="246" y="206" width="212" height="102" rx="8"/>
+  <text class="ink" x="262" y="228" font-size="13" font-weight="700">Skills (49)</text>
+  <text class="mute" x="262" y="248" font-size="12">goal, grill, diagnose,</text>
+  <text class="mute" x="262" y="265" font-size="12">distill, ingest, handoff,</text>
+  <text class="mute" x="262" y="282" font-size="12">compliance audit, tdd ...</text>
+
+  <rect class="card" x="474" y="206" width="212" height="102" rx="8"/>
+  <text class="ink" x="490" y="228" font-size="13" font-weight="700">System packs (8)</text>
+  <text class="mute" x="490" y="248" font-size="12">revenue, data, security,</text>
+  <text class="mute" x="490" y="265" font-size="12">research, design, site speed:</text>
+  <text class="mute" x="490" y="282" font-size="12">skills + agents + gates</text>
+
+  <rect class="card" x="246" y="318" width="440" height="112" rx="8"/>
+  <text class="ink" x="262" y="340" font-size="13" font-weight="700">Agents (26): one builds, a different one checks</text>
+  <rect class="panel" x="262" y="352" width="118" height="30" rx="6"/><text class="ink" x="321" y="372" text-anchor="middle" font-size="12">builder seats</text>
+  <path class="linea" d="M380 367 H418"/><path class="heada" d="M418 362 l9 5 -9 5z"/>
+  <rect class="panel" x="428" y="352" width="118" height="30" rx="6"/><text class="ink" x="487" y="372" text-anchor="middle" font-size="12">reviewer seats</text>
+  <path class="linea" d="M546 367 H584"/><path class="heada" d="M584 362 l9 5 -9 5z"/>
+  <rect class="panel" x="594" y="352" width="80" height="30" rx="6"/><text class="ink" x="634" y="372" text-anchor="middle" font-size="12">verdict</text>
+  <text class="mute" x="262" y="406" font-size="12">Verdicts: pass, pass with conditions, block. Rounds are capped.</text>
+  <text class="mute" x="262" y="422" font-size="12">Reviewers are read-only and run at the highest effort.</text>
+
+  <!-- gates on right edge of band -->
+  <rect class="gate" x="716" y="130" width="22" height="64" rx="5"/>
+  <rect class="gate" x="716" y="224" width="22" height="64" rx="5"/>
+  <rect class="gate" x="716" y="318" width="22" height="64" rx="5"/>
+  <text class="gatetxt" transform="translate(732 162) rotate(-90)" text-anchor="middle" font-size="9">WRITE GATE</text>
+  <text class="gatetxt" transform="translate(732 256) rotate(-90)" text-anchor="middle" font-size="9">RATE GATE</text>
+  <text class="gatetxt" transform="translate(732 350) rotate(-90)" text-anchor="middle" font-size="9">WATCH</text>
+
+  <!-- outside systems -->
+  <rect class="panel" x="780" y="104" width="160" height="340" rx="12" style="stroke-dasharray:6 5"/>
+  <text class="ink" x="860" y="132" text-anchor="middle" font-size="15" font-weight="700">Your systems</text>
+  <text class="mute" x="860" y="150" text-anchor="middle" font-size="11">reached only through gates</text>
+  <rect class="card" x="796" y="168" width="128" height="40" rx="7"/><text class="ink" x="860" y="193" text-anchor="middle" font-size="13">CRM</text>
+  <rect class="card" x="796" y="218" width="128" height="40" rx="7"/><text class="ink" x="860" y="243" text-anchor="middle" font-size="13">Ad platforms</text>
+  <rect class="card" x="796" y="268" width="128" height="40" rx="7"/><text class="ink" x="860" y="293" text-anchor="middle" font-size="13">Email and chat</text>
+  <rect class="card" x="796" y="318" width="128" height="40" rx="7"/><text class="ink" x="860" y="343" text-anchor="middle" font-size="13">Data warehouse</text>
+  <rect class="card" x="796" y="368" width="128" height="40" rx="7"/><text class="ink" x="860" y="393" text-anchor="middle" font-size="13">Workflow server</text>
+  <path class="line" d="M738 162 H780"/><path class="head" d="M780 157 l9 5 -9 5z" transform="translate(-9 0)"/>
+  <path class="line" d="M738 256 H780"/><path class="head" d="M780 251 l9 5 -9 5z" transform="translate(-9 0)"/>
+  <path class="line" d="M738 350 H780"/><path class="head" d="M780 345 l9 5 -9 5z" transform="translate(-9 0)"/>
+
+  <!-- vault -->
+  <rect class="panel" x="206" y="492" width="520" height="84" rx="12"/>
+  <text class="ink" x="226" y="518" font-size="15" font-weight="700">The vault: memory that outlives the session</text>
+  <text class="mute" x="226" y="540" font-size="12">board  ·  projects  ·  areas  ·  knowledge  ·  SOPs  ·  raw sources  ·  one index file</text>
+  <text class="mute" x="226" y="560" font-size="12">Recall is injected before work starts. Learnings are written back as the work happens.</text>
+  <path class="linea" d="M330 492 V460"/><path class="heada" d="M325 460 l5 -9 5 9z" transform="translate(0 0)"/>
+  <path class="linea" d="M600 460 V492"/><path class="heada" d="M595 492 l5 9 5 -9z" transform="translate(0 -9)"/>
+  <text class="acc" x="340" y="480" font-size="11">recall in</text>
+  <text class="acc" x="610" y="480" font-size="11">distill out</text>
+
+  <text class="mute" x="24" y="470" font-size="12">Writes to your systems</text>
+  <text class="mute" x="24" y="486" font-size="12">pass a gate first.</text>
+</svg><svg class="dg-narrow" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 760" role="img" aria-labelledby="mt md">
+  <title id="mt">Operator OS architecture, stacked for a phone</title>
+  <desc id="md">From top to bottom: you state a goal. A band of enforcement hooks surrounds a Claude Code session holding rules, skills, system packs and agents. Gates sit at the band's edge. Your own systems are behind the gates. A vault gives the session memory.</desc>
+  <style>
+    .bg{fill:var(--d-bg,#0b0c1a)}
+    .t{fill:var(--d-ink,#f4f5fb);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .m{fill:var(--d-mute,#aeb2cc);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .a{fill:var(--d-acc,#00e5ff);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .p{fill:var(--d-panel,#14162c);stroke:var(--d-edge,#3a3d63);stroke-width:1.5}
+    .c{fill:var(--d-card,#1b1e3a);stroke:var(--d-edge,#3a3d63);stroke-width:1.2}
+    .b{fill:var(--d-band,#0d2236);stroke:#00e5ff;stroke-width:2}
+    .g{fill:#00e5ff}
+    .gt{fill:#06101f;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:700}
+    .ar{stroke:var(--d-acc,#00e5ff);stroke-width:2;fill:none}
+    .ah{fill:var(--d-acc,#00e5ff)}
+  </style>
+  <rect class="bg" width="360" height="760"/>
+  <rect class="p" x="10" y="10" width="340" height="62" rx="10"/>
+  <text class="t" x="24" y="36" font-size="17" font-weight="700">You</text>
+  <text class="m" x="24" y="58" font-size="14">state a goal, read a result, hold the keys</text>
+  <path class="ar" d="M180 72 V92"/><path class="ah" d="M174 90 l6 9 6 -9z"/>
+
+  <rect class="b" x="10" y="100" width="340" height="360" rx="14"/>
+  <text class="a" x="24" y="124" font-size="14" font-weight="700">ENFORCEMENT BAND</text>
+  <text class="m" x="24" y="144" font-size="14">31 hooks check every tool call and ending</text>
+  <rect class="p" x="22" y="156" width="316" height="292" rx="10"/>
+  <text class="t" x="36" y="180" font-size="16" font-weight="700">Claude Code session</text>
+  <rect class="c" x="34" y="192" width="292" height="50" rx="8"/>
+  <text class="t" x="46" y="213" font-size="14" font-weight="700">Rules (18)</text>
+  <text class="m" x="46" y="232" font-size="14">the doctrine, in plain markdown</text>
+  <rect class="c" x="34" y="250" width="292" height="50" rx="8"/>
+  <text class="t" x="46" y="271" font-size="14" font-weight="700">Skills (49)</text>
+  <text class="m" x="46" y="290" font-size="14">methods you invoke by name</text>
+  <rect class="c" x="34" y="308" width="292" height="50" rx="8"/>
+  <text class="t" x="46" y="329" font-size="14" font-weight="700">System packs (8)</text>
+  <text class="m" x="46" y="348" font-size="14">a domain tied to skills, agents, gates</text>
+  <rect class="c" x="34" y="366" width="292" height="70" rx="8"/>
+  <text class="t" x="46" y="387" font-size="14" font-weight="700">Agents (26)</text>
+  <text class="m" x="46" y="406" font-size="14">one builds, a different one checks</text>
+  <text class="m" x="46" y="425" font-size="14">reviewers are read-only</text>
+
+  <rect class="g" x="22" y="468" width="100" height="30" rx="6"/><text class="gt" x="72" y="488" text-anchor="middle" font-size="12">WRITE GATE</text>
+  <rect class="g" x="130" y="468" width="100" height="30" rx="6"/><text class="gt" x="180" y="488" text-anchor="middle" font-size="12">RATE GATE</text>
+  <rect class="g" x="238" y="468" width="100" height="30" rx="6"/><text class="gt" x="288" y="488" text-anchor="middle" font-size="12">WATCH</text>
+  <path class="ar" d="M180 498 V516"/><path class="ah" d="M174 514 l6 9 6 -9z"/>
+
+  <rect class="p" x="10" y="528" width="340" height="104" rx="10" style="stroke-dasharray:6 5"/>
+  <text class="t" x="24" y="554" font-size="16" font-weight="700">Your systems</text>
+  <text class="m" x="24" y="574" font-size="14">reached only through gates</text>
+  <text class="t" x="24" y="598" font-size="14">CRM, ad platforms, email and chat,</text>
+  <text class="t" x="24" y="618" font-size="14">data warehouse, workflow server</text>
+
+  <rect class="p" x="10" y="648" width="340" height="102" rx="10"/>
+  <text class="t" x="24" y="674" font-size="16" font-weight="700">The vault</text>
+  <text class="m" x="24" y="696" font-size="14">memory that outlives the session</text>
+  <text class="a" x="24" y="718" font-size="14">recall in before work</text>
+  <text class="a" x="24" y="738" font-size="14">learnings written back as it happens</text>
+</svg>
+<p class="diagram-text">You state a goal and read a result. A band of 31 hooks and gates wraps the session. Your systems sit behind the gates and a vault remembers. <a href="architecture.html">Open the full diagram.</a></p></div>
+<h2>See it</h2>
+<figure><video class="shot" controls playsinline preload="metadata" width="1280" height="720" poster="assets/screens/walkthrough-poster.webp" aria-label="A 25 second walkthrough: the GTM OS cockpit, paid media, content studio, the architecture, a hook, and the install line"><source src="assets/walkthrough.mp4" type="video/mp4"></video><figcaption>A 25 second walkthrough. Press play; it does not start by itself.</figcaption></figure>
+<p>Real screens from the public GTM OS demo, a working surface built on this harness with a fictional company in it.</p>
+<div class="shots"><figure><img class="shot" src="assets/screens/gtm-paid-media.png" alt="GTM OS Paid Media report: spend, clicks, a 28 day trend and campaigns by spend, for a fictional company" width="1440" height="900" loading="lazy"><figcaption>Paid Media: spend, clicks, a 28 day trend and campaigns by spend.</figcaption></figure><figure><img class="shot" src="assets/screens/gtm-content-studio.png" alt="GTM OS Content Studio: ideas moving from scripted to ready" width="1440" height="900" loading="lazy"><figcaption>Content Studio: ideas moving from scripted to ready.</figcaption></figure></div>
+<h2>Start here</h2>
+<ol class="steps"><li><strong><a href="tutorial-install.html">Install the plugin</a></strong><br>One command. It adds the agents, skills, hooks and system packs. Open a project and one status line says which optional parts are configured.</li><li><strong><a href="install.html#rules">Install the rules</a></strong><br>Ask for the install-rules skill so the doctrine lives in your project.</li><li><strong><a href="tutorial-vault.html">Make your vault</a></strong><br>Copy the starter vault, or run the init-vault skill, and set the vault variable.</li><li><strong><a href="vault.html#example">Read the example</a></strong><br>Open the fictional company&#x27;s vault and follow one rule from its raw source to its card.</li><li><strong><a href="tutorial-review-loop.html">Run the loop</a></strong><br>Build with one seat, check with another, and stop after three rounds.</li><li><strong><a href="tutorial-hook.html">Add your own hook</a></strong><br>Block a mistake only you know about, and prove it with a test.</li><li><strong><a href="skills.html#goal">Give it a goal</a></strong><br>Run the goal skill with a plain outcome and watch the gates hold.</li></ol>
+<h2>The operating doctrine in brief</h2>
+<div class="grid g5"><div class="card"><h3>Loud failure</h3><p>Anything that can break ends in an error, a visible refusal or an alert row. A silent success is a bug.</p></div><div class="card"><h3>Review loop</h3><p>One seat builds, a different seat checks, the check is bounded, and a halt is a valid ending.</p></div><div class="card"><h3>Leak gate</h3><p>Nothing sensitive leaves on a prose rule alone: a local-only wall, an egress watch, a secret scan, a path-disclosure block.</p></div><div class="card"><h3>Name the thing</h3><p>You never receive a ticket number. Every reference says what the thing is, in plain English.</p></div><div class="card"><h3>Execute now</h3><p>If it can be done now, it is done now. The only reason to stop is a blocker that sits on you.</p></div></div>
+<h2 id="book">Book a call</h2><p>I work as a fractional Chief AI Officer for businesses that run growth marketing, AI and AI compliance on systems like this one. If you want it working against your own numbers, tell me what you need proven first. We start there.</p><div class="cta"><a class="btn" href="https://theinnovativenative.com/#book">Book a call</a><a class="btn alt" href="https://theinnovativenative.com">theinnovativenative.com</a></div>
+
+</div></main>
+<footer class="site"><div class="wrap">Operator OS is MIT licensed. Built by Mike Soto, fractional Chief AI Officer, The Innovative Native. <a href="https://theinnovativenative.com">theinnovativenative.com</a> &middot; <a href="https://theinnovativenative.com/#book">Book a call</a> &middot; <a href="https://github.com/ndnstyl/GTM-growth">Source</a></div></footer>
+<script>(function(){var b=document.getElementById("theme"),r=document.documentElement;function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}function lab(){var d=cur()==="dark";b.textContent=d?"Light":"Dark";b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}lab();b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("oos-theme",n)}catch(e){}lab()});
+var m=document.getElementById("menu"),nv=document.getElementById("mainnav");function setMenu(o){nv.classList.toggle("open",o);m.setAttribute("aria-expanded",o?"true":"false")}m.addEventListener("click",function(){setMenu(!nv.classList.contains("open"))});document.addEventListener("pointerdown",function(e){if(nv.classList.contains("open")&&!nv.contains(e.target)&&!m.contains(e.target))setMenu(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&nv.classList.contains("open")){setMenu(false);m.focus()}});
+document.querySelectorAll("button.copy").forEach(function(c){c.addEventListener("click",function(){var t=document.getElementById(c.getAttribute("data-target")).textContent,s=document.getElementById("copystatus");function ok(){c.textContent="Copied";s.textContent="Copied to clipboard";setTimeout(function(){c.textContent="Copy";s.textContent=""},2000)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){s.textContent="Copy failed, select the command and copy it by hand"})}else{s.textContent="Copy is not available here, select the command and copy it by hand"}})})})();</script>
+<div class="sr" id="copystatus" role="status" aria-live="polite"></div>
+</body>
+</html>

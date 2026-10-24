@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+<title>Vault Human Naming: every note named for a person, not a database | Operator OS</title>
+<meta name="description" content="About 1,700 vault notes carried machine names: , . Type prefixes, snake_case, kit-number suffixes.">
+<link rel="canonical" href="https://theinnovativenative.com/operator-os/case-06-vault-naming.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c1a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2300e5ff' stroke-width='7'/%3E%3Ccircle cx='47' cy='17' r='5' fill='%23ff3df5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Operator OS">
+<meta property="og:title" content="Vault Human Naming: every note named for a person, not a database | Operator OS">
+<meta property="og:description" content="About 1,700 vault notes carried machine names: , . Type prefixes, snake_case, kit-number suffixes.">
+<meta property="og:url" content="https://theinnovativenative.com/operator-os/case-06-vault-naming.html">
+<meta property="og:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<meta property="og:image:alt" content="The GTM OS cockpit, a video poster frame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vault Human Naming: every note named for a person, not a database | Operator OS">
+<meta name="twitter:description" content="About 1,700 vault notes carried machine names: , . Type prefixes, snake_case, kit-number suffixes.">
+<meta name="twitter:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<link rel="preload" href="assets/fonts/inter-normal-2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://theinnovativenative.com/operator-os/#app","name":"Operator OS","applicationCategory":"DeveloperApplication","operatingSystem":"Claude Code","description":"Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.","license":"https://opensource.org/licenses/MIT","installUrl":"https://github.com/ndnstyl/GTM-growth","url":"https://theinnovativenative.com/operator-os/","author":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://theinnovativenative.com/operator-os/#site","name":"Operator OS","url":"https://theinnovativenative.com/operator-os/","publisher":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Operator OS","item":"https://theinnovativenative.com/operator-os/"},{"@type":"ListItem","position":2,"name":"Vault Human Naming: every note named for a person, not a database","item":"https://theinnovativenative.com/operator-os/case-06-vault-naming.html"}]}]}</script>
+<script>try{var t=localStorage.getItem("oos-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><div class="bar"><a class="brand" href="index.html">Operator <b>OS</b></a><nav class="main" id="mainnav" aria-label="Main"><a href="index.html">Home</a><a href="architecture.html">Architecture</a><a href="install.html">Install</a><a href="tutorials.html">Tutorials</a><a href="agents.html">Agents</a><a href="skills.html">Skills</a><a href="hooks.html">Hooks</a><a href="vault.html">Vault</a><a href="review-loop.html">Review loop</a><a href="case-studies.html" class="on" aria-current="true">Case studies</a><a href="how-it-was-built.html">How it was built</a></nav><div class="tools"><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><button class="theme" id="theme" type="button">Theme</button><a class="btn bookbtn" href="https://theinnovativenative.com/#book">Book a call</a></div></div></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+
+<p><a href="case-studies.html">All case studies</a></p>
+<h1>Vault Human Naming: every note named for a person, not a database</h1>
+<p class="lede">A worked example. Every company, person and number in it is invented; the failure pattern and the rule it produced are real.</p>
+<h2>Spec</h2><p><strong>Status</strong>: Built | <strong>Created</strong>: 2026-05-02 | <strong>Owner</strong>: Dana Ortiz (fictional) <strong>Ruling</strong>: "The name of the file has to make sense to me. I am a human, not an AI. That is clutter for no reason. Rename every single one."</p>
+<h3>What is wrong</h3>
+<p>About 1,700 vault notes carried machine names: <code>card_unified-reporting-platform-117</code>, <code>learning_a_default_value_holds_two_populations_so_no_rate_over_it_means_anything</code>. Type prefixes, snake_case, kit-number suffixes. The filename is the owner's primary interface in the vault and in the notes app, and it read like clutter.</p>
+<h3>The naming convention (v1; the owner may retitle any file afterward, which is the point)</h3>
+<p>Title Case, real spaces, plain words. The folder already carries the type, so the filename stops repeating it.</p>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Table 1, scrolls sideways"><table><thead><tr><th>Type today</th><th>New pattern</th><th>Example</th></tr></thead><tbody><tr><td><code>card_*</code></td><td><code>&lt;Short Title&gt;</code>, with the kit number only when it identifies</td><td><code>Unified Reporting Platform (Kit 117).md</code></td></tr><tr><td><code>learning_*</code></td><td>the lesson stated plainly</td><td><code>A Short Page Is Not the Last Page.md</code></td></tr><tr><td><code>feedback_*</code></td><td>the rule as the owner gave it</td><td><code>Execute, Don't Ask.md</code></td></tr><tr><td><code>reference_*</code></td><td>what it is</td><td><code>Product Canon.md</code></td></tr><tr><td><code>raw/session-*</code></td><td><code>Session - &lt;topic&gt; (YYYY-MM-DD)</code></td><td><code>Session - Naming Rules (2026-05-01).md</code></td></tr></tbody></table></div>
+<p>Hard rules: at most 60 characters where possible; no em dashes; no type prefixes; numbers only when they identify (kit numbers, dates).</p>
+<h3>Continuity guarantees (what makes a 1,700-file rename safe)</h3>
+<ol><li><strong>A vault checkpoint immediately before execution</strong> is the one-command rollback.</li><li><strong>Frontmatter name</strong> updated to the new stem so the lint contract holds.</li><li><strong>An alias of the old stem</strong> added to every renamed note: the notes app resolves old links, search still matches the old machine name, and any repository file that cites the old name keeps resolving through search.</li><li><strong>Every wikilink rewritten</strong> from the rename map in the same pass (about 8,000), plus the root index, every area map, the queue and the priority ruling.</li><li><strong>The gate</strong>: the lint's broken-wikilink count must be at or below the pre-migration count, with zero NEW breaks, or the run rolls back automatically to the checkpoint.</li></ol>
+<h3>User stories</h3>
+<h4>Story 1: The rename map is proposed, not applied (P1)</h4>
+<p>A dry run writes the old-to-new map with collisions flagged. Nothing on disk changes.</p>
+<p><strong>Independent test</strong>: the dry run lists every note once, flags duplicate targets, and a diff of the vault before and after is empty.</p>
+<h4>Story 2: The migration is atomic (P1)</h4>
+<p>Checkpoint, rename, rewrite links, run lint, compare counts. Any new break restores the checkpoint and reports which link broke.</p>
+<p><strong>Independent test</strong>: plant one deliberately unresolvable link in the map; the run rolls back and the vault is byte-identical to the checkpoint.</p>
+<h4>Story 3: Old names keep working (P2)</h4>
+<p>Search for an old machine name returns the renamed note through its alias.</p>
+<h4>Story 4: New notes follow the convention without effort (P2)</h4>
+<p>The distill skill and the lint both know the pattern; lint warns on a prefixed or snake_case filename.</p>
+<h3>Requirements</h3>
+<ul><li><strong>REQ-01</strong>: A rename never changes a note's content except its frontmatter name, its aliases and links.</li><li><strong>REQ-02</strong>: Collisions are resolved by adding the distinguishing context in parentheses, never by overwriting.</li><li><strong>REQ-03</strong>: The rename tool refuses to run without a fresh checkpoint.</li><li><strong>REQ-04</strong>: Machine-readable paths in scripts and rules that cite old names are found by search and fixed in the same pass.</li></ul>
+<h3>Success criteria</h3>
+<ul><li><strong>SC-001</strong>: Zero new broken links; the pre-existing ones are on a punch list.</li><li><strong>SC-002</strong>: 100 percent of renamed notes carry an alias of the old stem.</li><li><strong>SC-003</strong>: The owner can find the right note by title from the root index without search.</li></ul>
+<h3>What the case study teaches</h3>
+<p>A mass rename is safe when the rollback is one command and the success test is a count the tool computes itself. A rename migration also breaks every machine-readable path that cites an old name, so search the codebase for them in the same pass.</p>
+<h2>Plan and tasks</h2><h3>Approach</h3>
+<ol><li>Write the map generator as a dry run. Review collisions with the owner on a sample of 40.</li><li>Build the migration as checkpoint, rename, rewrite, lint, compare, with automatic rollback.</li><li>Test on a copy of the vault with one planted unresolvable link.</li><li>Run on the real vault; push the result to the canonical copy; verify by checksum.</li><li>Teach the lint and the distill skill the convention.</li></ol>
+<h3>Tasks</h3>
+<ul><li>[ ] Task 01 Rename-map generator (dry run only), collision report</li><li>[ ] Task 02 Owner review of a 40-note sample; convention v1 frozen</li><li>[ ] Task 03 Migration with checkpoint, link rewrite, alias insertion</li><li>[ ] Task 04 Auto-rollback gate on lint counts; planted-break test on a copy</li><li>[ ] Task 05 Search the codebase for citations of old names; fix in the same pass</li><li>[ ] Task 06 Run on the real vault; compare counts; push and verify checksum</li><li>[ ] Task 07 Lint warns on prefixed or snake_case names; distill skill updated</li><li>[ ] Task 08 Handoff SOP: how to rename a note safely by hand</li></ul>
+<h3>Gates</h3>
+<ul><li>G1: dry run changes nothing. CHECK: diff the vault before and after the dry run. EXPECT: empty.</li><li>G2: planted break rolls back. CHECK: run on the copy. EXPECT: vault identical to the checkpoint, the broken link named.</li><li>G3: no new broken links. CHECK: lint counts before and after on the real run. EXPECT: after at or below before.</li></ul>
+<h2 id="book">Book a call</h2><p>I work as a fractional Chief AI Officer for businesses that run growth marketing, AI and AI compliance on systems like this one. If you want it working against your own numbers, tell me what you need proven first. We start there.</p><div class="cta"><a class="btn" href="https://theinnovativenative.com/#book">Book a call</a><a class="btn alt" href="https://theinnovativenative.com">theinnovativenative.com</a></div>
+</div></main>
+<footer class="site"><div class="wrap">Operator OS is MIT licensed. Built by Mike Soto, fractional Chief AI Officer, The Innovative Native. <a href="https://theinnovativenative.com">theinnovativenative.com</a> &middot; <a href="https://theinnovativenative.com/#book">Book a call</a> &middot; <a href="https://github.com/ndnstyl/GTM-growth">Source</a></div></footer>
+<script>(function(){var b=document.getElementById("theme"),r=document.documentElement;function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}function lab(){var d=cur()==="dark";b.textContent=d?"Light":"Dark";b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}lab();b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("oos-theme",n)}catch(e){}lab()});
+var m=document.getElementById("menu"),nv=document.getElementById("mainnav");function setMenu(o){nv.classList.toggle("open",o);m.setAttribute("aria-expanded",o?"true":"false")}m.addEventListener("click",function(){setMenu(!nv.classList.contains("open"))});document.addEventListener("pointerdown",function(e){if(nv.classList.contains("open")&&!nv.contains(e.target)&&!m.contains(e.target))setMenu(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&nv.classList.contains("open")){setMenu(false);m.focus()}});
+document.querySelectorAll("button.copy").forEach(function(c){c.addEventListener("click",function(){var t=document.getElementById(c.getAttribute("data-target")).textContent,s=document.getElementById("copystatus");function ok(){c.textContent="Copied";s.textContent="Copied to clipboard";setTimeout(function(){c.textContent="Copy";s.textContent=""},2000)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){s.textContent="Copy failed, select the command and copy it by hand"})}else{s.textContent="Copy is not available here, select the command and copy it by hand"}})})})();</script>
+<div class="sr" id="copystatus" role="status" aria-live="polite"></div>
+</body>
+</html>

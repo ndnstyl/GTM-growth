@@ -1,0 +1,36 @@
+domain: data-analytics
+title: Data & Analytics
+description: >
+  Data literacy and the modern data stack: routing a data question to the right system (OLTP vs OLAP)
+  and role, picking the stack pattern (ETL vs ELT, warehouse / lake / lakehouse, dimensional modeling),
+  and running a statistical-soundness check so decisions are not fooled by the numbers. Backs your
+  data work (DEA data silo, analytics, reporting) and any "the data shows X" claim. The literacy
+  (skeptical reasoning about numbers) is the point, not just the plumbing. Database internals are shared
+  with the system-design pack.
+autonomy: full_ship
+gates: [db_migration, prod_deploy]
+
+skills:
+  primary: [synthesize]
+  support: []
+
+agents: [orchestrator, researcher, implementer, reviewer]
+
+n8n_workflows: []
+
+memory_anchors: []  # add your own rule names or short rule text
+
+verification:
+  - "question classified OLTP vs OLAP before routing"
+  - "any 'data shows X' claim passed the statistical check (correlation vs causation, sampling/survivorship bias, significance, base rate, Simpson's paradox, metric definition)"
+  - "stack pattern justified (ETL vs ELT; warehouse/lake/lakehouse) or 'no warehouse needed yet' with a cost reason"
+  - "PII/GDPR handled per the data-handling rule; lineage + quality considered"
+  - "warehouse build follows medallion separation of concerns; loads idempotent/atomic/restartable; surrogate keys PERSISTED (never ROW_NUMBER); SCD history preserved; data quality is automated gating tests, not eyeballed (see concept_data_warehouse_build)"
+  - "dimensional model declares GRAIN first; star schema with conformed dimensions; denormalize dimensions for the BI engine (see concept_dimensional_modeling)"
+
+entrypoints:
+  - "the data shows X (is that true)"
+  - "design a data pipeline / warehouse model"
+  - "route this data question to the right role/tool"
+  - "is this metric / dashboard sound"
+  - "do we need a warehouse for this"

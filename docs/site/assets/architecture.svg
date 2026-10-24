@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="t d">
+  <title id="t">Operator OS architecture</title>
+  <desc id="d">The operator talks to Claude Code. Inside the session sit rules, skills, agents and system packs. A band of enforcement hooks and gates surrounds the session. Outside the band are the operator's own systems, reached only through the gates. A vault gives memory in and takes learnings out.</desc>
+  <style>
+    .bg{fill:var(--d-bg,#0b0c1a)}
+    .ink{fill:var(--d-ink,#f4f5fb);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .mute{fill:var(--d-mute,#aeb2cc);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .panel{fill:var(--d-panel,#14162c);stroke:var(--d-edge,#3a3d63);stroke-width:1.5}
+    .band{fill:var(--d-band,#0d2236);stroke:#00e5ff;stroke-width:2}
+    .card{fill:var(--d-card,#1b1e3a);stroke:var(--d-edge,#3a3d63);stroke-width:1.2}
+    .acc{fill:var(--d-acc,#00e5ff);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .gate{fill:#00e5ff}
+    .gatetxt{fill:#06101f;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-weight:700}
+    .line{stroke:var(--d-mute,#aeb2cc);stroke-width:1.6;fill:none}
+    .linea{stroke:#00e5ff;stroke-width:2;fill:none}
+    .dash{stroke:var(--d-acc2,#ff7bf7);stroke-width:1.5;stroke-dasharray:6 5;fill:none}
+    .head{fill:var(--d-mute,#aeb2cc)}
+    .heada{fill:var(--d-acc,#00e5ff)}
+  </style>
+  <rect class="bg" width="960" height="600"/>
+  <text class="ink" x="480" y="34" text-anchor="middle" font-size="20" font-weight="700">Outcomes in, enforcement around, memory underneath</text>
+
+  <!-- operator -->
+  <rect class="panel" x="24" y="200" width="130" height="150" rx="12"/>
+  <text class="ink" x="89" y="238" text-anchor="middle" font-size="16" font-weight="700">You</text>
+  <text class="mute" x="89" y="262" text-anchor="middle" font-size="13">the operator</text>
+  <text class="mute" x="89" y="290" text-anchor="middle" font-size="12">states a goal</text>
+  <text class="mute" x="89" y="308" text-anchor="middle" font-size="12">reads a result</text>
+  <text class="mute" x="89" y="326" text-anchor="middle" font-size="12">holds the keys</text>
+  <path class="line" d="M154 275 H196"/><path class="head" d="M196 270 l9 5 -9 5z"/>
+
+  <!-- hook band -->
+  <rect class="band" x="206" y="64" width="520" height="396" rx="18"/>
+  <text class="acc" x="224" y="90" font-size="14" font-weight="700">ENFORCEMENT BAND: 31 hooks check every tool call and every ending</text>
+
+  <!-- session panel -->
+  <rect class="panel" x="226" y="104" width="480" height="340" rx="12"/>
+  <text class="ink" x="246" y="130" font-size="15" font-weight="700">Claude Code session</text>
+
+  <rect class="card" x="246" y="144" width="440" height="52" rx="8"/>
+  <text class="ink" x="262" y="165" font-size="13" font-weight="700">Rules and constitution (18 rules)</text>
+  <text class="mute" x="262" y="184" font-size="12">loud failure, execute now, plain English, data tiers, platform writes</text>
+
+  <rect class="card" x="246" y="206" width="212" height="102" rx="8"/>
+  <text class="ink" x="262" y="228" font-size="13" font-weight="700">Skills (49)</text>
+  <text class="mute" x="262" y="248" font-size="12">goal, grill, diagnose,</text>
+  <text class="mute" x="262" y="265" font-size="12">distill, ingest, handoff,</text>
+  <text class="mute" x="262" y="282" font-size="12">compliance audit, tdd ...</text>
+
+  <rect class="card" x="474" y="206" width="212" height="102" rx="8"/>
+  <text class="ink" x="490" y="228" font-size="13" font-weight="700">System packs (8)</text>
+  <text class="mute" x="490" y="248" font-size="12">revenue, data, security,</text>
+  <text class="mute" x="490" y="265" font-size="12">research, design, site speed:</text>
+  <text class="mute" x="490" y="282" font-size="12">skills + agents + gates</text>
+
+  <rect class="card" x="246" y="318" width="440" height="112" rx="8"/>
+  <text class="ink" x="262" y="340" font-size="13" font-weight="700">Agents (26): one builds, a different one checks</text>
+  <rect class="panel" x="262" y="352" width="118" height="30" rx="6"/><text class="ink" x="321" y="372" text-anchor="middle" font-size="12">builder seats</text>
+  <path class="linea" d="M380 367 H418"/><path class="heada" d="M418 362 l9 5 -9 5z"/>
+  <rect class="panel" x="428" y="352" width="118" height="30" rx="6"/><text class="ink" x="487" y="372" text-anchor="middle" font-size="12">reviewer seats</text>
+  <path class="linea" d="M546 367 H584"/><path class="heada" d="M584 362 l9 5 -9 5z"/>
+  <rect class="panel" x="594" y="352" width="80" height="30" rx="6"/><text class="ink" x="634" y="372" text-anchor="middle" font-size="12">verdict</text>
+  <text class="mute" x="262" y="406" font-size="12">Verdicts: pass, pass with conditions, block. Rounds are capped.</text>
+  <text class="mute" x="262" y="422" font-size="12">Reviewers are read-only and run at the highest effort.</text>
+
+  <!-- gates on right edge of band -->
+  <rect class="gate" x="716" y="130" width="22" height="64" rx="5"/>
+  <rect class="gate" x="716" y="224" width="22" height="64" rx="5"/>
+  <rect class="gate" x="716" y="318" width="22" height="64" rx="5"/>
+  <text class="gatetxt" transform="translate(732 162) rotate(-90)" text-anchor="middle" font-size="9">WRITE GATE</text>
+  <text class="gatetxt" transform="translate(732 256) rotate(-90)" text-anchor="middle" font-size="9">RATE GATE</text>
+  <text class="gatetxt" transform="translate(732 350) rotate(-90)" text-anchor="middle" font-size="9">WATCH</text>
+
+  <!-- outside systems -->
+  <rect class="panel" x="780" y="104" width="160" height="340" rx="12" style="stroke-dasharray:6 5"/>
+  <text class="ink" x="860" y="132" text-anchor="middle" font-size="15" font-weight="700">Your systems</text>
+  <text class="mute" x="860" y="150" text-anchor="middle" font-size="11">reached only through gates</text>
+  <rect class="card" x="796" y="168" width="128" height="40" rx="7"/><text class="ink" x="860" y="193" text-anchor="middle" font-size="13">CRM</text>
+  <rect class="card" x="796" y="218" width="128" height="40" rx="7"/><text class="ink" x="860" y="243" text-anchor="middle" font-size="13">Ad platforms</text>
+  <rect class="card" x="796" y="268" width="128" height="40" rx="7"/><text class="ink" x="860" y="293" text-anchor="middle" font-size="13">Email and chat</text>
+  <rect class="card" x="796" y="318" width="128" height="40" rx="7"/><text class="ink" x="860" y="343" text-anchor="middle" font-size="13">Data warehouse</text>
+  <rect class="card" x="796" y="368" width="128" height="40" rx="7"/><text class="ink" x="860" y="393" text-anchor="middle" font-size="13">Workflow server</text>
+  <path class="line" d="M738 162 H780"/><path class="head" d="M780 157 l9 5 -9 5z" transform="translate(-9 0)"/>
+  <path class="line" d="M738 256 H780"/><path class="head" d="M780 251 l9 5 -9 5z" transform="translate(-9 0)"/>
+  <path class="line" d="M738 350 H780"/><path class="head" d="M780 345 l9 5 -9 5z" transform="translate(-9 0)"/>
+
+  <!-- vault -->
+  <rect class="panel" x="206" y="492" width="520" height="84" rx="12"/>
+  <text class="ink" x="226" y="518" font-size="15" font-weight="700">The vault: memory that outlives the session</text>
+  <text class="mute" x="226" y="540" font-size="12">board  ·  projects  ·  areas  ·  knowledge  ·  SOPs  ·  raw sources  ·  one index file</text>
+  <text class="mute" x="226" y="560" font-size="12">Recall is injected before work starts. Learnings are written back as the work happens.</text>
+  <path class="linea" d="M330 492 V460"/><path class="heada" d="M325 460 l5 -9 5 9z" transform="translate(0 0)"/>
+  <path class="linea" d="M600 460 V492"/><path class="heada" d="M595 492 l5 9 5 -9z" transform="translate(0 -9)"/>
+  <text class="acc" x="340" y="480" font-size="11">recall in</text>
+  <text class="acc" x="610" y="480" font-size="11">distill out</text>
+
+  <text class="mute" x="24" y="470" font-size="12">Writes to your systems</text>
+  <text class="mute" x="24" y="486" font-size="12">pass a gate first.</text>
+</svg>

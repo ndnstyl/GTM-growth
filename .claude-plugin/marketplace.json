@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "operator-os",
+  "description": "Operator OS: a Claude Code plugin with AI agents, skills and enforcement hooks for operators running growth marketing and GTM.",
+  "owner": {
+    "name": "Mike Soto, The Innovative Native"
+  },
+  "plugins": [
+    {
+      "name": "operator-os",
+      "description": "Agents, skills, enforcement hooks, system packs, rules and a vault memory toolkit for running a business with Claude Code.",
+      "version": "0.1.0",
+      "source": "./plugins/operator-os",
+      "category": "productivity",
+      "license": "MIT",
+      "homepage": "https://theinnovativenative.com/operator-os/"
+    }
+  ]
+}

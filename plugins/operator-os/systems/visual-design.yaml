@@ -1,0 +1,33 @@
+domain: visual-design
+title: Visual Design
+description: >
+  Slides, carousels, diagrams, data-viz, icons, and brand-coherent static visuals. Run the
+  chart/flow/matrix decision tree before writing another card grid; severity via tone-shifting
+  within a 2-3 color brand palette, not new colors.
+autonomy: full_ship
+gates: [outward_send, prod_deploy]
+
+brand_rules: []  # add your own rule names or short rule text
+
+skills:
+  primary: [frontend-design]
+  support: []  # companion skill: excalidraw-diagram (see docs/companion-skills.md)
+
+agents: [orchestrator, implementer, reviewer]
+
+n8n_workflows: []
+memory_anchors: []  # add your own rule names or short rule text
+
+verification:
+  - "ran the chart/flow/matrix decision tree before any new card grid"
+  - "2-3 brand colors max; severity via tone-shift within the family"
+  - "one primary color, one rare accent"
+  - "no em dashes incl &mdash;"
+
+entrypoints:
+  - "make slides / a deck for X"
+  - "design a LinkedIn carousel"
+  - "create a diagram of X"
+  - "build a data-viz / chart"
+  - "generate icons / images"
+  - "make this wall of text visual"

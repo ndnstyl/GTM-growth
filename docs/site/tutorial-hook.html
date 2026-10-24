@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+<title>Add a hook that blocks a mistake | Operator OS</title>
+<meta name="description" content="Write a small hook, wire it in, test it by planting the mistake.">
+<link rel="canonical" href="https://theinnovativenative.com/operator-os/tutorial-hook.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c1a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2300e5ff' stroke-width='7'/%3E%3Ccircle cx='47' cy='17' r='5' fill='%23ff3df5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Operator OS">
+<meta property="og:title" content="Add a hook that blocks a mistake | Operator OS">
+<meta property="og:description" content="Write a small hook, wire it in, test it by planting the mistake.">
+<meta property="og:url" content="https://theinnovativenative.com/operator-os/tutorial-hook.html">
+<meta property="og:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<meta property="og:image:alt" content="The GTM OS cockpit, a video poster frame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Add a hook that blocks a mistake | Operator OS">
+<meta name="twitter:description" content="Write a small hook, wire it in, test it by planting the mistake.">
+<meta name="twitter:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<link rel="preload" href="assets/fonts/inter-normal-2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://theinnovativenative.com/operator-os/#app","name":"Operator OS","applicationCategory":"DeveloperApplication","operatingSystem":"Claude Code","description":"Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.","license":"https://opensource.org/licenses/MIT","installUrl":"https://github.com/ndnstyl/GTM-growth","url":"https://theinnovativenative.com/operator-os/","author":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://theinnovativenative.com/operator-os/#site","name":"Operator OS","url":"https://theinnovativenative.com/operator-os/","publisher":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Operator OS","item":"https://theinnovativenative.com/operator-os/"},{"@type":"ListItem","position":2,"name":"Add a hook that blocks a mistake","item":"https://theinnovativenative.com/operator-os/tutorial-hook.html"}]},{"@type":"HowTo","name":"Add a hook that blocks a mistake","description":"Write a small hook, wire it in, test it by planting the mistake.","url":"https://theinnovativenative.com/operator-os/tutorial-hook.html","step":[{"@type":"HowToStep","position":1,"name":"Write the hook","url":"https://theinnovativenative.com/operator-os/tutorial-hook.html"},{"@type":"HowToStep","position":2,"name":"Wire it in","url":"https://theinnovativenative.com/operator-os/tutorial-hook.html"},{"@type":"HowToStep","position":3,"name":"Test it by planting the mistake","url":"https://theinnovativenative.com/operator-os/tutorial-hook.html"},{"@type":"HowToStep","position":4,"name":"Try it for real","url":"https://theinnovativenative.com/operator-os/tutorial-hook.html"}]}]}</script>
+<script>try{var t=localStorage.getItem("oos-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><div class="bar"><a class="brand" href="index.html">Operator <b>OS</b></a><nav class="main" id="mainnav" aria-label="Main"><a href="index.html">Home</a><a href="architecture.html">Architecture</a><a href="install.html">Install</a><a href="tutorials.html" class="on" aria-current="true">Tutorials</a><a href="agents.html">Agents</a><a href="skills.html">Skills</a><a href="hooks.html">Hooks</a><a href="vault.html">Vault</a><a href="review-loop.html">Review loop</a><a href="case-studies.html">Case studies</a><a href="how-it-was-built.html">How it was built</a></nav><div class="tools"><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><button class="theme" id="theme" type="button">Theme</button><a class="btn bookbtn" href="https://theinnovativenative.com/#book">Book a call</a></div></div></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+<p class="eyebrow">Tutorial 4 of 4 &middot; Ten minutes</p><h1>Add a hook that blocks a mistake</h1>
+<p class="lede">A rule written as prose can be talked around. A hook cannot. By the end you have a hook that refuses to let the assistant edit your price list, a test that proves it, and the habit that goes with both.</p>
+<h2>How a hook works in one paragraph</h2>
+<p>Before a tool runs, Claude Code hands your script a JSON description of the call on standard input. Exit <code>0</code> and the call goes ahead. Exit <code>2</code> and the call is blocked, and whatever you printed to standard error is sent back to the assistant so it can change course. The plugin ships many of these; see <a href="hooks.html">every hook and why it exists</a>. This one covers something only you know: which file is yours.</p>
+<h2>Step 1. Write the hook</h2>
+<pre tabindex="0" role="region" aria-label="Code or command 1"><code>mkdir -p .claude/hooks
+cat &gt; .claude/hooks/protect-price-list.sh &lt;&lt;'EOF'
+#!/bin/bash
+command -v jq &gt;/dev/null 2&gt;&amp;1 || { echo "protect-price-list: jq not installed, hook skipped" &gt;&amp;2; exit 0; }
+path=$(jq -r '.tool_input.file_path // empty')
+case "$path" in
+  */pricing/price-list.csv)
+    echo "BLOCKED: the price list is the owner's to change. Stage the proposed change in pricing/proposed-changes.md and stop." &gt;&amp;2
+    exit 2 ;;
+esac
+exit 0
+EOF
+chmod +x .claude/hooks/protect-price-list.sh</code></pre>
+<p>Notice what the message does: it says what was refused, why, and what to do instead. A bare "denied" teaches the assistant nothing.</p>
+<h2>Step 2. Wire it in</h2>
+<p>Put this in <code>.claude/settings.json</code> in your project (merge it if the file exists):</p>
+<pre tabindex="0" role="region" aria-label="Code or command 2"><code>{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-price-list.sh", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+<h2>Step 3. Test it by planting the mistake</h2>
+<p>A hook you have not seen fail is a hook you do not know works. Write a test that feeds it a violation and a harmless call:</p>
+<pre tabindex="0" role="region" aria-label="Code or command 3"><code>cat &gt; .claude/hooks/test-protect-price-list.sh &lt;&lt;'EOF'
+#!/bin/bash
+here="$(cd "$(dirname "$0")" &amp;&amp; pwd)"
+bad='{"tool_name":"Edit","tool_input":{"file_path":"/work/pricing/price-list.csv"}}'
+ok='{"tool_name":"Edit","tool_input":{"file_path":"/work/notes/today.md"}}'
+echo "$bad" | "$here/protect-price-list.sh" 2&gt;/dev/null; [ $? -eq 2 ] || { echo "FAIL: violation was not blocked"; exit 1; }
+echo "$ok"  | "$here/protect-price-list.sh" 2&gt;/dev/null; [ $? -eq 0 ] || { echo "FAIL: harmless edit was blocked"; exit 1; }
+echo "PASS: blocks the price list, allows everything else"
+EOF
+chmod +x .claude/hooks/test-protect-price-list.sh
+.claude/hooks/test-protect-price-list.sh</code></pre>
+<div class="see"><b class="lbl">What you should see</b><pre tabindex="0" role="region" aria-label="Code or command 4"><code>PASS: blocks the price list, allows everything else</code></pre><p>Feed it the bad call by hand to see the message the assistant will get:</p><pre tabindex="0" role="region" aria-label="Code or command 5"><code>echo '{"tool_name":"Edit","tool_input":{"file_path":"/work/pricing/price-list.csv"}}' | .claude/hooks/protect-price-list.sh; echo "exit $?"
+BLOCKED: the price list is the owner's to change. Stage the proposed change in pricing/proposed-changes.md and stop.
+exit 2</code></pre></div>
+<h2>Step 4. Try it for real</h2>
+<p>Start a session and ask: <em>"Raise every price in pricing/price-list.csv by 5 percent."</em></p>
+<div class="see"><b class="lbl">What you should see</b><p>The edit does not happen. The assistant reports the blocked message and writes its proposal to <code>pricing/proposed-changes.md</code> instead. The decision stays with you, and the refusal is in the audit trail.</p></div>
+<h2>The three habits</h2>
+<ul>
+<li><strong>Fail loud.</strong> If a dependency such as <code>jq</code> is missing, say so on standard error. Never skip in silence.</li>
+<li><strong>Tell the assistant what to do instead.</strong> The message is the whole interface.</li>
+<li><strong>Plant the violation.</strong> Every hook gets a test that proves it blocks the thing it exists to block.</li>
+</ul>
+<p>For more patterns, read the shipped ones in <code>plugins/operator-os/hooks/</code>, each with a header that says why it exists, and the <a href="hooks.html">hooks page</a>.</p>
+<p>Next: <a href="architecture.html">see how the pieces fit</a>, or <a href="#book">talk to me about wiring this to your own numbers</a>.</p>
+<h2 id="book">Book a call</h2><p>I work as a fractional Chief AI Officer for businesses that run growth marketing, AI and AI compliance on systems like this one. If you want it working against your own numbers, tell me what you need proven first. We start there.</p><div class="cta"><a class="btn" href="https://theinnovativenative.com/#book">Book a call</a><a class="btn alt" href="https://theinnovativenative.com">theinnovativenative.com</a></div>
+</div></main>
+<footer class="site"><div class="wrap">Operator OS is MIT licensed. Built by Mike Soto, fractional Chief AI Officer, The Innovative Native. <a href="https://theinnovativenative.com">theinnovativenative.com</a> &middot; <a href="https://theinnovativenative.com/#book">Book a call</a> &middot; <a href="https://github.com/ndnstyl/GTM-growth">Source</a></div></footer>
+<script>(function(){var b=document.getElementById("theme"),r=document.documentElement;function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}function lab(){var d=cur()==="dark";b.textContent=d?"Light":"Dark";b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}lab();b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("oos-theme",n)}catch(e){}lab()});
+var m=document.getElementById("menu"),nv=document.getElementById("mainnav");function setMenu(o){nv.classList.toggle("open",o);m.setAttribute("aria-expanded",o?"true":"false")}m.addEventListener("click",function(){setMenu(!nv.classList.contains("open"))});document.addEventListener("pointerdown",function(e){if(nv.classList.contains("open")&&!nv.contains(e.target)&&!m.contains(e.target))setMenu(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&nv.classList.contains("open")){setMenu(false);m.focus()}});
+document.querySelectorAll("button.copy").forEach(function(c){c.addEventListener("click",function(){var t=document.getElementById(c.getAttribute("data-target")).textContent,s=document.getElementById("copystatus");function ok(){c.textContent="Copied";s.textContent="Copied to clipboard";setTimeout(function(){c.textContent="Copy";s.textContent=""},2000)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){s.textContent="Copy failed, select the command and copy it by hand"})}else{s.textContent="Copy is not available here, select the command and copy it by hand"}})})})();</script>
+<div class="sr" id="copystatus" role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,3 +1,7 @@
+*.pyc
+.DS_Store
+.operator/
+.venv/
+__pycache__/
 dist/
 node_modules/
-.DS_Store

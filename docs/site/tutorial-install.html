@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+<title>Install in two minutes | Operator OS</title>
+<meta name="description" content="Add the plugin and see the status line that proves it loaded.">
+<link rel="canonical" href="https://theinnovativenative.com/operator-os/tutorial-install.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c1a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2300e5ff' stroke-width='7'/%3E%3Ccircle cx='47' cy='17' r='5' fill='%23ff3df5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Operator OS">
+<meta property="og:title" content="Install in two minutes | Operator OS">
+<meta property="og:description" content="Add the plugin and see the status line that proves it loaded.">
+<meta property="og:url" content="https://theinnovativenative.com/operator-os/tutorial-install.html">
+<meta property="og:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<meta property="og:image:alt" content="The GTM OS cockpit, a video poster frame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Install in two minutes | Operator OS">
+<meta name="twitter:description" content="Add the plugin and see the status line that proves it loaded.">
+<meta name="twitter:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<link rel="preload" href="assets/fonts/inter-normal-2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://theinnovativenative.com/operator-os/#app","name":"Operator OS","applicationCategory":"DeveloperApplication","operatingSystem":"Claude Code","description":"Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.","license":"https://opensource.org/licenses/MIT","installUrl":"https://github.com/ndnstyl/GTM-growth","url":"https://theinnovativenative.com/operator-os/","author":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://theinnovativenative.com/operator-os/#site","name":"Operator OS","url":"https://theinnovativenative.com/operator-os/","publisher":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Operator OS","item":"https://theinnovativenative.com/operator-os/"},{"@type":"ListItem","position":2,"name":"Install in two minutes","item":"https://theinnovativenative.com/operator-os/tutorial-install.html"}]},{"@type":"HowTo","name":"Install in two minutes","description":"Add the plugin and see the status line that proves it loaded.","url":"https://theinnovativenative.com/operator-os/tutorial-install.html","step":[{"@type":"HowToStep","position":1,"name":"Add the plugin","url":"https://theinnovativenative.com/operator-os/tutorial-install.html"},{"@type":"HowToStep","position":2,"name":"Open a project and check the status line","url":"https://theinnovativenative.com/operator-os/tutorial-install.html"},{"@type":"HowToStep","position":3,"name":"Install the rules","url":"https://theinnovativenative.com/operator-os/tutorial-install.html"},{"@type":"HowToStep","position":4,"name":"Confirm","url":"https://theinnovativenative.com/operator-os/tutorial-install.html"}]}]}</script>
+<script>try{var t=localStorage.getItem("oos-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><div class="bar"><a class="brand" href="index.html">Operator <b>OS</b></a><nav class="main" id="mainnav" aria-label="Main"><a href="index.html">Home</a><a href="architecture.html">Architecture</a><a href="install.html">Install</a><a href="tutorials.html" class="on" aria-current="true">Tutorials</a><a href="agents.html">Agents</a><a href="skills.html">Skills</a><a href="hooks.html">Hooks</a><a href="vault.html">Vault</a><a href="review-loop.html">Review loop</a><a href="case-studies.html">Case studies</a><a href="how-it-was-built.html">How it was built</a></nav><div class="tools"><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><button class="theme" id="theme" type="button">Theme</button><a class="btn bookbtn" href="https://theinnovativenative.com/#book">Book a call</a></div></div></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+<p class="eyebrow">Tutorial 1 of 4 &middot; Two minutes</p><h1>Install in two minutes</h1>
+<p class="lede">By the end you have Operator OS loaded in a project and one status line telling you which parts are configured. Nothing else is required to start.</p>
+<h2>Before you start</h2>
+<p>You need Claude Code, <code>jq</code> and <code>python3</code>. Check all three:</p>
+<pre tabindex="0" role="region" aria-label="Code or command 1"><code>claude --version
+jq --version
+python3 --version</code></pre>
+<div class="see"><b class="lbl">What you should see</b><p>Three version numbers. If <code>jq</code> says <em>command not found</em>, install it (on a Mac: <code>brew install jq</code>). Without it the plugin still loads, but each hook skips itself and says so.</p></div>
+<h2>Step 1. Add the plugin</h2>
+<div class="cmd"><pre class="wrap"><code id="install-cmd-t">claude plugin marketplace add ndnstyl/GTM-growth &amp;&amp; claude plugin install operator-os@operator-os</code></pre><button class="copy" type="button" aria-label="Copy the command" data-target="install-cmd-t">Copy</button></div>
+<div class="see"><b class="lbl">What you should see</b><p>Two confirmations: the marketplace was added, then <code>operator-os</code> was installed. Run <code>claude plugin list</code> and <code>operator-os</code> is in the list.</p></div>
+<h2>Step 2. Open a project and check the status line</h2>
+<p>Go to any project folder and start Claude Code:</p>
+<pre tabindex="0" role="region" aria-label="Code or command 2"><code>cd ~/my-business-project
+claude</code></pre>
+<p>Then ask it, in your own words, what the status line says. The status line is handed to the assistant when the session starts, so asking is the reliable check:</p>
+<pre tabindex="0" role="region" aria-label="Code or command 3"><code>What does the operator-os status line say?</code></pre>
+<div class="see"><b class="lbl">What you should see</b><p>An answer that starts with <code>operator-os status:</code>. It names each optional part and says <em>ok</em> or <em>not configured</em>, with the one thing to do about it. You can also see it in the session transcript view. When you have a constitution file, a longer <code>STARTUP:</code> block comes first and the status line follows it.</p><pre tabindex="0" role="region" aria-label="Code or command 4"><code>operator-os status: jq=ok python3=ok git=ok | vault: not configured (no folder at ...; run /operator-os:init-vault) | vault remote: not configured (...) | local model lane: not configured (...) | rules: not installed (run /operator-os:install-rules)</code></pre><p>That is the design: a missing piece says so once, in plain words, instead of failing later.</p></div>
+<h2>Step 3. Install the rules</h2>
+<p>A plugin cannot ship rule files, so one skill copies them into your project. Type this in the session:</p>
+<pre tabindex="0" role="region" aria-label="Code or command 5"><code>/operator-os:install-rules</code></pre>
+<div class="see"><b class="lbl">What you should see</b><p>Eighteen lines beginning <code>copied:</code>, then <code>install-rules: 18 copied, 0 skipped.</code> The files now sit in <code>.claude/rules/</code> and load on the next session. Run it twice and the second run says <code>0 copied, 18 skipped</code>: it never overwrites your edits.</p></div>
+<h2>Step 4. Confirm</h2>
+<p>Quit, start Claude Code again, and ask the same question: <em>What does the operator-os status line say?</em> The answer now ends with <code>rules: installed</code>.</p>
+<h2>If something is off</h2>
+<ul>
+<li><strong>No status line in the answer.</strong> Run <code>claude plugin list</code>. If <code>operator-os</code> is missing, repeat step 1.</li>
+<li><strong>Every hook says "jq not installed".</strong> Install <code>jq</code>, restart.</li>
+</ul>
+<p>Next: <a href="tutorial-vault.html">set up the starter vault</a>.</p>
+<h2 id="book">Book a call</h2><p>I work as a fractional Chief AI Officer for businesses that run growth marketing, AI and AI compliance on systems like this one. If you want it working against your own numbers, tell me what you need proven first. We start there.</p><div class="cta"><a class="btn" href="https://theinnovativenative.com/#book">Book a call</a><a class="btn alt" href="https://theinnovativenative.com">theinnovativenative.com</a></div>
+</div></main>
+<footer class="site"><div class="wrap">Operator OS is MIT licensed. Built by Mike Soto, fractional Chief AI Officer, The Innovative Native. <a href="https://theinnovativenative.com">theinnovativenative.com</a> &middot; <a href="https://theinnovativenative.com/#book">Book a call</a> &middot; <a href="https://github.com/ndnstyl/GTM-growth">Source</a></div></footer>
+<script>(function(){var b=document.getElementById("theme"),r=document.documentElement;function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}function lab(){var d=cur()==="dark";b.textContent=d?"Light":"Dark";b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}lab();b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("oos-theme",n)}catch(e){}lab()});
+var m=document.getElementById("menu"),nv=document.getElementById("mainnav");function setMenu(o){nv.classList.toggle("open",o);m.setAttribute("aria-expanded",o?"true":"false")}m.addEventListener("click",function(){setMenu(!nv.classList.contains("open"))});document.addEventListener("pointerdown",function(e){if(nv.classList.contains("open")&&!nv.contains(e.target)&&!m.contains(e.target))setMenu(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&nv.classList.contains("open")){setMenu(false);m.focus()}});
+document.querySelectorAll("button.copy").forEach(function(c){c.addEventListener("click",function(){var t=document.getElementById(c.getAttribute("data-target")).textContent,s=document.getElementById("copystatus");function ok(){c.textContent="Copied";s.textContent="Copied to clipboard";setTimeout(function(){c.textContent="Copy";s.textContent=""},2000)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){s.textContent="Copy failed, select the command and copy it by hand"})}else{s.textContent="Copy is not available here, select the command and copy it by hand"}})})})();</script>
+<div class="sr" id="copystatus" role="status" aria-live="polite"></div>
+</body>
+</html>

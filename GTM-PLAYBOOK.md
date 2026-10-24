@@ -1,0 +1,75 @@
+# The GTM playbook: the Growth Marketing + AI stack
+
+Ten go-to-market folders, first touch to final report. Every item here is built and running today, in whole or in part.
+
+![The GTM stack, folder by folder](assets/svg/gtm-stack.svg)
+
+**66 live systems:** 11 AI agents · 13 skills · 32 loops · 10 automations, each one checked against its run record.
+
+Built by [Michael Soto, The Innovative Native](https://theinnovativenative.com). This page shows **what each system does and the outcome**, folder by folder. The harness that runs them is open source: see [Operator OS](README.md).
+
+## The ten folders
+
+| Folder | What it does | Live items |
+|---|---|---|
+| [01 · Market Research](01-market-research/) | Recorded sales calls become a read of objections, strengths and weaknesses. | 1 |
+| [02 · Positioning & Offer](02-positioning-and-offer/) | Channel strategy, brand voice and offer tests set before a dollar is spent. | 5 |
+| [03 · Content Engine](03-content-engine/) | One sentence in, finished scripts and edited reels out, on brand. | 9 |
+| [04 · Paid Media](04-paid-media/) | Every platform's results land daily, and sales flow back so ads optimize for revenue. | 6 |
+| [05 · Capture & Consent](05-capture-and-consent/) | Consents and opt-outs recorded with their exact wording and reconciled nightly. | 4 |
+| [06 · Speed to Lead](06-speed-to-lead/) | AI answers after-hours calls and website chats, captures the lead and hands it to a person. | 9 |
+| [07 · Sales Floor](07-sales-floor/) | Sales calls pulled, transcribed and scored daily, with training on tap. | 3 |
+| [08 · Attribution & Cost](08-attribution-and-cost/) | Daily spend recorded and checked against platform controls. | 8 |
+| [09 · Reporting Cockpit](09-reporting-cockpit/) | One screen where the numbers refresh themselves. | 10 |
+| [10 · Reliability](10-reliability/) | Failures flagged loudly: bounded self-healing, stall alarms and data-gap checks. | 11 |
+
+## By kind
+
+| | |
+|---|---|
+| **Agents**: AI seats that hold a growth role: strategy, media buying, editing, analysis, review. | ![Agents](assets/svg/gtm-agents.svg) |
+| **Skills**: Repeatable playbooks an agent loads on demand: voice, video, QR, data rules, audits. | ![Skills](assets/svg/gtm-skills.svg) |
+| **Loops**: Scheduled jobs that run daily or weekly with no one pressing a button. | ![Loops](assets/svg/gtm-loops.svg) |
+| **Automations**: Always-on systems: AI answering, consent register, cockpit, classroom. | ![Automations](assets/svg/gtm-automations.svg) |
+
+GIF versions for social posts are in [`assets/gif/`](assets/gif/). Phone-shaped SVGs are the `-mobile.svg` files.
+
+## Where the field leaves gaps
+
+A survey of public GTM agent, skill and automation repos ([research/external-gtm-repos.md](research/external-gtm-repos.md)) finds roughly the same ten stages, and five areas almost nobody covers. This stack is built around them:
+
+1. **Consent capture and proof:** see [05 · Capture & Consent](05-capture-and-consent/) and the free [Outside Consent Register field guide](https://theinnovativenative.com/guides/outside-consent-register).
+2. **Attribution tie-out:** spend proven against the CRM before it is reported ([08](08-attribution-and-cost/)).
+3. **Call-floor analytics:** every sales call transcribed and scored daily ([07](07-sales-floor/)).
+4. **Loud failure:** nothing fails quietly ([10](10-reliability/)).
+5. **Governed writes:** agents stage changes and a person approves them.
+
+## Featured
+
+- **The Outside Consent Register:** proof of consent that survives a demand letter, a class action and an AI audit. [Get the guide](https://theinnovativenative.com/guides/outside-consent-register)
+- **ECHO OS:** the AI cockpit that runs the business from one screen. [Join early access](https://theinnovativenative.com/echo-os)
+
+## GTM OS (the live demo cockpit)
+
+[`gtm-os/`](gtm-os/) is the source of GTM OS: a go-to-market command center that runs entirely in the browser on a
+fictional company's sample data. Eight areas (Command, Research & Offer, Content Studio, Paid Media, Capture & Speed,
+Sales Floor, Attribution & BI, AI Ops) map to the ten folders above. No backend: every server call is answered by a demo
+layer, the chat is scripted, and the reports run in the browser over sample data files.
+
+```bash
+cd gtm-os && npm install && npm run build   # static site in gtm-os/out, served at /gtm-os/
+```
+
+## Site redesign
+
+[`site-redesign/`](site-redesign/) holds the new one-page home for theinnovativenative.com: the React components, the
+page content, the styles, and the original design mockup and tokens.
+
+## Rebuild the animations
+
+```bash
+python3 build/make_svgs.py      # writes dist/svg/*.svg from build/gtm.json
+build/make_gifs.sh              # needs Node + Playwright + ffmpeg
+```
+
+Want this running in your business? [Book a discovery call](https://calendly.com/theinnovativenative-info/ai-discovery-call).

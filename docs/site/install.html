@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+<title>Install | Operator OS</title>
+<meta name="description" content="Install Operator OS as a Claude Code plugin in one command, then set up rules, vault and gates.">
+<link rel="canonical" href="https://theinnovativenative.com/operator-os/install.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c1a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2300e5ff' stroke-width='7'/%3E%3Ccircle cx='47' cy='17' r='5' fill='%23ff3df5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Operator OS">
+<meta property="og:title" content="Install | Operator OS">
+<meta property="og:description" content="Install Operator OS as a Claude Code plugin in one command, then set up rules, vault and gates.">
+<meta property="og:url" content="https://theinnovativenative.com/operator-os/install.html">
+<meta property="og:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<meta property="og:image:alt" content="The GTM OS cockpit, a video poster frame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Install | Operator OS">
+<meta name="twitter:description" content="Install Operator OS as a Claude Code plugin in one command, then set up rules, vault and gates.">
+<meta name="twitter:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<link rel="preload" href="assets/fonts/inter-normal-2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://theinnovativenative.com/operator-os/#app","name":"Operator OS","applicationCategory":"DeveloperApplication","operatingSystem":"Claude Code","description":"Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.","license":"https://opensource.org/licenses/MIT","installUrl":"https://github.com/ndnstyl/GTM-growth","url":"https://theinnovativenative.com/operator-os/","author":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://theinnovativenative.com/operator-os/#site","name":"Operator OS","url":"https://theinnovativenative.com/operator-os/","publisher":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Operator OS","item":"https://theinnovativenative.com/operator-os/"},{"@type":"ListItem","position":2,"name":"Install","item":"https://theinnovativenative.com/operator-os/install.html"}]}]}</script>
+<script>try{var t=localStorage.getItem("oos-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><div class="bar"><a class="brand" href="index.html">Operator <b>OS</b></a><nav class="main" id="mainnav" aria-label="Main"><a href="index.html">Home</a><a href="architecture.html">Architecture</a><a href="install.html" class="on" aria-current="page">Install</a><a href="tutorials.html">Tutorials</a><a href="agents.html">Agents</a><a href="skills.html">Skills</a><a href="hooks.html">Hooks</a><a href="vault.html">Vault</a><a href="review-loop.html">Review loop</a><a href="case-studies.html">Case studies</a><a href="how-it-was-built.html">How it was built</a></nav><div class="tools"><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><button class="theme" id="theme" type="button">Theme</button><a class="btn bookbtn" href="https://theinnovativenative.com/#book">Book a call</a></div></div></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+
+<h1>Install in one command</h1>
+<p class="lede">Operator OS is a Claude Code plugin. One command adds the agents, skills, hooks and system packs to every project you open.</p>
+<div class="cmd"><pre class="wrap"><code id="install-cmd">claude plugin marketplace add ndnstyl/GTM-growth &amp;&amp; claude plugin install operator-os@operator-os</code></pre><button class="copy" type="button" aria-label="Copy the command" data-target="install-cmd">Copy</button></div>
+<p>You need Claude Code, <code>jq</code> and <code>python3</code>. If <code>jq</code> is missing, each hook skips itself and says so, so nothing breaks; install it to turn the hooks on.</p>
+<h2>Then set up your project</h2>
+<ol class="steps"><li><strong><a href="tutorial-install.html">Install the plugin</a></strong><br>One command. It adds the agents, skills, hooks and system packs. Open a project and one status line says which optional parts are configured.</li><li id="rules"><strong><a href="install.html#rules">Install the rules</a></strong><br>Ask for the install-rules skill so the doctrine lives in your project.</li><li><strong><a href="tutorial-vault.html">Make your vault</a></strong><br>Copy the starter vault, or run the init-vault skill, and set the vault variable.</li><li><strong><a href="vault.html#example">Read the example</a></strong><br>Open the fictional company&#x27;s vault and follow one rule from its raw source to its card.</li><li><strong><a href="tutorial-review-loop.html">Run the loop</a></strong><br>Build with one seat, check with another, and stop after three rounds.</li><li><strong><a href="tutorial-hook.html">Add your own hook</a></strong><br>Block a mistake only you know about, and prove it with a test.</li><li><strong><a href="skills.html#goal">Give it a goal</a></strong><br>Run the goal skill with a plain outcome and watch the gates hold.</li></ol>
+<h2>Optional: the constitution</h2>
+<p>The plugin ships a short template. Copy it to <code>.specify/memory/constitution.md</code> and fill in who you are. Delete any clause you will not enforce.</p>
+<h2>Commits and branches</h2>
+<p>One hook, <code>block-off-trunk-commit.sh</code>, refuses a <code>git commit</code> unless the branch is <code>main</code> or a <code>spec/NNN-</code> worktree branch. If your team works on feature branches, set <code>OPERATOR_TRUNK_BRANCH_RX</code> to a regular expression of the branch names you allow, for example <code>^(main|feature/.+)$</code>. For a one-time commit on any other branch, set <code>OPERATOR_TRUNK_GRACE=1</code> for that command or create the file <code>.operator/TRUNK_GRACE</code>; every grace use is logged.</p>
+<h2>Turn on the gates that ship empty</h2>
+<p>The platform-write gate, the ingress registry and the api governor each start with no rows. They allow everything until you add your platforms. The <a href="https://github.com/ndnstyl/GTM-growth/blob/main/docs/platform-write-gate.md">platform-write gate guide</a> shows the first row.</p>
+<h2>Optional hooks</h2>
+<p>Three hooks ship but are not registered, because each has a cost you should choose. The unslop and name-the-thing gates refuse a final message, which costs a regenerated message. The pre-commit secret scan is a git hook:</p>
+<pre tabindex="0" role="region" aria-label="Code or command 1"><code>ln -s &lt;plugin&gt;/hooks/pre-commit-secret-scan.sh .git/hooks/pre-commit</code></pre>
+<h2>Check the package</h2>
+<pre tabindex="0" role="region" aria-label="Code or command 2"><code>claude plugin validate .
+claude plugin validate plugins/operator-os --strict</code></pre>
+<p>Hook state and receipts land in your project under <code>.operator/</code>. Add it to <code>.gitignore</code>.</p>
+<h2 id="book">Book a call</h2><p>I work as a fractional Chief AI Officer for businesses that run growth marketing, AI and AI compliance on systems like this one. If you want it working against your own numbers, tell me what you need proven first. We start there.</p><div class="cta"><a class="btn" href="https://theinnovativenative.com/#book">Book a call</a><a class="btn alt" href="https://theinnovativenative.com">theinnovativenative.com</a></div>
+
+</div></main>
+<footer class="site"><div class="wrap">Operator OS is MIT licensed. Built by Mike Soto, fractional Chief AI Officer, The Innovative Native. <a href="https://theinnovativenative.com">theinnovativenative.com</a> &middot; <a href="https://theinnovativenative.com/#book">Book a call</a> &middot; <a href="https://github.com/ndnstyl/GTM-growth">Source</a></div></footer>
+<script>(function(){var b=document.getElementById("theme"),r=document.documentElement;function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}function lab(){var d=cur()==="dark";b.textContent=d?"Light":"Dark";b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}lab();b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("oos-theme",n)}catch(e){}lab()});
+var m=document.getElementById("menu"),nv=document.getElementById("mainnav");function setMenu(o){nv.classList.toggle("open",o);m.setAttribute("aria-expanded",o?"true":"false")}m.addEventListener("click",function(){setMenu(!nv.classList.contains("open"))});document.addEventListener("pointerdown",function(e){if(nv.classList.contains("open")&&!nv.contains(e.target)&&!m.contains(e.target))setMenu(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&nv.classList.contains("open")){setMenu(false);m.focus()}});
+document.querySelectorAll("button.copy").forEach(function(c){c.addEventListener("click",function(){var t=document.getElementById(c.getAttribute("data-target")).textContent,s=document.getElementById("copystatus");function ok(){c.textContent="Copied";s.textContent="Copied to clipboard";setTimeout(function(){c.textContent="Copy";s.textContent=""},2000)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){s.textContent="Copy failed, select the command and copy it by hand"})}else{s.textContent="Copy is not available here, select the command and copy it by hand"}})})})();</script>
+<div class="sr" id="copystatus" role="status" aria-live="polite"></div>
+</body>
+</html>

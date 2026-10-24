@@ -1,0 +1,74 @@
+# System Pack registry, the index /goal reads first.
+# Canonical, git-versioned.
+# Schema: ./SCHEMA.md
+#
+# status: pilot  = manifest authored + proven end-to-end
+#         stub   = registered, manifest is a template awaiting fill
+version: 1
+
+# Global defaults inherited by every pack unless overridden in its manifest.
+defaults:
+  autonomy: full_ship
+  gates: [n8n_activation, outward_send, payment_mutation, prod_deploy, db_migration]
+  agents: [orchestrator, researcher, implementer, reviewer]
+
+domains:
+  content-creation:
+    title: Content Creation
+    manifest: content-creation.yaml
+    status: pilot
+    blurb: Reels, carousels, blog posts, captions, scripts, written and produced in your voice.
+
+  growth-marketing:
+    title: Growth Marketing
+    manifest: growth-marketing.yaml
+    status: pilot
+    blurb: Lead sourcing, outreach cadences, funnels, paid + organic demand, social distribution.
+
+  revenue-operations:
+    title: Revenue Operations
+    manifest: revenue-operations.yaml
+    status: authored
+    blurb: Billing, subscriptions, CRM sync, attribution, margin + invoice ops. Touches money, keep gates tight.
+
+  market-research:
+    title: Market Research
+    manifest: market-research.yaml
+    status: authored
+    blurb: Deep web research, competitor + pain-point mapping, niche validation, cited reports.
+
+  uiux-web-design:
+    title: UI/UX Web Design
+    manifest: uiux-web-design.yaml
+    status: authored
+    blurb: Production frontend, 3D web experiences, landing pages, design-to-code, web security.
+
+  visual-design:
+    title: Visual Design
+    manifest: visual-design.yaml
+    status: authored
+    blurb: Slides, carousels, diagrams, data-viz, brand-coherent static visuals.
+
+  site-performance:
+    title: Site Performance
+    manifest: site-performance.yaml
+    status: authored
+    blurb: Speed up every site we ship. Core Web Vitals, Lighthouse, image compression, bundle + large-file analysis. Runs as a gate on each ship; measurement-first.
+
+  system-design:
+    title: System Design / Architecture
+    manifest: system-design.yaml
+    status: authored
+    blurb: Backend + infra architecture (scaling, databases, APIs, caching, reliability, web/API security) on a verified corrections-first knowledge base. Backs your products and client systems. Front-end delivery view lives in site-performance.
+
+  data-analytics:
+    title: Data & Analytics
+    manifest: data-analytics.yaml
+    status: authored
+    blurb: Data literacy + the modern data stack (OLTP/OLAP routing, ETL/ELT, warehouse/lake/lakehouse, dimensional modeling) plus a statistical-soundness check so decisions are not fooled by the numbers.
+
+  security-compliance:
+    title: Security & Compliance
+    manifest: security-compliance.yaml
+    status: authored
+    blurb: Security posture, data governance, IP protection, and compliance readiness (SOC 2, ISO 27001, PCI SAQ-A, GDPR/CCPA, ISO 42001 / EU AI Act). Owns the data-classification line: privileged + proprietary data never enters consumer AI. Cross-cutting; audits the other domains.

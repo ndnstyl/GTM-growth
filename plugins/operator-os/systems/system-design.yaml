@@ -1,0 +1,39 @@
+domain: system-design
+title: System Design / Architecture
+description: >
+  Backend and infrastructure architecture for first-party products and client systems:
+  scaling, databases + data modeling, APIs + service communication, caching,
+  reliability, and web/API security. Decisions route through a verified, corrections-first knowledge
+  base (the common SQL-vs-NoSQL / GraphQL-is-HTTP / CORS-as-security oversimplifications are already
+  fixed in the concept pages). The front-end delivery + Core Web Vitals view lives in site-performance;
+  this pack is the backend/infra view. Web security overlaps the vibe-security skill + data-handling rule.
+autonomy: full_ship
+gates: [prod_deploy, db_migration, payment_mutation]
+
+skills:
+  primary: [codebase-design]
+  support: [vibe-security, site-speed]
+
+agents: [orchestrator, researcher, implementer, reviewer]
+
+# No dedicated n8n fleet; this pack reasons about architecture, it does not run a workflow fleet.
+n8n_workflows: []
+
+memory_anchors: []  # add your own rule names or short rule text
+
+verification:
+  - "database chosen by ACCESS PATTERN with a named consistency model (CAP/PACELC), not 'structured vs unstructured'"
+  - "app tier is stateless where horizontally scaled; sessions externalized"
+  - "every SPOF has redundancy + a real failover mechanism; observability (logs/metrics/traces) wired"
+  - "auth: OIDC not raw OAuth2 for login; passwords hashed (argon2/bcrypt); object-level authZ enforced (no BOLA/IDOR); CORS never used as a security control"
+  - "caching has TTL + eviction + stampede protection; CDN only where it pays off"
+  - "data warehouse: loads idempotent + atomic + restartable (not bare truncate+insert / CATCH-without-THROW); surrogate keys PERSISTED (IDENTITY/hash, never ROW_NUMBER); SCD history preserved not filtered; data quality enforced as automated gating tests, not eyeballed; grain declared before facts"
+  - "AI system: the owned data foundation (single source of truth) is built BEFORE the model layer; governance/policy is a layer ON TOP, not a substitute for architecture"
+
+entrypoints:
+  - "how should we architect X"
+  - "review this system / design"
+  - "will this scale / where does this break"
+  - "pick a database for X"
+  - "design the caching layer / API contract"
+  - "is this auth/security design safe"

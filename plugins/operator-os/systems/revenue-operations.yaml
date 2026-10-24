@@ -1,0 +1,34 @@
+domain: revenue-operations
+title: Revenue Operations
+description: >
+  Billing, subscriptions, CRM sync, payment webhooks, attribution, margin + invoice ops. Touches
+  money and customer records, keep gates tight: always check existing data before any migration,
+  never auto-mutate payments, reconcile against the source of record.
+autonomy: full_ship
+gates: [n8n_activation, outward_send, payment_mutation, db_migration, prod_deploy]
+
+brand_rules: []  # add your own rule names or short rule text
+
+skills:
+  primary: []
+  support: [ingest]
+
+agents: [orchestrator, researcher, implementer, reviewer]
+
+n8n_workflows: []
+
+memory_anchors: []  # add your own rule names or short rule text
+
+verification:
+  - "checked existing data before any DB migration, security rules"
+  - "no payment mutation runs without explicit confirmation (payment_mutation gate)"
+  - "numbers reconcile against the source of record; pre-data-access figures labeled blended estimates"
+  - "no em dashes incl &mdash;"
+
+entrypoints:
+  - "chase overdue invoices"
+  - "analyze margins by product / client"
+  - "reconcile the CRM / billing data"
+  - "review this contract / SOW / MSA"
+  - "build a billing / attribution / revenue report"
+  - "audit subscription + payment state"

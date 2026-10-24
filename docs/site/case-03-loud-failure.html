@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0c1a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f6fb" media="(prefers-color-scheme: light)">
+<title>Loud Failure Everywhere | Operator OS</title>
+<meta name="description" content="A call-recording analysis job ran for 65 minutes dispatching nothing while both model machines idled at zero percent.">
+<link rel="canonical" href="https://theinnovativenative.com/operator-os/case-03-loud-failure.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c1a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2300e5ff' stroke-width='7'/%3E%3Ccircle cx='47' cy='17' r='5' fill='%23ff3df5'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Operator OS">
+<meta property="og:title" content="Loud Failure Everywhere | Operator OS">
+<meta property="og:description" content="A call-recording analysis job ran for 65 minutes dispatching nothing while both model machines idled at zero percent.">
+<meta property="og:url" content="https://theinnovativenative.com/operator-os/case-03-loud-failure.html">
+<meta property="og:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<meta property="og:image:alt" content="The GTM OS cockpit, a video poster frame">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loud Failure Everywhere | Operator OS">
+<meta name="twitter:description" content="A call-recording analysis job ran for 65 minutes dispatching nothing while both model machines idled at zero percent.">
+<meta name="twitter:image" content="https://theinnovativenative.com/operator-os/assets/screens/walkthrough-poster.png">
+<link rel="preload" href="assets/fonts/inter-normal-2.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://theinnovativenative.com/operator-os/#app","name":"Operator OS","applicationCategory":"DeveloperApplication","operatingSystem":"Claude Code","description":"Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.","license":"https://opensource.org/licenses/MIT","installUrl":"https://github.com/ndnstyl/GTM-growth","url":"https://theinnovativenative.com/operator-os/","author":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://theinnovativenative.com/operator-os/#site","name":"Operator OS","url":"https://theinnovativenative.com/operator-os/","publisher":{"@type":"Person","@id":"https://theinnovativenative.com#mike-soto","name":"Mike Soto","jobTitle":"Fractional Chief AI Officer","worksFor":{"@type":"Organization","name":"The Innovative Native","url":"https://theinnovativenative.com"},"url":"https://theinnovativenative.com","sameAs":["https://theinnovativenative.com","https://www.linkedin.com/in/michael-soto-7134ba158"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Operator OS","item":"https://theinnovativenative.com/operator-os/"},{"@type":"ListItem","position":2,"name":"Loud Failure Everywhere","item":"https://theinnovativenative.com/operator-os/case-03-loud-failure.html"}]}]}</script>
+<script>try{var t=localStorage.getItem("oos-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}document.documentElement.className="js"</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><div class="bar"><a class="brand" href="index.html">Operator <b>OS</b></a><nav class="main" id="mainnav" aria-label="Main"><a href="index.html">Home</a><a href="architecture.html">Architecture</a><a href="install.html">Install</a><a href="tutorials.html">Tutorials</a><a href="agents.html">Agents</a><a href="skills.html">Skills</a><a href="hooks.html">Hooks</a><a href="vault.html">Vault</a><a href="review-loop.html">Review loop</a><a href="case-studies.html" class="on" aria-current="true">Case studies</a><a href="how-it-was-built.html">How it was built</a></nav><div class="tools"><button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><button class="theme" id="theme" type="button">Theme</button><a class="btn bookbtn" href="https://theinnovativenative.com/#book">Book a call</a></div></div></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+
+<p><a href="case-studies.html">All case studies</a></p>
+<h1>Loud Failure Everywhere</h1>
+<p class="lede">A worked example. Every company, person and number in it is invented; the failure pattern and the rule it produced are real.</p>
+<h2>Spec</h2><p><strong>Status</strong>: Built, register running daily | <strong>Created</strong>: 2026-05-20 | <strong>Owner</strong>: Dana Ortiz (fictional) <strong>Input</strong>: "Loud failure needs to be implemented in absolutely anything that can break: any transfer, lookup, call, tool use, handoff, skill load, teardown, credential need. There isn't a single thing that should fail silently."</p>
+<h3>The problem in one paragraph</h3>
+<p>A call-recording analysis job ran for 65 minutes dispatching nothing while both model machines idled at zero percent. The producer's output format had changed; the consumer waited for a signal that would never arrive again. The job's receipt said "running" the whole time. The company already had a written rule against silent failure, but it covered pipelines, was enforced by nothing, and a whole class of failure, waiting, sat outside it.</p>
+<h3>Why it is a program and not a fix</h3>
+<p>A scan of the harness found 600 places where an exception is caught and dropped, 170 shell scripts with no error-exit option, and 150 <code>|| true</code> suppressions. Each is a place where something can break and nobody is told. The count is the problem statement.</p>
+<h3>Scope</h3>
+<p>Every component, by the owner's list: transfer, lookup, call, tool use, handoff, module or skill load, teardown, credential need. Every language in use. Consent, suppression and contact-permission paths are CRITICAL at any size. Out of scope: third-party library internals; in scope: every call into them.</p>
+<h3>User stories</h3>
+<h4>Story 1: Nothing new fails silently (P1)</h4>
+<p>A write-time gate refuses a new silent-failure site in harness code and quotes the rule. Done when it is installed, tested against planted violations in each language, and cannot be satisfied by reformatting.</p>
+<h4>Story 2: The register exists and is honest (P1)</h4>
+<p>One command scans the repository and lists every site by component, severity, language and owner, with exempted sites counted separately and each exemption carrying a reason. Done when it runs clean twice and its own tests plant and detect one violation of every class.</p>
+<h4>Story 3: The governed lanes are clean (P1)</h4>
+<p>Every lane touching consumer contact or regulated data has zero open rows or a ruled exemption with a reason.</p>
+<h4>Story 4: Waiting is observed (P1)</h4>
+<p>A scheduler census reads the process table, not the task's own report. It flags orphans, stalled jobs (no CPU, no bytes written), spinning jobs (CPU busy, nothing written), over-budget runs, and death loops.</p>
+<h3>The rule it produced</h3>
+<p>A failure path ends in exactly one of three things: a raised error that names what failed, what was expected and what would fix it; a visible refused or held state in a place a human reads; or an alert row in a surface someone watches. A swallowed exception, a default substituted for a missing answer, a <code>continue</code>, a bare print, a 200 on failure, and a silent retry that exhausts are all violations. Every wait carries a deadline, because a blocked process and a working one look identical from outside.</p>
+<h3>Requirements</h3>
+<ul><li><strong>REQ-01</strong>: The write-time gate checks Python, shell, Node, SQL and workflow JSON.</li><li><strong>REQ-02</strong>: An exemption is an in-line marker with a reason; a marker with no reason is itself a violation.</li><li><strong>REQ-03</strong>: Receipts carry units done and the time of the last unit, so a watchdog checks progress, never that a file was touched.</li><li><strong>REQ-04</strong>: A supervisor decision tree runs every five minutes on anything long: died, healthy, one long unit, spinning, blocked, runaway.</li></ul>
+<h3>Success criteria</h3>
+<ul><li><strong>SC-001</strong>: The register's count falls to zero un-exempted rows in governed lanes within 30 days.</li><li><strong>SC-002</strong>: A planted stall (a consumer waiting on a signal that never comes) is reported within one supervisor cycle.</li><li><strong>SC-003</strong>: No new un-exempted site is merged in the 30 days after the gate ships.</li></ul>
+<h3>What the case study teaches</h3>
+<p>The prose rule existed for months and changed nothing. The gate, the register and the census are what changed behavior. Write the rule as code.</p>
+<h2>Plan and tasks</h2><h3>Approach</h3>
+<ol><li>Build the register first, because the count is the baseline and the proof of progress.</li><li>Build the write-time gate with a test file of planted violations per language and per class.</li><li>Clean the governed lanes before the rest: consent and contact paths first.</li><li>Add the process census and the five-minute supervisor tree for long jobs and delegated agents.</li><li>Fix the class, not the instance: each fix removes a pattern, not one line.</li></ol>
+<h3>Tasks</h3>
+<ul><li>[ ] Task 01 Register scanner: classify by component taxonomy, severity, language, owner; emit counts</li><li>[ ] Task 02 Planted-violation tests: one per class per language; the scanner finds every one</li><li>[ ] Task 03 Write-time gate (Write and Edit) quoting the rule; test that reformatting does not satisfy it</li><li>[ ] Task 04 Exemption marker with required reason; count exemptions separately</li><li>[ ] Task 05 Clean the consent and contact-permission lane to zero</li><li>[ ] Task 06 Clean the data-pull lanes (transfer, lookup, call classes)</li><li>[ ] Task 07 Process census: orphan, stalled, spinning, over-budget, death-loop rows; peer watch between hosts</li><li>[ ] Task 08 Supervisor decision tree with declared budgets for every long task</li><li>[ ] Task 09 Detached-process gate: no background launches that outlive the session</li><li>[ ] Task 10 Handoff SOP and a training module proposal</li></ul>
+<h3>Gates</h3>
+<ul><li>G1: the register finds every planted violation. CHECK: run it on the planted set. EXPECT: all detected, none missed.</li><li>G2: a planted stall is reported. CHECK: start a consumer on a signal that never arrives. EXPECT: a STALLED row within one cycle.</li><li>G3: governed lanes at zero un-exempted rows. CHECK: the register filtered to those lanes. EXPECT: 0.</li></ul>
+<h2 id="book">Book a call</h2><p>I work as a fractional Chief AI Officer for businesses that run growth marketing, AI and AI compliance on systems like this one. If you want it working against your own numbers, tell me what you need proven first. We start there.</p><div class="cta"><a class="btn" href="https://theinnovativenative.com/#book">Book a call</a><a class="btn alt" href="https://theinnovativenative.com">theinnovativenative.com</a></div>
+</div></main>
+<footer class="site"><div class="wrap">Operator OS is MIT licensed. Built by Mike Soto, fractional Chief AI Officer, The Innovative Native. <a href="https://theinnovativenative.com">theinnovativenative.com</a> &middot; <a href="https://theinnovativenative.com/#book">Book a call</a> &middot; <a href="https://github.com/ndnstyl/GTM-growth">Source</a></div></footer>
+<script>(function(){var b=document.getElementById("theme"),r=document.documentElement;function cur(){return r.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}function lab(){var d=cur()==="dark";b.textContent=d?"Light":"Dark";b.setAttribute("aria-label",d?"Switch to light theme":"Switch to dark theme")}lab();b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("oos-theme",n)}catch(e){}lab()});
+var m=document.getElementById("menu"),nv=document.getElementById("mainnav");function setMenu(o){nv.classList.toggle("open",o);m.setAttribute("aria-expanded",o?"true":"false")}m.addEventListener("click",function(){setMenu(!nv.classList.contains("open"))});document.addEventListener("pointerdown",function(e){if(nv.classList.contains("open")&&!nv.contains(e.target)&&!m.contains(e.target))setMenu(false)});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&nv.classList.contains("open")){setMenu(false);m.focus()}});
+document.querySelectorAll("button.copy").forEach(function(c){c.addEventListener("click",function(){var t=document.getElementById(c.getAttribute("data-target")).textContent,s=document.getElementById("copystatus");function ok(){c.textContent="Copied";s.textContent="Copied to clipboard";setTimeout(function(){c.textContent="Copy";s.textContent=""},2000)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){s.textContent="Copy failed, select the command and copy it by hand"})}else{s.textContent="Copy is not available here, select the command and copy it by hand"}})})})();</script>
+<div class="sr" id="copystatus" role="status" aria-live="polite"></div>
+</body>
+</html>
