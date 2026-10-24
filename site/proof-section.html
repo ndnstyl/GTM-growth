@@ -1,0 +1,43 @@
+<section id="proof-systems" class="section proof-systems gtm"><style>
+#proof-systems.gtm{--g-card:#1a1a2e;--g-line:rgba(0,255,255,.15);--g-cyan:#00e5ff;--g-mag:#ff3df5;--g-text:#f4f5fb;--g-muted:#a3a7c7}
+#proof-systems.gtm .gtm-head{max-width:980px;margin-bottom:36px}
+#proof-systems.gtm .gtm-chip{display:inline-flex;align-items:center;gap:10px;padding:10px 24px;border:1px solid var(--g-line);border-radius:999px;color:var(--g-cyan);font-size:18px;letter-spacing:.04em;margin-bottom:24px}
+#proof-systems.gtm h2{color:var(--g-text);font-size:clamp(32px,5vw,64px);line-height:1.08;font-weight:700;margin:0 0 20px}
+#proof-systems.gtm h2 em{font-style:normal;color:var(--g-cyan)}
+#proof-systems.gtm .gtm-lede{color:var(--g-text);opacity:.9;font-size:18px;line-height:1.6;margin:0}
+#proof-systems.gtm .gtm-stats{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 8px}
+#proof-systems.gtm .gtm-stat{border:1px solid var(--g-line);border-radius:12px;padding:12px 18px;background:var(--g-card);min-width:120px}
+#proof-systems.gtm .gtm-stat b{display:block;color:var(--g-text);font-size:28px;line-height:1.1}
+#proof-systems.gtm .gtm-stat span{color:var(--g-muted);font-size:14px}
+#proof-systems.gtm .gtm-tabs input{position:absolute;opacity:0;pointer-events:none}
+#proof-systems.gtm .gtm-tablist{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 16px}
+#proof-systems.gtm .gtm-tablist label{cursor:pointer;padding:9px 18px;border-radius:999px;border:1px solid var(--g-line);color:var(--g-muted);font-size:15px;font-weight:600;transition:all .2s ease;user-select:none}
+#proof-systems.gtm .gtm-tablist label:hover{color:var(--g-text);border-color:rgba(0,229,255,.45)}
+#proof-systems.gtm .gtm-panel{display:none}
+#proof-systems.gtm .gtm-panel img{display:block;width:100%;height:auto;border-radius:18px}
+#proof-systems.gtm .gtm-panel figcaption{color:var(--g-muted);font-size:15px;line-height:1.5;margin-top:12px}
+#proof-systems.gtm figure{margin:0;line-height:normal}
+#g0:checked~.gtm-tablist label[for=g0],#g1:checked~.gtm-tablist label[for=g1],#g2:checked~.gtm-tablist label[for=g2],#g3:checked~.gtm-tablist label[for=g3],#g4:checked~.gtm-tablist label[for=g4]{background:var(--g-cyan);border-color:var(--g-cyan);color:#06121a}
+#g0:checked~.gtm-panels .p0,#g1:checked~.gtm-panels .p1,#g2:checked~.gtm-panels .p2,#g3:checked~.gtm-panels .p3,#g4:checked~.gtm-panels .p4{display:block}
+#g0:focus-visible~.gtm-tablist label[for=g0],#g1:focus-visible~.gtm-tablist label[for=g1],#g2:focus-visible~.gtm-tablist label[for=g2],#g3:focus-visible~.gtm-tablist label[for=g3],#g4:focus-visible~.gtm-tablist label[for=g4]{outline:2px solid var(--g-cyan);outline-offset:3px}
+#proof-systems.gtm .gtm-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+#proof-systems.gtm .gtm-card{background:var(--g-card);border:1px solid var(--g-line);border-radius:12px;padding:32px;display:flex;flex-direction:column;transition:transform .3s ease,border-color .3s ease}
+#proof-systems.gtm .gtm-card:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.4)}
+#proof-systems.gtm .gtm-card--cta{border-color:rgba(255,0,255,.2);background:linear-gradient(180deg,#1a1a2e,rgba(255,0,255,.05))}
+#proof-systems.gtm .gtm-card .k{color:var(--g-text);font-size:15px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+#proof-systems.gtm .gtm-card .k i{color:var(--g-cyan)}
+#proof-systems.gtm .gtm-card h3{color:var(--g-text);font-size:clamp(28px,2.6vw,40px);line-height:1.12;margin:0 0 14px}
+#proof-systems.gtm .gtm-card p{color:var(--g-text);opacity:.88;font-size:16px;line-height:1.65;margin:0 0 14px}
+#proof-systems.gtm .gtm-card ul{list-style:none;padding:0;margin:0 0 18px}
+#proof-systems.gtm .gtm-card li{color:var(--g-muted);font-size:15px;line-height:1.5;padding:4px 0 4px 22px;position:relative}
+#proof-systems.gtm .gtm-card li:before{content:"";position:absolute;left:2px;top:12px;width:8px;height:8px;border-radius:2px;background:var(--g-cyan)}
+#proof-systems.gtm .gtm-card .tag{color:var(--g-cyan);font-size:15px;margin-top:auto;margin-bottom:6px}
+#proof-systems.gtm .gtm-card a.go{color:var(--g-text);font-weight:600;font-size:17px;text-decoration:none}
+#proof-systems.gtm .gtm-card a.go:hover{color:var(--g-cyan)}
+#proof-systems.gtm .gtm-card a.btn{margin-top:auto;align-self:flex-start}
+#proof-systems.gtm .gtm-repo{margin-top:16px;color:var(--g-muted);font-size:15px;line-height:1.5}
+#proof-systems.gtm .gtm-repo a{color:var(--g-cyan);text-decoration:none}
+@media (max-width:1199px){#proof-systems.gtm .gtm-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){#proof-systems.gtm .gtm-cards{grid-template-columns:1fr}#proof-systems.gtm .gtm-card{padding:24px}#proof-systems.gtm .gtm-lede{font-size:16px}}
+@media (prefers-reduced-motion:reduce){#proof-systems.gtm .gtm-card{transition:none}}
+</style><div class="container"><div class="gtm-head"><span class="gtm-chip">PROOF <i class="fa-solid fa-arrow-right"></i></span><h2>Growth Marketing + AI, <em>built and running</em></h2><p class="gtm-lede">These aren&#x27;t concepts. This is the go-to-market stack I&#x27;ve built over the last few months: AI seats, playbooks, scheduled loops and always-on systems working ten stages of growth, from the first touch to the final report. Every item below is in production today.</p><div class="gtm-stats"><div class="gtm-stat"><b>__TOTAL__</b><span>live systems</span></div><div class="gtm-stat"><b>__AGENT__</b><span>AI agents</span></div><div class="gtm-stat"><b>__SKILL__</b><span>skills</span></div><div class="gtm-stat"><b>__LOOP__</b><span>loops</span></div><div class="gtm-stat"><b>__AUTOMATION__</b><span>automations</span></div></div></div><div class="gtm-tabs"><input type="radio" name="gtm-tab" id="g0" checked><input type="radio" name="gtm-tab" id="g1"><input type="radio" name="gtm-tab" id="g2"><input type="radio" name="gtm-tab" id="g3"><input type="radio" name="gtm-tab" id="g4"><div class="gtm-tablist" role="presentation"><label for="g0">The whole stack</label><label for="g1">Agents</label><label for="g2">Skills</label><label for="g3">Loops</label><label for="g4">Automations</label></div><div class="gtm-panels">__PANELS__</div></div><p class="gtm-repo">The full map, folder by folder, is open on GitHub: <a href="https://github.com/ndnstyl/GTM-growth" target="_blank" rel="noopener">github.com/ndnstyl/GTM-growth</a></p><div class="gtm-cards"><div class="gtm-card"><span class="k"><i class="fa-solid fa-shield-halved"></i>Lead Capture &amp; Consent</span><h3>The Outside Consent Register</h3><p>Proof of consent that survives a demand letter, a class action and an AI audit. Every consent and opt-out is sealed with its exact wording, replayed against every vendor nightly, and ready the moment someone says &quot;prove it.&quot;</p><ul><li>Append-only, chained and sealed from outside</li><li>No row, no ring: every dialer, texter and AI voice agent checks it first</li><li>Free field guide with the schema and a 30-day build</li></ul><span class="tag">Free field guide</span><a class="go" href="/guides/outside-consent-register">Get the guide →</a></div><div class="gtm-card"><span class="k"><i class="fa-solid fa-gauge-high"></i>Reporting Cockpit</span><h3>ECHO OS</h3><p>The AI cockpit I built to run the business from one screen. It shows what needs you, answers from your own records with the source attached, and says plainly when it doesn&#x27;t know.</p><ul><li>One screen instead of fourteen tabs</li><li>Pivot, filter and drill into your own numbers</li><li>A meter on every AI call, and nothing fails quietly</li></ul><span class="tag">Early access</span><a class="go" href="/echo-os">Join the waitlist →</a></div><div class="gtm-card gtm-card--cta"><span class="k"><i class="fa-solid fa-rocket"></i>Your Growth Stack</span><h3>Want this running in your business?</h3><p>The pattern is the same in any company that buys leads and sells high-ticket: prove the spend, answer every lead fast, score every call, and put the numbers on one screen. We map your ten folders and build the ones that leak the most money first.</p><a class="btn btn--secondary" href="https://calendly.com/theinnovativenative-info/ai-discovery-call" target="_blank" rel="noopener">Book a Discovery Call</a></div></div></div></section>
