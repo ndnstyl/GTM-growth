@@ -4,7 +4,7 @@ Every dollar of spend proven before it reaches the CRM.
 
 ## Agents
 
-- **Cost accuracy crew (four seats)**: Research, report, keying and senior review tiers prove every platform's spend before it reaches the CRM
+- **Cost accuracy crew**: Research, report and senior review seats prove every platform's spend before anyone reports it
 - **Marketing efficiency pacing analyst**: Tracks spend as a share of revenue by channel and office and warns before a target is missed
 
 ## Loops
