@@ -1,0 +1,29 @@
+{
+  "name": "operator-os",
+  "version": "0.1.0",
+  "description": "Operator OS is a Claude Code plugin: AI agents, skills and enforcement hooks for operators running growth marketing and GTM, with a vault that remembers.",
+  "author": {
+    "name": "Mike Soto, The Innovative Native",
+    "url": "https://theinnovativenative.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "harness",
+    "hooks",
+    "agents",
+    "skills",
+    "vault",
+    "memory",
+    "loud-failure",
+    "claude-code",
+    "claude-code-plugin",
+    "gtm",
+    "growth-marketing",
+    "marketing-automation",
+    "operators",
+    "compliance",
+    "review-loop"
+  ],
+  "homepage": "https://theinnovativenative.com/operator-os/",
+  "repository": "https://github.com/ndnstyl/GTM-growth"
+}

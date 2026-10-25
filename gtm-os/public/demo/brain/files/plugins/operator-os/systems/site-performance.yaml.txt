@@ -1,0 +1,38 @@
+domain: site-performance
+title: Site Performance
+description: >
+  Speeding up every site we ship without sacrificing UX or visual quality. Core Web Vitals
+  (LCP, INP, CLS), Lighthouse audits, image compression and modern formats, bundle analysis,
+  large-file/waterfall detection, minification, compression and caching. Measurement-first:
+  every claim is a number, never a vibe. Runs as a gate on EACH SHIP. Static-export aware
+  (next/image is a no-op under output:export, so images must be optimized at build).
+autonomy: full_ship
+gates: [prod_deploy, outward_send]
+
+brand_rules: []  # add your own rule names or short rule text
+
+skills:
+  primary: [site-speed]
+  support: []
+
+agents: [orchestrator, implementer, reviewer]
+
+n8n_workflows: []   # perf is build-time, not n8n-driven
+
+memory_anchors: []  # add your own rule names or short rule text
+
+verification:
+  - "Core Web Vitals within budget: LCP < 2.5s (alert at 2.0), INP <= 200ms, CLS <= 0.1"
+  - "no single image asset over 250KB unserved as AVIF/WebP; next/image static-export trap checked"
+  - "JS+CSS total within the route budget; no ship regresses the Lighthouse baseline"
+  - "auto-safe fixes applied (re-encode images keeping originals, add img dimensions, minify verify, cache headers); UX/visual-risk fixes (lazy-load decisions, dynamic-importing animation/3D, srcset markup, INP refactors) surfaced for review, never auto-applied"
+  - "the immersion/brand layer is preserved; speed never sacrifices the look"
+  - "no em dashes incl &mdash; in any report"
+
+entrypoints:
+  - "speed up the site / make X faster"
+  - "audit this page for Core Web Vitals / run a Lighthouse audit"
+  - "find the large files / compress the images"
+  - "analyze the bundle size"
+  - "why is this page slow"
+  - "run the site-speed gate before we ship"

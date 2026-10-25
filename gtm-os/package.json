@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint",
-    "prebuild": "mkdir -p public/duckdb && cp node_modules/@duckdb/duckdb-wasm/dist/duckdb-eh.wasm node_modules/@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js public/duckdb/"
+    "prebuild": "node scripts/build-brain.mjs && node scripts/build-studio.mjs && mkdir -p public/duckdb && cp node_modules/@duckdb/duckdb-wasm/dist/duckdb-eh.wasm node_modules/@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js public/duckdb/"
   },
   "dependencies": {
     "@duckdb/duckdb-wasm": "^1.33.1-dev57.0",

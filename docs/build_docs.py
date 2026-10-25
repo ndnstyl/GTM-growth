@@ -265,8 +265,8 @@ DOCTRINE = [
 ]
 
 SHOTS = (
-    "<figure>" + img("screens/gtm-paid-media.png", "GTM OS Paid Media report: spend, clicks, a 28 day trend and campaigns by spend, for a fictional company") + "<figcaption>Paid Media: spend, clicks, a 28 day trend and campaigns by spend.</figcaption></figure>"
-    "<figure>" + img("screens/gtm-content-studio.png", "GTM OS Content Studio: ideas moving from scripted to ready") + "<figcaption>Content Studio: ideas moving from scripted to ready.</figcaption></figure>"
+    "<figure>" + img("screens/gtm-brain-skill.png", "A skill opened in the GTM OS Second Brain: its card with connections and the skill file in the side panel") + "<figcaption>Second Brain: every agent, skill and hook as one map; open any file and read it.</figcaption></figure>"
+    "<figure>" + img("screens/gtm-content-studio.png", "GTM OS Content Studio: real reels, carousels and stat cards, with the scripts and ideas behind them") + "<figcaption>Content Studio: real reels, carousels and stat cards, with their scripts.</figcaption></figure>"
 )
 
 START_STEPS = [

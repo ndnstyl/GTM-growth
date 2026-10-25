@@ -4,19 +4,19 @@
  "feeds": {
   "spine_funnel_monthly": {
    "rows": 150,
-   "sha256": "f181804a0051afcfd9a2a67cb4c85b0f3ab240ce8e3af15068e16732a4e8a5bb"
+   "sha256": "23f88c2987e528824af0c4918e70cb5c9113ef94cdb671938d819cc5cd51a0dc"
   },
   "spine_spend_monthly": {
    "rows": 225,
-   "sha256": "a318b8a8bcf537fe52f6004282bd85016a4002ddf2873fb29aacb6e4759f852e"
+   "sha256": "4bbef8947158114d3deb4fc6760b7f8f7cd0ffff743bbba9762e118cece4e42a"
   },
   "spine_funnel_rows_daily": {
    "rows": 4524,
-   "sha256": "b0e5a6caf3ed955fdaea8c5f8a17b82368b8b3836a8f3999baa0fbde91e4e716"
+   "sha256": "2c297ca82ec5a7ea7146598af9a6918d826281fe7d068c3ec7e2d1d3ccdca4f6"
   },
   "spine_spend_rows": {
    "rows": 1042,
-   "sha256": "48e6a6d8e12a65596429d942e8fa4ba086a5cd314dacabc1ae51fe83f9b5e590"
+   "sha256": "d19bc00bccde1e0ebdef0d9ee6143e793a1e782462e74d1157a9b638098a3be8"
   }
  }
 }

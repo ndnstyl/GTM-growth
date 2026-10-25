@@ -5,3 +5,4 @@ public/duckdb/
 *.tsbuildinfo
 __pycache__/
 *.pyc
+build.local.json

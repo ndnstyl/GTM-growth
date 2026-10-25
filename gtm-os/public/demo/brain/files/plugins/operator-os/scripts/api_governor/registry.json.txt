@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "_doc": "API governor registry. SHIPS EMPTY on purpose: add one row per vendor API you call, then route every call through governor.acquire(). Row fields: mode ('observe' counts and never refuses; 'enforce' refuses), limit_window ('daily' | 'hourly' | 'monthly'), ceiling (the budget per window you ratified, below the vendor's documented limit), documented_limit, source_url and checked (where the limit is documented and the date you read it; required to enforce), reset_tz (an IANA zone if the vendor resets in local time), min_spacing_s (minimum seconds between calls), max_per_run (cap for one run id), notes. Run a vendor in observe for a few days, read the incidents, then set the ceiling and flip to enforce. See README.md.",
+  "default_mode": "enforce",
+  "vendors": {}
+}

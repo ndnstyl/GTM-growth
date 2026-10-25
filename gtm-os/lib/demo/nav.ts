@@ -11,6 +11,13 @@ export const AREAS: Area[] = [
     ],
   },
   {
+    id: "brain", label: "Second Brain", short: "Brain", stage: "Operator OS",
+    blurb: "The skills, agents, hooks and memory behind the cockpit, as a map you can orbit.",
+    items: [
+      { label: "Second Brain", href: "/brain/", desc: "Orbit the rings, open a skill, search every file" },
+    ],
+  },
+  {
     id: "content", label: "Content Studio", short: "Content", stage: "Content Engine",
     blurb: "Ideas to scripts to finished cuts, with the crew that builds them.",
     items: [

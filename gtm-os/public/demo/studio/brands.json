@@ -1,12 +1,30 @@
 {
  "brands": [
   {
-   "id": "lh-main",
-   "label": "Larkspur Home"
+   "id": "tin",
+   "label": "The Innovative Native"
+  }
+ ],
+ "lanes": [
+  {
+   "id": "speed",
+   "label": "Host 1: speed to lead"
   },
   {
-   "id": "lh-pro",
-   "label": "Larkspur Pro"
+   "id": "economics",
+   "label": "Host 2: unit economics"
+  },
+  {
+   "id": "compliance",
+   "label": "Host 3: AI operations and compliance"
+  },
+  {
+   "id": "revops",
+   "label": "Host 4: RevOps and data"
+  },
+  {
+   "id": "mike",
+   "label": "The operator (founder)"
   }
  ]
 }

@@ -239,8 +239,7 @@ export function PaidMedia({ filters, ready }: { filters: FilterState; ready: boo
 function MetaScopeNote() {
   return (
     <div className="rounded-md border border-[var(--warn)] bg-[var(--warn)]/10 px-3 py-2 text-[11.5px]">
-      <b>Meta figures come from the platform export.</b> A day with no delivery publishes an honest
-      <code className="mx-1">unavailable_feed</code> marker rather than a $0 row.
+      <b>Meta figures come from the platform export.</b> A day with no delivery is marked as missing rather than shown as a $0 row.
     </div>
   );
 }

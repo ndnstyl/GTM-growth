@@ -119,6 +119,8 @@ def clean_dir_files(p: Path, suffixes: tuple[str, ...]) -> int:
     if not p.exists():
         return 0
     for f in sorted(p.rglob("*")):
+        if {"brain", "studio"} & set(f.relative_to(p).parts):
+            continue  # the Second Brain and the Content Studio have their own builds; the generator never writes or removes them
         if f.is_file() and f.suffix in suffixes:
             f.unlink()
             n += 1

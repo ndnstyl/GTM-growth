@@ -1,0 +1,16 @@
+{
+  "_comment": "Zero-tolerance patterns for the unslop Stop gate. Copy to .operator/unslop-banlist.json in your project to override. Each pattern is a Python regex searched case-insensitively against your own prose (code, quotes and paths are stripped first).",
+  "patterns": {
+    "em_dash": {"regex": "[\u2014\u2013]", "say_instead": "use a period, comma, colon or parentheses"},
+    "delve": {"regex": "\\bdelv(?:e|es|ed|ing)\\b", "say_instead": "look at, dig into"},
+    "tapestry": {"regex": "\\b(?:rich )?tapestry\\b", "say_instead": "say what the thing is"},
+    "worth_noting": {"regex": "\\bit(?:'s| is) (?:worth|important to) not(?:e|ing) that\\b", "say_instead": "state the point directly"},
+    "fast_paced": {"regex": "\\bin today's (?:fast-paced|digital|ever-changing)\\b", "say_instead": "cut the scene-setting"},
+    "hope_helps": {"regex": "\\bI hope this (?:helps|finds you well)\\b", "say_instead": "end when the content ends"},
+    "not_just_but": {"regex": "\\bnot just [^.\\n]{1,60}, but\\b", "say_instead": "say the one thing that is true"},
+    "game_changer": {"regex": "\\bgame[- ]chang(?:er|ing)\\b", "say_instead": "say what changed and by how much"}
+  },
+  "_enforcement": {
+    "zero_tolerance_remove": ["em_dash", "delve", "tapestry", "worth_noting", "fast_paced", "hope_helps", "not_just_but", "game_changer"]
+  }
+}

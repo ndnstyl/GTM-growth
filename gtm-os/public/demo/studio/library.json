@@ -1,500 +1,1115 @@
 {
  "items": [
   {
-   "id": "lib-001",
-   "brand": "lh-main",
-   "title": "Why a free estimate is worth the hour",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 45,
-   "market": "All markets",
-   "created": "2026-10-23",
-   "channels": [
-    "social",
-    "youtube"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-001.svg"
-  },
-  {
-   "id": "lib-002",
-   "brand": "lh-main",
-   "title": "A roof you stop thinking about",
+   "id": "reel-speed-to-lead-sample",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Your AI has skills. Can you see them?",
    "kind": "video",
    "stage": "review",
-   "duration_s": 78,
-   "market": "Pinecrest",
-   "created": "2026-10-21",
+   "duration_s": 23.8,
+   "market": "Reel, three cuts",
+   "created": "2026-10-25",
    "channels": [
-    "social"
+    "instagram reels",
+    "youtube shorts",
+    "linkedin"
    ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-002.svg"
+   "note": "Rendered cut. It waits at the quality gate and for approval before anything posts.",
+   "thumb": "/demo/studio/thumbs/speed-to-lead-sample-tile-75be2013.jpg",
+   "media": [
+    {
+     "id": "9x16",
+     "label": "Reels 9:16",
+     "w": 540,
+     "h": 960,
+     "mp4": "/demo/studio/media/speed-to-lead-sample-9x16-3c82c8de.mp4",
+     "webm": "/demo/studio/media/speed-to-lead-sample-9x16-3c82c8de.webm",
+     "poster": "/demo/studio/thumbs/speed-to-lead-sample-9x16-3c82c8de.jpg",
+     "bytes": 2260926
+    },
+    {
+     "id": "1x1",
+     "label": "Square 1:1",
+     "w": 720,
+     "h": 720,
+     "mp4": "/demo/studio/media/speed-to-lead-sample-1x1-c201bbe0.mp4",
+     "webm": "/demo/studio/media/speed-to-lead-sample-1x1-c201bbe0.webm",
+     "poster": "/demo/studio/thumbs/speed-to-lead-sample-1x1-c201bbe0.jpg",
+     "bytes": 2153397
+    },
+    {
+     "id": "16x9",
+     "label": "Wide 16:9",
+     "w": 960,
+     "h": 540,
+     "mp4": "/demo/studio/media/speed-to-lead-sample-16x9-5dd6e105.mp4",
+     "webm": "/demo/studio/media/speed-to-lead-sample-16x9-5dd6e105.webm",
+     "poster": "/demo/studio/thumbs/speed-to-lead-sample-16x9-5dd6e105.jpg",
+     "bytes": 1785373
+    }
+   ],
+   "script": "second-brain-speed-to-lead-sample",
+   "source": {
+    "url": null,
+    "label": "Harvard Business Review, March 2011, as reported by SmartCompany, 4 Jul 2011"
+   },
+   "link": null,
+   "renderedAt": "2026-10-25T12:40:54.146Z"
   },
   {
-   "id": "lib-003",
-   "brand": "lh-main",
-   "title": "Three questions before you sign",
+   "id": "car-stl-003",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Everyone says five minutes. Nobody shows the study. Here is what it actually says.",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "Speed to lead",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Rendered from a content atom. It has not been through the source check yet.",
+   "thumb": "/demo/studio/thumbs/stl-003-s1-5798e97c.jpg",
+   "slides": [
+    "/demo/studio/thumbs/stl-003-s1-5798e97c.jpg",
+    "/demo/studio/thumbs/stl-003-s2-acbf29be.jpg",
+    "/demo/studio/thumbs/stl-003-s3-987808e2.jpg",
+    "/demo/studio/thumbs/stl-003-s4-f942ceaa.jpg"
+   ],
+   "atom": "stl-003",
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/lead-response-time-statistics",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "car-ue-006",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "Where does three to one come from? It is not a law.",
    "kind": "carousel",
    "stage": "approved",
    "duration_s": null,
-   "market": "Stonebridge",
-   "created": "2026-10-19",
+   "market": "Unit economics",
+   "created": "2026-10-25",
    "channels": [
-    "youtube"
+    "instagram",
+    "linkedin"
    ],
-   "note": "Approved for paid and organic.",
-   "thumb": "/demo/studio/thumbs/lib-003.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/ue-006-s1-e3f39197.jpg",
+   "slides": [
+    "/demo/studio/thumbs/ue-006-s1-e3f39197.jpg",
+    "/demo/studio/thumbs/ue-006-s2-321be264.jpg",
+    "/demo/studio/thumbs/ue-006-s3-a88aa7fa.jpg",
+    "/demo/studio/thumbs/ue-006-s4-6d01fb45.jpg"
+   ],
+   "atom": "ue-006",
+   "source": {
+    "url": "https://www.shopify.com/blog/customer-lifetime-value",
+    "label": "shopify.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/blog/ltv-to-cac-ratio-where-3-to-1-comes-from",
+    "label": "Read the post"
+   }
   },
   {
-   "id": "lib-004",
-   "brand": "lh-main",
-   "title": "The crew lead explains day one",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 78,
-   "market": "All markets",
-   "created": "2026-10-17",
-   "channels": [
-    "social",
-    "email"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-004.svg"
-  },
-  {
-   "id": "lib-005",
-   "brand": "lh-pro",
-   "title": "What a monthly payment really looks like",
-   "kind": "video",
-   "stage": "review",
-   "duration_s": 30,
-   "market": "Lakemont",
-   "created": "2026-10-15",
-   "channels": [
-    "social",
-    "youtube"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-005.svg"
-  },
-  {
-   "id": "lib-006",
-   "brand": "lh-main",
-   "title": "Windows you can hear the difference in",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 78,
-   "market": "Sunvale",
-   "created": "2026-10-13",
-   "channels": [
-    "social"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-006.svg"
-  },
-  {
-   "id": "lib-007",
-   "brand": "lh-main",
-   "title": "Storm season checklist",
+   "id": "car-rev-010",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "Half a rep's time is non-selling. Who said that?",
    "kind": "carousel",
-   "stage": "review",
+   "stage": "approved",
    "duration_s": null,
-   "market": "All markets",
-   "created": "2026-10-11",
+   "market": "RevOps",
+   "created": "2026-10-25",
    "channels": [
-    "youtube"
+    "instagram",
+    "linkedin"
    ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-007.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/rev-010-s1-76802db1.jpg",
+   "slides": [
+    "/demo/studio/thumbs/rev-010-s1-76802db1.jpg",
+    "/demo/studio/thumbs/rev-010-s2-001a5ae6.jpg",
+    "/demo/studio/thumbs/rev-010-s3-567e33bd.jpg",
+    "/demo/studio/thumbs/rev-010-s4-601d4937.jpg"
+   ],
+   "atom": "rev-010",
+   "source": {
+    "url": "https://www.salesforce.com/news/stories/sales-research-2023/",
+    "label": "salesforce.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/revops",
+    "label": "RevOps guide"
+   }
   },
   {
-   "id": "lib-008",
-   "brand": "lh-main",
-   "title": "Neighbors who picked us",
+   "id": "car-cd-008",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "There is no perfect single source of truth.",
+   "kind": "carousel",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Connected data",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/cd-008-s1-da7e566d.jpg",
+   "slides": [
+    "/demo/studio/thumbs/cd-008-s1-da7e566d.jpg",
+    "/demo/studio/thumbs/cd-008-s2-b83fd378.jpg",
+    "/demo/studio/thumbs/cd-008-s3-7362da61.jpg",
+    "/demo/studio/thumbs/cd-008-s4-d4dab570.jpg"
+   ],
+   "atom": "cd-008",
+   "source": {
+    "url": "https://en.wikipedia.org/wiki/Single_source_of_truth",
+    "label": "en.wikipedia.org"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/blog/warehouse-first-single-source-of-truth",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "car-comp-011",
+   "brand": "tin",
+   "host": "compliance",
+   "pillar": "ai-compliance",
+   "title": "That consent rule? Vacated.",
+   "kind": "carousel",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "AI and compliance",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/comp-011-s1-63be5fb0.jpg",
+   "slides": [
+    "/demo/studio/thumbs/comp-011-s1-63be5fb0.jpg",
+    "/demo/studio/thumbs/comp-011-s2-e330f4b7.jpg",
+    "/demo/studio/thumbs/comp-011-s3-070c5107.jpg",
+    "/demo/studio/thumbs/comp-011-s4-36d38f7f.jpg"
+   ],
+   "atom": "comp-011",
+   "source": {
+    "url": "https://media.ca11.uscourts.gov/opinions/pub/files/202410277.pdf",
+    "label": "media.ca11.uscourts.gov"
+   },
+   "link": {
+    "url": null,
+    "label": "Post not released yet"
+   }
+  },
+  {
+   "id": "car-gtm-003",
+   "brand": "tin",
+   "host": "mike",
+   "pillar": "gtm-systems",
+   "title": "The whole go-to-market stack in ten folders.",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "GTM systems",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Rendered from a content atom. It has not been through the source check yet.",
+   "thumb": "/demo/studio/thumbs/gtm-003-s1-4594d006.jpg",
+   "slides": [
+    "/demo/studio/thumbs/gtm-003-s1-4594d006.jpg",
+    "/demo/studio/thumbs/gtm-003-s2-3ec0f84b.jpg",
+    "/demo/studio/thumbs/gtm-003-s3-5d922344.jpg",
+    "/demo/studio/thumbs/gtm-003-s4-489b418f.jpg"
+   ],
+   "atom": "gtm-003",
+   "source": null,
+   "link": {
+    "url": null,
+    "label": "Post not released yet"
+   }
+  },
+  {
+   "id": "car-stl-007",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Reminders will not save a badly set appointment.",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "Speed to lead",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Rendered from a content atom. It has not been through the source check yet.",
+   "thumb": "/demo/studio/thumbs/stl-007-s1-9bb8a069.jpg",
+   "slides": [
+    "/demo/studio/thumbs/stl-007-s1-9bb8a069.jpg",
+    "/demo/studio/thumbs/stl-007-s2-2e1c515b.jpg",
+    "/demo/studio/thumbs/stl-007-s3-846f29c2.jpg",
+    "/demo/studio/thumbs/stl-007-s4-a42fdb90.jpg"
+   ],
+   "atom": "stl-007",
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/speed-to-lead",
+    "label": "Speed to lead guide"
+   }
+  },
+  {
+   "id": "car-ue-007",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "Five to twenty-five times. Nobody can show the study.",
+   "kind": "carousel",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Unit economics",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/ue-007-s1-6a4e97e0.jpg",
+   "slides": [
+    "/demo/studio/thumbs/ue-007-s1-6a4e97e0.jpg",
+    "/demo/studio/thumbs/ue-007-s2-f1289be8.jpg",
+    "/demo/studio/thumbs/ue-007-s3-4a4b3a04.jpg",
+    "/demo/studio/thumbs/ue-007-s4-30600719.jpg"
+   ],
+   "atom": "ue-007",
+   "source": {
+    "url": "https://hbr.org/2014/10/the-value-of-keeping-the-right-customers",
+    "label": "hbr.org"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/unit-economics",
+    "label": "Unit economics guide"
+   }
+  },
+  {
+   "id": "car-rev-013",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "Data was the lowest alignment score in the survey.",
+   "kind": "carousel",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "RevOps",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/rev-013-s1-24709e95.jpg",
+   "slides": [
+    "/demo/studio/thumbs/rev-013-s1-24709e95.jpg",
+    "/demo/studio/thumbs/rev-013-s2-676b4fcc.jpg",
+    "/demo/studio/thumbs/rev-013-s3-73669a90.jpg",
+    "/demo/studio/thumbs/rev-013-s4-b0cbe65d.jpg"
+   ],
+   "atom": "rev-013",
+   "source": {
+    "url": "https://www.leandata.com/wp-content/uploads/2021/12/The-State-of-Revenue-Operations-2019-eBook.pdf",
+    "label": "leandata.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/revops",
+    "label": "RevOps guide"
+   }
+  },
+  {
+   "id": "car-cd-009",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "Trillions of dollars. Whose estimate?",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "Connected data",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Rendered from a content atom. It has not been through the source check yet.",
+   "thumb": "/demo/studio/thumbs/cd-009-s1-8524f6de.jpg",
+   "slides": [
+    "/demo/studio/thumbs/cd-009-s1-8524f6de.jpg",
+    "/demo/studio/thumbs/cd-009-s2-9e36b6cb.jpg",
+    "/demo/studio/thumbs/cd-009-s3-d61fd004.jpg",
+    "/demo/studio/thumbs/cd-009-s4-aafe42be.jpg"
+   ],
+   "atom": "cd-009",
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/what-data-silos-cost-a-growth-team",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "car-comp-012",
+   "brand": "tin",
+   "host": "compliance",
+   "pillar": "ai-compliance",
+   "title": "AI voices count as robocalls. The FCC said so.",
+   "kind": "carousel",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "AI and compliance",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step.",
+   "thumb": "/demo/studio/thumbs/comp-012-s1-323eaf57.jpg",
+   "slides": [
+    "/demo/studio/thumbs/comp-012-s1-323eaf57.jpg",
+    "/demo/studio/thumbs/comp-012-s2-440a0a53.jpg",
+    "/demo/studio/thumbs/comp-012-s3-8df66492.jpg",
+    "/demo/studio/thumbs/comp-012-s4-60ff572d.jpg"
+   ],
+   "atom": "comp-012",
+   "source": {
+    "url": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf",
+    "label": "docs.fcc.gov"
+   },
+   "link": {
+    "url": null,
+    "label": "Post not released yet"
+   }
+  },
+  {
+   "id": "car-gtm-025",
+   "brand": "tin",
+   "host": "mike",
+   "pillar": "gtm-systems",
+   "title": "Seven AI seats edit your reel.",
+   "kind": "carousel",
+   "stage": "draft",
+   "duration_s": null,
+   "market": "GTM systems",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin"
+   ],
+   "note": "Rendered from a content atom. It has not been through the source check yet.",
+   "thumb": "/demo/studio/thumbs/gtm-025-s1-efd264a1.jpg",
+   "slides": [
+    "/demo/studio/thumbs/gtm-025-s1-efd264a1.jpg",
+    "/demo/studio/thumbs/gtm-025-s2-979b80c2.jpg",
+    "/demo/studio/thumbs/gtm-025-s3-f7af121b.jpg",
+    "/demo/studio/thumbs/gtm-025-s4-80ba784f.jpg"
+   ],
+   "atom": "gtm-025",
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/gtm-os/",
+    "label": "GTM OS live demo"
+   }
+  },
+  {
+   "id": "stat-stl-009",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Almost one company in four never answered the test lead.",
    "kind": "still",
    "stage": "approved",
    "duration_s": null,
-   "market": "Pinecrest",
-   "created": "2026-10-09",
+   "market": "Speed to lead",
+   "created": "2026-10-25",
    "channels": [
-    "social",
-    "email"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "Approved for paid and organic.",
-   "thumb": "/demo/studio/thumbs/lib-008.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. Reported in 2011 coverage of the Harvard Business Review audit: 37% replied within an hour, 24% took over a day. It is secondhand and old, so use it for direction only.",
+   "thumb": "/demo/studio/thumbs/stl-009-stat-2593446a.jpg",
+   "slides": [
+    "/demo/studio/thumbs/stl-009-stat-2593446a.jpg"
+   ],
+   "atom": "stl-009",
+   "source": {
+    "url": "https://www.smartcompany.com.au/marketing/20110704-are-you-letting-online-leads-go-cold/",
+    "label": "smartcompany.com.au"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/blog/lead-response-time-statistics",
+    "label": "Read the post"
+   }
   },
   {
-   "id": "lib-009",
-   "brand": "lh-main",
-   "title": "Gutters: the cheapest fix that saves the most",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 15,
-   "market": "Stonebridge",
-   "created": "2026-10-07",
-   "channels": [
-    "social",
-    "youtube"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-009.svg"
-  },
-  {
-   "id": "lib-010",
-   "brand": "lh-pro",
-   "title": "How we price a siding job",
-   "kind": "video",
-   "stage": "review",
-   "duration_s": 78,
-   "market": "All markets",
-   "created": "2026-10-05",
-   "channels": [
-    "social"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-010.svg"
-  },
-  {
-   "id": "lib-011",
-   "brand": "lh-main",
-   "title": "Same house, one week later",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 15,
-   "market": "Lakemont",
-   "created": "2026-10-03",
-   "channels": [
-    "youtube"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-011.svg"
-  },
-  {
-   "id": "lib-012",
-   "brand": "lh-main",
-   "title": "What the warranty actually covers",
-   "kind": "carousel",
-   "stage": "review",
-   "duration_s": null,
-   "market": "Sunvale",
-   "created": "2026-10-01",
-   "channels": [
-    "social",
-    "email"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-012.svg"
-  },
-  {
-   "id": "lib-013",
-   "brand": "lh-main",
-   "title": "A day in the life of an estimator",
+   "id": "stat-ue-014",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "How many months is acceptable payback? It depends who you sell to.",
    "kind": "still",
    "stage": "approved",
    "duration_s": null,
-   "market": "All markets",
-   "created": "2026-09-29",
+   "market": "Unit economics",
+   "created": "2026-10-25",
    "channels": [
-    "social",
-    "youtube"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "Approved for paid and organic.",
-   "thumb": "/demo/studio/thumbs/lib-013.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. Bessemer's targets from its own portfolio, which it says is not a random sample. Use them as a starting question, not a verdict.",
+   "thumb": "/demo/studio/thumbs/ue-014-stat-dfa334e1.jpg",
+   "slides": [
+    "/demo/studio/thumbs/ue-014-stat-dfa334e1.jpg"
+   ],
+   "atom": "ue-014",
+   "source": {
+    "url": "https://www.bvp.com/atlas/scaling-to-100-million",
+    "label": "bvp.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/unit-economics",
+    "label": "Unit economics guide"
+   }
   },
   {
-   "id": "lib-014",
-   "brand": "lh-main",
-   "title": "Pro program: the contractor's view",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 45,
-   "market": "Pinecrest",
-   "created": "2026-09-27",
-   "channels": [
-    "social"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-014.svg"
-  },
-  {
-   "id": "lib-015",
-   "brand": "lh-pro",
-   "title": "Curb appeal that buyers notice",
-   "kind": "still",
-   "stage": "review",
-   "duration_s": null,
-   "market": "Stonebridge",
-   "created": "2026-09-25",
-   "channels": [
-    "youtube"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-015.svg"
-  },
-  {
-   "id": "lib-016",
-   "brand": "lh-main",
-   "title": "Energy bills: where the heat leaves",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 24,
-   "market": "All markets",
-   "created": "2026-09-23",
-   "channels": [
-    "social",
-    "email"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-016.svg"
-  },
-  {
-   "id": "lib-017",
-   "brand": "lh-main",
-   "title": "Roof reveal, the 15-second version",
-   "kind": "video",
-   "stage": "review",
-   "duration_s": 45,
-   "market": "Lakemont",
-   "created": "2026-09-21",
-   "channels": [
-    "social",
-    "youtube"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-017.svg"
-  },
-  {
-   "id": "lib-018",
-   "brand": "lh-main",
-   "title": "Three questions before you sign: save this post",
+   "id": "stat-rev-014",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "Twenty-eight percent of the week selling.",
    "kind": "still",
    "stage": "approved",
    "duration_s": null,
-   "market": "Sunvale",
-   "created": "2026-09-19",
+   "market": "RevOps",
+   "created": "2026-10-25",
    "channels": [
-    "social"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "Approved for paid and organic.",
-   "thumb": "/demo/studio/thumbs/lib-018.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. 7,775 responses across 38 countries. Fieldwork was 2022, and later editions report different shares, so treat it as one dated reading.",
+   "thumb": "/demo/studio/thumbs/rev-014-stat-ee1efb49.jpg",
+   "slides": [
+    "/demo/studio/thumbs/rev-014-stat-ee1efb49.jpg"
+   ],
+   "atom": "rev-014",
+   "source": {
+    "url": "https://www.salesforce.com/news/stories/sales-research-2023/",
+    "label": "salesforce.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/revops",
+    "label": "RevOps guide"
+   }
   },
   {
-   "id": "lib-019",
-   "brand": "lh-main",
-   "title": "Day one on the roof, crew lead cut",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 45,
-   "market": "All markets",
-   "created": "2026-09-17",
-   "channels": [
-    "youtube"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-019.svg"
-  },
-  {
-   "id": "lib-020",
-   "brand": "lh-pro",
-   "title": "One financed roof, one monthly number",
-   "kind": "carousel",
-   "stage": "review",
-   "duration_s": null,
-   "market": "Pinecrest",
-   "created": "2026-09-15",
-   "channels": [
-    "social",
-    "email"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-020.svg"
-  },
-  {
-   "id": "lib-021",
-   "brand": "lh-main",
-   "title": "The window sound test, short cut",
-   "kind": "video",
-   "stage": "draft",
-   "duration_s": 30,
-   "market": "Stonebridge",
-   "created": "2026-09-13",
-   "channels": [
-    "social",
-    "youtube"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-021.svg"
-  },
-  {
-   "id": "lib-022",
-   "brand": "lh-main",
-   "title": "Storm checklist: five things from the ground",
+   "id": "stat-cd-014",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "Forty percent of the time checking data.",
    "kind": "still",
-   "stage": "review",
-   "duration_s": null,
-   "market": "All markets",
-   "created": "2026-09-11",
-   "channels": [
-    "social"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-022.svg"
-  },
-  {
-   "id": "lib-023",
-   "brand": "lh-main",
-   "title": "Two doors on one street, customer cut",
-   "kind": "video",
    "stage": "approved",
-   "duration_s": 78,
-   "market": "Lakemont",
-   "created": "2026-09-09",
-   "channels": [
-    "youtube"
-   ],
-   "note": "Approved for paid and organic.",
-   "thumb": "/demo/studio/thumbs/lib-023.svg"
-  },
-  {
-   "id": "lib-024",
-   "brand": "lh-main",
-   "title": "A gutter guard against the water bill",
-   "kind": "carousel",
-   "stage": "draft",
    "duration_s": null,
-   "market": "Sunvale",
-   "created": "2026-09-07",
+   "market": "Connected data",
+   "created": "2026-10-25",
    "channels": [
-    "social",
-    "email"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-024.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. Monte Carlo and Wakefield, 2022: about 61 known incidents a month at 13 hours each. It counts only known incidents.",
+   "thumb": "/demo/studio/thumbs/cd-014-stat-d8e29dff.jpg",
+   "slides": [
+    "/demo/studio/thumbs/cd-014-stat-d8e29dff.jpg"
+   ],
+   "atom": "cd-014",
+   "source": {
+    "url": "https://tdwi.org/articles/2022/08/09/data-engineers-and-bad-data-survey.aspx",
+    "label": "tdwi.org"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/connected-data",
+    "label": "Connected data guide"
+   }
   },
   {
-   "id": "lib-025",
-   "brand": "lh-pro",
-   "title": "Our siding price, line by line",
-   "kind": "carousel",
-   "stage": "review",
-   "duration_s": null,
-   "market": "All markets",
-   "created": "2026-09-05",
-   "channels": [
-    "social",
-    "youtube"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-025.svg"
-  },
-  {
-   "id": "lib-026",
-   "brand": "lh-main",
-   "title": "Seven days from teardown to finished roof",
+   "id": "stat-comp-013",
+   "brand": "tin",
+   "host": "compliance",
+   "pillar": "ai-compliance",
+   "title": "Almost one in three things pasted was sensitive.",
    "kind": "still",
-   "stage": "draft",
-   "duration_s": null,
-   "market": "Pinecrest",
-   "created": "2026-09-03",
-   "channels": [
-    "social"
-   ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-026.svg"
-  },
-  {
-   "id": "lib-027",
-   "brand": "lh-main",
-   "title": "The warranty in plain words",
-   "kind": "video",
-   "stage": "review",
-   "duration_s": 24,
-   "market": "Stonebridge",
-   "created": "2026-09-01",
-   "channels": [
-    "youtube"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-027.svg"
-  },
-  {
-   "id": "lib-028",
-   "brand": "lh-main",
-   "title": "Estimator ride-along: the best three minutes",
-   "kind": "video",
    "stage": "approved",
-   "duration_s": 45,
-   "market": "All markets",
-   "created": "2026-08-30",
-   "channels": [
-    "social",
-    "email"
-   ],
-   "note": "Approved for paid and organic.",
-   "thumb": "/demo/studio/thumbs/lib-028.svg"
-  },
-  {
-   "id": "lib-029",
-   "brand": "lh-main",
-   "title": "Why trade partners send us their jobs",
-   "kind": "carousel",
-   "stage": "draft",
    "duration_s": null,
-   "market": "Lakemont",
-   "created": "2026-08-28",
+   "market": "AI and compliance",
+   "created": "2026-10-25",
    "channels": [
-    "social",
-    "youtube"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-029.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. From Cyberhaven's Q2 2024 report, a vendor study. 73.8% of ChatGPT use at work ran through non-corporate accounts.",
+   "thumb": "/demo/studio/thumbs/comp-013-stat-02299297.jpg",
+   "slides": [
+    "/demo/studio/thumbs/comp-013-stat-02299297.jpg"
+   ],
+   "atom": "comp-013",
+   "source": {
+    "url": "https://info.cyberhaven.com/hubfs/Content%20PDF/Cyberhaven%20Q2%202024%20AI%20Adoption%20and%20Risk%20Report%20052024.pdf",
+    "label": "info.cyberhaven.com"
+   },
+   "link": {
+    "url": null,
+    "label": "Post not released yet"
+   }
   },
   {
-   "id": "lib-030",
-   "brand": "lh-pro",
-   "title": "What buyers see from the street first",
-   "kind": "video",
-   "stage": "review",
-   "duration_s": 45,
-   "market": "Sunvale",
-   "created": "2026-08-26",
-   "channels": [
-    "social"
-   ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-030.svg"
-  },
-  {
-   "id": "lib-031",
-   "brand": "lh-main",
-   "title": "Where the heat leaves: thermal stills",
+   "id": "stat-stl-010",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "One hundred fourteen companies. Almost none answered in five minutes.",
    "kind": "still",
-   "stage": "draft",
+   "stage": "approved",
    "duration_s": null,
-   "market": "All markets",
-   "created": "2026-08-24",
+   "market": "Speed to lead",
+   "created": "2026-10-25",
    "channels": [
-    "youtube"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "In draft; not yet sent for review.",
-   "thumb": "/demo/studio/thumbs/lib-031.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. Workato submitted demo requests and timed the replies: average email 11 hours 54 minutes, average call 14 hours 29 minutes. A vendor study, B2B, so read it as a pattern.",
+   "thumb": "/demo/studio/thumbs/stl-010-stat-d1d2004f.jpg",
+   "slides": [
+    "/demo/studio/thumbs/stl-010-stat-d1d2004f.jpg"
+   ],
+   "atom": "stl-010",
+   "source": {
+    "url": "https://workato.com/the-connector/lead-response-time-study",
+    "label": "workato.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/blog/lead-response-time-statistics",
+    "label": "Read the post"
+   }
   },
   {
-   "id": "lib-032",
-   "brand": "lh-main",
-   "title": "A free estimate, hour by hour",
-   "kind": "carousel",
-   "stage": "review",
+   "id": "stat-ue-015",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "Five to seven months. Past twelve is anemic.",
+   "kind": "still",
+   "stage": "approved",
    "duration_s": null,
-   "market": "Pinecrest",
-   "created": "2026-08-22",
+   "market": "Unit economics",
+   "created": "2026-10-25",
    "channels": [
-    "social",
-    "email"
+    "instagram",
+    "linkedin",
+    "reel stat card"
    ],
-   "note": "With the brand lead for review.",
-   "thumb": "/demo/studio/thumbs/lib-032.svg"
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. David Skok also calls payback past 12 months anemic. These are rules of thumb from an investor, not data from a sample.",
+   "thumb": "/demo/studio/thumbs/ue-015-stat-1c843f89.jpg",
+   "slides": [
+    "/demo/studio/thumbs/ue-015-stat-1c843f89.jpg"
+   ],
+   "atom": "ue-015",
+   "source": {
+    "url": "https://www.forentrepreneurs.com/saas-metrics-2/",
+    "label": "forentrepreneurs.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/unit-economics",
+    "label": "Unit economics guide"
+   }
+  },
+  {
+   "id": "stat-rev-015",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "AI helped novices the most. Here is the catch.",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "RevOps",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin",
+    "reel stat card"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. A field study of 5,179 customer support agents at one company. One firm, one task, so it does not prove the same gain for your team.",
+   "thumb": "/demo/studio/thumbs/rev-015-stat-d0b3b1ba.jpg",
+   "slides": [
+    "/demo/studio/thumbs/rev-015-stat-d0b3b1ba.jpg"
+   ],
+   "atom": "rev-015",
+   "source": {
+    "url": "https://www.nber.org/papers/w31161",
+    "label": "nber.org"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/revops",
+    "label": "RevOps guide"
+   }
+  },
+  {
+   "id": "stat-cd-015",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "The business spots the problem before the data team does.",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Connected data",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin",
+    "reel stat card"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. A 2023 vendor survey of 200 data professionals, up from 47% in 2022. Time to resolve rose to 15 hours.",
+   "thumb": "/demo/studio/thumbs/cd-015-stat-93adce84.jpg",
+   "slides": [
+    "/demo/studio/thumbs/cd-015-stat-93adce84.jpg"
+   ],
+   "atom": "cd-015",
+   "source": {
+    "url": "https://tdwi.org/Articles/2023/05/04/Data-Downtime-Nearly-Doubled-Survey.aspx",
+    "label": "tdwi.org"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/connected-data",
+    "label": "Connected data guide"
+   }
+  },
+  {
+   "id": "stat-comp-014",
+   "brand": "tin",
+   "host": "compliance",
+   "pillar": "ai-compliance",
+   "title": "Your team already brought its own AI.",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "AI and compliance",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin",
+    "reel stat card"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. Microsoft and LinkedIn's 2024 Work Trend Index surveyed 31,000 knowledge workers. At small and medium companies it was 80%.",
+   "thumb": "/demo/studio/thumbs/comp-014-stat-05bdfaeb.jpg",
+   "slides": [
+    "/demo/studio/thumbs/comp-014-stat-05bdfaeb.jpg"
+   ],
+   "atom": "comp-014",
+   "source": {
+    "url": "https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part",
+    "label": "microsoft.com"
+   },
+   "link": {
+    "url": null,
+    "label": "Post not released yet"
+   }
+  },
+  {
+   "id": "stat-stl-012",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Most leads get one try and a shrug.",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Speed to lead",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin",
+    "reel stat card"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. Velocify's 2015 data also showed few leads got voicemails or emails in the ideal count. Vendor data: use it to ask the question, then check your own cadence.",
+   "thumb": "/demo/studio/thumbs/stl-012-stat-7d390dc5.jpg",
+   "slides": [
+    "/demo/studio/thumbs/stl-012-stat-7d390dc5.jpg"
+   ],
+   "atom": "stl-012",
+   "source": {
+    "url": "https://customerthink.com/the-secret-to-closing-deals-its-easier-than-you-think/",
+    "label": "customerthink.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/speed-to-lead",
+    "label": "Speed to lead guide"
+   }
+  },
+  {
+   "id": "stat-ue-016",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "Ninety percent kept. A hundred and one percent net. For SaaS.",
+   "kind": "still",
+   "stage": "approved",
+   "duration_s": null,
+   "market": "Unit economics",
+   "created": "2026-10-25",
+   "channels": [
+    "instagram",
+    "linkedin",
+    "reel stat card"
+   ],
+   "note": "Every number on it carries a source link that was opened. Ready for the script step. A KeyBanc and Sapphire survey of more than 100 private SaaS firms in 2024. It describes software, not stores or service businesses.",
+   "thumb": "/demo/studio/thumbs/ue-016-stat-d2145b8b.jpg",
+   "slides": [
+    "/demo/studio/thumbs/ue-016-stat-d2145b8b.jpg"
+   ],
+   "atom": "ue-016",
+   "source": {
+    "url": "https://sapphireventures.com/press/keybanc-capital-markets-and-sapphire-ventures-private-saas-company-survey-reveals-a-continued-focus-on-operational-efficiency-and-profitability/",
+    "label": "sapphireventures.com"
+   },
+   "link": {
+    "url": "https://theinnovativenative.com/unit-economics",
+    "label": "Unit economics guide"
+   }
+  },
+  {
+   "id": "post-contact-rate-connect-rate-set-rate",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Contact, Connect and Set Rate: The Call Funnel Formulas",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Speed to lead",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-contact-rate-connect-rate-set-rate-3b27607f.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-contact-rate-connect-rate-set-rate-3b27607f.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/contact-rate-connect-rate-set-rate",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-customer-acquisition-cost-blended-vs-paid",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "Customer Acquisition Cost: Blended vs Paid",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Unit economics",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-customer-acquisition-cost-blended-vs-paid-d3381f84.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-customer-acquisition-cost-blended-vs-paid-d3381f84.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/customer-acquisition-cost-blended-vs-paid",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-how-to-calculate-customer-lifetime-value",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "How to Calculate Customer Lifetime Value",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Unit economics",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-how-to-calculate-customer-lifetime-value-b822af15.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-how-to-calculate-customer-lifetime-value-b822af15.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/how-to-calculate-customer-lifetime-value",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-lead-response-time-statistics",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "Lead Response Time Statistics: What Was Measured",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Speed to lead",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-lead-response-time-statistics-999b5cb1.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-lead-response-time-statistics-999b5cb1.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/lead-response-time-statistics",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-ltv-to-cac-ratio-where-3-to-1-comes-from",
+   "brand": "tin",
+   "host": "economics",
+   "pillar": "unit-economics",
+   "title": "LTV to CAC Ratio: Where 3 to 1 Comes From",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Unit economics",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-ltv-to-cac-ratio-where-3-to-1-comes-from-6a8bfec6.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-ltv-to-cac-ratio-where-3-to-1-comes-from-6a8bfec6.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/ltv-to-cac-ratio-where-3-to-1-comes-from",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-map-of-information-islands",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "A Map of the Usual Information Islands in a Business",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Connected data",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-map-of-information-islands-a193331f.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-map-of-information-islands-a193331f.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/map-of-information-islands",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-metric-dictionary-one-number-one-owner",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "Build a Metric Dictionary: One Number, One Owner",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "RevOps",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-metric-dictionary-one-number-one-owner-3eeb1d20.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-metric-dictionary-one-number-one-owner-3eeb1d20.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/metric-dictionary-one-number-one-owner",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-revenue-handoffs-where-money-leaks",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "Revenue Handoffs: Where Money Leaks Between Teams",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "RevOps",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-revenue-handoffs-where-money-leaks-b2cb30e1.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-revenue-handoffs-where-money-leaks-b2cb30e1.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/revenue-handoffs-where-money-leaks",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-warehouse-first-single-source-of-truth",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "One Source of Truth Beats Another Integration",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Connected data",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-warehouse-first-single-source-of-truth-f840aa4b.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-warehouse-first-single-source-of-truth-f840aa4b.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/warehouse-first-single-source-of-truth",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-what-data-silos-cost-a-growth-team",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "connected-data",
+   "title": "What Data Silos Cost a Growth Team: Two Answers",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Connected data",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-what-data-silos-cost-a-growth-team-88107757.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-what-data-silos-cost-a-growth-team-88107757.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/what-data-silos-cost-a-growth-team",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-what-is-speed-to-lead",
+   "brand": "tin",
+   "host": "speed",
+   "pillar": "speed-to-lead",
+   "title": "What Is Speed to Lead and How Do You Measure It?",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "Speed to lead",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-what-is-speed-to-lead-144050cb.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-what-is-speed-to-lead-144050cb.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/what-is-speed-to-lead",
+    "label": "Read the post"
+   }
+  },
+  {
+   "id": "post-what-revops-owns-vs-sales-ops-marketing-ops",
+   "brand": "tin",
+   "host": "revops",
+   "pillar": "revops",
+   "title": "What RevOps Owns vs Sales Ops and Marketing Ops",
+   "kind": "still",
+   "stage": "posted",
+   "duration_s": null,
+   "market": "RevOps",
+   "created": "2026-10-24",
+   "channels": [
+    "website"
+   ],
+   "note": "Released on the site on 2026-10-24.",
+   "thumb": "/demo/studio/thumbs/post-what-revops-owns-vs-sales-ops-marketing-ops-bd48c907.jpg",
+   "slides": [
+    "/demo/studio/thumbs/post-what-revops-owns-vs-sales-ops-marketing-ops-bd48c907.jpg"
+   ],
+   "source": null,
+   "link": {
+    "url": "https://theinnovativenative.com/blog/what-revops-owns-vs-sales-ops-marketing-ops",
+    "label": "Read the post"
+   }
   }
  ]
 }

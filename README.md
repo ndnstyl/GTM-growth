@@ -28,13 +28,17 @@ claude plugin marketplace add ndnstyl/GTM-growth && claude plugin install operat
 
 ## What it looks like
 
-This is the surface a harness like this runs underneath: the public [GTM OS demo](https://theinnovativenative.com/gtm-os/), with a fictional company in it.
+This is the surface a harness like this runs underneath: the public [GTM OS demo](https://theinnovativenative.com/gtm-os/brain/), with a fictional company in it. It opens on the Second Brain: every agent, skill, hook and note in Operator OS as one map you can orbit, search and open.
 
-![GTM OS Command cockpit: key numbers, a priority line, ten stage cards and an Ask the data panel](docs/assets/screens/gtm-command.png)
+![GTM OS Second Brain: the rings of applications, routines, memory and skills, with the ten playbook folders as hubs](docs/assets/screens/gtm-brain.png)
 
-| Paid Media | Content Studio |
+Click any node and its card opens; open the file and you read the real thing, the same one this repository ships.
+
+![A skill opened in the Second Brain: its card with connections, and the skill file rendered in the side panel](docs/assets/screens/gtm-brain-skill.png)
+
+| Command cockpit | Content Studio |
 |---|---|
-| ![GTM OS Paid Media: spend, clicks, a 28 day trend and campaigns by spend](docs/assets/screens/gtm-paid-media.png) | ![GTM OS Content Studio: ideas moving from scripted to ready](docs/assets/screens/gtm-content-studio.png) |
+| ![GTM OS Command cockpit: key numbers, a priority line, ten stage cards and an Ask the data panel](docs/assets/screens/gtm-command.png) | ![GTM OS Content Studio: real reels, carousels and stat cards, with the scripts and ideas behind them](docs/assets/screens/gtm-content-studio.png) |
 
 ## How it fits together
 
@@ -105,7 +109,3 @@ I work as a fractional Chief AI Officer for businesses that run growth marketing
 **[Book a call](https://theinnovativenative.com/#book)** · [theinnovativenative.com](https://theinnovativenative.com)
 
 Built by Mike Soto, fractional Chief AI Officer, The Innovative Native.
-
-## The GTM playbook
-
-Operator OS is the harness. The playbook is what it runs: ten go-to-market folders from first touch to final report, each system with the outcome it delivers. Start at [GTM-PLAYBOOK.md](GTM-PLAYBOOK.md), or open the live demo cockpit, [GTM OS](https://theinnovativenative.com/gtm-os/), running on a fictional company. Its source is in [gtm-os/](gtm-os/).

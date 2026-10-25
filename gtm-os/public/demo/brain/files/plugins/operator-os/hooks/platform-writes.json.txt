@@ -1,0 +1,4 @@
+{
+  "_doc": "Platform-write registry for platform-write-gate.sh. SHIPS EMPTY on purpose: the gate allows everything until you add a row. Copy this file to .operator/platform-writes.json in your project and add one gate per write surface outside your own machine. Each gate: id (kebab-case, unique), kind ('bash' matches the Bash command string, 'mcp' matches the MCP tool name), platform (a label for the operator), pattern (POSIX ERE, matched case-insensitively). Reads, drafts, local files and the vault are not platform writes and are not listed. See docs/platform-write-gate.md for worked examples.",
+  "gates": []
+}

@@ -81,10 +81,10 @@ def build_views(w: World) -> list[dict]:
     out += [
         V("efficiency-tier-by-market", "Marketing cost against the 28% target", "Marketing cost as a share of net revenue, whole company, by month.",
           "Each market against the 28 percent target: the ceiling a market can spend at target and where it actually landed.",
-          gm, ["period"], [], ["marketing_cost_pct"], [f_eq("office", "COMPANY")], presentation="chart", chart={"kind": "line", "x": "period", "y": "marketing_cost_pct"}),
+          gm, ["period"], [], ["marketing_cost_pct"], presentation="chart", chart={"kind": "line", "x": "period", "y": "marketing_cost_pct"}),
         V("efficiency-monthly", "Marketing cost target, monthly", "Net issued, net revenue and the share still pending, revenue per issued appointment and cost percent by market.",
           "The monthly record behind the target: revenue per net issued appointment, the ceiling it implies and the cost percent against it.",
-          gm, ["period"], [], ["net_iss", "net_usd", "prenet_usd", "marketing_cost_pct"], [f_eq("office", "COMPANY")]),
+          gm, ["period"], [], ["net_iss", "net_usd", "prenet_usd", "marketing_cost_pct"]),
         V("efficiency-tieout", "Marketing cost target, matches the CRM", "Rows checked, failures and explained residuals, by month and market.",
           "Every published number is recomputed a second way each night; this view is where a mismatch would show first.",
           "efficiency_tieout", ["period"], [], ["rows", "fails", "residuals"], [f_eq("office", "COMPANY")]),

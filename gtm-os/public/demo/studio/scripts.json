@@ -1,292 +1,152 @@
 {
  "sets": [
   {
-   "id": "set-01",
-   "brand": "lh-main",
-   "topic": "Why a free estimate is worth the hour",
-   "created": "2026-10-22",
-   "best": "v2",
-   "variations": [
+   "id": "second-brain-speed-to-lead-sample",
+   "brand": "tin",
+   "host": "speed",
+   "created": "2026-10-25",
+   "seconds": 23.8,
+   "reel": "reel-speed-to-lead-sample",
+   "hook": {
+    "words": "Your AI has skills. Can you see them?",
+    "seconds": 2.4,
+    "emphasis": [
+     {
+      "word": "skills.",
+      "color": "cyan"
+     },
+     {
+      "word": "see",
+      "color": "magenta"
+     }
+    ]
+   },
+   "beats": [
     {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "You think an estimate is a sales trap. It is an hour of someone measuring your roof.",
-     "body": "Here is the hour: ten minutes on the ground, twenty on the roof, ten in the attic, then a written number before we leave. No pressure, no pitch deck. Free estimate, written the same day.",
-     "seconds": 26,
-     "humor": 0.2,
-     "score": 71
+     "words": "This is the Second Brain behind GTM OS.",
+     "seconds": 1.9,
+     "emphasis": [
+      {
+       "word": "Second",
+       "color": "cyan"
+      },
+      {
+       "word": "Brain",
+       "color": "cyan"
+      }
+     ],
+     "callout": {
+      "label": "SECOND BRAIN",
+      "body": "Orbit the skills, hooks and memory behind this cockpit"
+     },
+     "capture": "brain_hover"
     },
     {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "A customer in Pinecrest timed our estimator with her phone. Fifty-one minutes.",
-     "body": "She expected a hard sell and got a tape measure, a ladder and a price on paper. She kept the number for a week and called us on day six. Free estimate, written the same day.",
-     "seconds": 28,
-     "humor": 0.3,
-     "score": 84
+     "words": "Hover any node. See what it connects to.",
+     "seconds": 2,
+     "emphasis": [
+      {
+       "word": "connects",
+       "color": "magenta"
+      }
+     ],
+     "callout": null,
+     "capture": "brain_hover"
     },
     {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "Free does not mean cheap, and it does not mean a trap.",
-     "body": "A free estimate means we do the work of finding the problem before you spend a dollar. If the number does not fit, keep the paper anyway. Book the hour.",
-     "seconds": 30,
-     "humor": 0.5,
-     "score": 77
+     "words": "Click a skill and its card opens.",
+     "seconds": 2.2,
+     "emphasis": [
+      {
+       "word": "card",
+       "color": "cyan"
+      },
+      {
+       "word": "opens.",
+       "color": "magenta"
+      }
+     ],
+     "callout": null,
+     "capture": "brain_card"
+    },
+    {
+     "words": "Open SKILL.md and read it rendered.",
+     "seconds": 2.4,
+     "emphasis": [
+      {
+       "word": "SKILL.md",
+       "color": "cyan"
+      },
+      {
+       "word": "rendered.",
+       "color": "magenta"
+      }
+     ],
+     "callout": {
+      "label": "SKILL.MD",
+      "body": "The skill as rendered markdown"
+     },
+     "capture": "brain_skillmd"
+    },
+    {
+     "words": "Type a skill name. The map flies to it.",
+     "seconds": 2.5,
+     "emphasis": [
+      {
+       "word": "flies",
+       "color": "magenta"
+      }
+     ],
+     "callout": {
+      "label": "SEARCH",
+      "body": "Search 439 files, then fly to the match"
+     },
+     "capture": "brain_search"
+    },
+    {
+     "words": "It sits inside the Command cockpit too.",
+     "seconds": 1.8,
+     "emphasis": [
+      {
+       "word": "Command",
+       "color": "cyan"
+      }
+     ],
+     "callout": null,
+     "capture": "cockpit_brain"
+    },
+    {
+     "words": "Ten stages of go to market, one screen.",
+     "seconds": 2,
+     "emphasis": [
+      {
+       "word": "Ten",
+       "color": "magenta"
+      },
+      {
+       "word": "one",
+       "color": "cyan"
+      }
+     ],
+     "callout": {
+      "label": "COMMAND",
+      "body": "Pick a stage, or ask the data below"
+     },
+     "capture": "command"
     }
-   ]
-  },
-  {
-   "id": "set-02",
-   "brand": "lh-main",
-   "topic": "A roof you stop thinking about",
-   "created": "2026-10-19",
-   "best": "v2",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "Your roof is the one thing you should never have to look at twice.",
-     "body": "Slow shot up the front of the house, finished at golden hour. No stains, no curled edges, nothing to think about for years. That is what done looks like. See your options.",
-     "seconds": 27,
-     "humor": 0.1,
-     "score": 75
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "The owner of this house stopped checking the ceiling after storms.",
-     "body": "Three winters of buckets in the hall, then one week with our crew. Now the first thing she notices after a storm is that nothing changed. Book an estimate.",
-     "seconds": 29,
-     "humor": 0.3,
-     "score": 85
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "The best roof is the one you forget you own.",
-     "body": "The best roof is the one nobody on the street talks about. Quiet gutters, clean lines, a warranty you never open. Free estimate this week.",
-     "seconds": 31,
-     "humor": 0.4,
-     "score": 78
-    }
-   ]
-  },
-  {
-   "id": "set-03",
-   "brand": "lh-main",
-   "topic": "Three questions before you sign",
-   "created": "2026-10-16",
-   "best": "v2",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "Most people sign a contract they read once, in the driveway.",
-     "body": "Ask three things first: who is on my roof, what is in writing, and what happens if it rains on day two. Any honest contractor answers all three in a minute. Ask us.",
-     "seconds": 28,
-     "humor": 0.2,
-     "score": 77
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "A Stonebridge couple asked a stranger three questions and saved four thousand dollars.",
-     "body": "Question one: is the price in writing. Question two: who does the work. Question three: what is covered. The first contractor stalled. The second one was us. Ask anyone these three.",
-     "seconds": 30,
-     "humor": 0.3,
-     "score": 90
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "Three answers you can check beat a contractor you trust.",
-     "body": "Trust is slow. Answers are fast. Written price, named crew, written warranty. If you have all three, sign. If not, keep looking. Free estimate when you are ready.",
-     "seconds": 32,
-     "humor": 0.4,
-     "score": 68
-    }
-   ]
-  },
-  {
-   "id": "set-04",
-   "brand": "lh-pro",
-   "topic": "The crew lead explains day one",
-   "created": "2026-10-13",
-   "best": "v1",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "Day one looks like chaos from the street. It is not.",
-     "body": "Our crew lead walks you through it: tarps down at seven, old shingles off by noon, deck inspected before a single new nail goes in. Prep is the job. The paint is the easy part.",
-     "seconds": 26,
-     "humor": 0.1,
-     "score": 83
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "Marcus has led two hundred roof installs and still checks the deck by hand.",
-     "body": "He taps every board, marks the soft ones, and shows the homeowner before he fixes them. That ten minutes is why the roof is still dry in year ten. Meet the crew.",
-     "seconds": 28,
-     "humor": 0.3,
-     "score": 74
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "The crew that rushes the tear-off leaves nails in your driveway.",
-     "body": "Rushing the tear-off is how nails end up in your driveway. We slow the first morning and finish ahead of the forecast. Ask to meet the lead before you book.",
-     "seconds": 30,
-     "humor": 0.5,
-     "score": 71
-    }
-   ]
-  },
-  {
-   "id": "set-05",
-   "brand": "lh-main",
-   "topic": "What a monthly payment really looks like",
-   "created": "2026-10-10",
-   "best": "v3",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "You can not see a roof price. You can see a monthly payment.",
-     "body": "A new roof for about the cost of a streaming bundle and a phone plan. One number a month, fixed, no surprise at the end. See your monthly number in five minutes.",
-     "seconds": 27,
-     "humor": 0.3,
-     "score": 73
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "The Alvarez family did the math at the kitchen table in four minutes.",
-     "body": "Roof price on the left, payment on the right, term in the middle. The payment was lower than their last two repair bills combined. They booked that night.",
-     "seconds": 29,
-     "humor": 0.3,
-     "score": 81
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "Fixed rate, a written end date, approval before the crew is booked.",
-     "body": "Fixed rate, no prepayment fee, approval before the crew is booked. Read the whole sheet before you sign anything. Ask for your monthly number.",
-     "seconds": 31,
-     "humor": 0.4,
-     "score": 90
-    }
-   ]
-  },
-  {
-   "id": "set-06",
-   "brand": "lh-main",
-   "topic": "Windows you can hear the difference in",
-   "created": "2026-10-07",
-   "best": "v1",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "You can hear the highway from the couch. That is the window, not the road.",
-     "body": "Stand at the front door and close it. That silence is what a window should do. Our double-pane install cuts street noise by half. Free estimate, written the same day.",
-     "seconds": 28,
-     "humor": 0.4,
-     "score": 85
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "A customer in Sunvale put her phone by the window and called us from the next room.",
-     "body": "She could hear the traffic through the speaker louder than through the glass in her own bedroom. That was the old window. After install, the call was silent. Listen for yourself.",
-     "seconds": 30,
-     "humor": 0.3,
-     "score": 77
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "New windows are not about the view. Listen.",
-     "body": "Close your eyes at the old window, then at the new one. The difference is not what you see, it is what you stop hearing. Book the sound test.",
-     "seconds": 32,
-     "humor": 0.5,
-     "score": 79
-    }
-   ]
-  },
-  {
-   "id": "set-07",
-   "brand": "lh-main",
-   "topic": "Storm season checklist",
-   "created": "2026-10-04",
-   "best": "v1",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "The storm is two days out. Your roof has been fine for six years. Check anyway.",
-     "body": "From the ground, look for five things: lifted corners, granules in the gutter, bent flashing, sagging lines, daylight in the attic. Ten minutes, no ladder. Save this list.",
-     "seconds": 26,
-     "humor": 0.2,
-     "score": 88
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "A homeowner in Riverbend found a missing shingle by looking out the kitchen window.",
-     "body": "Two days before the rain, she called us. A twenty minute repair instead of a ceiling stain. Check from the ground before the storm, not after.",
-     "seconds": 28,
-     "humor": 0.3,
-     "score": 88
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "Storm damage is not always dramatic. Most of it is a lifted corner nobody noticed.",
-     "body": "Wind lifts the edge, rain finds it, and the leak shows up three weeks later. Here are the five things to look for from your driveway. Share it with a neighbor.",
-     "seconds": 30,
-     "humor": 0.3,
-     "score": 66
-    }
-   ]
-  },
-  {
-   "id": "set-08",
-   "brand": "lh-pro",
-   "topic": "Neighbors who picked us",
-   "created": "2026-10-01",
-   "best": "v3",
-   "variations": [
-    {
-     "id": "v1",
-     "label": "Pain hook",
-     "hook": "Two houses on Maple Street got the same quote. Only one called us back.",
-     "body": "Same roof, same week, same weather. One neighbor waited for a callback that never came. The other has been dry since March. Ask your neighbors who they called.",
-     "seconds": 27,
-     "humor": 0.2,
-     "score": 76
-    },
-    {
-     "id": "v2",
-     "label": "Story hook",
-     "hook": "The Okafors saw our truck next door and knocked before we left.",
-     "body": "They asked three questions and got an estimate that afternoon. Eight weeks later their street has two matching roofs and a thank-you note on our crew lead's windshield.",
-     "seconds": 29,
-     "humor": 0.4,
-     "score": 69
-    },
-    {
-     "id": "v3",
-     "label": "Myth hook",
-     "hook": "The crew that cleans your driveway is the ad your neighbors see.",
-     "body": "Every homeowner on this street can tell you how the crew treated their yard. That is the only ad we trust. See who your neighbors picked.",
-     "seconds": 31,
-     "humor": 0.4,
-     "score": 79
-    }
-   ]
+   ],
+   "statAfter": 7,
+   "stat": {
+    "value": "37%",
+    "label": "of 2,241 US companies answered a web lead within one hour in a Harvard Business Review audit. 23% never responded.",
+    "source": "Source: Harvard Business Review, March 2011, as reported by SmartCompany, 4 Jul 2011",
+    "seconds": 3.6
+   },
+   "endCard": {
+    "linkText": "tinn.me/brain",
+    "cta": "Book a call",
+    "seconds": 3
+   }
   }
  ]
 }

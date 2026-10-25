@@ -14,15 +14,7 @@
   "prenet_usd",
   "marketing_cost_pct"
  ],
- "filters": [
-  {
-   "dimKey": "office",
-   "op": "=",
-   "values": [
-    "COMPANY"
-   ]
-  }
- ],
+ "filters": [],
  "datePreset": "last_13",
  "presentation": "table",
  "origin": "canon",

@@ -1,0 +1,46 @@
+domain: security-compliance
+title: Security & Compliance
+description: >
+  Security posture, compliance readiness, data governance, and IP protection.
+  Owns the data-classification boundary (the privileged-data line: privileged + proprietary
+  data never enters consumer AI), the subprocessor register, PCI scope (SAQ-A),
+  and framework gap assessments (SOC 2, ISO 27001, GDPR/CCPA, ISO 42001 / EU AI
+  Act). Mostly read + assess + produce reports; remediation routes through the
+  mechanical agents under tight gates. The CISO persona is the knowledge owner.
+autonomy: full_ship
+gates: [outward_send, data_disclosure, payment_mutation, prod_deploy, db_migration]
+
+brand_rules: []  # add your own rule names or short rule text
+
+skills:
+  primary: [data-classification, compliance-audit, vibe-security]
+  support: [ingest]
+
+# Mechanical roster only. reviewer (Opus MAX) is the adversarial security
+# executor; CISO knowledge is carried via memory_anchors, not as an agent.
+agents: [orchestrator, researcher, reviewer, implementer]
+
+# No outreach/billing workflows here. Security is cross-cutting; it audits the
+# other domains' workflows rather than owning its own fleet.
+n8n_workflows: []
+
+memory_anchors: []  # add your own rule names or short rule text
+
+verification:
+  - "data classified before any AI-tool routing; no T0/T1 data to a consumer UI (data-handling rule)"
+  - "every external processor touching T0/T1 data is on the subprocessor register with no-train + DPA status"
+  - "PCI posture remains SAQ-A; no change routes cardholder data through our systems"
+  - "RLS enabled + tenancy derived from authenticated principal (hosted-db rules + security rules)"
+  - "no secrets printed, logged, or sent to any AI tool"
+  - "T0/T1 disclosure to a new destination is gated to the operator (data_disclosure gate)"
+  - "no em dashes incl &mdash;"
+
+entrypoints:
+  - "classify this data / can I put this in an AI tool"
+  - "run a SOC2 / ISO 27001 / PCI / GDPR gap assessment"
+  - "what's our compliance posture for this client questionnaire"
+  - "onboard / vet a new data processor (DPA, no-train, register)"
+  - "audit lawfirm-rag / outreach / billing for sensitive-data handling"
+  - "privileged-data check on this workflow"
+  - "protect our IP before this deal / share"
+  - "security review of this diff / feature"

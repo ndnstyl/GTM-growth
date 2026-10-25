@@ -1,0 +1,8 @@
+{
+  "_doc": "Ingress registry for block-ingress-drift.sh. SHIPS EMPTY: the hook allows everything until governed_domains has an entry. Copy to .operator/ingress-registry.json in your project. governed_domains: domains (and shared hosting domains such as pages.dev) whose subdomains you want ruled. hostnames/tunnels/pages_projects/workers: one row per approved name, each with name, purpose, owner, ruled_by, ruled_on. A row with blank ruled_by is PROPOSED.",
+  "governed_domains": [],
+  "hostnames": [],
+  "tunnels": [],
+  "pages_projects": [],
+  "workers": []
+}

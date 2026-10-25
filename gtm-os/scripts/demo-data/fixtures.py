@@ -169,8 +169,9 @@ def build_chat(S: Stats, w: World, ex: dict, M: dict) -> dict:
         [src("Marketing cost target board", "/reports/workbench/?board=board-efficiency-target")], ["Are we on pace this month?"])
     n_ready = sum(1 for x in lib if x["stage"] == "approved")
     n_review = sum(1 for x in lib if x["stage"] == "review")
+    n_posted = sum(1 for x in lib if x["stage"] == "posted")
     add("content-pipeline", ["content", "pipeline", "creative", "videos", "library"], "What is in the content pipeline?",
-        f"The library holds **{len(lib)} pieces**: {n_ready} approved, {n_review} in review and {len(lib) - n_ready - n_review} in draft. "
+        f"The library holds **{len(lib)} pieces**: {n_ready} approved, {n_posted} posted, {n_review} in review and {len(lib) - n_ready - n_review - n_posted} in draft. "
         f"The edit crew has {len(ex['studio']['cuts'])} cuts in progress.",
         [src("Content Studio", "/studio/")], ["What changed this week?"])
     add("consent", ["consent", "stop", "opt-out", "exceptions", "compliance"], "Are there consent exceptions open?",
@@ -226,7 +227,7 @@ def build_stage_stats(S: Stats, w: World, ex: dict, M: dict) -> dict:
     stages = [
         ("Market Research", f"{rs['objections']} objections", str(rs["objections"]), "weekly", "ok"),
         ("Positioning & Offer", f"{rs['offers_winning']} winning", str(rs["offers_winning"]), f"{rs['offers_testing']} testing", "ok"),
-        ("Content Engine", f"{len(lib)} pieces", str(len(lib)), f"{sum(1 for x in lib if x['stage'] == 'approved')} approved", "ok"),
+        ("Content Engine", f"{len(lib)} pieces", str(len(lib)), f"{sum(1 for x in lib if x['stage'] in ('approved', 'posted'))} approved or posted", "ok"),
         ("Paid Media", f"{k(M['windows']['last7']['values']['ad_spend'])}, 7 days", k(M["windows"]["last7"]["values"]["ad_spend"]), dl(M["windows"]["last7"]["values"]["ad_spend"], M["windows"]["last7"]["prior"]["ad_spend"]), "ok"),
         ("Capture & Consent", "4 open", "4", "none past limit", "watch"),
         ("Speed to Lead", f"{pct(100 * ai['answered'] / ai['asked'])} answered", pct(100 * ai["answered"] / ai["asked"]), f"{pct(100 * ai['right'] / ai['graded'])} right", "ok"),
@@ -331,10 +332,19 @@ def write_runs(w: World) -> None:
 RUN_LABELS = {"loop-ad-pull": "Daily ad pull", "loop-library-sync": "Creative library sync", "loop-cost-sync": "Cost sync", "loop-call-scoring": "Call scoring", "loop-reports": "Report rebuild"}
 
 
+def read_studio() -> dict:
+    """The Content Studio is built by scripts/build-studio.mjs from the real content engine; this generator only reads it."""
+    base = OUT_DEMO / "studio"
+    for n in ("library.json", "crew.json"):
+        if not (base / n).exists():
+            raise FileNotFoundError(f"{base / n} is missing: run `node scripts/build-studio.mjs` first (the generator no longer writes the Studio)")
+    return {"library": json.loads((base / "library.json").read_text())["items"], "cuts": json.loads((base / "crew.json").read_text())["cuts"]}
+
+
 def write_fixtures(w: World, S: Stats, M: dict) -> None:
     floor = S.floor(S.d7, w.end)
     research = fixtures_apps.write_research(w, int(floor["connects"]))
-    studio = fixtures_apps.write_studio(w)
+    studio = read_studio()
     fixtures_apps.write_qr(w)
     ex = {"research": research, "studio": studio}
     write_json(OUT_DEMO / "stage_stats.json", build_stage_stats(S, w, ex, M))

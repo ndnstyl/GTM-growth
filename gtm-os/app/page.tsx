@@ -19,6 +19,7 @@ import { ChatPanel } from "@/components/cockpit/ChatPanel";
 import { Routines } from "@/components/cockpit/Routines";
 import { ConsentOpsPanel } from "@/components/cockpit/ConsentOpsPanel";
 import { GtmMap } from "@/components/cockpit/GtmMap";
+import { BrainCard } from "@/components/cockpit/BrainCard";
 import { CardDialog } from "@/components/cockpit/CardDialog";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
@@ -122,6 +123,7 @@ export default function Cockpit() {
           </button>
           <MediaTodayPill media={feeds?.initiatives ?? null} />
           <LiveTicker />
+          <BrainCard />
         </div>
         <GtmMap />
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 px-4 py-1.5 text-[12px] text-muted-foreground">
